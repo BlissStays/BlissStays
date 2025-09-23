@@ -390,8 +390,25 @@ header.scrolled .header-inner{background:#fff;border-radius:10px;box-shadow:0 10
 
 @media (max-width:768px){
   .main-nav,.book-now{display:none!important}
-  .mnav-btn{display:grid;place-items:center;width:44px;height:44px;border:1px solid rgba(0,0,0,.12);border-radius:10px;background:#fff;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08)}
-  .mnav-btn span{display:block;width:22px;height:2px;background:#222;margin:3px 0;border-radius:2px}
+  .mnav-btn {
+  display:grid;
+  place-items:center;
+  width:44px;
+  height:44px;
+  border:none;              /* remove border */
+  border-radius:0;          /* no rounded box */
+  background:transparent;   /* transparent background */
+  box-shadow:none;          /* no shadow */
+  cursor:pointer;
+}
+.mnav-btn span {
+  display:block;
+  width:22px;
+  height:2px;
+  background:#222; /* your menu lines */
+  margin:4px 0;
+  border-radius:2px;
+}
   .mnav-btn:active{transform:scale(.98)}
 
   .mnav-sheet{display:block;pointer-events:none;position:fixed;inset:0;z-index:1500}
@@ -546,6 +563,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 <!-- ===================== /HEADER (updated + mobile) ===================== -->
+
   
   <!-- Floating WhatsApp (bottom-left) -->
 <!-- ===== WhatsApp Chat Teaser (final, wide like the reference) ===== -->
