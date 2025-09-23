@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bliss Stays</title>
+  <style>
+    /* Reset */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      color: #444;
+      line-height: 1.6;
+      background-color: #f4f0e6;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f0e6;
+      width: 100%;
+      min-height: 100%;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* Colors */
+    :root {
+      --primary: #4b4b38;
+      --accent: #6b6b50;
+      --light: #f8f5ee;
+    }
+
+    /* Hero with video */
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(255, 255, 255, 0.4);
+      z-index: 1;
+    }
+
+    .hero-logo {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+    }
+
+    .hero-logo img {
+      max-width: 300px;
+      width: 90%;
+      height: auto;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+    }
+
+
+    
+
+    .logo-block {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.logo-text {
+  letter-spacing: 0.5px;
+}
+
+.home-message-wrapper {
+  background-color: #f4f0e0; /* Makes the entire width same color */
+  width: 100%;
+}
+
+.home-message {
+  padding: 100px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.home-message-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 320px;
+}
+
+.home-message-left {
+  flex: 1 1 300px;
+  font-size: 2.0rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--primary);
+}
+
+.home-message-right {
+  flex: 1 1 500px;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .home-message-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .home-message-left {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .home-message-right {
+    font-size: 1rem;
+  }
+}
+
+/* Outer full-width background wrapper */
+.bliss-brands-fullwrap {
+  background-color: #f4f0e6;
+  width: 100%;
+}
+
+/* Section inside wrapper */
+.bliss-brands-showcase {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Content wrapper */
+.brands-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brands-left {
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 40px;
+}
+
+.brands-left h5 {
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.brands-left h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.brands-left p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* Cards container */
+.brands-right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.brand-card {
+  background: #ece8dd;
+  text-align: center;
+  flex: 1 1 250px;
+  max-width: 300px;
+  padding-bottom: 20px;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.brand-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.brand-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 15px 15px 5px;
+}
+
+.brand-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0 15px 10px;
+}
+
+.brand-card a {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.brand-card a:hover {
+  color: var(--accent);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .brands-right {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .brand-card {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+/* Click-triggered animation keyframes */
+@keyframes clickBounce {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Class that triggers the animation */
+.animate-on-click {
+  animation: clickBounce 0.3s ease;
+}
+
+.brand-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+
+
+
+  </style>
+</head>
+<body>
+
+
+
+<!-- ======================= HEADER (updated + mobile) ======================= -->
+<!-- ================ HEADER (desktop unchanged, mobile hamburger) ================ -->
+<header>
+  <div class="header-inner">
+    <div class="logo-block">
+      <a href="index.html" class="logo-text">BLISS STAYS</a>
+    </div>
+
+    <div class="spacer"></div>
+
+    <!-- DESKTOP NAV (hidden on mobile) -->
+    <nav class="main-nav" aria-label="Primary">
+      <ul>
+        <li class="has-dropdown locations-menu">
+          <a href="#">Locations <span>▾</span></a>
+          <div class="drop-panel">
+            <div class="loc-group">
+              <div class="loc-title">London</div>
+              <ul class="loc-list">
+                <li><a href="property.html">Maida Vale</a></li>
+                <li><a href="property1.html">Paddington</a></li>
+                <li><a href="property2.html">Nine Elms</a></li>
+                <li><a href="property3.html">Kennington</a></li>
+                <li><a href="property4.html">Wimbledon</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="has-dropdown menu-menu">
+          <a href="#">Menu <span>▾</span></a>
+          <div class="drop-panel">
+            <ul class="menu-list">
+              <li><a href="faq.html">FAQs</a></li>
+              <li><a href="terms.html">Terms & Conditions</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="book-now">
+      <a href="booknow.html">Book now</a>
+    </div>
+
+    <!-- MOBILE HAMBURGER (only visible on mobile) -->
+    <button id="mnavBtn" class="mnav-btn" aria-label="Open menu" aria-controls="mnav" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE SHEET -->
+<aside id="mnav" class="mnav-sheet" aria-hidden="true">
+  <div class="mnav-backdrop"></div>
+  <div class="mnav-panel" role="dialog" aria-modal="true">
+    <div class="mnav-head">
+      <div class="mnav-brand">BLISS STAYS</div>
+      <button id="mnavClose" class="mnav-close" aria-label="Close">×</button>
+    </div>
+
+    <div class="mnav-body">
+      <div class="mnav-group">
+        <div class="mnav-label">Locations</div>
+        <a class="mnav-item" href="property.html">Maida Vale</a>
+        <a class="mnav-item" href="property1.html">Paddington</a>
+        <a class="mnav-item" href="property2.html">Nine Elms</a>
+        <a class="mnav-item" href="property3.html">Kennington</a>
+        <a class="mnav-item" href="property4.html">Wimbledon</a>
+      </div>
+
+      <div class="mnav-group">
+        <div class="mnav-label">Menu</div>
+        <a class="mnav-item" href="faq.html">FAQs</a>
+        <a class="mnav-item" href="terms.html">Terms & Conditions</a>
+        <a class="mnav-item" href="privacy.html">Privacy Policy</a>
+      </div>
+
+      <div class="mnav-cta">
+        <a class="mnav-book" href="booknow.html">Book now</a>
+      </div>
+</div>      
+  </div>
+</aside>
+
+<style>
+/* ——— Desktop keeps your existing look ——— */
+header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:transparent;padding:10px 16px;transition:padding .25s}
+.header-inner{max-width:1200px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:20px;background:#ffffffF5;border:1px solid rgba(0,0,0,.06);border-radius:12px;box-shadow:0 14px 30px rgba(0,0,0,.12),0 4px 10px rgba(0,0,0,.08);backdrop-filter:saturate(140%) blur(6px)}
+header.scrolled{padding-top:6px;padding-bottom:6px}
+header.scrolled .header-inner{background:#fff;border-radius:10px;box-shadow:0 10px 24px rgba(0,0,0,.10),0 3px 8px rgba(0,0,0,.08)}
+.logo-block{font-family:"Times New Roman",Times,serif;font-size:20px;font-weight:700;color:#363633}
+.spacer{flex:1}
+.main-nav ul{display:flex;list-style:none;gap:40px;margin:0;padding:0}
+.main-nav a{font-size:16px;font-weight:500;color:#363633;text-decoration:none;position:relative;padding-bottom:3px}
+.main-nav a:hover{color:#6b6b50}
+.main-nav a:hover::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:#363633}
+.book-now{margin-left:12px}
+.book-now a{background:#4b4b38;color:#fff;font-weight:600;font-size:15px;padding:10px 22px;border-radius:6px;box-shadow:0 2px 6px rgba(0,0,0,.12);transition:transform .2s,box-shadow .2s,background .2s;display:inline-block}
+.book-now a:hover{background:#363626;transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.16)}
+.main-nav .has-dropdown{position:relative}
+.main-nav .has-dropdown>.drop-panel{position:absolute;top:100%;left:0;z-index:1002;display:none;min-width:220px;max-width:260px;padding:14px 16px;background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:12px;box-shadow:0 10px 24px rgba(0,0,0,.10),0 3px 8px rgba(0,0,0,.06)}
+.main-nav .has-dropdown:hover>.drop-panel{display:block}
+.main-nav .locations-menu .loc-title{display:inline-block;font-weight:800;font-size:16px;color:#363633;margin:2px 0 8px;padding-bottom:5px;border-bottom:3px solid #363633}
+.main-nav .locations-menu .loc-list,.menu-menu .menu-list{display:block;list-style:disc;margin:0;padding-left:1.15rem}
+.main-nav .locations-menu .loc-list li,.menu-menu .menu-list li{display:list-item;margin:6px 0}
+.main-nav .locations-menu .loc-list a,.menu-menu .menu-list a{display:inline;white-space:nowrap;color:#363633;font-weight:600}
+
+/* ——— Mobile only ——— */
+.mnav-btn,.mnav-sheet{display:none}
+
+@media (max-width:768px){
+  .main-nav,.book-now{display:none!important}
+  .mnav-btn{display:grid;place-items:center;width:44px;height:44px;border:1px solid rgba(0,0,0,.12);border-radius:10px;background:#fff;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+  .mnav-btn span{display:block;width:22px;height:2px;background:#222;margin:3px 0;border-radius:2px}
+  .mnav-btn:active{transform:scale(.98)}
+
+  .mnav-sheet{display:block;pointer-events:none;position:fixed;inset:0;z-index:1500}
+  .mnav-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.45);opacity:0;transition:opacity .25s}
+  .mnav-panel{position:absolute;top:0;right:0;height:100%;width:min(92vw,420px);background:#fff;border-top-left-radius:16px;border-bottom-left-radius:16px;transform:translateX(100%);transition:transform .25s;box-shadow:-10px 0 30px rgba(0,0,0,.25)}
+  .mnav-sheet.open{pointer-events:auto}
+  .mnav-sheet.open .mnav-backdrop{opacity:1}
+  .mnav-sheet.open .mnav-panel{transform:translateX(0)}
+
+  .mnav-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid #eee;position:sticky;top:0;background:#fff;z-index:1}
+  .mnav-brand{font-size:18px;font-weight:800}
+  .mnav-close{all:unset;font-size:30px;line-height:1;cursor:pointer;padding:4px 8px;border-radius:8px}
+  .mnav-close:active{background:#f3f3f3}
+
+  .mnav-body{display:grid;gap:28px;padding:20px}
+  .mnav-group{display:grid;gap:4px}
+  .mnav-label{font-size:12px;font-weight:800;color:#6b6b6b;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+  .mnav-item{display:block;padding:14px 0;font-size:16px;color:#111;text-decoration:none;border-bottom:1px solid #eee}
+  .mnav-item:active{background:#f7f7f7}
+  .mnav-cta{text-align:center;display:block;background:#4b4b38;color:#fff;font-weight:800;font-size:16px;padding:14px;border-radius:10px;text-decoration:none}
+}
+
+/* --- Enable scrolling inside the mobile sheet --- */
+@media (max-width:768px){
+  /* make the panel a flex column */
+  .mnav-panel{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    max-height:100%;
+    overflow:hidden;                 /* keep scroll confined to body below */
+  }
+  /* the content area becomes the scroller */
+  .mnav-body{
+    flex:1 1 auto;
+    overflow-y:auto;
+    -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
+    overscroll-behavior: contain;      /* prevent rubber-banding to page */
+  }
+  /* keep header fixed at top of the sheet */
+  .mnav-head{
+    position:sticky;
+    top:0;
+    z-index:1;
+    background:#fff;
+  }
+}
+
+</style>
+<style>
+  /* Make room for the sticky CTA so last list item isn't hidden */
+@media (max-width: 768px){
+  .mnav-body{ padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+
+  /* Sticky footer area inside the sheet */
+  .mnav-cta{
+    position: sticky;
+    bottom: 0;
+    left: 0; right: 0;
+    z-index: 3;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    background: #fff;               /* clean, not dark */
+    border-top: 1px solid rgba(0,0,0,.06);
+    backdrop-filter: blur(4px);
+  }
+
+  /* Force our button styles to win over .book-now a */
+  .mnav-cta .mnav-book{
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #4b4b38 !important; /* your primary */
+    color: #fff !important;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1;
+    padding: 16px 18px;
+    border-radius: 12px;
+    border: 0 !important;
+    box-shadow: 0 10px 24px rgba(0,0,0,.12), 0 2px 6px rgba(0,0,0,.08);
+    text-decoration: none !important;
+    transition: transform .06s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .mnav-cta .mnav-book:hover{ box-shadow: 0 14px 30px rgba(0,0,0,.16); }
+  .mnav-cta .mnav-book:active{ transform: translateY(1px); }
+
+  /* Nuke any inherited “panel” look from other styles */
+  .mnav-cta .mnav-book::before,
+  .mnav-cta .mnav-book::after{ content:none !important; }
+}
+
+/* Hide or move WhatsApp while menu is open (choose ONE) */
+@media (max-width: 768px){
+  /* Option A: hide it */
+  body.menu-open #wa-widget{ display: none !important; }
+
+  /* Option B (if you prefer visible, but out of the way):
+  body.menu-open #wa-widget{
+    transform: translateY(80px);
+    opacity: .5;
+    pointer-events: none;
+  } */
+}
+
+</style>
+
+<script>
+  // when opening the mobile sheet
+document.body.classList.add('menu-open');
+document.documentElement.style.overflow = 'hidden';
+document.body.style.overflow = 'hidden';
+
+// when closing the mobile sheet
+document.body.classList.remove('menu-open');
+document.documentElement.style.overflow = '';
+document.body.style.overflow = '';
+
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  });
+
+  const btn   = document.getElementById('mnavBtn');
+  const sheet = document.getElementById('mnav');
+  const close = document.getElementById('mnavClose');
+
+  function openSheet(){
+    sheet.classList.add('open');
+    sheet.setAttribute('aria-hidden','false');
+    btn.setAttribute('aria-expanded','true');
+    document.body.style.overflow='hidden';
+  }
+  function closeSheet(){
+    sheet.classList.remove('open');
+    sheet.setAttribute('aria-hidden','true');
+    btn.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  }
+
+  if (btn){
+    btn.addEventListener('click', openSheet, {passive:true});
+  }
+  document.getElementById('mnavClose')?.addEventListener('click', closeSheet, {passive:true});
+  sheet.querySelector('.mnav-backdrop')?.addEventListener('click', closeSheet, {passive:true});
+  sheet.querySelectorAll('a').forEach(a => a.addEventListener('click', closeSheet, {passive:true}));
+});
+</script>
+
+<!-- ===================== /HEADER (updated + mobile) ===================== -->
+
+  <!-- =============== Terms & Conditions (Bliss Stays) =============== -->
+<section id="terms" class="tc-section" aria-labelledby="tc-title">
+    <!-- Hero -->
+    <div class="tc-hero" style="--tc-img:url('terms-hero.jpg'); --tc-pos:center 40%;">
+      <div class="tc-hero__inner">
+        <h1 id="tc-title">Terms and Conditions</h1>
+      </div>
+    </div>
+  
+    <!-- Content -->
+    <div class="tc-container">
+      <p class="tc-updated">Last updated: <strong>April 2025</strong></p>
+  
+      <article class="tc-block">
+        <h3>Terms of Use</h3>
+        <p>
+          By accessing the Bliss Stays website (the “Site”), you agree to comply with
+          these Terms & Conditions as well as all applicable laws and regulations.
+          You are responsible for ensuring compliance with any relevant local laws.
+          If you do not agree with these terms, you are prohibited from using or
+          accessing the Site. The materials on the Site are protected by applicable
+          copyright and trademark laws.
+        </p>
+      </article>
+  
+      <article class="tc-block">
+        <h3>License to Use</h3>
+        <p>
+          Permission is granted to temporarily download one copy of the materials
+          (information or software) on Bliss Stays Ltd’s Site for personal,
+          non-commercial, transitory viewing only. This is the grant of a license,
+          not a transfer of title. Under this license you may not:
+        </p>
+        <ul>
+          <li>Modify or copy the materials;</li>
+          <li>Use the materials for any commercial purpose or for public display (commercial or non-commercial);</li>
+          <li>Attempt to reverse-engineer or decompile any software contained on the Site;</li>
+          <li>Remove any copyright or other proprietary notations from the materials; or</li>
+          <li>Transfer the materials to another person or “mirror” the materials on any other server.</li>
+        </ul>
+        <p>
+          This license shall automatically terminate if you violate any of these
+          restrictions and may be terminated by Bliss Stays Ltd at any time. Upon
+          termination, you must destroy any downloaded materials in your possession
+          whether in electronic or printed format.
+        </p>
+      </article>
+  
+      <article class="tc-block">
+        <h3>Disclaimer</h3>
+        <p>
+          The materials on Bliss Stays Ltd’s Site are provided on an “as is” basis.
+          Bliss Stays Ltd makes no warranties, expressed or implied, and hereby
+          disclaims and negates all other warranties including, without limitation,
+          implied warranties or conditions of merchantability, fitness for a
+          particular purpose, and non-infringement of intellectual property or other
+          violation of rights.
+        </p>
+        <p>
+          Further, Bliss Stays Ltd does not warrant or make any representations
+          concerning the accuracy, likely results, or reliability of the use of the
+          materials on its Site or otherwise relating to such materials or on any
+          sites linked to this Site.
+        </p>
+      </article>
+  
+      <article class="tc-block">
+        <h3>Limitations of Liability</h3>
+        <p>
+          In no event shall Bliss Stays Ltd or its suppliers be liable for any
+          damages (including, without limitation, damages for loss of data or profit,
+          or due to business interruption) arising out of the use or inability to use
+          the materials on the Site, even if Bliss Stays Ltd or a Bliss Stays authorised
+          representative has been notified orally or in writing of the possibility of
+          such damage. Because some jurisdictions do not allow limitations on implied
+          warranties, or limitations of liability for consequential or incidental
+          damages, these limitations may not apply to you.
+        </p>
+      </article>
+  
+      <article class="tc-block">
+        <h3>Accuracy of Information</h3>
+        <p>
+          The materials appearing on the Site could include technical, typographical,
+          or photographic errors. Bliss Stays Ltd does not warrant that any of the
+          materials on its Site are accurate, complete, or current. Bliss Stays Ltd
+          may make changes to the materials contained on its Site at any time without
+          notice, but does not make any commitment to update the materials.
+        </p>
+      </article>
+  
+      <article class="tc-block">
+        <h3>External Links</h3>
+        <p>
+          Bliss Stays Ltd has not reviewed all of the sites linked to its Site and is
+          not responsible for the contents of any such linked site. The inclusion of
+          any link does not imply endorsement by Bliss Stays Ltd. Use of any such
+          linked website is at the user’s own risk.
+        </p>
+      </article>
+  
+      <article class="tc-block">
+        <h3>Changes to Terms</h3>
+        <p>
+          Bliss Stays Ltd may revise these Terms & Conditions for the Site at any time
+          without notice. By using this Site you are agreeing to be bound by the then
+          current version of these Terms & Conditions.
+        </p>
+      </article>
+  
+      <article class="tc-block">
+        <h3>Governing Law</h3>
+        <p>
+          These Terms & Conditions are governed by and construed in accordance with
+          the laws of England and Wales, and you irrevocably submit to the exclusive
+          jurisdiction of the courts in that location.
+        </p>
+      </article>
+    </div>
+  </section>
+  <!-- ============ /Terms & Conditions ============ -->
+
+  
+  <style>
+    /* ===== Terms & Conditions ===== */
+    .tc-section{
+      background:#f4f0e6;
+      padding-top: calc(70px + 2vw); /* clears your floating header */
+    }
+    
+    /* Hero */
+    .tc-hero{
+      --h: min(44vh, 420px);
+      height: var(--h);
+      width: min(1400px, 96%);
+      margin: 0 auto 22px;
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 22px 44px rgba(0,0,0,.14), 0 8px 18px rgba(0,0,0,.10);
+    
+      background-image:
+        linear-gradient(0deg, rgba(0,0,0,.45), rgba(0,0,0,.35)),
+        var(--tc-img);
+      background-size: cover;
+      background-position: var(--tc-pos, center 40%);
+    }
+    .tc-hero__inner{
+      position:absolute; inset:0;
+      display:grid; place-items:center;
+      text-align:center; color:#fff; padding:0 20px;
+    }
+    .tc-hero__inner h1{
+      font-weight: 800;
+      font-size: clamp(34px, 5.2vw, 68px);
+      line-height: 1.1;
+      letter-spacing: .3px;
+      text-shadow: 0 3px 10px rgba(0,0,0,.5);
+      margin: 0;
+    }
+    
+    /* Container */
+    .tc-container{
+      max-width: 1100px;
+      width: min(1100px, 92%);
+      margin: 0 auto 80px;
+    }
+    .tc-updated{
+      color:#6b6b50; font-size: 14px; margin: 8px 0 18px 2px;
+    }
+    
+    /* Content blocks */
+    .tc-block{
+      background: #fbf9f2;
+      border: 1px solid rgba(0,0,0,.06);
+      border-radius: 14px;
+      padding: clamp(16px, 2.4vw, 28px);
+      margin: 16px 0;
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      opacity: 0; transform: translateY(12px);
+      transition: opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1);
+    }
+    
+    /* Reveal class added by JS */
+    .tc-block.in { opacity: 1; transform: translateY(0); }
+    
+    .tc-block h3{
+      position: relative;
+      color: var(--primary);
+      font-weight: 800;
+      font-size: clamp(18px, 2.4vw, 24px);
+      margin: 2px 0 10px;
+    }
+    .tc-block h3::after{
+      content:"";
+      position:absolute; left:0; bottom:-6px;
+      width: 84px; height: 2px;
+      background: linear-gradient(90deg, #6b6b50, #b7b39c);
+      opacity:.9; border-radius: 2px;
+    }
+    
+    .tc-block p, .tc-block li{
+      color:#3b3a32;
+      font-size: clamp(15px, 1.9vw, 17px);
+      line-height: 1.7;
+    }
+    .tc-block ul{ margin: 8px 0 0 18px; }
+    .tc-block li{ margin: 6px 0; }
+    
+    /* Subtle hover lift for desktop */
+    @media (hover:hover){
+      .tc-block:hover{
+        box-shadow: 0 16px 32px rgba(0,0,0,.10);
+        transform: translateY(-2px);
+      }
+    }
+    
+    /* Mobile tweaks */
+    @media (max-width: 720px){
+      .tc-hero{ --h: 300px; }
+    }
+    </style>
+
+
+<script>
+    (function(){
+      const blocks = document.querySelectorAll('#terms .tc-block');
+      if (!blocks.length) return;
+    
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => {
+          if (e.isIntersecting){
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: .22 });
+    
+      blocks.forEach(b => io.observe(b));
+    })();
+    </script>
+    
+
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      
+      <!-- LEFT SIDE: All links grouped -->
+      <div class="footer-links-group">
+        <div class="footer-column">
+          <h4>BLISS STAYS</h4>
+          <ul>
+            <li><a href="property.html">Properties</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            
+            
+          </ul>
+        </div>
+  
+        <div class="footer-column">
+          <h4>ENQUIRIES</h4>
+          <ul>
+            <li><a href="booknow.html">Corporate Bookings</a></li>
+            <li><a href="booknow.html">Group Bookings</a></li>
+            <li><a href="booknow.html">Apart-hotels</a></li>
+          </ul> 
+        </div>
+      </div>
+  
+      <!-- RIGHT SIDE: Logo and socials -->
+      <div class="footer-logo-section">
+        <img src="logo.png" alt="Bliss Stays Logo" class="footer-logo" />
+        <div class="social-icons">
+          <a href="#"><img src="icons/insta.png" alt="Instagram" /></a>
+          <a href="#"><img src="icons/fb.png" alt="Facebook" /></a>
+        </div>
+      </div>
+  
+    </div>
+  
+    <div class="footer-bottom">
+      <p>&copy; Bliss Stays Ltd. 2025. All rights reserved.</p>
+    </div>
+  </footer>
+  
+  <style>
+  .footer {
+  background-color: #f4f0e0;
+  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 60px 20px 20px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  gap: 40px;
+}
+
+.footer-links-group {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.footer-column {
+  min-width: 180px;
+}
+
+.footer-column h4 {
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #999;
+  padding-bottom: 6px;
+  color: #333;
+}
+
+.footer-column .footer-sub {
+  margin-top: 20px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li {
+  margin: 10px 0;
+}
+
+.footer-column a {
+  color: #333;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #666;
+}
+
+.footer-logo-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.footer-logo {
+  width: 270px;
+  margin-bottom: 20px;
+}
+
+.footer-logo-section .social-icons a {
+  margin-left: 12px;
+}
+
+.footer-logo-section .social-icons img {
+  width: 22px;
+  filter: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 13px;
+  color: #555;
+  border-top: 1px solid #999;
+  padding-top: 12px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-links-group {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-logo-section {
+    align-items: flex-start;
+    text-align: left;
+    margin-top: 30px;
+  }
+
+  .footer-logo {
+    width: 120px;
+  }
+}
+
+  </style> 
+
+</body>
+</html>

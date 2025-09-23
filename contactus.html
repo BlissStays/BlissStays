@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bliss Stays</title>
+  <style>
+    /* Reset */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      color: #444;
+      line-height: 1.6;
+      background-color: #f4f0e6;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f0e6;
+      width: 100%;
+      min-height: 100%;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* Colors */
+    :root {
+      --primary: #4b4b38;
+      --accent: #6b6b50;
+      --light: #f8f5ee;
+    }
+
+    /* Hero with video */
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(255, 255, 255, 0.4);
+      z-index: 1;
+    }
+
+    .hero-logo {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+    }
+
+    .hero-logo img {
+      max-width: 300px;
+      width: 90%;
+      height: auto;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+    }
+
+
+    
+
+    .logo-block {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.logo-text {
+  letter-spacing: 0.5px;
+}
+
+.home-message-wrapper {
+  background-color: #f4f0e0; /* Makes the entire width same color */
+  width: 100%;
+}
+
+.home-message {
+  padding: 100px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.home-message-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 320px;
+}
+
+.home-message-left {
+  flex: 1 1 300px;
+  font-size: 2.0rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--primary);
+}
+
+.home-message-right {
+  flex: 1 1 500px;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .home-message-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .home-message-left {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .home-message-right {
+    font-size: 1rem;
+  }
+}
+
+/* Outer full-width background wrapper */
+.bliss-brands-fullwrap {
+  background-color: #f4f0e6;
+  width: 100%;
+}
+
+/* Section inside wrapper */
+.bliss-brands-showcase {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Content wrapper */
+.brands-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brands-left {
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 40px;
+}
+
+.brands-left h5 {
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.brands-left h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.brands-left p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* Cards container */
+.brands-right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.brand-card {
+  background: #ece8dd;
+  text-align: center;
+  flex: 1 1 250px;
+  max-width: 300px;
+  padding-bottom: 20px;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.brand-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.brand-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 15px 15px 5px;
+}
+
+.brand-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0 15px 10px;
+}
+
+.brand-card a {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.brand-card a:hover {
+  color: var(--accent);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .brands-right {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .brand-card {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+/* Click-triggered animation keyframes */
+@keyframes clickBounce {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Class that triggers the animation */
+.animate-on-click {
+  animation: clickBounce 0.3s ease;
+}
+
+.brand-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+
+
+
+  </style>
+</head>
+<body>
+
+
+
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <div class="logo-block">
+        <a href="index.html" class="logo-text">Bliss Stays</a>
+      </div>
+      <div class="spacer"></div>
+      <nav class="main-nav">
+        <ul>
+          <li class="has-dropdown">
+            <a href="#">Locations <span>&#9662;</span></a>
+            <ul class="dropdown">
+              <li><a href="property.html">Maida Vale</a></li>
+              <li><a href="property1.html">Paddington</a></li>
+              <li><a href="property2.html">Nine Elms</a></li>
+              <li><a href="property3.html">Kennington</a></li>
+              <li><a href="property4.html">Wimbledon</a></li>
+            </ul>
+          <li class="has-dropdown">
+            <a href="#">Menu <span>&#9662;</span></a>
+            <ul class="dropdown">
+              <li><a href="faq.html">FAQs</a></li>
+              <li><a href="terms.html">Terms & Conditions</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="book-now">
+        <a href="booknow.html">Book now</a>
+      </div>
+    </div>
+  </header>
+  
+  
+  
+
+  <style>
+    /* Floating, centered panel header (Zedwell-style) */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+  
+      /* Make the bar itself transparent so the panel “floats” */
+      background: transparent;
+      /* Add a little breathing room from the very top */
+      padding: 10px 16px;
+      /* Smooth transitions */
+      transition: padding 0.25s ease;
+    }
+  
+    /* The floating panel */
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+  
+      /* Panel look */
+      background: rgba(248, 245, 238, 0.96); /* #f8f5ee with slight transparency */
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow:
+        0 14px 30px rgba(0,0,0,0.12),
+        0 4px 10px rgba(0,0,0,0.08);
+  
+      /* Layout */
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+  
+      /* Nice glassy feel on capable browsers */
+      backdrop-filter: saturate(140%) blur(6px);
+    }
+  
+    /* Compact the panel slightly on scroll */
+    header.scrolled { padding-top: 6px; padding-bottom: 6px; }
+    header.scrolled .header-inner {
+      background: rgba(248, 245, 238, 0.98);
+      border-radius: 10px;
+      box-shadow:
+        0 10px 24px rgba(0,0,0,0.10),
+        0 3px 8px rgba(0,0,0,0.08);
+    }
+  
+    /* Logo */
+    .logo-block {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+  
+    .spacer { flex-grow: 1; }
+  
+    /* Nav */
+    .main-nav ul {
+      display: flex;
+      list-style: none;
+      gap: 40px;
+      margin: 0;
+      padding: 0;
+    }
+  
+    .main-nav a {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--primary);
+      position: relative;
+      padding-bottom: 3px;
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+  
+    .main-nav a:hover { color: var(--accent); }
+  
+    .main-nav a:hover::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 100%; height: 2px;
+      background-color: var(--primary);
+    }
+  
+    .main-nav span {
+      font-size: 10px;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+  
+    /* Book button */
+    .book-now { margin-left: 20px; }
+    .book-now a {
+      background-color: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 10px 22px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+      display: inline-block;
+    }
+    .book-now a:hover {
+      background-color: #363626;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.16);
+    }
+  
+    /* Dropdown (keeps same behavior; just sits above the panel) */
+    .main-nav .has-dropdown { position: relative; }
+    .main-nav .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%; left: 0;
+      min-width: 160px;
+      list-style: none;
+      margin: 10px 0 0;
+      padding: 6px;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 10px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.10), 0 3px 8px rgba(0,0,0,0.06);
+      z-index: 1001;
+    }
+    .main-nav .has-dropdown:hover .dropdown { display: block; }
+    .main-nav .dropdown li a {
+      display: block;
+      padding: 10px 12px;
+      color: var(--primary);
+      font-size: 14px;
+      border-radius: 6px;
+    }
+    .main-nav .dropdown li a:hover {
+      background-color: #f5f2ea;
+    }
+  
+    /* Small screens: keep the floating look, just tighter padding */
+    @media (max-width: 768px) {
+      .header-inner {
+        padding: 12px 16px;
+        gap: 12px;
+      }
+      .main-nav ul { gap: 20px; }
+      .book-now { margin-left: 12px; }
+    }
+  
+    
+      /* Dropdown */
+      .main-nav .has-dropdown {
+        position: relative;
+      }
+    
+      .main-nav .dropdown {
+        display: none;
+        position: absolute;
+        background-color: var(--light);
+        top: 100%;
+        left: 0;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        min-width: 140px;
+        z-index: 1001;
+      }
+    
+      .main-nav .has-dropdown:hover .dropdown {
+        display: block;
+      }
+    
+      .main-nav .dropdown li a {
+        display: block;
+        padding: 10px 16px;
+        color: var(--primary);
+        font-size: 14px;
+        text-decoration: none;
+      }
+    
+      .main-nav .dropdown li a:hover {
+        background-color: #f0f0f0;
+      }
+    </style>
+  
+  <script>
+    // Toggle compact floating style when scrolling
+    document.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 40) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    });
+  </script>
+  
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const dropdown = document.querySelector('.dropdown');
+
+    menuToggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.has-dropdown')) {
+        dropdown.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+
+<!-- =============== Privacy Policy (Bliss Stays) =============== -->
+<section id="privacy" class="tc-section" aria-labelledby="pp-title">
+    <!-- Hero -->
+    <div class="tc-hero" style="--tc-img:url('privacy-hero.jpg'); --tc-pos:center 40%;">
+      <div class="tc-hero__inner">
+        <h1 id="pp-title">Privacy Policy</h1>
+      </div>
+    </div>
+  
+
+  
+      <!-- Compact Contact Form (Bliss Stays + Formspree) -->
+<section id="contact" class="contact-mini" aria-labelledby="contact-title">
+    <div class="cm-wrap">
+      <h2 id="contact-title" class="cm-title">Contact us</h2>
+      <p class="cm-lead">Have a question or a booking request? Send us a quick note below.</p>
+  
+      <form id="cm-form"
+        action="https://formspree.io/f/mvgqjpkv"
+        method="POST"
+        class="cm-form"
+        autocomplete="on">
+  
+        <div class="cm-grid">
+          <label>Full name
+            <input type="text" name="name" placeholder="Jane Doe" required />
+          </label>
+  
+          <label>Email*
+            <input type="email" name="email" placeholder="you@example.com" required />
+          </label>
+  
+          <label>Phone
+            <input type="tel" name="phone" inputmode="tel" placeholder="+44 7xxx xxxxxx" />
+          </label>
+  
+          <label>Subject
+            <input type="text" name="subject" placeholder="Booking enquiry" />
+          </label>
+        </div>
+  
+        <label>Message*
+          <textarea name="message" rows="5" placeholder="How can we help?" required></textarea>
+        </label>
+  
+        <!-- Honeypot (spam trap) -->
+        <input type="text" name="_gotcha" class="cm-hp" tabindex="-1" autocomplete="off" />
+  
+        <!-- Optional: set email subject or redirect page -->
+        <input type="hidden" name="_subject" value="New enquiry from Bliss Stays website" />
+        <!-- <input type="hidden" name="_redirect" value="https://yourdomain.com/thanks.html" /> -->
+  
+        <button type="submit" class="cm-btn">Send message</button>
+        <p class="cm-note" id="cm-status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+  
+  <style>
+    :root {
+      --primary: #4b4b38;
+      --accent: #6b6b50;
+      --paper: #fffdf7;
+      --ink: #2f2e26;
+      --line: #ddd5c5;
+    }
+  
+    .contact-mini{
+      background:#f4f0e6;
+      padding: clamp(36px,6vw,72px) 20px;
+    }
+    .cm-wrap{ max-width: 820px; margin: 0 auto; }
+    .cm-title{
+      color: var(--primary);
+      font-weight: 800;
+      font-size: clamp(24px,4.5vw,42px);
+      line-height: 1.1;
+      margin-bottom: .25rem;
+      text-align: center;
+    }
+    .cm-lead{
+      text-align: center;
+      color: #5b594f;
+      margin: 0 auto 18px;
+      max-width: 620px;
+    }
+  
+    .cm-form{
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,.04);
+      border-radius: 16px;
+      padding: clamp(16px,3vw,22px);
+      box-shadow: 0 8px 28px rgba(0,0,0,.10), 0 3px 10px rgba(0,0,0,.06);
+    }
+  
+    .cm-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    @media (min-width: 640px){
+      .cm-grid{ grid-template-columns: 1fr 1fr; }
+    }
+  
+    label{ display:block; font-size: 14px; color: var(--primary); font-weight: 600; }
+    input, textarea{
+      width: 100%;
+      margin-top: 6px;
+      font: inherit;
+      color: var(--ink);
+      background: #f9f7f1;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 12px 14px;
+      outline: none;
+      transition: box-shadow .2s ease, border-color .2s ease, background-color .2s;
+    }
+    input::placeholder, textarea::placeholder{ color: #9a9584; }
+    input:focus, textarea:focus{
+      border-color: #cfc5ae;
+      background: #fffdf8;
+      box-shadow: 0 0 0 4px rgba(75,75,56,.12);
+    }
+  
+    .cm-btn{
+      margin-top: 8px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .12s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .cm-btn:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,.14); background:#3a3a2a; }
+  
+    .cm-note{
+      margin-top: 10px;
+      font-size: 14px;
+      color: #4f4d43;
+    }
+    .cm-note.ok{ color: #226b3a; }
+    .cm-note.err{ color: #8b2e2e; }
+  
+    /* Honeypot hidden */
+    .cm-hp{ position:absolute; left:-50000px; opacity:0; }
+  
+    /* Tiny entrance animation */
+    .cm-form{ animation: popin .28s cubic-bezier(.2,.7,.3,1) both; }
+    @keyframes popin{
+      from{ transform: translateY(10px); opacity: 0; }
+      to  { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+  
+  <script>
+    // AJAX submit to keep user on page and show a friendly status
+    (function(){
+      const form = document.getElementById('cm-form');
+      const status = document.getElementById('cm-status');
+      if(!form) return;
+  
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        status.textContent = 'Sending…';
+  
+        try{
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+  
+          if (res.ok){
+            form.reset();
+            status.textContent = "Thanks! We'll get back to you shortly.";
+            status.classList.remove('err'); status.classList.add('ok');
+          } else {
+            status.textContent = "Something went wrong. Please try again.";
+            status.classList.remove('ok'); status.classList.add('err');
+          }
+        }catch(err){
+          status.textContent = "Network error. Please try again.";
+          status.classList.remove('ok'); status.classList.add('err');
+        }
+      });
+    })();
+  </script>
+  
+
+    </div>
+  </section>
+  <!-- ============ /Privacy Policy ============ -->
+  
+
+  
+  <style>
+    /* ===== Terms & Conditions ===== */
+    .tc-section{
+      background:#f4f0e6;
+      padding-top: calc(70px + 2vw); /* clears your floating header */
+    }
+    
+    /* Hero */
+    .tc-hero{
+      --h: min(44vh, 420px);
+      height: var(--h);
+      width: min(1400px, 96%);
+      margin: 0 auto 22px;
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 22px 44px rgba(0,0,0,.14), 0 8px 18px rgba(0,0,0,.10);
+    
+      background-image:
+        linear-gradient(0deg, rgba(0,0,0,.45), rgba(0,0,0,.35)),
+        var(--tc-img);
+      background-size: cover;
+      background-position: var(--tc-pos, center 40%);
+    }
+    .tc-hero__inner{
+      position:absolute; inset:0;
+      display:grid; place-items:center;
+      text-align:center; color:#fff; padding:0 20px;
+    }
+    .tc-hero__inner h1{
+      font-weight: 800;
+      font-size: clamp(34px, 5.2vw, 68px);
+      line-height: 1.1;
+      letter-spacing: .3px;
+      text-shadow: 0 3px 10px rgba(0,0,0,.5);
+      margin: 0;
+    }
+    
+    /* Container */
+    .tc-container{
+      max-width: 1100px;
+      width: min(1100px, 92%);
+      margin: 0 auto 80px;
+    }
+    .tc-updated{
+      color:#6b6b50; font-size: 14px; margin: 8px 0 18px 2px;
+    }
+    
+    /* Content blocks */
+    .tc-block{
+      background: #fbf9f2;
+      border: 1px solid rgba(0,0,0,.06);
+      border-radius: 14px;
+      padding: clamp(16px, 2.4vw, 28px);
+      margin: 16px 0;
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      opacity: 0; transform: translateY(12px);
+      transition: opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1);
+    }
+    
+    /* Reveal class added by JS */
+    .tc-block.in { opacity: 1; transform: translateY(0); }
+    
+    .tc-block h3{
+      position: relative;
+      color: var(--primary);
+      font-weight: 800;
+      font-size: clamp(18px, 2.4vw, 24px);
+      margin: 2px 0 10px;
+    }
+    .tc-block h3::after{
+      content:"";
+      position:absolute; left:0; bottom:-6px;
+      width: 84px; height: 2px;
+      background: linear-gradient(90deg, #6b6b50, #b7b39c);
+      opacity:.9; border-radius: 2px;
+    }
+    
+    .tc-block p, .tc-block li{
+      color:#3b3a32;
+      font-size: clamp(15px, 1.9vw, 17px);
+      line-height: 1.7;
+    }
+    .tc-block ul{ margin: 8px 0 0 18px; }
+    .tc-block li{ margin: 6px 0; }
+    
+    /* Subtle hover lift for desktop */
+    @media (hover:hover){
+      .tc-block:hover{
+        box-shadow: 0 16px 32px rgba(0,0,0,.10);
+        transform: translateY(-2px);
+      }
+    }
+    
+    /* Mobile tweaks */
+    @media (max-width: 720px){
+      .tc-hero{ --h: 300px; }
+    }
+    </style>
+
+
+<script>
+    (function(){
+      const blocks = document.querySelectorAll('#privacy .tc-block');
+      if (!blocks.length) return;
+    
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting){
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: .22 });
+    
+      blocks.forEach(b => io.observe(b));
+    })();
+    </script>
+    
+    
+
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      
+      <!-- LEFT SIDE: All links grouped -->
+      <div class="footer-links-group">
+        <div class="footer-column">
+          <h4>BLISS STAYS</h4>
+          <ul>
+            <li><a href="property.html">Properties</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            
+            
+          </ul>
+        </div>
+  
+        <div class="footer-column">
+          <h4>ENQUIRIES</h4>
+          <ul>
+            <li><a href="booknow.html">Corporate Bookings</a></li>
+            <li><a href="booknow.html">Group Bookings</a></li>
+            <li><a href="booknow.html">Apart-hotels</a></li>
+          </ul> 
+        </div>
+      </div>
+  
+      <!-- RIGHT SIDE: Logo and socials -->
+      <div class="footer-logo-section">
+        <img src="logo.png" alt="Bliss Stays Logo" class="footer-logo" />
+        <div class="social-icons">
+          <a href="#"><img src="icons/insta.png" alt="Instagram" /></a>
+          <a href="#"><img src="icons/fb.png" alt="Facebook" /></a>
+        </div>
+      </div>
+  
+    </div>
+  
+    <div class="footer-bottom">
+      <p>&copy; Bliss Stays Ltd. 2025. All rights reserved.</p>
+    </div>
+  </footer>
+  
+  <style>
+  .footer {
+  background-color: #f4f0e0;
+  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 60px 20px 20px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  gap: 40px;
+}
+
+.footer-links-group {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.footer-column {
+  min-width: 180px;
+}
+
+.footer-column h4 {
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #999;
+  padding-bottom: 6px;
+  color: #333;
+}
+
+.footer-column .footer-sub {
+  margin-top: 20px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li {
+  margin: 10px 0;
+}
+
+.footer-column a {
+  color: #333;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #666;
+}
+
+.footer-logo-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.footer-logo {
+  width: 270px;
+  margin-bottom: 20px;
+}
+
+.footer-logo-section .social-icons a {
+  margin-left: 12px;
+}
+
+.footer-logo-section .social-icons img {
+  width: 22px;
+  filter: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 13px;
+  color: #555;
+  border-top: 1px solid #999;
+  padding-top: 12px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-links-group {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-logo-section {
+    align-items: flex-start;
+    text-align: left;
+    margin-top: 30px;
+  }
+
+  .footer-logo {
+    width: 120px;
+  }
+}
+
+  </style> 
+
+</body>
+</html>

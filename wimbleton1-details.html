@@ -1,0 +1,2200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bliss Stays</title>
+  <style>
+    /* Reset */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      color: #444;
+      line-height: 1.6;
+      background-color: #ffffff;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      width: 100%;
+      min-height: 100%;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* Colors */
+    :root {
+      --primary: #4b4b38;
+      --accent: #6b6b50;
+      --light: #ffffff;
+    }
+
+    /* Hero with video */
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(255, 255, 255, 0.4);
+      z-index: 1;
+    }
+
+    .hero-logo {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+    }
+
+    .hero-logo img {
+      max-width: 300px;
+      width: 90%;
+      height: auto;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+    }
+
+    .logo-block {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.logo-text {
+  letter-spacing: 0.5px;
+}
+
+.home-message-wrapper {
+  background-color: #f4f0e0; /* Makes the entire width same color */
+  width: 100%;
+}
+
+.home-message {
+  padding: 100px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.home-message-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 320px;
+}
+
+.home-message-left {
+  flex: 1 1 300px;
+  font-size: 2.0rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--primary);
+}
+
+.home-message-right {
+  flex: 1 1 500px;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .home-message-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .home-message-left {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .home-message-right {
+    font-size: 1rem;
+  }
+}
+
+/* Outer full-width background wrapper */
+.bliss-brands-fullwrap {
+  background-color: #f4f0e6;
+  width: 100%;
+}
+
+/* Section inside wrapper */
+.bliss-brands-showcase {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Content wrapper */
+.brands-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brands-left {
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 40px;
+}
+
+.brands-left h5 {
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.brands-left h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.brands-left p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* Cards container */
+.brands-right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.brand-card {
+  background: #ece8dd;
+  text-align: center;
+  flex: 1 1 250px;
+  max-width: 300px;
+  padding-bottom: 20px;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.brand-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.brand-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 15px 15px 5px;
+}
+
+.brand-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0 15px 10px;
+}
+
+.brand-card a {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.brand-card a:hover {
+  color: var(--accent);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .brands-right {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .brand-card {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+/* Click-triggered animation keyframes */
+@keyframes clickBounce {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Class that triggers the animation */
+.animate-on-click {
+  animation: clickBounce 0.3s ease;
+}
+
+.brand-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+
+
+
+  </style>
+</head>
+<body>
+
+
+<!-- ======================= HEADER (updated + mobile) ======================= -->
+<!-- ================ HEADER (desktop unchanged, mobile hamburger) ================ -->
+<header>
+  <div class="header-inner">
+    <div class="logo-block">
+      <a href="index.html" class="logo-text">BLISS STAYS</a>
+    </div>
+
+    <div class="spacer"></div>
+
+    <!-- DESKTOP NAV (hidden on mobile) -->
+    <nav class="main-nav" aria-label="Primary">
+      <ul>
+        <li class="has-dropdown locations-menu">
+          <a href="#">Locations <span>▾</span></a>
+          <div class="drop-panel">
+            <div class="loc-group">
+              <div class="loc-title">London</div>
+              <ul class="loc-list">
+                <li><a href="property.html">Maida Vale</a></li>
+                <li><a href="property1.html">Paddington</a></li>
+                <li><a href="property2.html">Nine Elms</a></li>
+                <li><a href="property3.html">Kennington</a></li>
+                <li><a href="property4.html">Wimbledon</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="has-dropdown menu-menu">
+          <a href="#">Menu <span>▾</span></a>
+          <div class="drop-panel">
+            <ul class="menu-list">
+              <li><a href="faq.html">FAQs</a></li>
+              <li><a href="terms.html">Terms & Conditions</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="book-now">
+      <a href="booknow.html">Book now</a>
+    </div>
+
+    <!-- MOBILE HAMBURGER (only visible on mobile) -->
+    <button id="mnavBtn" class="mnav-btn" aria-label="Open menu" aria-controls="mnav" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE SHEET -->
+<aside id="mnav" class="mnav-sheet" aria-hidden="true">
+  <div class="mnav-backdrop"></div>
+  <div class="mnav-panel" role="dialog" aria-modal="true">
+    <div class="mnav-head">
+      <div class="mnav-brand">BLISS STAYS</div>
+      <button id="mnavClose" class="mnav-close" aria-label="Close">×</button>
+    </div>
+
+    <div class="mnav-body">
+      <div class="mnav-group">
+        <div class="mnav-label">Locations</div>
+        <a class="mnav-item" href="property.html">Maida Vale</a>
+        <a class="mnav-item" href="property1.html">Paddington</a>
+        <a class="mnav-item" href="property2.html">Nine Elms</a>
+        <a class="mnav-item" href="property3.html">Kennington</a>
+        <a class="mnav-item" href="property4.html">Wimbledon</a>
+      </div>
+
+      <div class="mnav-group">
+        <div class="mnav-label">Menu</div>
+        <a class="mnav-item" href="faq.html">FAQs</a>
+        <a class="mnav-item" href="terms.html">Terms & Conditions</a>
+        <a class="mnav-item" href="privacy.html">Privacy Policy</a>
+      </div>
+
+      <div class="mnav-cta">
+        <a class="mnav-book" href="booknow.html">Book now</a>
+      </div>
+</div>      
+  </div>
+</aside>
+
+<style>
+/* ——— Desktop keeps your existing look ——— */
+header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:transparent;padding:10px 16px;transition:padding .25s}
+.header-inner{max-width:1200px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:20px;background:#ffffffF5;border:1px solid rgba(0,0,0,.06);border-radius:12px;box-shadow:0 14px 30px rgba(0,0,0,.12),0 4px 10px rgba(0,0,0,.08);backdrop-filter:saturate(140%) blur(6px)}
+header.scrolled{padding-top:6px;padding-bottom:6px}
+header.scrolled .header-inner{background:#fff;border-radius:10px;box-shadow:0 10px 24px rgba(0,0,0,.10),0 3px 8px rgba(0,0,0,.08)}
+.logo-block{font-family:"Times New Roman",Times,serif;font-size:20px;font-weight:700;color:#363633}
+.spacer{flex:1}
+.main-nav ul{display:flex;list-style:none;gap:40px;margin:0;padding:0}
+.main-nav a{font-size:16px;font-weight:500;color:#363633;text-decoration:none;position:relative;padding-bottom:3px}
+.main-nav a:hover{color:#6b6b50}
+.main-nav a:hover::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:#363633}
+.book-now{margin-left:12px}
+.book-now a{background:#4b4b38;color:#fff;font-weight:600;font-size:15px;padding:10px 22px;border-radius:6px;box-shadow:0 2px 6px rgba(0,0,0,.12);transition:transform .2s,box-shadow .2s,background .2s;display:inline-block}
+.book-now a:hover{background:#363626;transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.16)}
+.main-nav .has-dropdown{position:relative}
+.main-nav .has-dropdown>.drop-panel{position:absolute;top:100%;left:0;z-index:1002;display:none;min-width:220px;max-width:260px;padding:14px 16px;background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:12px;box-shadow:0 10px 24px rgba(0,0,0,.10),0 3px 8px rgba(0,0,0,.06)}
+.main-nav .has-dropdown:hover>.drop-panel{display:block}
+.main-nav .locations-menu .loc-title{display:inline-block;font-weight:800;font-size:16px;color:#363633;margin:2px 0 8px;padding-bottom:5px;border-bottom:3px solid #363633}
+.main-nav .locations-menu .loc-list,.menu-menu .menu-list{display:block;list-style:disc;margin:0;padding-left:1.15rem}
+.main-nav .locations-menu .loc-list li,.menu-menu .menu-list li{display:list-item;margin:6px 0}
+.main-nav .locations-menu .loc-list a,.menu-menu .menu-list a{display:inline;white-space:nowrap;color:#363633;font-weight:600}
+
+/* ——— Mobile only ——— */
+.mnav-btn,.mnav-sheet{display:none}
+
+@media (max-width:768px){
+  .main-nav,.book-now{display:none!important}
+  .mnav-btn{display:grid;place-items:center;width:44px;height:44px;border:1px solid rgba(0,0,0,.12);border-radius:10px;background:#fff;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+  .mnav-btn span{display:block;width:22px;height:2px;background:#222;margin:3px 0;border-radius:2px}
+  .mnav-btn:active{transform:scale(.98)}
+
+  .mnav-sheet{display:block;pointer-events:none;position:fixed;inset:0;z-index:1500}
+  .mnav-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.45);opacity:0;transition:opacity .25s}
+  .mnav-panel{position:absolute;top:0;right:0;height:100%;width:min(92vw,420px);background:#fff;border-top-left-radius:16px;border-bottom-left-radius:16px;transform:translateX(100%);transition:transform .25s;box-shadow:-10px 0 30px rgba(0,0,0,.25)}
+  .mnav-sheet.open{pointer-events:auto}
+  .mnav-sheet.open .mnav-backdrop{opacity:1}
+  .mnav-sheet.open .mnav-panel{transform:translateX(0)}
+
+  .mnav-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid #eee;position:sticky;top:0;background:#fff;z-index:1}
+  .mnav-brand{font-size:18px;font-weight:800}
+  .mnav-close{all:unset;font-size:30px;line-height:1;cursor:pointer;padding:4px 8px;border-radius:8px}
+  .mnav-close:active{background:#f3f3f3}
+
+  .mnav-body{display:grid;gap:28px;padding:20px}
+  .mnav-group{display:grid;gap:4px}
+  .mnav-label{font-size:12px;font-weight:800;color:#6b6b6b;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+  .mnav-item{display:block;padding:14px 0;font-size:16px;color:#111;text-decoration:none;border-bottom:1px solid #eee}
+  .mnav-item:active{background:#f7f7f7}
+  .mnav-cta{text-align:center;display:block;background:#4b4b38;color:#fff;font-weight:800;font-size:16px;padding:14px;border-radius:10px;text-decoration:none}
+}
+
+/* --- Enable scrolling inside the mobile sheet --- */
+@media (max-width:768px){
+  /* make the panel a flex column */
+  .mnav-panel{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    max-height:100%;
+    overflow:hidden;                 /* keep scroll confined to body below */
+  }
+  /* the content area becomes the scroller */
+  .mnav-body{
+    flex:1 1 auto;
+    overflow-y:auto;
+    -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
+    overscroll-behavior: contain;      /* prevent rubber-banding to page */
+  }
+  /* keep header fixed at top of the sheet */
+  .mnav-head{
+    position:sticky;
+    top:0;
+    z-index:1;
+    background:#fff;
+  }
+}
+
+</style>
+<style>
+  /* Make room for the sticky CTA so last list item isn't hidden */
+@media (max-width: 768px){
+  .mnav-body{ padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+
+  /* Sticky footer area inside the sheet */
+  .mnav-cta{
+    position: sticky;
+    bottom: 0;
+    left: 0; right: 0;
+    z-index: 3;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    background: #fff;               /* clean, not dark */
+    border-top: 1px solid rgba(0,0,0,.06);
+    backdrop-filter: blur(4px);
+  }
+
+  /* Force our button styles to win over .book-now a */
+  .mnav-cta .mnav-book{
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #4b4b38 !important; /* your primary */
+    color: #fff !important;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1;
+    padding: 16px 18px;
+    border-radius: 12px;
+    border: 0 !important;
+    box-shadow: 0 10px 24px rgba(0,0,0,.12), 0 2px 6px rgba(0,0,0,.08);
+    text-decoration: none !important;
+    transition: transform .06s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .mnav-cta .mnav-book:hover{ box-shadow: 0 14px 30px rgba(0,0,0,.16); }
+  .mnav-cta .mnav-book:active{ transform: translateY(1px); }
+
+  /* Nuke any inherited “panel” look from other styles */
+  .mnav-cta .mnav-book::before,
+  .mnav-cta .mnav-book::after{ content:none !important; }
+}
+
+/* Hide or move WhatsApp while menu is open (choose ONE) */
+@media (max-width: 768px){
+  /* Option A: hide it */
+  body.menu-open #wa-widget{ display: none !important; }
+
+  /* Option B (if you prefer visible, but out of the way):
+  body.menu-open #wa-widget{
+    transform: translateY(80px);
+    opacity: .5;
+    pointer-events: none;
+  } */
+}
+
+</style>
+
+<script>
+  // when opening the mobile sheet
+document.body.classList.add('menu-open');
+document.documentElement.style.overflow = 'hidden';
+document.body.style.overflow = 'hidden';
+
+// when closing the mobile sheet
+document.body.classList.remove('menu-open');
+document.documentElement.style.overflow = '';
+document.body.style.overflow = '';
+
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  });
+
+  const btn   = document.getElementById('mnavBtn');
+  const sheet = document.getElementById('mnav');
+  const close = document.getElementById('mnavClose');
+
+  function openSheet(){
+    sheet.classList.add('open');
+    sheet.setAttribute('aria-hidden','false');
+    btn.setAttribute('aria-expanded','true');
+    document.body.style.overflow='hidden';
+  }
+  function closeSheet(){
+    sheet.classList.remove('open');
+    sheet.setAttribute('aria-hidden','true');
+    btn.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  }
+
+  if (btn){
+    btn.addEventListener('click', openSheet, {passive:true});
+  }
+  document.getElementById('mnavClose')?.addEventListener('click', closeSheet, {passive:true});
+  sheet.querySelector('.mnav-backdrop')?.addEventListener('click', closeSheet, {passive:true});
+  sheet.querySelectorAll('a').forEach(a => a.addEventListener('click', closeSheet, {passive:true}));
+});
+</script>
+
+<!-- ===================== /HEADER (updated + mobile) ===================== -->
+  
+  <!-- Floating WhatsApp (bottom-left) -->
+<!-- ===== WhatsApp Chat Teaser (final, wide like the reference) ===== -->
+<div id="wa-widget" aria-live="polite">
+  <!-- Floating action button -->
+  <a id="wa-fab"
+     href="https://wa.me/447365208676?text=Hi%20Bliss%20Stays!%20I%20have%20a%20question."
+     target="_blank" rel="noopener"
+     aria-label="Open WhatsApp chat">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path fill="currentColor"
+        d="M19.11 17.71c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.17-.43-2.23-1.37-.82-.73-1.37-1.63-1.53-1.9-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.02-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.3s.98 2.66 1.12 2.84c.14.18 1.93 2.95 4.68 4.14.65.28 1.15.45 1.54.59.65.21 1.25.18 1.72.11.52-.08 1.6-.65 1.82-1.29.22-.64.22-1.18.16-1.29-.07-.11-.23-.18-.5-.32zM16.02 3.2c-6.99 0-12.66 5.67-12.66 12.66 0 2.23.59 4.32 1.62 6.12L3 29l7.19-1.89c1.72.94 3.69 1.47 5.83 1.47 6.99 0 12.66-5.67 12.66-12.66S23.01 3.2 16.02 3.2zm0 22.88c-1.95 0-3.76-.57-5.29-1.55l-.38-.24-4.28 1.12 1.15-4.17-.25-.43a9.98 9.98 0 0 1-1.49-5.25c0-5.53 4.5-10.02 10.02-10.02s10.02 4.5 10.02 10.02-4.5 10.02-10.02 10.02z"/>
+    </svg>
+  </a>
+
+  <!-- Teaser card -->
+  <div id="wa-card" role="dialog" aria-modal="false" aria-label="WhatsApp quick chat">
+    <button id="wa-close" aria-label="Dismiss">×</button>
+    <div class="wa-row">
+      <div class="wa-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path fill="currentColor"
+          d="M16.2 13.6c-.2-.1-1.1-.6-1.3-.7-.2-.1-.3-.1-.5.1l-.6.7c-.2.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.1-.7-.6-1.1-1.3-1.2-1.5-.1-.2 0-.3.1-.5l.4-.4c.1-.1.1-.3.2-.4s0-.3-.1-.5-.5-1.2-.7-1.7c-.2-.4-.4-.3-.6-.3h-.4c-.1 0-.4.1-.6.3-.2.2-.8.7-.8 1.8s.8 2.1.9 2.2c.1.1 1.5 2.3 3.7 3.3.5.2.9.4 1.2.5.5.2 1 .1 1.3.1.4-.1 1.3-.5 1.5-1 .2-.5.2-.9.1-1 0-.1-.2-.2-.4-.3zM12 2C6.5 2 2 6.3 2 11.6c0 2 .6 3.9 1.6 5.4L2 22l5.1-1.3c1.5.8 3.2 1.2 4.9 1.2 5.5 0 10-4.3 10-9.6S17.5 2 12 2z"/></svg>
+      </div>
+      <div class="wa-text">
+        <div class="wa-title">Have any questions? Let’s chat! <span class="wa-wave">👋</span></div>
+        <a class="wa-cta"
+           href="https://wa.me/447365208676?text=Hi%20Bliss%20Stays%2C%20I%27d%20like%20to%20enquire..."
+           target="_blank" rel="noopener">Click here to start a conversation</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* Placement */
+#wa-widget{position:fixed;right:18px;bottom:18px;z-index:2147483647;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+
+/* Floating button */
+#wa-fab{
+  display:grid;place-items:center;width:64px;height:64px;border-radius:999px;
+  background:#22c55e;color:#0b4126;text-decoration:none;
+  box-shadow:0 12px 30px rgba(0,0,0,.25), inset 0 -6px 0 rgba(0,0,0,.08);
+  animation:wa-bounce 1.4s ease infinite;
+}
+#wa-fab svg{width:34px;height:34px}
+
+/* Card — WIDER & HORIZONTAL like your ref */
+#wa-card{
+  position:absolute;right:88px;bottom:6px;
+  width:360px; min-width:360px; /* keeps it wide */
+  background:#fff;border-radius:20px;
+  box-shadow:0 18px 50px rgba(0,0,0,.25);
+  padding:16px 18px;display:none;opacity:0;transform:translateY(10px)
+}
+#wa-card.show{display:block;animation:wa-in .35s cubic-bezier(.2,.7,.2,1) forwards}
+
+#wa-close{all:unset;position:absolute;top:8px;right:10px;width:26px;height:26px;border-radius:999px;display:grid;place-items:center;cursor:pointer;color:#64748b;font-weight:700}
+#wa-close:hover{background:#f1f5f9;color:#0f172a}
+
+.wa-row{display:flex;gap:12px;align-items:center}
+.wa-icon{width:36px;height:36px;background:#22c55e;color:#0b4126;border-radius:999px;display:grid;place-items:center;flex:0 0 36px}
+.wa-icon svg{width:20px;height:20px}
+
+.wa-text{min-width:0} /* prevent squish */
+.wa-title{font-size:18px;font-weight:800;color:#111827;margin:0 22px 6px 0;line-height:1.25}
+.wa-cta{display:inline-block;color:#2563eb;text-decoration:none;font-size:15px;line-height:1.3}
+.wa-cta:hover{text-decoration:underline}
+.wa-wave{display:inline-block;animation:wa-wave 1.6s ease-in-out infinite;transform-origin:70% 70%}
+
+/* Animations */
+@keyframes wa-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes wa-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes wa-wave{0%{transform:rotate(0)}10%{transform:rotate(14deg)}20%{transform:rotate(-8deg)}30%{transform:rotate(14deg)}40%{transform:rotate(-4deg)}50%{transform:rotate(10deg)}60%,100%{transform:rotate(0)}}
+
+/* Mobile — use full width but same look */
+@media (max-width:520px){
+  #wa-card{right:0;bottom:76px;width:auto;min-width:0;max-width:min(92vw,380px)}
+}
+</style>
+
+<script>
+(function(){
+  const fab   = document.getElementById('wa-fab');
+  const card  = document.getElementById('wa-card');
+  const close = document.getElementById('wa-close');
+  const KEY   = 'waTeaserDismissedUntil';
+  const now = Date.now();
+  const until = Number(localStorage.getItem(KEY) || 0);
+
+  // Show once (per 24h) like the reference
+  if (now > until) setTimeout(()=> card.classList.add('show'), 600);
+
+  close.addEventListener('click', ()=>{
+    localStorage.setItem(KEY, String(Date.now() + 24*60*60*1000));
+    card.remove();
+  });
+})();
+</script>
+  
+
+  <style>
+    /* Floating, centered panel header (Zedwell-style) */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+  
+      /* Make the bar itself transparent so the panel “floats” */
+      background: transparent;
+      /* Add a little breathing room from the very top */
+      padding: 10px 16px;
+      /* Smooth transitions */
+      transition: padding 0.25s ease;
+    }
+  
+    /* The floating panel */
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+  
+      /* Panel look */
+      background:  #FFFFFFED;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow:
+        0 14px 30px rgba(0,0,0,0.12),
+        0 4px 10px rgba(0,0,0,0.08);
+  
+      /* Layout */
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+  
+      /* Nice glassy feel on capable browsers */
+      backdrop-filter: saturate(140%) blur(6px);
+    }
+  
+    /* Compact the panel slightly on scroll */
+    header.scrolled { padding-top: 6px; padding-bottom: 6px; }
+    header.scrolled .header-inner {
+      background: #FFFFFFED;
+      border-radius: 10px;
+      box-shadow:
+        0 10px 24px rgba(0,0,0,0.10),
+        0 3px 8px rgba(0,0,0,0.08);
+    }
+  
+    /* Logo */
+    .logo-block {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+  
+    .spacer { flex-grow: 1; }
+  
+    /* Nav */
+    .main-nav ul {
+      display: flex;
+      list-style: none;
+      gap: 40px;
+      margin: 0;
+      padding: 0;
+    }
+  
+    .main-nav a {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--primary);
+      position: relative;
+      padding-bottom: 3px;
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+  
+    .main-nav a:hover { color: var(--accent); }
+  
+    .main-nav a:hover::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 100%; height: 2px;
+      background-color: var(--primary);
+    }
+  
+    .main-nav span {
+      font-size: 10px;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+  
+    /* Book button */
+    .book-now { margin-left: 20px; }
+    .book-now a {
+      background-color: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 10px 22px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+      display: inline-block;
+    }
+    .book-now a:hover {
+      background-color: #363626;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.16);
+    }
+  
+    /* Dropdown (keeps same behavior; just sits above the panel) */
+    .main-nav .has-dropdown { position: relative; }
+    .main-nav .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%; left: 0;
+      min-width: 160px;
+      list-style: none;
+      margin: 10px 0 0;
+      padding: 6px;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 10px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.10), 0 3px 8px rgba(0,0,0,0.06);
+      z-index: 1001;
+    }
+    .main-nav .has-dropdown:hover .dropdown { display: block; }
+    .main-nav .dropdown li a {
+      display: block;
+      padding: 10px 12px;
+      color: var(--primary);
+      font-size: 14px;
+      border-radius: 6px;
+    }
+    .main-nav .dropdown li a:hover {
+      background-color: #f5f2ea;
+    }
+  
+    /* Small screens: keep the floating look, just tighter padding */
+    @media (max-width: 768px) {
+      .header-inner {
+        padding: 12px 16px;
+        gap: 12px;
+      }
+      .main-nav ul { gap: 20px; }
+      .book-now { margin-left: 12px; }
+    }
+  
+    
+      /* Dropdown */
+      .main-nav .has-dropdown {
+        position: relative;
+      }
+    
+      .main-nav .dropdown {
+        display: none;
+        position: absolute;
+        background-color: var(--light);
+        top: 100%;
+        left: 0;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        min-width: 140px;
+        z-index: 1001;
+      }
+    
+      .main-nav .has-dropdown:hover .dropdown {
+        display: block;
+      }
+    
+      .main-nav .dropdown li a {
+        display: block;
+        padding: 10px 16px;
+        color: var(--primary);
+        font-size: 14px;
+        text-decoration: none;
+      }
+    
+      .main-nav .dropdown li a:hover {
+        background-color: #f0f0f0;
+      }
+
+      /* Booking form: make typed text & placeholders readable on light bg */
+.book-body input,
+.book-body textarea,
+.book-body select{
+  background:#fff !important;
+  color:#111 !important;        /* typed text */
+  caret-color:#111;             /* cursor color */
+  border:1px solid #bbb;
+}
+
+/* Placeholders (all browsers) */
+.book-body input::placeholder,
+.book-body textarea::placeholder{ color:#6b6b6b !important; opacity:1; }
+.book-body input::-webkit-input-placeholder,
+.book-body textarea::-webkit-input-placeholder{ color:#6b6b6b !important; }
+.book-body input::-ms-input-placeholder,
+.book-body textarea::-ms-input-placeholder{ color:#6b6b6b !important; }
+.book-body input:-moz-placeholder,
+.book-body textarea:-moz-placeholder{ color:#6b6b6b; opacity:1; }
+
+/* Focus state for clarity */
+.book-body input:focus,
+.book-body textarea:focus,
+.book-body select:focus{
+  outline: none;
+  border-color:#222;
+  box-shadow:0 0 0 3px rgba(0,0,0,.08);
+}
+
+/* Labels and select text tone */
+.book-body label{ color:#222; }
+.book-body select{ color:#111; background:#fff; }
+
+    </style>
+  
+  <script>
+    // Toggle compact floating style when scrolling
+    document.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 40) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    });
+  </script>
+  
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const dropdown = document.querySelector('.dropdown');
+
+    menuToggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.has-dropdown')) {
+        dropdown.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+<!-- ===================== More Details – Property (Bliss Stays) ===================== -->
+<!-- ==================== Bliss Stays · Property Details (Aligned Layout) ==================== -->
+<section id="bliss-details" aria-labelledby="bd-title">
+  <style>
+    /* Make ONLY the gallery span ~90% of the viewport, centered */
+    #bliss-details .bd-gallery{
+      width: 90vw;
+      max-width: 1600px;
+      margin-left: calc(50% - 45vw);
+      margin-right: calc(50% - 45vw);
+    }
+    @media (min-width: 1600px){
+      #bliss-details .bd-gallery{
+        margin-left: calc(50% - 800px);
+        margin-right: calc(50% - 800px);
+      }
+    }
+
+    /* ====== Theme & container ====== */
+    #bliss-details{
+      --ink: var(--primary, #4b4b38);
+      --muted:#6f7569;
+      --paper:#fffffff7; 
+      --card:#ffffff;
+      --stroke:rgba(0,0,0,.12);
+      --brand: var(--accent, #2a5b53);
+      background:#fffffff7;  color:var(--ink);
+      display:grid; place-items:center; padding:48px 16px 120px;
+    }
+    .bd-wrap{ width:min(70vw, 1200px); display:grid; gap:22px; }
+
+    /* ====== Title ====== */
+    .bd-title{ font-size:clamp(1.9rem, 3vw, 2.4rem); font-weight:800; margin:0; }
+
+    /* ====== 5-tile Gallery ====== */
+    .bd-gallery{
+      display:grid; gap:12px;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-auto-rows: 190px;
+      border-radius:16px;
+    }
+    .g-item{ overflow:hidden; border-radius:14px; background:#ddd; }
+    .g-item>img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .g-hero{ grid-row:1 / span 2; grid-column:1 / span 1; }
+    .g-2{ grid-column:2; grid-row:1; }
+    .g-3{ grid-column:3; grid-row:1; }
+    .g-4{ grid-column:2; grid-row:2; }
+    .g-5{ grid-column:3; grid-row:2; position:relative; }
+    .view-all{
+      position:absolute; right:10px; bottom:10px;
+      background:rgba(0,0,0,.65); color:#fff; border:1px solid rgba(255,255,255,.25);
+      padding:8px 12px; border-radius:10px; font-weight:700; font-size:.9rem; cursor:pointer;
+    }
+
+    /* ====== Two-column content row ====== */
+    .bd-two{
+      display:grid; gap:24px;
+      grid-template-columns: 1.65fr .95fr;  /* left content / right booking card */
+      align-items:start;
+    }
+
+    /* ====== Cards (left column) ====== */
+    .card{ background:var(--card); border:1px solid var(--stroke); border-radius:16px;
+           box-shadow:0 8px 24px rgba(0,0,0,.06); }
+    .pad{ padding:18px 20px; }
+    .h4{ font-size:1.05rem; color:#68726a; margin:0 0 10px; letter-spacing:.2px; }
+
+    /* About + clamp */
+    .about-body{ color:#4d4f49; line-height:1.75; font-size:1rem; }
+    .clamp-wrap{ position:relative; overflow:hidden; }
+    .clamp-wrap.clamped{ max-height:135px; }
+    .fade{ position:absolute; left:0; right:0; bottom:0; height:44px;
+           background:linear-gradient(to bottom, rgba(255,255,255,0), var(--card)); }
+    .link{ background:none; border:0; padding:0; color:var(--brand); font-weight:800;
+           text-decoration:underline; text-underline-offset:2px; cursor:pointer; }
+
+    /* Amenities grid */
+    .amen-grid{
+      display:grid; grid-template-columns:repeat(3, 1fr);
+      gap:18px 28px; padding-top:2px;
+    }
+    .amen{
+      display:grid; grid-template-columns:28px 1fr; align-items:center; column-gap:12px;
+      min-height:28px;
+    }
+    .amen img{ width:28px; height:28px; object-fit:contain; display:block; filter:grayscale(100%); }
+    .amen span{ font-size:.95rem; color:#3f433d; }
+
+    /* Amenities clamp */
+    .amen-wrap{ position:relative; overflow:hidden; }
+    .amen-wrap.clamped{ max-height: 240px; }
+    .amen-fade{
+      position:absolute; left:0; right:0; bottom:0; height:56px;
+      background:linear-gradient(to bottom, rgba(255,255,255,0), var(--card,#fff));
+      pointer-events:none;
+    }
+    .amen-wrap.clamped .amen-extra{ display:none; }
+    @media (max-width:980px){
+      .amen-grid{ grid-template-columns:repeat(2, 1fr); }
+      .amen-wrap.clamped{ max-height: 220px; }
+    }
+    @media (max-width:600px){
+      .amen-grid{ grid-template-columns:1fr; }
+      .amen-wrap.clamped{ max-height: 260px; }
+    }
+
+    .policy-section {
+  display: grid;
+  gap: 20px;
+}
+
+
+/* Each card has its own alternating background */
+.policy-section .policy-card:nth-of-type(odd) {
+  background: #e5e5e5;   /* light grey */
+  border-radius: 12px;
+  padding: 0;
+}
+.policy-section .policy-card:nth-of-type(even) {
+  background: #e5e5e5;   /* slightly darker grey */
+  border-radius: 12px;
+  padding: 0;
+}
+
+/* Header strip inside */
+.policy-title {
+  background: #e5e5e5;   /* uniform strip */
+  padding: 12px 16px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  margin: 0;
+  border-radius: 12px 12px 0 0;  /* round top corners only */
+}
+
+/* Icon inside header */
+.policy-title img {
+  width: 20px;
+  height: 20px;
+  filter: grayscale(100%);
+}
+
+/* Grid content */
+.policy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 14px;
+  padding: 14px 16px 18px; /* spacing inside content */
+}
+
+.policy-box {
+  background: #fff;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: .95rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #e5e5e5;
+}
+.policy-box span { font-size:.85rem; color:#555; }
+.policy-box strong { font-size:1rem; font-weight:700; color:#000; }
+.policy-box img { width:18px; height:18px; object-fit:contain; }
+
+
+
+
+    /* ====== Right column: sticky booking ====== */
+    .book-card{
+      position: sticky;
+      top: calc(var(--header-clear, 84px) + 8px);
+      /* critical: allow sticky to stick */
+      overflow: visible;
+      align-self: start;
+    }
+    .book-head{ background:#f3f3f3fb; color:#000; padding:16px 18px; font-weight:800; }
+    .book-body{ background:#fff; color:#000; padding:14px; display:grid; gap:12px; }
+    .f{ display:grid; gap:6px; }
+    .f label{ font-size:.85rem; opacity:.9; }
+    .f input,.f textarea,.f select{
+      width:100%; border-radius:10px; padding:10px 12px;
+      border:1px solid #bbb; background:#fff; color:#111; caret-color:#111;
+    }
+    .f input::placeholder,.f textarea::placeholder{ color:#6b6b6b; opacity:1; }
+    .btn{ border:0; border-radius:10px; padding:12px 14px; font-weight:800; cursor:pointer; }
+    .btn.primary{ background:#f3f3f3fb; color:#000; }
+    .note{ font-size:.85rem; opacity:.9; }
+
+    /* ===== Lightbox (updated) ===== */
+.lb{
+  position:fixed; inset:0; background:rgba(0,0,0,.9);
+  display:none; z-index:1003;
+}
+.lb.open{ display:grid; place-items:center; }
+
+.lb-inner{
+  width:min(92vw,1100px);
+  height:min(88vh,900px);
+  position:relative;
+  touch-action:pan-y;          /* allow vertical scroll gestures, we handle horizontal swipes */
+  overflow:hidden;
+}
+
+.lb-img{
+  width:100%; height:100%;
+  object-fit:contain; background:#000;
+  user-select:none; -webkit-user-drag:none;
+}
+
+.lb-close{
+  position:absolute; top:10px; right:10px;
+  width:38px; height:38px; border-radius:10px;
+  background:rgba(255,255,255,.12); color:#fff; font-size:22px; font-weight:800;
+  border:1px solid rgba(255,255,255,.25);
+  display:grid; place-items:center; cursor:pointer;
+  z-index:2;
+}
+
+/* Arrow buttons */
+.lb-prev,.lb-next{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:42px; height:42px; border-radius:999px;
+  border:1px solid rgba(255,255,255,.35);
+  background:rgba(0,0,0,.35); color:#fff;
+  font-size:24px; font-weight:700;
+  display:grid; place-items:center; cursor:pointer;
+  z-index:2;
+}
+.lb-prev{ left:10px; }
+.lb-next{ right:10px; }
+
+@media (hover:hover){
+  .lb-prev:hover,.lb-next:hover{ background:rgba(0,0,0,.55); }
+  .lb-close:hover{ background:rgba(255,255,255,.2); }
+}
+
+/* Full-bleed on phones */
+@media (max-width:768px){
+  .lb-inner{ width:100vw; height:100vh; border-radius:0; }
+  .lb-prev,.lb-next{ width:48px; height:48px; font-size:26px; }
+}
+
+
+    /* ====== Responsive ====== */
+    @media (max-width:1100px){ .bd-two{ grid-template-columns: 1.4fr 1fr; } }
+    @media (max-width:980px){
+      .bd-gallery{ grid-template-columns:1fr 1fr; grid-auto-rows:160px; }
+      .g-hero{ grid-row:auto / span 2; grid-column:1; }
+      .g-2{ grid-column:2; } .g-3{ grid-column:2; } .g-4{ grid-column:2; } .g-5{ grid-column:2; }
+      .bd-two{ grid-template-columns:1fr; }
+      .book-card{ position: static; } /* let it flow on small screens */
+      .amen-grid{ grid-template-columns:repeat(2, 1fr); }
+      .pol-grid,.two{ grid-template-columns:1fr; }
+    }
+    @media (max-width:600px){
+      .bd-gallery{ grid-template-columns:1fr; grid-auto-rows:180px; }
+    }
+
+    /* ===== Property facts row ===== */
+    .bd-facts {
+      display: flex;
+      justify-content: flex-start;
+      gap: 40px;
+      align-items: center;
+      margin-top: 6px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      padding-bottom: 10px;
+    }
+    .bd-facts .fact { display: flex; align-items: center; gap: 8px; font-size: .95rem; color: #333; }
+    .bd-facts img { width: 60px; height: 40px; object-fit: contain; filter: grayscale(100%); }
+    .bd-facts strong { font-weight: 700; }
+
+    /* ===== Location map card ===== */
+    .map-card{
+      width: 100%;
+      height: 420px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--stroke, rgba(0,0,0,.12));
+      background: #eef1ea;
+    }
+    .map-holder > [hidden] { display:none !important; }
+
+
+      /* Title-only tweak */
+  #bd-title {
+    text-align: center;      /* center the line */
+    margin-top: 48px;        /* space from the header box above */
+    margin-bottom: 22px;     /* space before the gallery */
+    line-height: 1.2;
+  }
+
+  /* Slightly tighter on small screens if you want */
+  @media (max-width: 600px){
+    #bd-title { margin-top: 36px; margin-bottom: 18px; }
+  }
+
+  /* ===== MOBILE FRIENDLY FIXES ===== */
+@media (max-width: 768px) {
+
+/* Title spacing */
+#bd-title {
+  font-size: 1.6rem;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* Gallery: single column */
+.bd-gallery {
+  grid-template-columns: 1fr;
+  grid-auto-rows: 200px;
+}
+
+/* Facts row: wrap into two per line */
+.bd-facts {
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+}
+.bd-facts .fact {
+  flex: 1 1 45%;
+  font-size: .9rem;
+  justify-content: center;
+}
+
+/* Two column → single column */
+.bd-two {
+  grid-template-columns: 1fr;
+}
+.book-card {
+  position: static; /* no sticky on mobile */
+  margin-top: 20px;
+}
+
+/* Amenities grid: 2 per row */
+.amen-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Policies → full width cards */
+.policy-grid {
+  grid-template-columns: 1fr;
+}
+
+/* Footer cleanup */
+.footer-container {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+.footer-logo {
+  width: 150px;
+}
+}
+
+
+/* ===== MOBILE GALLERY FIX ===== */
+@media (max-width: 768px) {
+  .bd-gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 220px;
+    gap: 10px;
+  }
+
+  /* Each photo full width */
+  .bd-gallery .g-item {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  /* Make images fit properly */
+  .bd-gallery .g-item > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  /* Move “View all photos” button for mobile */
+  .view-all {
+    position: relative;
+    display: block;
+    margin: 12px auto 0;
+    text-align: center;
+    background: #4b4b38;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: .95rem;
+    font-weight: 600;
+    border: none;
+    width: fit-content;
+  }
+}
+
+/* ===== MOBILE GALLERY FIX ===== */
+@media (max-width: 768px) {
+  .bd-gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 220px;
+    gap: 10px;
+  }
+
+  /* Each photo full width */
+  .bd-gallery .g-item {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  /* Make images fit properly */
+  .bd-gallery .g-item > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  /* “View all photos” button on mobile */
+  .view-all {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 14px auto 0;
+    text-align: center;
+    background: #4b4b38;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: .95rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Arrow icon inside button */
+  .view-all::after {
+    content: "→";
+    font-size: 1rem;
+    font-weight: 700;
+    margin-left: 6px;
+  }
+}
+
+  </style>
+
+<style>
+  /* ===================== MOBILE UX ENHANCEMENTS (≤768px) ===================== */
+  @media (max-width: 768px){
+  
+    /* --- Global container: make the content full-width on phones --- */
+    #bliss-details{ padding: 24px 12px 80px !important; }
+    #bliss-details .bd-wrap{
+      width: 100% !important;        /* override min(70vw,1200px) */
+      max-width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  
+    /* Header spacing + tap targets */
+    header{height:auto}
+    .header-inner{padding:12px 14px; gap:10px}
+    .logo-block{font-size:18px}
+    .mnav-btn{width:46px;height:46px}
+  
+    /* Title spacing */
+    #bd-title{
+      font-size:1.55rem;
+      text-align:center;
+      margin-top:18px;
+      margin-bottom:12px;
+      line-height:1.25;
+      padding:0 6px;
+    }
+  
+    /* Gallery → single column */
+    #bliss-details .bd-gallery{
+      width: 100% !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+    .bd-gallery{
+      grid-template-columns:1fr !important;
+      grid-auto-rows: 240px !important;
+      gap:10px !important;
+    }
+    .bd-gallery .g-item{
+      position:relative;
+      grid-column:auto !important;
+      grid-row:auto !important;
+      border-radius:12px;
+      overflow:hidden;
+    }
+    .bd-gallery .g-item > img{
+      width:100%; height:100%; object-fit:cover; display:block;
+    }
+  
+    /* “View all photos” button — pinned to bottom of the last tile on mobile */
+    .bd-gallery .g-5{ position:relative !important; }
+    #bd-view.view-all{
+      position:absolute; left:50%; bottom:10px; transform:translateX(-50%);
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      background:#4b4b38; color:#fff; border:0; border-radius:10px;
+      padding:11px 16px; font-weight:700; font-size:.95rem; line-height:1;
+      box-shadow:0 6px 18px rgba(0,0,0,.16);
+      z-index:2;
+    }
+    #bd-view.view-all::after{content:"→"; font-weight:800; margin-left:6px}
+  
+    /* Facts → 2×2 cards that fill the width */
+    .bd-facts{
+      flex-wrap:wrap; gap:12px; justify-content:center;
+      padding-bottom:12px; border-bottom:1px solid rgba(0,0,0,.08);
+    }
+    .bd-facts .fact{
+      flex:1 1 48%;
+      justify-content:center;
+      background:#fff; border:1px solid rgba(0,0,0,.08);
+      border-radius:12px; padding:10px;
+    }
+    .bd-facts img{width:28px;height:28px}
+  
+    /* Content → single column; booking card becomes normal block */
+    .bd-two{ grid-template-columns:1fr !important; gap:16px }
+    .bd-left > .card,
+    .book-card,
+    .policy-section,
+    .map-holder,
+    .acc{ width:100% !important; max-width:100% !important; }
+    .book-card{
+      position:static !important;
+      border-radius:14px;
+      box-shadow:0 10px 26px rgba(0,0,0,.08);
+    }
+    .book-head{border-radius:14px 14px 0 0}
+    .book-body .btn{padding:14px; border-radius:12px}
+  
+    /* Read-more clamps comfortable defaults */
+    .clamp-wrap.clamped{ max-height: 150px }
+    .clamp-wrap .fade{ height:40px; }
+    .amen-wrap.clamped{ max-height: 260px }
+    .amen-grid{ grid-template-columns:1fr 1fr; gap:12px 14px }
+  
+    /* Policy cards full width */
+    .policy-grid{ grid-template-columns:1fr }
+  
+    /* Map fills width */
+    .map-card{ width:100% !important; height:360px; }
+  
+    /* Lightbox = full screen on phones */
+    .lb-inner{ width:100vw !important; height:100vh !important; border-radius:0 }
+    .lb-prev,.lb-next{ width:48px; height:48px; font-size:26px }
+  
+    /* Footer stacks */
+    .footer-container{flex-direction:column; gap:22px}
+    .footer-logo{width:140px}
+  }
+  
+  /* Hide WhatsApp bubble while mobile menu is open */
+  @media (max-width:768px){
+    body.menu-open #wa-widget{ display:none !important; }
+  }
+  
+  /* ===== Fix title hidden behind sticky header (mobile) ===== */
+  @media (max-width: 768px){
+    header{ position: fixed; top: 0; left: 0; right: 0; z-index: 1000; }
+    :root{ --header-clear: 92px; }
+    #bliss-details{ padding-top: var(--header-clear) !important; }
+    #bd-title{ scroll-margin-top: var(--header-clear) !important; margin-top: 8px; }
+  }
+  
+  /* ===== Lightbox base styles (kept minimal to avoid conflicts) ===== */
+  .lb{ position:fixed; inset:0; background:rgba(0,0,0,.9); display:none; z-index:1003; }
+  .lb.open{ display:grid; place-items:center; }
+  .lb-inner{ position:relative; width:min(92vw,1100px); height:min(88vh,900px); overflow:hidden; }
+  .lb-img{ width:100%; height:100%; object-fit:contain; background:#000; user-select:none; -webkit-user-drag:none; transition:transform .06s linear; }
+  .lb-close{ position:absolute; top:10px; right:10px; width:38px; height:38px; border-radius:10px;
+    background:rgba(255,255,255,.12); color:#fff; font-size:22px; font-weight:800;
+    border:1px solid rgba(255,255,255,.25); display:grid; place-items:center; cursor:pointer; z-index:2; }
+  .lb-prev,.lb-next{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:42px; height:42px; border-radius:999px; border:1px solid rgba(255,255,255,.35);
+    background:rgba(0,0,0,.35); color:#fff; font-size:24px; font-weight:700;
+    display:grid; place-items:center; cursor:pointer; z-index:2;
+  }
+  .lb-prev{ left:10px; } .lb-next{ right:10px; }
+  .lb-img.zoomed{ cursor:grab; } .lb-img.zoomed:active{ cursor:grabbing; }
+  </style>
+  
+  <style>
+  /* ===== Mobile: reserve space for sticky header so the title is visible (dynamic) ===== */
+  @media (max-width:768px){
+    header{ position:fixed; top:0; left:0; right:0; z-index:1000; }
+    :root{ --header-clear-m: 96px; } /* fallback */
+    #bliss-details{ padding-top: calc(var(--header-clear-m) + env(safe-area-inset-top,0px)) !important; }
+    #bd-title{ scroll-margin-top: calc(var(--header-clear-m) + 8px) !important; margin-top:0 !important; }
+    .bd-gallery{ margin-top:8px; }
+  }
+  </style>
+  
+  <script>
+  /* ===== Mobile: compute header height and set a CSS variable ===== */
+  (function(){
+    const mq = window.matchMedia('(max-width:768px)');
+    if (!mq.matches) return;
+    const header = document.querySelector('header');
+    if (!header) return;
+  
+    let maxH = 0;
+    const set = () => {
+      const h = Math.ceil(header.getBoundingClientRect().height || 0);
+      if (h > maxH) maxH = h;
+      document.documentElement.style.setProperty('--header-clear-m', (maxH || h || 96) + 'px');
+    };
+    requestAnimationFrame(set);
+    window.addEventListener('resize', set, { passive:true });
+    window.addEventListener('scroll', () => {
+      const h = Math.ceil(header.getBoundingClientRect().height || 0);
+      if (h > maxH) { maxH = h; document.documentElement.style.setProperty('--header-clear-m', maxH + 'px'); }
+    }, { passive:true });
+  })();
+  </script>
+  
+  <script>
+  /* ===== Mobile menu helpers (unchanged, but keeps body from scrolling) ===== */
+  (function(){
+    const btn   = document.getElementById('mnavBtn');
+    const sheet = document.getElementById('mnav');
+    const close = document.getElementById('mnavClose');
+    const backdrop = sheet?.querySelector('.mnav-backdrop');
+  
+    function openSheet(){
+      if(!sheet) return;
+      sheet.classList.add('open');
+      sheet.setAttribute('aria-hidden','false');
+      btn?.setAttribute('aria-expanded','true');
+      document.body.classList.add('menu-open');
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeSheet(){
+      if(!sheet) return;
+      sheet.classList.remove('open');
+      sheet.setAttribute('aria-hidden','true');
+      btn?.setAttribute('aria-expanded','false');
+      document.body.classList.remove('menu-open');
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    }
+  
+    btn?.addEventListener('click', openSheet, {passive:true});
+    close?.addEventListener('click', closeSheet, {passive:true});
+    backdrop?.addEventListener('click', closeSheet, {passive:true});
+    sheet?.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeSheet, {passive:true}));
+  })();
+  </script>
+
+  <div class="bd-wrap">
+    <h2 id="bd-title" class="bd-title"> Lovely One Bedroom Apartment - London  </h2>
+
+    <!-- ================= GALLERY ================= -->
+    <div class="bd-gallery" id="bd-gallery">
+      <a class="g-item g-hero" href="property4/266/WEB 2.jpg"><img src="property4/266/WEB 1.jpg" alt="Living room"></a>
+      <a class="g-item g-2"   href="property4/266/WEB 3.jpg"><img src="property4/266/WEB 7.jpg" alt="Bedroom"></a>
+      <a class="g-item g-3"   href="property4/266/WEB 4.jpg"><img src="property4/266/WEB 8.jpg" alt="Kitchen"></a>
+      <a class="g-item g-4"   href="property4/266/WEB 5.jpg"><img src="property4/266/WEB 9.jpg" alt="Bathroom"></a>
+      <a class="g-item g-5"   href="property4/266/WEB 6.jpg">
+        <img src="property4/266/WEB 1.jpg" alt="Exterior"><!-- keep id and add class so CSS applies -->
+        <button class="view-all" type="button" id="bd-view">View all photos</button>
+      </a>
+    </div>
+  
+    <!-- ====== Lightbox (gallery) ====== -->
+    <div class="lb" id="bd-lb" aria-hidden="true">
+      <div class="lb-inner">
+        <img class="lb-img" id="lb-img" alt="">
+        <button class="lb-close" id="lb-close" aria-label="Close">×</button>
+        <button class="lb-prev"  id="lb-prev"  aria-label="Previous">‹</button>
+        <button class="lb-next"  id="lb-next"  aria-label="Next">›</button>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+  /* ===== Swipeable lightbox with double-tap zoom & pan ===== */
+  (function(){
+    const gal     = document.getElementById('bd-gallery');
+    const links   = gal ? Array.from(gal.querySelectorAll('a')) : [];
+    const lb      = document.getElementById('bd-lb');
+    const img     = document.getElementById('lb-img');
+    const prevBtn = document.getElementById('lb-prev');
+    const nextBtn = document.getElementById('lb-next');
+    const closeBtn= document.getElementById('lb-close');
+    const viewBtn = document.getElementById('bd-view');
+  
+    if(!gal || !lb || !img) return;
+  
+    let idx = 0, zoom = 1, panX = 0, panY = 0;
+    let startX = 0, startY = 0, startPanX = 0, startPanY = 0;
+    let touchStartX = 0, touchStartY = 0;
+    let lastTap = 0;
+  
+    const clamp = (v, min, max)=> Math.max(min, Math.min(max, v));
+  
+    function applyTransform(){
+      img.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${zoom})`;
+      img.classList.toggle('zoomed', zoom > 1);
+    }
+    function resetZoom(){ zoom=1; panX=0; panY=0; applyTransform(); }
+  
+    function show(i){
+      idx = (i + links.length) % links.length;
+      img.src = links[idx].href;
+      resetZoom();
+    }
+    function open(i){
+      show(i);
+      lb.classList.add('open');
+      lb.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    }
+    function close(){
+      lb.classList.remove('open');
+      lb.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    }
+  
+    // open from grid or button
+    gal.addEventListener('click', (e)=>{
+      const view = e.target.closest('#bd-view');
+      if(view){ e.preventDefault(); open(0); return; }
+      const a = e.target.closest('a'); if(!a) return;
+      e.preventDefault(); open(links.indexOf(a));
+    }, {passive:false});
+    viewBtn?.addEventListener('click', (e)=>{ e.preventDefault(); open(0); }, {passive:false});
+  
+    // nav + close
+    prevBtn?.addEventListener('click', ()=> show(idx-1));
+    nextBtn?.addEventListener('click', ()=> show(idx+1));
+    closeBtn?.addEventListener('click', close);
+    lb.addEventListener('click', (e)=>{ if(e.target === lb) close(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
+  
+    // swipe / pan
+    img.addEventListener('touchstart', (e)=>{
+      if(e.touches.length !== 1) return;
+      const t = e.touches[0];
+      touchStartX = startX = t.clientX;
+      touchStartY = startY = t.clientY;
+      startPanX = panX; startPanY = panY;
+    }, {passive:true});
+  
+    img.addEventListener('touchmove', (e)=>{
+      if(e.touches.length !== 1) return;
+      const t = e.touches[0];
+      if(zoom > 1){
+        const dx = t.clientX - startX, dy = t.clientY - startY;
+        panX = startPanX + dx; panY = startPanY + dy;
+  
+        // simple bounds
+        const vw = lb.clientWidth, vh = lb.clientHeight;
+        const maxX = Math.max(0, (img.naturalWidth * zoom - vw)/2);
+        const maxY = Math.max(0, (img.naturalHeight* zoom - vh)/2);
+        panX = clamp(panX, -maxX, maxX);
+        panY = clamp(panY, -maxY, maxY);
+        applyTransform();
+      }
+    }, {passive:true});
+  
+    img.addEventListener('touchend', (e)=>{
+      if(zoom === 1){
+        const dx = (e.changedTouches[0].clientX - touchStartX);
+        const dy = Math.abs(e.changedTouches[0].clientY - touchStartY);
+        if(Math.abs(dx) > 60 && dy < 60){
+          if(dx < 0) show(idx+1); else show(idx-1);
+        }
+      }
+    });
+  
+    // double-tap to zoom (toggle)
+    img.addEventListener('click', (e)=>{
+      const now = Date.now();
+      if(now - lastTap < 300){
+        const rect = img.getBoundingClientRect();
+        if(zoom === 1){
+          zoom = 2;
+          panX = (rect.width/2  - (e.clientX - rect.left));
+          panY = (rect.height/2 - (e.clientY - rect.top));
+        }else{
+          zoom = 1; panX = 0; panY = 0;
+        }
+        applyTransform();
+        lastTap = 0;
+      } else {
+        lastTap = now;
+      }
+    });
+  })();
+  </script>
+
+    <!-- ================= PROPERTY FACTS ================= -->
+    <div class="bd-facts">
+      <div class="fact"><img src="icons/bed.png" alt="Bedrooms"><span><strong>2</strong> Bedrooms</span></div>
+      <div class="fact"><img src="icons/bath.png" alt="Bathrooms"><span><strong>1</strong> Bathrooms</span></div>
+      <div class="fact"><img src="icons/sofa.png" alt="Sofa beds"><span><strong>1</strong> Beds</span></div>
+      <div class="fact"><img src="icons/peep.png" alt="Sleeps"><span>Sleeps <strong>3</strong></span></div>
+    </div>
+
+    <!-- ================= TWO COLUMN ================= -->
+    <div class="bd-two">
+      <!-- ===== LEFT ===== -->
+      <div class="bd-left" style="display:grid; gap:18px;">
+
+        <!-- About -->
+        <article class="card pad" aria-labelledby="about-head">
+          <h3 id="about-head" class="h4">About this property</h3>
+          <div class="clamp-wrap clamped" id="about-wrap">
+            <div class="about-body">
+                Step into this beautifully curated one-bedroom studio nestled in the heart of Wimbledon, offering unrivalled access to the area’s shops, cafes, transport links, and local charm.
+                <br><br>From the moment you arrive, you're welcomed into a sleek open-plan living space—stylish, bright, and designed for comfort. Elegant flooring, contemporary décor, and abundant natural light from large windows create a calm and inviting atmosphere.
+                <br><br>The fully equipped kitchen features modern appliances, a bar-stool dining area, and opens onto a charming balcony—ideal for morning coffees or relaxed evening wind-downs.
+                <br><br>Tucked just beyond the living space, the cosy double bed promises restful nights, perfect after a full day exploring London or enjoying nearby Wimbledon Village.
+                <br><br>Whether you're here for business, leisure, or a short getaway, this modern studio offers a sophisticated retreat in one of London’s most desirable neighbourhoods.
+                <br><br>
+                
+                <strong>Experience the perfect blend of style, comfort, and unbeatable location in this modern studio apartment—just moments from Wimbledon’s vibrant town centre.</strong>
+
+            </div>
+            <div class="fade" aria-hidden="true"></div>
+          </div>
+          <button class="link" id="about-toggle" type="button" aria-controls="about-wrap" aria-expanded="false">Read more</button>
+        </article>
+
+        <!-- Amenities -->
+        <section class="card pad" aria-labelledby="amen-head">
+          <h3 id="amen-head" class="h4">Amenities</h3>
+          <div class="amen-wrap clamped" id="amen-wrap">
+            <div class="amen-grid">
+              <!-- FIRST 9 -->
+              <div class="amen"><img src="prop icon/1.png" alt=""><span>Garden View</span></div>
+              <div class="amen"><img src="prop icon/2.png" alt=""><span>Bath</span></div>
+              <div class="amen"><img src="prop icon/3.png" alt=""><span>Hair Dryer</span></div>
+              <div class="amen"><img src="prop icon/4.png" alt=""><span>Cleaning Products</span></div>
+              <div class="amen"><img src="prop icon/5.png" alt=""><span>Shampoo</span></div>
+              <div class="amen"><img src="prop icon/6.png" alt=""><span>Body Soap</span></div>
+              <div class="amen"><img src="prop icon/7.png" alt=""><span>Hot Water</span></div>
+              <div class="amen"><img src="prop icon/8.png" alt=""><span>Shower Gel</span></div>
+              <div class="amen"><img src="prop icon/9.png" alt=""><span>Washing Machine</span></div>
+
+              <!-- EXTRAS -->
+              <div class="amen amen-extra"><img src="prop icon/10.png" alt=""><span>Dryer</span></div>
+              <div class="amen amen-extra"><img src="prop icon/11.png" alt=""><span>Essentials</span></div>
+              <div class="amen amen-extra"><img src="prop icon/12.png" alt=""><span>Hangers</span></div>
+              <div class="amen amen-extra"><img src="prop icon/13.png" alt=""><span>Bed Linen</span></div>
+              <div class="amen amen-extra"><img src="prop icon/14.png" alt=""><span>Room-darkening blinds</span></div>
+              <div class="amen amen-extra"><img src="prop icon/15.png" alt=""><span>Iron</span></div>
+              <div class="amen amen-extra"><img src="prop icon/16.png" alt=""><span>Clothes drying rack</span></div>
+              <div class="amen amen-extra"><img src="prop icon/17.png" alt=""><span>TV</span></div>
+              <div class="amen amen-extra"><img src="prop icon/18.png" alt=""><span>Books and reading material</span></div>
+              <div class="amen amen-extra"><img src="prop icon/19.png" alt=""><span>Heating</span></div>
+              <div class="amen amen-extra"><img src="prop icon/20.png" alt=""><span>Smoke alarm</span></div>
+              <div class="amen amen-extra"><img src="prop icon/21.png" alt=""><span>Carbon monoxide alarm</span></div>
+              <div class="amen amen-extra"><img src="prop icon/22.png" alt=""><span>First aid kit</span></div>
+              <div class="amen amen-extra"><img src="prop icon/23.png" alt=""><span>Wifi</span></div>
+              <div class="amen amen-extra"><img src="prop icon/24.png" alt=""><span>Dedicated workspace</span></div>
+              <div class="amen amen-extra"><img src="prop icon/25.png" alt=""><span>Kitchen</span></div>
+              <div class="amen amen-extra"><img src="prop icon/26.png" alt=""><span>Fridge</span></div>
+              <div class="amen amen-extra"><img src="prop icon/27.png" alt=""><span>Microwave</span></div>
+              <div class="amen amen-extra"><img src="prop icon/28.png" alt=""><span>Cooking basics</span></div>
+              <div class="amen amen-extra"><img src="prop icon/29.png" alt=""><span>Dishes and cutlery</span></div>
+              <div class="amen amen-extra"><img src="prop icon/30.png" alt=""><span>Freezer</span></div>
+              <div class="amen amen-extra"><img src="prop icon/31.png" alt=""><span>Dishwasher</span></div>
+              <div class="amen amen-extra"><img src="prop icon/32.png" alt=""><span>Cooker</span></div>
+              <div class="amen amen-extra"><img src="prop icon/33.png" alt=""><span>Oven</span></div>
+              <div class="amen amen-extra"><img src="prop icon/34.png" alt=""><span>Kettle</span></div>
+              <div class="amen amen-extra"><img src="prop icon/35.png" alt=""><span>Wine glasses</span></div>
+              <div class="amen amen-extra"><img src="prop icon/36.png" alt=""><span>Toaster</span></div>
+              <div class="amen amen-extra"><img src="prop icon/37.png" alt=""><span>Dining table</span></div>
+              <div class="amen amen-extra"><img src="prop icon/38.png" alt=""><span>Private entrance</span></div>
+              <div class="amen amen-extra"><img src="prop icon/39.png" alt=""><span>Launderette nearby</span></div>
+              <div class="amen amen-extra"><img src="prop icon/40.png" alt=""><span>Private back garden</span></div>
+              <div class="amen amen-extra"><img src="prop icon/41.png" alt=""><span>Outdoor furniture</span></div>
+              <div class="amen amen-extra"><img src="prop icon/42.png" alt=""><span>Free parking on premises</span></div>
+              <div class="amen amen-extra"><img src="prop icon/43.png" alt=""><span>Paid street parking off premises</span></div>
+              <div class="amen amen-extra"><img src="prop icon/44.png" alt=""><span>Single level home</span></div>
+              <div class="amen amen-extra"><img src="prop icon/45.png" alt=""><span>Pets allowed</span></div>
+              <div class="amen amen-extra"><img src="prop icon/46.png" alt=""><span>Luggage drop-off allowed</span></div>
+              <div class="amen amen-extra"><img src="prop icon/47.png" alt=""><span>Long-term stays allowed</span></div>
+              <div class="amen amen-extra"><img src="prop icon/48.png" alt=""><span>Cleaning available during stay</span></div>
+              
+            </div>
+            <div class="amen-fade" aria-hidden="true"></div>
+          </div>
+          <button class="link" id="amen-toggle" type="button" aria-controls="amen-wrap" aria-expanded="false">View all</button>
+        </section>
+
+        <!-- Policies -->
+        <section class="card pad" aria-labelledby="pol-head">
+          <h3 id="pol-head" class="h4">Stay Policies</h3>
+          <div class="policy-section">
+            <div class="policy-card">
+              <div class="policy-title"><img src="prop icon/ch_ch.png" alt=""><span>Check-in & Check-out</span></div>
+              <div class="policy-grid">
+                <div class="policy-box"><span>Check-in time</span>3:00 PM</div>
+                <div class="policy-box"><span>Check-out time</span>10:00 AM</div>
+              </div>
+            </div>
+            <div class="policy-card">
+              <div class="policy-title"><img src="prop icon/rules.png" alt=""><span>House Rules</span></div>
+              <div class="policy-grid">
+                <div class="policy-box"><img src="prop icon/smoke.png" alt=""> No smoking</div>
+                <div class="policy-box"><img src="prop icon/pet.png" alt=""> No pets</div>
+                <div class="policy-box"><img src="prop icon/party.png" alt=""> No parties or events</div>
+                <div class="policy-box"><img src="prop icon/deposit.png" alt=""> Security deposit required</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Location (INSIDE left column for alignment) -->
+        <section class="card pad" aria-labelledby="loc-head">
+          <h3 id="loc-head" class="h4">Location</h3>
+          <div class="map-holder">
+            <!-- JS map (hidden until API loads) -->
+            <div id="bliss-map" class="map-card" hidden></div>
+            <!-- Fallback embed shown by default -->
+            <iframe id="bliss-embed" class="map-card" loading="lazy" allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=266%20Flat%201A%20Wimbledon%20London&output=embed">
+            </iframe>
+          </div>
+          <p class="muted" style="margin-top:10px">Exact address is shared after booking.</p>
+        </section>
+
+      </div>
+
+     <!-- ===== RIGHT: Booking / Enquiry card ===== -->
+<aside class="book-card card" role="complementary" aria-label="Book your stay">
+  <div class="book-head">Book your stay</div>
+  <form class="book-body" action="https://formspree.io/f/mvgqjpkv" method="POST">
+    <div class="f">
+      <label for="q-name">Full name</label>
+      <input id="q-name" name="name" type="text" placeholder="Jane Doe" required>
+    </div>
+    <div class="f">
+      <label for="q-email">Email</label>
+      <input id="q-email" name="email" type="email" placeholder="jane@email.com" required>
+    </div>
+    <div class="f">
+      <label for="q-phone">Phone (optional)</label>
+      <input id="q-phone" name="phone" type="tel" placeholder="+44 7XXX XXX XXX">
+    </div>
+    <div class="f">
+      <label for="q-dates">Select dates</label>
+      <input id="q-dates" name="dates" type="text" placeholder="e.g., 14–17 Oct (3 nights)">
+    </div>
+    <div class="f">
+      <label for="q-guests">Guests</label>
+      <select id="q-guests" name="guests">
+        <option>1</option>
+        <option>2</option>
+        <option selected>4</option>
+        <option>5</option>
+        <option>6</option>
+      </select>
+    </div>
+    <div class="f">
+      <label for="q-msg">Message</label>
+      <textarea id="q-msg" name="message" rows="3" placeholder="Tell us anything helpful…"></textarea>
+    </div>
+    <input type="hidden" name="_subject" value="Bliss Stays – Property enquiry">
+    <button class="btn primary" type="submit">Check availability</button>
+    <div class="note">Instant confirmation for eligible bookings.</div>
+  </form>
+</aside>
+
+<!-- ============ Flatpickr CSS & JS ============ -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<!-- ============ Calendar Init Script ============ -->
+<script>
+  flatpickr("#q-dates", {
+    mode: "range",
+    dateFormat: "d M Y",
+    ariaDateFormat: "F j, Y",
+    minDate: "today",
+    showMonths: 2,
+    disableMobile: true,
+    onClose: function(selectedDates, dateStr, instance) {
+      if (selectedDates.length === 2) {
+        const oneDay = 24 * 60 * 60 * 1000;
+        const nights = Math.round((selectedDates[1] - selectedDates[0]) / oneDay);
+        instance.input.value =
+          `${instance.formatDate(selectedDates[0], "d M")} – ${instance.formatDate(selectedDates[1], "d M")} (${nights} night${nights > 1 ? 's' : ''})`;
+      }
+    }
+  });
+</script>
+
+<!-- (Optional styling to match your card design) -->
+<style>
+  .flatpickr-calendar {
+    border-radius: 12px;
+    box-shadow: 0 18px 32px rgba(0,0,0,.12);
+    font-family: inherit;
+  }
+  .flatpickr-day.selected,
+  .flatpickr-day.startRange,
+  .flatpickr-day.endRange {
+    background: #2a5b53;
+    border-color: #2a5b53;
+    color: #fff;
+  }
+  .flatpickr-day.inRange {
+    background: rgba(42,91,83,.12);
+  }
+</style>
+
+
+  <!-- ============ Lightbox ============ -->
+  <div class="lb" id="bd-lb" aria-hidden="true">
+    <div class="lb-inner">
+      <img class="lb-img" id="lb-img" alt="">
+      <button class="lb-close" id="lb-close" aria-label="Close">×</button>
+    </div>
+  </div>
+
+  <script>
+    /* About read more/less */
+    (function(){
+      const wrap = document.getElementById('about-wrap');
+      const btn  = document.getElementById('about-toggle');
+      const fade = wrap.querySelector('.fade');
+      function set(expanded){
+        wrap.classList.toggle('clamped', !expanded);
+        fade.style.display = expanded ? 'none' : '';
+        btn.textContent = expanded ? 'Read less' : 'Read more';
+        btn.setAttribute('aria-expanded', String(expanded));
+      }
+      set(false);
+      btn.addEventListener('click', ()=> set(wrap.classList.contains('clamped')));
+    })();
+
+    /* Gallery lightbox */
+    (function(){
+      const gal = document.getElementById('bd-gallery');
+      const lb  = document.getElementById('bd-lb');
+      const img = document.getElementById('lb-img');
+      const close = document.getElementById('lb-close');
+      function open(src){ img.src = src; lb.classList.add('open'); }
+      gal.addEventListener('click', (e)=>{
+        const a = e.target.closest('a'); if(!a) return;
+        e.preventDefault(); open(a.href);
+      });
+      document.getElementById('bd-view').addEventListener('click', ()=>{
+        const first = gal.querySelector('a'); if(first) open(first.href);
+      });
+      lb.addEventListener('click', (e)=>{ if(e.target===lb) lb.classList.remove('open'); });
+      close.addEventListener('click', ()=> lb.classList.remove('open'));
+      document.addEventListener('keydown', e=>{ if(e.key==='Escape') lb.classList.remove('open'); });
+    })();
+
+    /* Amenities view all/less */
+    (function(){
+      const wrap = document.getElementById('amen-wrap');
+      const btn  = document.getElementById('amen-toggle');
+      const fade = wrap.querySelector('.amen-fade');
+      function set(expanded){
+        wrap.classList.toggle('clamped', !expanded);
+        fade.style.display = expanded ? 'none' : '';
+        btn.textContent = expanded ? 'View less' : 'View all';
+        btn.setAttribute('aria-expanded', String(expanded));
+      }
+      set(false);
+      btn.addEventListener('click', ()=> set(wrap.classList.contains('clamped')));
+    })();
+  </script>
+
+  <!-- Header spacing helper -->
+  <style>
+    :root { --header-clear: clamp(72px, 9vh, 120px); }
+    #bliss-details { padding-top: var(--header-clear); }
+    #bd-title { scroll-margin-top: var(--header-clear, 100px); }
+  </style>
+
+  <!-- Google Maps (JS) + fallback swap -->
+  <script>
+    const BLISS_COORDS = { lat: 51.5308, lng: -0.1869 };
+    const BLISS_MAP_STYLE = [
+      { elementType: "geometry", stylers: [{ color: "#f5f5f2" }] },
+      { elementType: "labels.icon", stylers: [{ visibility: "off" }] },
+      { elementType: "labels.text.fill", stylers: [{ color: "#5f665a" }] },
+      { elementType: "labels.text.stroke", stylers: [{ color: "#ffffff" }] },
+      { featureType: "poi", elementType: "geometry", stylers: [{ color: "#e9ede6" }] },
+      { featureType: "road", elementType: "geometry", stylers: [{ color: "#ffffff" }] },
+      { featureType: "water", elementType: "geometry", stylers: [{ color: "#d6e4f2" }] }
+    ];
+    window.initBlissMap = function(){
+      const mapEl = document.getElementById('bliss-map');
+      const iframe = document.getElementById('bliss-embed');
+      if(!mapEl) return;
+      try{
+        const map = new google.maps.Map(mapEl, {
+          center: BLISS_COORDS, zoom: 13, disableDefaultUI: false,
+          mapTypeControl: false, streetViewControl: false, fullscreenControl: false,
+          styles: BLISS_MAP_STYLE
+        });
+        new google.maps.Marker({
+          position: BLISS_COORDS, map, title: "Bliss Stays – Property",
+          icon: { path: google.maps.SymbolPath.CIRCLE, scale: 10, fillColor: "#2a5b53", fillOpacity: .95, strokeColor: "#183a34", strokeWeight: 2 }
+        });
+        // show JS map / hide iframe fallback
+        mapEl.hidden = false;
+        if (iframe) iframe.hidden = true;
+      }catch(err){
+        // leave iframe visible
+        console.warn("Maps JS failed; using embed fallback.", err);
+      }
+    };
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/AIzaSyAT3swfJRUdAPsPoFLdcN06vGiqsnNreug"></script>
+</section>
+<!-- ==================== /Bliss Stays · Property Details ==================== -->
+
+  <!-- =================== /More Details – Property (Bliss Stays) =================== -->
+  
+    
+    
+    
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      
+      <!-- LEFT SIDE: All links grouped -->
+      <div class="footer-links-group">
+        <div class="footer-column">
+          <h4>BLISS STAYS</h4>
+          <ul>
+            <li><a href="property.html">Properties</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            
+            
+          </ul>
+        </div>
+  
+        <div class="footer-column">
+          <h4>ENQUIRIES</h4>
+          <ul>
+            <li><a href="booknow.html">Corporate Bookings</a></li>
+            <li><a href="booknow.html">Group Bookings</a></li>
+            <li><a href="booknow.html">Apart-hotels</a></li>
+          </ul> 
+        </div>
+      </div>
+  
+      <!-- RIGHT SIDE: Logo and socials -->
+      <div class="footer-logo-section">
+        <img src="logo.png" alt="Bliss Stays Logo" class="footer-logo" />
+        <div class="social-icons">
+          <a href="#"><img src="icons/insta.png" alt="Instagram" /></a>
+          <a href="#"><img src="icons/fb.png" alt="Facebook" /></a>
+        </div>
+      </div>
+  
+    </div>
+  
+    <div class="footer-bottom">
+      <p>&copy; Bliss Stays Ltd. 2025. All rights reserved.</p>
+    </div>
+  </footer>
+  
+  <style>
+  .footer {
+  background-color: #f7f7f9;
+  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 60px 20px 20px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  gap: 40px;
+}
+
+.footer-links-group {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.footer-column {
+  min-width: 180px;
+}
+
+.footer-column h4 {
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #999;
+  padding-bottom: 6px;
+  color: #333;
+}
+
+.footer-column .footer-sub {
+  margin-top: 20px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li {
+  margin: 10px 0;
+}
+
+.footer-column a {
+  color: #333;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #666;
+}
+
+.footer-logo-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.footer-logo {
+  width: 270px;
+  margin-bottom: 20px;
+}
+
+.footer-logo-section .social-icons a {
+  margin-left: 12px;
+}
+
+.footer-logo-section .social-icons img {
+  width: 22px;
+  filter: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 13px;
+  color: #555;
+  border-top: 1px solid #999;
+  padding-top: 12px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-links-group {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-logo-section {
+    align-items: flex-start;
+    text-align: left;
+    margin-top: 30px;
+  }
+
+  .footer-logo {
+    width: 120px;
+  }
+}
+  </style> 
+
+</body>
+</html>

@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bliss Stays</title>
+
+          <!-- Customized Bootstrap Stylesheet -->
+          <link href="css/bootstrap.min.css" rel="stylesheet">
+
+          <!-- Template Stylesheet -->
+          <link href="css/style.css" rel="stylesheet">
+          <!-- jQuery (must load before Owl) -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- Owl Carousel CSS + JS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.theme.default.min.css">
+<script src="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js"></script>
+
+
+  <style>
+    /* Reset */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      color: #444;
+      line-height: 1.6;
+      background-color: #f4f0e6;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f0e6;
+      width: 100%;
+      min-height: 100%;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* Colors */
+    :root {
+      --primary: #4b4b38;
+      --accent: #6b6b50;
+      --light: #f8f5ee;
+    }
+
+    /* Hero with video */
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.593);
+      z-index: 1;
+    }
+
+    .hero-logo {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+    }
+
+    .hero-logo img {
+      max-width: 300px;
+      width: 90%;
+      height: auto;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+    }
+
+
+    
+
+    .logo-block {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.logo-text {
+  letter-spacing: 0.5px;
+}
+
+.home-message-wrapper {
+  background-color: #f4f0e0; /* Makes the entire width same color */
+  width: 100%;
+}
+
+.home-message {
+  padding: 100px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.home-message-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 320px;
+}
+
+.home-message-left {
+  flex: 1 1 300px;
+  font-size: 2.0rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--primary);
+}
+
+.home-message-right {
+  flex: 1 1 500px;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .home-message-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .home-message-left {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .home-message-right {
+    font-size: 1rem;
+  }
+}
+
+/* Outer full-width background wrapper */
+.bliss-brands-fullwrap {
+  background-color: #ffffff;
+  width: 100%;
+}
+
+/* Section inside wrapper */
+.bliss-brands-showcase {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Content wrapper */
+.brands-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brands-left {
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 40px;
+}
+
+.brands-left h5 {
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.brands-left h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.brands-left p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* Cards container */
+.brands-right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.brand-card {
+  background: #ffffff;
+  text-align: center;
+  flex: 1 1 250px;
+  max-width: 300px;
+  padding-bottom: 20px;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.brand-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.brand-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 15px 15px 5px;
+}
+
+.brand-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0 15px 10px;
+}
+
+.brand-card a {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.brand-card a:hover {
+  color: var(--accent);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .brands-right {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .brand-card {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+/* Click-triggered animation keyframes */
+@keyframes clickBounce {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Class that triggers the animation */
+.animate-on-click {
+  animation: clickBounce 0.3s ease;
+}
+
+.brand-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+
+
+
+  </style>
+</head>
+<body>
+
+  <main>
+
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <div class="logo-block">
+        <a href="index.html" class="logo-text">BLISS STAYS</a>
+      </div>
+      <div class="spacer"></div>
+      <nav class="main-nav">
+        <ul>
+          <li class="has-dropdown">
+            <a href="#">Locations <span>&#9662;</span></a>
+            <ul class="dropdown">
+              <li><a href="property.html">Maida Vale</a></li>
+              <li><a href="property1.html">Paddington</a></li>
+              <li><a href="property2.html">Nine Elms</a></li>
+              <li><a href="property3.html">Kennington</a></li>
+              <li><a href="property4.html">Wimbledon</a></li>
+            </ul>
+          <li class="has-dropdown">
+            <a href="#">Menu <span>&#9662;</span></a>
+            <ul class="dropdown">
+              <li><a href="faq.html">FAQs</a></li>
+              <li><a href="terms.html">Terms & Conditions</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="book-now">
+        <a href="booknow.html">Book now</a>
+      </div>
+    </div>
+  </header>
+  
+  
+  
+
+  <style>
+  /* Floating, centered panel header (Zedwell-style) */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    /* Make the bar itself transparent so the panel “floats” */
+    background: transparent;
+    /* Add a little breathing room from the very top */
+    padding: 10px 16px;
+    /* Smooth transitions */
+    transition: padding 0.25s ease;
+  }
+
+  /* The floating panel */
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    /* Panel look */
+    background: rgba(255, 255, 255, 0.96); /* #FFFFFFED with slight transparency */
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow:
+      0 14px 30px rgba(0,0,0,0.12),
+      0 4px 10px rgba(0,0,0,0.08);
+
+    /* Layout */
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+
+    /* Nice glassy feel on capable browsers */
+    backdrop-filter: saturate(140%) blur(6px);
+  }
+
+  /* Compact the panel slightly on scroll */
+  header.scrolled { padding-top: 6px; padding-bottom: 6px; }
+  header.scrolled .header-inner {
+    background: rgba(255, 255, 255, 0.975);
+    border-radius: 10px;
+    box-shadow:
+      0 10px 24px rgba(0,0,0,0.10),
+      0 3px 8px rgba(0,0,0,0.08);
+  }
+
+  /* Logo */
+  .logo-block {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  .spacer { flex-grow: 1; }
+
+  /* Nav */
+  .main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .main-nav a {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--primary);
+    position: relative;
+    padding-bottom: 3px;
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+
+  .main-nav a:hover { color: var(--accent); }
+
+  .main-nav a:hover::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 100%; height: 2px;
+    background-color: var(--primary);
+  }
+
+  .main-nav span {
+    font-size: 10px;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+
+  /* Book button */
+  .book-now { margin-left: 20px; }
+  .book-now a {
+    background-color: var(--primary);
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 10px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    display: inline-block;
+  }
+  .book-now a:hover {
+    background-color: #363626;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.16);
+  }
+
+  /* Dropdown (keeps same behavior; just sits above the panel) */
+  .main-nav .has-dropdown { position: relative; }
+  .main-nav .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0;
+    min-width: 160px;
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 6px;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 10px;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.10), 0 3px 8px rgba(0,0,0,0.06);
+    z-index: 1001;
+  }
+  .main-nav .has-dropdown:hover .dropdown { display: block; }
+  .main-nav .dropdown li a {
+    display: block;
+    padding: 10px 12px;
+    color: var(--primary);
+    font-size: 14px;
+    border-radius: 6px;
+  }
+  .main-nav .dropdown li a:hover {
+    background-color: #f5f2ea;
+  }
+
+  /* Small screens: keep the floating look, just tighter padding */
+  @media (max-width: 768px) {
+    .header-inner {
+      padding: 12px 16px;
+      gap: 12px;
+    }
+    .main-nav ul { gap: 20px; }
+    .book-now { margin-left: 12px; }
+  }
+
+  
+    /* Dropdown */
+    .main-nav .has-dropdown {
+      position: relative;
+    }
+  
+    .main-nav .dropdown {
+      display: none;
+      position: absolute;
+      background-color: var(--light);
+      top: 100%;
+      left: 0;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      min-width: 140px;
+      z-index: 1001;
+    }
+  
+    .main-nav .has-dropdown:hover .dropdown {
+      display: block;
+    }
+  
+    .main-nav .dropdown li a {
+      display: block;
+      padding: 10px 16px;
+      color: var(--primary);
+      font-size: 14px;
+      text-decoration: none;
+    }
+  
+    .main-nav .dropdown li a:hover {
+      background-color: #f0f0f0;
+    }
+  </style>
+
+<script>
+  // Toggle compact floating style when scrolling
+  document.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if (window.scrollY > 40) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  });
+</script>
+  
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const dropdown = document.querySelector('.dropdown');
+
+    menuToggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.has-dropdown')) {
+        dropdown.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+
+<!-- Floating WhatsApp (bottom-left) -->
+<!-- ===== WhatsApp Chat Teaser (final, wide like the reference) ===== -->
+<div id="wa-widget" aria-live="polite">
+  <!-- Floating action button -->
+  <a id="wa-fab"
+     href="https://wa.me/447000000000?text=Hi%20Bliss%20Stays!%20I%20have%20a%20question."
+     target="_blank" rel="noopener"
+     aria-label="Open WhatsApp chat">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path fill="currentColor"
+        d="M19.11 17.71c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.17-.43-2.23-1.37-.82-.73-1.37-1.63-1.53-1.9-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.02-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.3s.98 2.66 1.12 2.84c.14.18 1.93 2.95 4.68 4.14.65.28 1.15.45 1.54.59.65.21 1.25.18 1.72.11.52-.08 1.6-.65 1.82-1.29.22-.64.22-1.18.16-1.29-.07-.11-.23-.18-.5-.32zM16.02 3.2c-6.99 0-12.66 5.67-12.66 12.66 0 2.23.59 4.32 1.62 6.12L3 29l7.19-1.89c1.72.94 3.69 1.47 5.83 1.47 6.99 0 12.66-5.67 12.66-12.66S23.01 3.2 16.02 3.2zm0 22.88c-1.95 0-3.76-.57-5.29-1.55l-.38-.24-4.28 1.12 1.15-4.17-.25-.43a9.98 9.98 0 0 1-1.49-5.25c0-5.53 4.5-10.02 10.02-10.02s10.02 4.5 10.02 10.02-4.5 10.02-10.02 10.02z"/>
+    </svg>
+  </a>
+
+  <!-- Teaser card -->
+  <div id="wa-card" role="dialog" aria-modal="false" aria-label="WhatsApp quick chat">
+    <button id="wa-close" aria-label="Dismiss">×</button>
+    <div class="wa-row">
+      <div class="wa-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path fill="currentColor"
+          d="M16.2 13.6c-.2-.1-1.1-.6-1.3-.7-.2-.1-.3-.1-.5.1l-.6.7c-.2.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.1-.7-.6-1.1-1.3-1.2-1.5-.1-.2 0-.3.1-.5l.4-.4c.1-.1.1-.3.2-.4s0-.3-.1-.5-.5-1.2-.7-1.7c-.2-.4-.4-.3-.6-.3h-.4c-.1 0-.4.1-.6.3-.2.2-.8.7-.8 1.8s.8 2.1.9 2.2c.1.1 1.5 2.3 3.7 3.3.5.2.9.4 1.2.5.5.2 1 .1 1.3.1.4-.1 1.3-.5 1.5-1 .2-.5.2-.9.1-1 0-.1-.2-.2-.4-.3zM12 2C6.5 2 2 6.3 2 11.6c0 2 .6 3.9 1.6 5.4L2 22l5.1-1.3c1.5.8 3.2 1.2 4.9 1.2 5.5 0 10-4.3 10-9.6S17.5 2 12 2z"/></svg>
+      </div>
+      <div class="wa-text">
+        <div class="wa-title">Have any questions? Let’s chat! <span class="wa-wave">👋</span></div>
+        <a class="wa-cta"
+           href="https://wa.me/447365208676?text=Hi%20Bliss%20Stays%2C%20I%27d%20like%20to%20enquire..."
+           target="_blank" rel="noopener">Click here to start a conversation</a>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function setHeaderOffset(){
+    const inner = document.querySelector('header .header-inner');
+    const h = (inner?.offsetHeight || document.querySelector('header')?.offsetHeight || 96);
+    document.documentElement.style.setProperty('--site-header-h', h + 'px');
+  }
+  window.addEventListener('load', setHeaderOffset);
+  window.addEventListener('resize', setHeaderOffset);
+</script>
+
+<style>
+
+ 
+
+/* Placement */
+#wa-widget{position:fixed;right:18px;bottom:18px;z-index:2147483647;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+
+/* Floating button */
+#wa-fab{
+  display:grid;place-items:center;width:64px;height:64px;border-radius:999px;
+  background:#22c55e;color:#0b4126;text-decoration:none;
+  box-shadow:0 12px 30px rgba(0,0,0,.25), inset 0 -6px 0 rgba(0,0,0,.08);
+  animation:wa-bounce 1.4s ease infinite;
+}
+#wa-fab svg{width:34px;height:34px}
+
+/* Card — WIDER & HORIZONTAL like your ref */
+#wa-card{
+  position:absolute;right:88px;bottom:6px;
+  width:360px; min-width:360px; /* keeps it wide */
+  background:#fff;border-radius:20px;
+  box-shadow:0 18px 50px rgba(0,0,0,.25);
+  padding:16px 18px;display:none;opacity:0;transform:translateY(10px)
+}
+#wa-card.show{display:block;animation:wa-in .35s cubic-bezier(.2,.7,.2,1) forwards}
+
+#wa-close{all:unset;position:absolute;top:8px;right:10px;width:26px;height:26px;border-radius:999px;display:grid;place-items:center;cursor:pointer;color:#64748b;font-weight:700}
+#wa-close:hover{background:#f1f5f9;color:#0f172a}
+
+.wa-row{display:flex;gap:12px;align-items:center}
+.wa-icon{width:36px;height:36px;background:#22c55e;color:#0b4126;border-radius:999px;display:grid;place-items:center;flex:0 0 36px}
+.wa-icon svg{width:20px;height:20px}
+
+.wa-text{min-width:0} /* prevent squish */
+.wa-title{font-size:18px;font-weight:800;color:#111827;margin:0 22px 6px 0;line-height:1.25}
+.wa-cta{display:inline-block;color:#2563eb;text-decoration:none;font-size:15px;line-height:1.3}
+.wa-cta:hover{text-decoration:underline}
+.wa-wave{display:inline-block;animation:wa-wave 1.6s ease-in-out infinite;transform-origin:70% 70%}
+
+/* Animations */
+@keyframes wa-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes wa-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes wa-wave{0%{transform:rotate(0)}10%{transform:rotate(14deg)}20%{transform:rotate(-8deg)}30%{transform:rotate(14deg)}40%{transform:rotate(-4deg)}50%{transform:rotate(10deg)}60%,100%{transform:rotate(0)}}
+
+/* Mobile — use full width but same look */
+@media (max-width:520px){
+  #wa-card{right:0;bottom:76px;width:auto;min-width:0;max-width:min(92vw,380px)}
+}
+</style>
+
+<script>
+(function(){
+  const fab   = document.getElementById('wa-fab');
+  const card  = document.getElementById('wa-card');
+  const close = document.getElementById('wa-close');
+  const KEY   = 'waTeaserDismissedUntil';
+  const now = Date.now();
+  const until = Number(localStorage.getItem(KEY) || 0);
+
+  // Show once (per 24h) like the reference
+  if (now > until) setTimeout(()=> card.classList.add('show'), 600);
+
+  close.addEventListener('click', ()=>{
+    localStorage.setItem(KEY, String(Date.now() + 24*60*60*1000));
+    card.remove();
+  });
+})();
+</script>
+
+<!-- ===== Property Section – Maida Vale (fully updated) ===== -->
+<!-- ===== Property Section – Maida Vale (refined) ===== -->
+<section id="property-maidavale">
+  <style>
+    /* Scoped tokens */
+    #property-maidavale{
+      --ink:#2b2b2a; --stone:#30302c; --muted:#6e6e68;
+      --bg:#f5f5f2; --card:#ffffff; --border:#e7e7e2;
+      --shadow:0 10px 30px rgba(0,0,0,.08); --radius:16px;
+      font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink); background:var(--bg);
+    }
+    #property-maidavale *{box-sizing:border-box}
+
+    /* Layout */
+    #property-maidavale .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+    #property-maidavale .spacer{height:120px} /* adjusted by JS */
+
+    /* Title Card */
+    #property-maidavale .title-card{
+      background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+      box-shadow:var(--shadow); padding:24px 22px; margin:0 0 18px;
+    }
+    #property-maidavale h1{
+      margin:0 0 10px; font-size:clamp(24px,2.4vw,34px); line-height:1.15; letter-spacing:-.01em;
+    }
+    #property-maidavale .badges{display:flex; gap:10px; flex-wrap:wrap}
+    #property-maidavale .badge{
+      display:inline-flex; align-items:center; gap:8px; padding:7px 12px;
+      background:#fff; border:1px solid var(--border); border-radius:999px;
+      font-weight:600; font-size:14px; color:var(--stone);
+    }
+
+    /* Grid */
+    #property-maidavale .grid{display:grid; grid-template-columns:1.6fr .9fr; gap:24px}
+    @media (max-width:980px){#property-maidavale .grid{grid-template-columns:1fr}}
+
+    /* Card */
+    #property-maidavale .card{
+      background:var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow);
+    }
+    #property-maidavale .card-body{padding:18px}
+    #property-maidavale .card h3{
+      margin:0 0 12px; font-size:18px; font-weight:700; color:var(--stone)
+    }
+
+    /* Gallery */
+    #property-maidavale .gallery{
+      display:grid; grid-template-columns:minmax(0,2fr) minmax(0,1fr); gap:14px; padding:14px;
+    }
+    #property-maidavale .main{
+      grid-row:1/3; min-height:480px; border-radius:12px; overflow:hidden;
+    }
+    #property-maidavale .thumbs{display:grid; grid-template-rows:repeat(2,1fr); gap:14px}
+    #property-maidavale .gallery img{width:100% !important; height:100% !important; object-fit:cover; display:block; cursor:zoom-in}
+    #property-maidavale .thumbs img{border-radius:10px}
+    #property-maidavale .view-link{
+      margin:0 14px 14px auto; display:inline-flex; gap:8px; align-items:center;
+      background:#fff; border:1px solid var(--border); padding:8px 12px; border-radius:999px;
+      font-weight:600; color:var(--stone); text-decoration:none;
+    }
+
+    /* Amenities / Policies / Location */
+    #property-maidavale .amen-list{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px}
+    @media (max-width:780px){#property-maidavale .amen-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    #property-maidavale .amen{border:1px dashed var(--border); border-radius:10px; padding:10px 12px}
+    #property-maidavale .pol-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    #property-maidavale .pol{border:1px solid var(--border); border-radius:10px; padding:12px}
+    #property-maidavale .pol ul{margin:8px 0 0; padding-left:18px; color:var(--muted)}
+    #property-maidavale #mv-map{height:340px; border-radius:12px; border:1px solid var(--border); overflow:hidden}
+
+    /* Sticky booking */
+    #property-maidavale .sticky{position:sticky; top:24px}
+    #property-maidavale .field{display:grid; grid-template-columns:1fr .9fr; gap:10px}
+    #property-maidavale .input{border:1px solid var(--border); border-radius:10px; padding:11px 12px; background:#fff}
+    #property-maidavale .btn{display:flex; justify-content:center; align-items:center; gap:8px; padding:12px; border-radius:10px; border:none; font-weight:700; cursor:pointer}
+    #property-maidavale .btn-primary{background:var(--stone); color:#fff}
+    #property-maidavale .btn-outline{background:#fff; color:var(--stone); border:1px solid var(--border)}
+
+    /* Lightbox */
+    #property-maidavale .overlay{position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,.9); z-index:1000; padding:20px}
+    #property-maidavale .overlay.open{display:flex}
+    #property-maidavale .overlay img{max-width:92vw; max-height:82vh; border-radius:12px; box-shadow:0 10px 36px rgba(0,0,0,.55)}
+    #property-maidavale .ctrl{position:absolute; width:44px; height:44px; border-radius:50%; display:grid; place-items:center; color:#fff; background:rgba(0,0,0,.45); cursor:pointer; user-select:none}
+    #property-maidavale .close{top:18px; right:18px}
+    #property-maidavale .prev{left:18px; font-size:26px}
+    #property-maidavale .next{right:18px; font-size:26px}
+
+    /* WhatsApp FAB (optional) */
+    #property-maidavale .wa{position:fixed; right:22px; bottom:22px; width:52px; height:52px; border-radius:50%; display:grid; place-items:center; background:#25d366; color:#fff; font-size:26px; box-shadow:0 8px 22px rgba(37,211,102,.35); z-index:900}
+  </style>
+
+  <div class="wrap">
+    <div class="spacer" id="mv-spacer"></div>
+
+    <!-- Title card (no overlap with images) -->
+    <div class="title-card">
+      <h1>Elegant 2-Bed Flat in <span style="color:var(--muted)">Maida Vale</span></h1>
+      <div class="badges">
+        <span class="badge">👥 5 guests</span>
+        <span class="badge">🛏️ 2 bedrooms</span>
+        <span class="badge">🛁 1 bathroom</span>
+        <span class="badge">🛌 3 beds</span>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Left -->
+      <div>
+        <div class="card">
+          <div class="gallery">
+            <div class="main">
+              <img src="Property/1.jpg" alt="Main photo" loading="lazy" onclick="mvOpen(0)">
+            </div>
+            <div class="thumbs">
+              <img src="Property/2.jpg" alt="Living room" loading="lazy" onclick="mvOpen(1)">
+              <img src="Property/5.jpg" alt="Bedroom" loading="lazy" onclick="mvOpen(2)">
+              <img src="Property/4.jpg" alt="Single room" loading="lazy" onclick="mvOpen(3)">
+              <img src="Property/5.jpg" alt="Bathroom" loading="lazy" onclick="mvOpen(4)">
+            </div>
+          </div>
+          <a class="view-link" href="#" onclick="mvOpen(0);return false;">🖼️ View photos</a>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <div class="card-body">
+            <h3>About this property</h3>
+            <p>Nestled in the leafy avenues of <strong>Maida Vale</strong>, this calm, design-led flat sleeps up to five. Two serene bedrooms with plush doubles, a bright lounge with an extra daybed, a fully equipped kitchen and fast Wi-Fi — ideal for work trips or a family city escape.</p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <div class="card-body">
+            <h3>Amenities</h3>
+            <div class="amen-list">
+              <div class="amen">📺 Cable TV</div>
+              <div class="amen">🌐 Internet</div>
+              <div class="amen">📶 Wireless</div>
+              <div class="amen">🍳 Kitchen</div>
+              <div class="amen">🧺 Washing Machine</div>
+              <div class="amen">💨 Hair Dryer</div>
+              <div class="amen">🔥 Heating</div>
+              <div class="amen">🚨 Smoke Detector</div>
+              <div class="amen">🧯 CO Detector</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <div class="card-body">
+            <h3>Stay Policies</h3>
+            <div class="pol-grid">
+              <div class="pol">
+                <strong>Check-in & Check-out</strong>
+                <ul><li>Check-in: <b>3:00 PM</b></li><li>Check-out: <b>10:00 AM</b></li></ul>
+              </div>
+              <div class="pol">
+                <strong>House Rules</strong>
+                <ul><li>No smoking</li><li>No pets</li><li>No parties or events</li><li>Security deposit required</li></ul>
+              </div>
+              <div class="pol">
+                <strong>Cancellation — stays &lt; 28 nights</strong>
+                <ul><li>Full refund up to 14 days before check-in</li><li>No refund within 14 days of check-in</li></ul>
+              </div>
+              <div class="pol">
+                <strong>Cancellation — 28+ nights</strong>
+                <ul><li>Full refund up to 30 days before check-in</li><li>No refund within 30 days of check-in</li></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <div class="card-body">
+            <h3>Location</h3>
+            <div id="mv-map"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: booking -->
+      <aside class="sticky">
+        <div class="card">
+          <div class="card-body">
+            <h3>Book your stay</h3>
+            <div class="field">
+              <div class="input">📅 Select dates</div>
+              <div class="input">👤 1</div>
+            </div>
+            <div style="height:10px"></div>
+            <button class="btn btn-primary">⏱️ Check availability</button>
+            <div style="height:8px"></div>
+            <button class="btn btn-outline">💬 Send Inquiry</button>
+            <div style="margin-top:8px; color:var(--muted)">⚡ Instant confirmation</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="overlay" id="mv-overlay" onclick="if(event.target.id==='mv-overlay') mvClose()">
+    <button class="ctrl close" aria-label="Close" onclick="mvClose()">✕</button>
+    <button class="ctrl prev" aria-label="Previous" onclick="mvPrev()">‹</button>
+    <img id="mv-lightbox" alt="Photo">
+    <button class="ctrl next" aria-label="Next" onclick="mvNext()">›</button>
+  </div>
+
+  <!-- Optional WhatsApp FAB -->
+  <a class="wa" href="https://wa.me/447723745646" target="_blank" aria-label="Chat on WhatsApp">🟢</a>
+
+  <script>
+    /* Clear fixed header space (sets the spacer height) */
+    (function(){
+      function setSpace(){
+        const bar = document.querySelector('header .header-inner') || document.querySelector('header');
+        const h = Math.ceil(bar ? bar.getBoundingClientRect().height : 88);
+        const sp = document.getElementById('mv-spacer');
+        if(sp) sp.style.height = (h + 24) + 'px';
+      }
+      addEventListener('load', setSpace);
+      addEventListener('resize', setSpace);
+    })();
+
+    /* Lightbox */
+    const MV = [
+      "Property/1.jpg","Property/2.jpg","Property/3.jpg","Property/4.jpg","Property/5.jpg",
+      "Property/6.jpg","Property/7.jpg","Property/8.jpg","Property/9.jpg","Property/10.jpg",
+      "Property/11.jpg","Property/12.jpg","Property/13.jpg"
+    ];
+    let mvIdx = 0;
+    const mvBox = document.getElementById('mv-overlay');
+    const mvImg = document.getElementById('mv-lightbox');
+
+    function mvShow(){ mvImg.src = MV[mvIdx]; }
+    function mvOpen(i=0){ mvIdx=i; mvShow(); mvBox.classList.add('open'); document.documentElement.style.overflow='hidden'; }
+    function mvClose(){ mvBox.classList.remove('open'); document.documentElement.style.overflow=''; }
+    function mvNext(){ mvIdx=(mvIdx+1)%MV.length; mvShow(); }
+    function mvPrev(){ mvIdx=(mvIdx-1+MV.length)%MV.length; mvShow(); }
+    document.addEventListener('keydown', e=>{
+      if(!mvBox.classList.contains('open')) return;
+      if(e.key==='Escape') mvClose();
+      if(e.key==='ArrowRight') mvNext();
+      if(e.key==='ArrowLeft') mvPrev();
+    });
+
+    /* Google Map */
+    function initMaidaValeMap(){
+      const center={lat:51.5290,lng:-0.1850};
+      const map=new google.maps.Map(document.getElementById('mv-map'),{
+        center, zoom:13, mapTypeControl:false, streetViewControl:false, fullscreenControl:false,
+        styles:[
+          {elementType:'geometry',stylers:[{color:'#f2f2ef'}]},
+          {elementType:'labels.icon',stylers:[{visibility:'off'}]},
+          {elementType:'labels.text.fill',stylers:[{color:'#2f2f2b'}]},
+          {elementType:'labels.text.stroke',stylers:[{color:'#f2f2ef'}]},
+          {featureType:'road',elementType:'geometry',stylers:[{color:'#dadad6'}]},
+          {featureType:'water',elementType:'geometry',stylers:[{color:'#c9c9c5'}]}
+        ]
+      });
+      const m=new google.maps.Marker({position:center,map,title:'Elegant 2-Bed Flat – Maida Vale'});
+      new google.maps.InfoWindow({content:'<strong>Maida Vale</strong> – Elegant 2-Bed Flat'}).open({anchor:m,map});
+    }
+  </script>
+  <script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMaidaValeMap"></script>
+</section>
+<!-- ===== /Property Section ===== -->
+
+<!-- ===== /Property Section ===== -->
+
+</main>
+
+  <!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- LEFT SIDE: All links grouped -->
+    <div class="footer-links-group">
+      <div class="footer-column">
+        <h4>BLISS STAYS</h4>
+        <ul>
+          <li><a href="property.html">Properties</a></li>
+          <li><a href="terms.html">Terms & Conditions</a></li>
+          <li><a href="faq.html">FAQs</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>ENQUIRIES</h4>
+        <ul>
+          <li><a href="booknow.html">Corporate Bookings</a></li>
+          <li><a href="booknow.html">Group Bookings</a></li>
+          <li><a href="booknow.html">Apart-hotels</a></li>
+        </ul> 
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE: Logo and socials -->
+    <div class="footer-logo-section">
+      <img src="logo.png" alt="Bliss Stays Logo" class="footer-logo" />
+      <div class="social-icons">
+        <a href="#" class="social"><img src="icons/insta.png" alt="Instagram" /></a>
+        <a href="#" class="social"><img src="icons/fb.png" alt="Facebook" /></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; Bliss Stays Ltd. 2025. All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+  body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;  /* pushes footer to bottom */
+}
+
+.footer {
+  background: #f7f7f9;
+  padding: 60px 20px 20px;
+  color: #333;
+  width: 100%;
+  box-sizing: border-box;
+}
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 40px;
+  }
+  
+  .footer-links-group {
+    display: flex;
+    gap: 60px;
+    flex-wrap: wrap;
+  }
+  
+  .footer-column {
+    min-width: 180px;
+  }
+  
+  .footer-column h4 {
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #999;
+    padding-bottom: 6px;
+    color: #333;
+  }
+  
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-column li {
+    margin: 10px 0;
+  }
+  
+  .footer-column a {
+    color: #333;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-column a:hover {
+    color: #666;
+  }
+  
+  .footer-logo-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    text-align: right;
+  }
+  
+  .footer-logo {
+    width: 220px;
+    margin-bottom: 20px;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 14px;
+  }
+  
+  .social-icons img {
+    width: 22px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+  
+  .social-icons img:hover {
+    transform: scale(1.2);
+    filter: brightness(0.6) sepia(1) hue-rotate(160deg) saturate(2);
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 13px;
+    color: #555;
+    border-top: 1px solid #999;
+    padding-top: 12px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .footer-links-group {
+      flex-direction: column;
+      gap: 30px;
+    }
+  
+    .footer-logo-section {
+      align-items: flex-start;
+      text-align: left;
+      margin-top: 30px;
+    }
+  
+    .footer-logo {
+      width: 150px;
+    }
+  }
+
+
+
+  </style>
+  
+
+
+
+</body>
+</html>

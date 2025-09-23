@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bliss Stays</title>
+  <style>
+    /* Reset */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      color: #444;
+      line-height: 1.6;
+      background-color: #ffffff;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      width: 100%;
+      min-height: 100%;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* Colors */
+    :root {
+      --primary: #4b4b38;
+      --accent: #6b6b50;
+      --light: #ffffff;
+    }
+
+    /* Hero with video */
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(255, 255, 255, 0.4);
+      z-index: 1;
+    }
+
+    .hero-logo {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+    }
+
+    .hero-logo img {
+      max-width: 300px;
+      width: 90%;
+      height: auto;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+    }
+
+
+    
+
+    .logo-block {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.logo-text {
+  letter-spacing: 0.5px;
+}
+
+.home-message-wrapper {
+  background-color: #f4f0e0; /* Makes the entire width same color */
+  width: 100%;
+}
+
+.home-message {
+  padding: 100px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.home-message-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 320px;
+}
+
+.home-message-left {
+  flex: 1 1 300px;
+  font-size: 2.0rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--primary);
+}
+
+.home-message-right {
+  flex: 1 1 500px;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .home-message-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .home-message-left {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .home-message-right {
+    font-size: 1rem;
+  }
+}
+
+/* Outer full-width background wrapper */
+.bliss-brands-fullwrap {
+  background-color: #f4f0e6;
+  width: 100%;
+}
+
+/* Section inside wrapper */
+.bliss-brands-showcase {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Content wrapper */
+.brands-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brands-left {
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 40px;
+}
+
+.brands-left h5 {
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.brands-left h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.brands-left p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* Cards container */
+.brands-right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.brand-card {
+  background: #ece8dd;
+  text-align: center;
+  flex: 1 1 250px;
+  max-width: 300px;
+  padding-bottom: 20px;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.brand-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.brand-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 15px 15px 5px;
+}
+
+.brand-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0 15px 10px;
+}
+
+.brand-card a {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.brand-card a:hover {
+  color: var(--accent);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .brands-right {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .brand-card {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+/* Click-triggered animation keyframes */
+@keyframes clickBounce {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Class that triggers the animation */
+.animate-on-click {
+  animation: clickBounce 0.3s ease;
+}
+
+.brand-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+
+
+
+  </style>
+</head>
+<body>
+
+
+<!-- ================ HEADER (desktop unchanged, mobile hamburger) ================ -->
+<header>
+  <div class="header-inner">
+    <div class="logo-block">
+      <a href="index.html" class="logo-text">BLISS STAYS</a>
+    </div>
+
+    <div class="spacer"></div>
+
+    <!-- DESKTOP NAV (hidden on mobile) -->
+    <nav class="main-nav" aria-label="Primary">
+      <ul>
+        <li class="has-dropdown locations-menu">
+          <a href="#">Locations <span>▾</span></a>
+          <div class="drop-panel">
+            <div class="loc-group">
+              <div class="loc-title">London</div>
+              <ul class="loc-list">
+                <li><a href="property.html">Maida Vale</a></li>
+                <li><a href="property1.html">Paddington</a></li>
+                <li><a href="property2.html">Nine Elms</a></li>
+                <li><a href="property3.html">Kennington</a></li>
+                <li><a href="property4.html">Wimbledon</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="has-dropdown menu-menu">
+          <a href="#">Menu <span>▾</span></a>
+          <div class="drop-panel">
+            <ul class="menu-list">
+              <li><a href="faq.html">FAQs</a></li>
+              <li><a href="terms.html">Terms & Conditions</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="book-now">
+      <a href="booknow.html">Book now</a>
+    </div>
+
+    <!-- MOBILE HAMBURGER (only visible on mobile) -->
+    <button id="mnavBtn" class="mnav-btn" aria-label="Open menu" aria-controls="mnav" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE SHEET -->
+<aside id="mnav" class="mnav-sheet" aria-hidden="true">
+  <div class="mnav-backdrop"></div>
+  <div class="mnav-panel" role="dialog" aria-modal="true">
+    <div class="mnav-head">
+      <div class="mnav-brand">BLISS STAYS</div>
+      <button id="mnavClose" class="mnav-close" aria-label="Close">×</button>
+    </div>
+
+    <div class="mnav-body">
+      <div class="mnav-group">
+        <div class="mnav-label">Locations</div>
+        <a class="mnav-item" href="property.html">Maida Vale</a>
+        <a class="mnav-item" href="property1.html">Paddington</a>
+        <a class="mnav-item" href="property2.html">Nine Elms</a>
+        <a class="mnav-item" href="property3.html">Kennington</a>
+        <a class="mnav-item" href="property4.html">Wimbledon</a>
+      </div>
+
+      <div class="mnav-group">
+        <div class="mnav-label">Menu</div>
+        <a class="mnav-item" href="faq.html">FAQs</a>
+        <a class="mnav-item" href="terms.html">Terms & Conditions</a>
+        <a class="mnav-item" href="privacy.html">Privacy Policy</a>
+      </div>
+
+      <a class="mnav-cta" href="booknow.html">Book now</a>
+    </div>
+  </div>
+</aside>
+
+<style>
+/* ——— Desktop keeps your existing look ——— */
+header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:transparent;padding:10px 16px;transition:padding .25s}
+.header-inner{max-width:1200px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:20px;background:#ffffffF5;border:1px solid rgba(0,0,0,.06);border-radius:12px;box-shadow:0 14px 30px rgba(0,0,0,.12),0 4px 10px rgba(0,0,0,.08);backdrop-filter:saturate(140%) blur(6px)}
+header.scrolled{padding-top:6px;padding-bottom:6px}
+header.scrolled .header-inner{background:#fff;border-radius:10px;box-shadow:0 10px 24px rgba(0,0,0,.10),0 3px 8px rgba(0,0,0,.08)}
+.logo-block{font-family:"Times New Roman",Times,serif;font-size:20px;font-weight:700;color:#363633}
+.spacer{flex:1}
+.main-nav ul{display:flex;list-style:none;gap:40px;margin:0;padding:0}
+.main-nav a{font-size:16px;font-weight:500;color:#363633;text-decoration:none;position:relative;padding-bottom:3px}
+.main-nav a:hover{color:#6b6b50}
+.main-nav a:hover::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:#363633}
+.book-now{margin-left:12px}
+.book-now a{background:#4b4b38;color:#fff;font-weight:600;font-size:15px;padding:10px 22px;border-radius:6px;box-shadow:0 2px 6px rgba(0,0,0,.12);transition:transform .2s,box-shadow .2s,background .2s;display:inline-block}
+.book-now a:hover{background:#363626;transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.16)}
+.main-nav .has-dropdown{position:relative}
+.main-nav .has-dropdown>.drop-panel{position:absolute;top:100%;left:0;z-index:1002;display:none;min-width:220px;max-width:260px;padding:14px 16px;background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:12px;box-shadow:0 10px 24px rgba(0,0,0,.10),0 3px 8px rgba(0,0,0,.06)}
+.main-nav .has-dropdown:hover>.drop-panel{display:block}
+.main-nav .locations-menu .loc-title{display:inline-block;font-weight:800;font-size:16px;color:#363633;margin:2px 0 8px;padding-bottom:5px;border-bottom:3px solid #363633}
+.main-nav .locations-menu .loc-list,.menu-menu .menu-list{display:block;list-style:disc;margin:0;padding-left:1.15rem}
+.main-nav .locations-menu .loc-list li,.menu-menu .menu-list li{display:list-item;margin:6px 0}
+.main-nav .locations-menu .loc-list a,.menu-menu .menu-list a{display:inline;white-space:nowrap;color:#363633;font-weight:600}
+
+/* ——— Mobile only ——— */
+.mnav-btn,.mnav-sheet{display:none}
+
+@media (max-width:768px){
+  .main-nav,.book-now{display:none!important}
+  .mnav-btn{display:grid;place-items:center;width:44px;height:44px;border:1px solid rgba(0,0,0,.12);border-radius:10px;background:#fff;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+  .mnav-btn span{display:block;width:22px;height:2px;background:#222;margin:3px 0;border-radius:2px}
+  .mnav-btn:active{transform:scale(.98)}
+
+  .mnav-sheet{display:block;pointer-events:none;position:fixed;inset:0;z-index:1500}
+  .mnav-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.45);opacity:0;transition:opacity .25s}
+  .mnav-panel{position:absolute;top:0;right:0;height:100%;width:min(92vw,420px);background:#fff;border-top-left-radius:16px;border-bottom-left-radius:16px;transform:translateX(100%);transition:transform .25s;box-shadow:-10px 0 30px rgba(0,0,0,.25)}
+  .mnav-sheet.open{pointer-events:auto}
+  .mnav-sheet.open .mnav-backdrop{opacity:1}
+  .mnav-sheet.open .mnav-panel{transform:translateX(0)}
+
+  .mnav-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid #eee;position:sticky;top:0;background:#fff;z-index:1}
+  .mnav-brand{font-size:18px;font-weight:800}
+  .mnav-close{all:unset;font-size:30px;line-height:1;cursor:pointer;padding:4px 8px;border-radius:8px}
+  .mnav-close:active{background:#f3f3f3}
+
+  .mnav-body{display:grid;gap:28px;padding:20px}
+  .mnav-group{display:grid;gap:4px}
+  .mnav-label{font-size:12px;font-weight:800;color:#6b6b6b;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+  .mnav-item{display:block;padding:14px 0;font-size:16px;color:#111;text-decoration:none;border-bottom:1px solid #eee}
+  .mnav-item:active{background:#f7f7f7}
+  .mnav-cta{text-align:center;display:block;background:#4b4b38;color:#fff;font-weight:800;font-size:16px;padding:14px;border-radius:10px;text-decoration:none}
+}
+
+/* --- Enable scrolling inside the mobile sheet --- */
+@media (max-width:768px){
+  /* make the panel a flex column */
+  .mnav-panel{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    max-height:100%;
+    overflow:hidden;                 /* keep scroll confined to body below */
+  }
+  /* the content area becomes the scroller */
+  .mnav-body{
+    flex:1 1 auto;
+    overflow-y:auto;
+    -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
+    overscroll-behavior: contain;      /* prevent rubber-banding to page */
+  }
+  /* keep header fixed at top of the sheet */
+  .mnav-head{
+    position:sticky;
+    top:0;
+    z-index:1;
+    background:#fff;
+  }
+}
+
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  });
+
+  const btn   = document.getElementById('mnavBtn');
+  const sheet = document.getElementById('mnav');
+  const close = document.getElementById('mnavClose');
+
+  function openSheet(){
+    sheet.classList.add('open');
+    sheet.setAttribute('aria-hidden','false');
+    btn.setAttribute('aria-expanded','true');
+    document.body.style.overflow='hidden';
+  }
+  function closeSheet(){
+    sheet.classList.remove('open');
+    sheet.setAttribute('aria-hidden','true');
+    btn.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  }
+
+  if (btn){
+    btn.addEventListener('click', openSheet, {passive:true});
+  }
+  document.getElementById('mnavClose')?.addEventListener('click', closeSheet, {passive:true});
+  sheet.querySelector('.mnav-backdrop')?.addEventListener('click', closeSheet, {passive:true});
+  sheet.querySelectorAll('a').forEach(a => a.addEventListener('click', closeSheet, {passive:true}));
+});
+</script>
+
+<!-- ===================== /HEADER (updated + mobile) ===================== -->
+  
+  <!-- Floating WhatsApp (bottom-left) -->
+<!-- ===== WhatsApp Chat Teaser (final, wide like the reference) ===== -->
+<div id="wa-widget" aria-live="polite">
+  <!-- Floating action button -->
+  <a id="wa-fab"
+     href="https://wa.me/447365208676?text=Hi%20Bliss%20Stays!%20I%20have%20a%20question."
+     target="_blank" rel="noopener"
+     aria-label="Open WhatsApp chat">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path fill="currentColor"
+        d="M19.11 17.71c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.17-.43-2.23-1.37-.82-.73-1.37-1.63-1.53-1.9-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.02-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.3s.98 2.66 1.12 2.84c.14.18 1.93 2.95 4.68 4.14.65.28 1.15.45 1.54.59.65.21 1.25.18 1.72.11.52-.08 1.6-.65 1.82-1.29.22-.64.22-1.18.16-1.29-.07-.11-.23-.18-.5-.32zM16.02 3.2c-6.99 0-12.66 5.67-12.66 12.66 0 2.23.59 4.32 1.62 6.12L3 29l7.19-1.89c1.72.94 3.69 1.47 5.83 1.47 6.99 0 12.66-5.67 12.66-12.66S23.01 3.2 16.02 3.2zm0 22.88c-1.95 0-3.76-.57-5.29-1.55l-.38-.24-4.28 1.12 1.15-4.17-.25-.43a9.98 9.98 0 0 1-1.49-5.25c0-5.53 4.5-10.02 10.02-10.02s10.02 4.5 10.02 10.02-4.5 10.02-10.02 10.02z"/>
+    </svg>
+  </a>
+
+  <!-- Teaser card -->
+  <div id="wa-card" role="dialog" aria-modal="false" aria-label="WhatsApp quick chat">
+    <button id="wa-close" aria-label="Dismiss">×</button>
+    <div class="wa-row">
+      <div class="wa-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path fill="currentColor"
+          d="M16.2 13.6c-.2-.1-1.1-.6-1.3-.7-.2-.1-.3-.1-.5.1l-.6.7c-.2.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.1-.7-.6-1.1-1.3-1.2-1.5-.1-.2 0-.3.1-.5l.4-.4c.1-.1.1-.3.2-.4s0-.3-.1-.5-.5-1.2-.7-1.7c-.2-.4-.4-.3-.6-.3h-.4c-.1 0-.4.1-.6.3-.2.2-.8.7-.8 1.8s.8 2.1.9 2.2c.1.1 1.5 2.3 3.7 3.3.5.2.9.4 1.2.5.5.2 1 .1 1.3.1.4-.1 1.3-.5 1.5-1 .2-.5.2-.9.1-1 0-.1-.2-.2-.4-.3zM12 2C6.5 2 2 6.3 2 11.6c0 2 .6 3.9 1.6 5.4L2 22l5.1-1.3c1.5.8 3.2 1.2 4.9 1.2 5.5 0 10-4.3 10-9.6S17.5 2 12 2z"/></svg>
+      </div>
+      <div class="wa-text">
+        <div class="wa-title">Have any questions? Let’s chat! <span class="wa-wave">👋</span></div>
+        <a class="wa-cta"
+           href="https://wa.me/447365208676?text=Hi%20Bliss%20Stays%2C%20I%27d%20like%20to%20enquire..."
+           target="_blank" rel="noopener">Click here to start a conversation</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* Placement */
+#wa-widget{position:fixed;right:18px;bottom:18px;z-index:2147483647;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+
+/* Floating button */
+#wa-fab{
+  display:grid;place-items:center;width:64px;height:64px;border-radius:999px;
+  background:#22c55e;color:#0b4126;text-decoration:none;
+  box-shadow:0 12px 30px rgba(0,0,0,.25), inset 0 -6px 0 rgba(0,0,0,.08);
+  animation:wa-bounce 1.4s ease infinite;
+}
+#wa-fab svg{width:34px;height:34px}
+
+/* Card — WIDER & HORIZONTAL like your ref */
+#wa-card{
+  position:absolute;right:88px;bottom:6px;
+  width:360px; min-width:360px; /* keeps it wide */
+  background:#fff;border-radius:20px;
+  box-shadow:0 18px 50px rgba(0,0,0,.25);
+  padding:16px 18px;display:none;opacity:0;transform:translateY(10px)
+}
+#wa-card.show{display:block;animation:wa-in .35s cubic-bezier(.2,.7,.2,1) forwards}
+
+#wa-close{all:unset;position:absolute;top:8px;right:10px;width:26px;height:26px;border-radius:999px;display:grid;place-items:center;cursor:pointer;color:#64748b;font-weight:700}
+#wa-close:hover{background:#f1f5f9;color:#0f172a}
+
+.wa-row{display:flex;gap:12px;align-items:center}
+.wa-icon{width:36px;height:36px;background:#22c55e;color:#0b4126;border-radius:999px;display:grid;place-items:center;flex:0 0 36px}
+.wa-icon svg{width:20px;height:20px}
+
+.wa-text{min-width:0} /* prevent squish */
+.wa-title{font-size:18px;font-weight:800;color:#111827;margin:0 22px 6px 0;line-height:1.25}
+.wa-cta{display:inline-block;color:#2563eb;text-decoration:none;font-size:15px;line-height:1.3}
+.wa-cta:hover{text-decoration:underline}
+.wa-wave{display:inline-block;animation:wa-wave 1.6s ease-in-out infinite;transform-origin:70% 70%}
+
+/* Animations */
+@keyframes wa-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes wa-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes wa-wave{0%{transform:rotate(0)}10%{transform:rotate(14deg)}20%{transform:rotate(-8deg)}30%{transform:rotate(14deg)}40%{transform:rotate(-4deg)}50%{transform:rotate(10deg)}60%,100%{transform:rotate(0)}}
+
+/* Mobile — use full width but same look */
+@media (max-width:520px){
+  #wa-card{right:0;bottom:76px;width:auto;min-width:0;max-width:min(92vw,380px)}
+}
+</style>
+
+<script>
+(function(){
+  const fab   = document.getElementById('wa-fab');
+  const card  = document.getElementById('wa-card');
+  const close = document.getElementById('wa-close');
+  const KEY   = 'waTeaserDismissedUntil';
+  const now = Date.now();
+  const until = Number(localStorage.getItem(KEY) || 0);
+
+  // Show once (per 24h) like the reference
+  if (now > until) setTimeout(()=> card.classList.add('show'), 600);
+
+  close.addEventListener('click', ()=>{
+    localStorage.setItem(KEY, String(Date.now() + 24*60*60*1000));
+    card.remove();
+  });
+})();
+</script>
+  
+
+  <style>
+    /* Floating, centered panel header (Zedwell-style) */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+  
+      /* Make the bar itself transparent so the panel “floats” */
+      background: transparent;
+      /* Add a little breathing room from the very top */
+      padding: 10px 16px;
+      /* Smooth transitions */
+      transition: padding 0.25s ease;
+    }
+  
+    /* The floating panel */
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+  
+      /* Panel look */
+      background: #FFFFFFED;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow:
+        0 14px 30px rgba(0,0,0,0.12),
+        0 4px 10px rgba(0,0,0,0.08);
+  
+      /* Layout */
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+  
+      /* Nice glassy feel on capable browsers */
+      backdrop-filter: saturate(140%) blur(6px);
+    }
+  
+    /* Compact the panel slightly on scroll */
+    header.scrolled { padding-top: 6px; padding-bottom: 6px; }
+    header.scrolled .header-inner {
+      background: #FFFFFFED;
+      border-radius: 10px;
+      box-shadow:
+        0 10px 24px rgba(0,0,0,0.10),
+        0 3px 8px rgba(0,0,0,0.08);
+    }
+  
+    /* Logo */
+    .logo-block {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+  
+    .spacer { flex-grow: 1; }
+  
+    /* Nav */
+    .main-nav ul {
+      display: flex;
+      list-style: none;
+      gap: 40px;
+      margin: 0;
+      padding: 0;
+    }
+  
+    .main-nav a {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--primary);
+      position: relative;
+      padding-bottom: 3px;
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+  
+    .main-nav a:hover { color: var(--accent); }
+  
+    .main-nav a:hover::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 100%; height: 2px;
+      background-color: var(--primary);
+    }
+  
+    .main-nav span {
+      font-size: 10px;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+  
+    /* Book button */
+    .book-now { margin-left: 20px; }
+    .book-now a {
+      background-color: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 10px 22px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+      display: inline-block;
+    }
+    .book-now a:hover {
+      background-color: #363626;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.16);
+    }
+  
+    /* Dropdown (keeps same behavior; just sits above the panel) */
+    .main-nav .has-dropdown { position: relative; }
+    .main-nav .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%; left: 0;
+      min-width: 160px;
+      list-style: none;
+      margin: 10px 0 0;
+      padding: 6px;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 10px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.10), 0 3px 8px rgba(0,0,0,0.06);
+      z-index: 1001;
+    }
+    .main-nav .has-dropdown:hover .dropdown { display: block; }
+    .main-nav .dropdown li a {
+      display: block;
+      padding: 10px 12px;
+      color: var(--primary);
+      font-size: 14px;
+      border-radius: 6px;
+    }
+    .main-nav .dropdown li a:hover {
+      background-color: #f5f2ea;
+    }
+  
+    /* Small screens: keep the floating look, just tighter padding */
+    @media (max-width: 768px) {
+      .header-inner {
+        padding: 12px 16px;
+        gap: 12px;
+      }
+      .main-nav ul { gap: 20px; }
+      .book-now { margin-left: 12px; }
+    }
+  
+    
+      /* Dropdown */
+      .main-nav .has-dropdown {
+        position: relative;
+      }
+    
+      .main-nav .dropdown {
+        display: none;
+        position: absolute;
+        background-color: var(--light);
+        top: 100%;
+        left: 0;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        min-width: 140px;
+        z-index: 1001;
+      }
+    
+      .main-nav .has-dropdown:hover .dropdown {
+        display: block;
+      }
+    
+      .main-nav .dropdown li a {
+        display: block;
+        padding: 10px 16px;
+        color: var(--primary);
+        font-size: 14px;
+        text-decoration: none;
+      }
+    
+      .main-nav .dropdown li a:hover {
+        background-color: #f0f0f0;
+      }
+    </style>
+  
+  <script>
+    // Toggle compact floating style when scrolling
+    document.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 40) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    });
+  </script>
+  
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const dropdown = document.querySelector('.dropdown');
+
+    menuToggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.has-dropdown')) {
+        dropdown.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+<!-- =========================
+     Nine Elms (Flat E) – Gallery + Details (3×2 grid + Lightbox)
+     ========================= -->
+     <section id="mv-wireframe" class="mv-section">
+      <style>
+        :root{
+          --stone:#363633; --light:#fffffff7; --off:#fffffff7;
+          --ink:var(--stone); --bg:var(--off); --card:#fff;
+          --radius:16px; --shadow:0 12px 35px rgba(54,54,51,.10);
+          --shadow-soft:0 6px 18px rgba(54,54,51,.08);
+          --gallery-h:560px; --header-clear: clamp(48px, 9vh, 100px);
+          --accent:#1f5f79;
+        }
+    
+        #mv-wireframe{
+          background:var(--bg); color:var(--ink);
+          font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+          padding: calc(var(--header-clear) + 20px) 18px 48px;
+          scroll-margin-top: calc(var(--header-clear) + 12px);
+        }
+        .mv-wrap{max-width:1200px;margin:0 auto}
+        .mv-title{
+          text-align:center;font-size:clamp(26px,3vw,34px);
+          font-weight:800;margin:0 0 24px;color:var(--stone);letter-spacing:.2px;
+        }
+    
+        .mv-cols{
+          display:grid;
+          grid-template-columns: minmax(0, 2fr) minmax(280px, 360px);
+          gap:28px; align-items:start;
+          opacity:0; transform:translateY(20px);
+          animation:fadeUp 0.8s ease forwards;
+        }
+        @media (max-width:980px){.mv-cols{grid-template-columns:1fr}}
+    
+        /* Gallery */
+        .mv-gallery{
+          display:grid;
+          grid-template-columns: 2fr 0.9fr 0.9fr;
+          grid-template-rows: 1fr 1fr;
+          gap:16px;height:var(--gallery-h);align-items:stretch;
+          opacity:0; transform:translateX(-30px);
+          animation:slideInLeft 0.9s ease forwards;
+        }
+        .mv-tile{position:relative;border-radius:16px;overflow:hidden;background:#fffffff7;cursor:pointer}
+        .mv-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+        .mv-tile:hover .mv-img{transform:scale(1.05)}
+    
+        .mv-left{grid-column:1; grid-row:1 / 3;}
+        .mv-rt-t1{grid-column:2; grid-row:1;}
+        .mv-rt-t2{grid-column:3; grid-row:1;}
+        .mv-rt-b1{grid-column:2; grid-row:2;}
+        .mv-rt-b2{grid-column:3; grid-row:2;}
+    
+        .mv-photos-btn{
+          position:absolute;left:16px;bottom:16px;display:inline-flex;align-items:center;gap:10px;
+          background:#fff;border:1px solid var(--light);padding:11px 16px;border-radius:999px;
+          box-shadow:var(--shadow-soft);font-weight:800;color:var(--ink);cursor:pointer;text-decoration:none;
+          transition:transform .2s ease;
+        }
+        .mv-photos-btn:hover{transform:scale(1.05)}
+        .mv-photos-btn .dot{height:10px;width:10px;border-radius:999px;background:var(--accent);display:inline-block}
+    
+        /* Details Card */
+        .mv-card{
+          background:var(--card);
+          border:none;
+          border-radius:var(--radius);
+          box-shadow:var(--shadow);
+          padding:22px;display:flex;flex-direction:column;gap:16px;
+          margin-left:-28px;height:var(--gallery-h);box-sizing:border-box;
+          opacity:0; transform:translateX(30px);
+          animation:slideInRight 0.9s ease forwards;
+        }
+        @media (max-width:980px){
+          .mv-card{margin-left:0;height:auto}
+        }
+    
+        .mv-card h2{font-size:clamp(22px,2.4vw,28px);margin:6px 0 2px;color:var(--stone)}
+        .mv-sub{color:#6b6b6b;font-weight:700}
+    
+        .mv-specs{display:grid;gap:10px;margin-top:6px}
+        .mv-spec{display:flex;align-items:center;gap:10px;padding:8px 0;border:none;background:transparent}
+        .spec-ico{display:flex;align-items:center;justify-content:center}
+        .spec-ico img{width:40px;height:40px;display:block}
+        .spec-text{font-weight:800px}
+    
+        .mv-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}
+        .btn-primary,.btn-secondary{transition:transform .2s ease}
+        .btn-primary:hover,.btn-secondary:hover{transform:translateY(-2px)}
+    
+        .btn-primary{background:var(--stone);color:#fff;border:none;border-radius:10px;padding:12px 16px;font-weight:800;text-decoration:none}
+        .btn-secondary{background:#fff;color:var(--stone);border:1px solid var(--light);border-radius:10px;padding:12px 16px;font-weight:800;text-decoration:none}
+    
+        /* Animations */
+        @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+        @keyframes slideInLeft{to{opacity:1;transform:translateX(0)}}
+        @keyframes slideInRight{to{opacity:1;transform:translateX(0)}}
+    
+        /* ---- Lightbox UI ---- */
+        .mv-lightbox{
+          position:fixed; inset:0; display:none; place-items:center;
+          background:rgba(0,0,0,.75); z-index:9999;
+        }
+        .mv-lightbox.is-open{ display:grid; }
+        .mv-lightbox__inner{
+          width:min(1000px, 92vw); height:min(80vh, 80svh);
+          background:#000; border-radius:12px; position:relative;
+          box-shadow:0 20px 60px rgba(0,0,0,.5); overflow:hidden;
+          display:flex; align-items:center; justify-content:center;
+        }
+        .mv-lightbox__img{ max-width:100%; max-height:100%; object-fit:contain; display:block; }
+        .mv-lightbox__close,
+        .mv-lightbox__prev,
+        .mv-lightbox__next{
+          position:absolute; top:50%; transform:translateY(-50%);
+          background:rgba(255,255,255,.15); border:none; color:#fff;
+          width:44px; height:44px; border-radius:999px; cursor:pointer;
+          display:grid; place-items:center; font-size:18px;
+          backdrop-filter: blur(4px);
+        }
+        .mv-lightbox__close{ top:12px; right:12px; transform:none; width:40px; height:40px; }
+        .mv-lightbox__prev{ left:12px; }
+        .mv-lightbox__next{ right:12px; }
+        .mv-lightbox__close:hover,
+        .mv-lightbox__prev:hover,
+        .mv-lightbox__next:hover{ background:rgba(255,255,255,.25); }
+        .mv-lightbox__counter{
+          position:absolute; left:16px; bottom:12px; color:#fff;
+          font-weight:700; font-size:14px; background:rgba(0,0,0,.35);
+          padding:6px 10px; border-radius:999px;
+        }
+    
+        /* ---- Mobile tweaks (optional) ---- */
+        @media (max-width: 768px) {
+          #mv-wireframe{
+            padding: calc(var(--header-clear) + 10px) 12px 28px !important;
+          }
+          .mv-cols{
+            display:grid !important; grid-template-columns:1fr !important; row-gap:16px !important;
+          }
+          .mv-gallery{
+            grid-template-columns: 2fr 0.9fr 0.9fr !important;
+            grid-template-rows: 1fr 1fr !important;
+            gap:10px !important;
+            height: clamp(360px, 88vw, 520px) !important;
+            width:100% !important; max-width:100% !important; margin:0 auto !important; overflow:hidden !important;
+          }
+          .mv-tile{ border-radius:12px !important; }
+          .mv-img{ object-fit:cover !important; }
+          .mv-photos-btn{ left:12px !important; bottom:12px !important; transform:none !important; }
+          .mv-card{ margin:0 !important; height:auto !important; }
+          .mv-lightbox__inner{ width:94vw; height:70svh; }
+          .mv-lightbox__prev, .mv-lightbox__next{ top:auto; bottom:12px; transform:none; }
+          .mv-lightbox__prev{ left:12px; } .mv-lightbox__next{ right:12px; }
+        }
+      </style>
+    
+      <div class="mv-wrap">
+        <h1 class="mv-title">Nine Elms</h1>
+    
+        <div class="mv-cols">
+          <!-- LEFT: Mosaic -->
+          <div class="mv-gallery">
+            <figure class="mv-left mv-tile" data-open="0" tabindex="0" aria-label="Open photo 1">
+              <img class="mv-img" src="Property2/WEB 1.jpg" alt="Main photo">
+              <button class="mv-photos-btn" type="button" data-open="0" aria-label="View all photos">
+                <span class="dot"></span> View All
+              </button>
+            </figure>
+            <figure class="mv-rt-t1 mv-tile" data-open="1" tabindex="0" aria-label="Open photo 2">
+              <img class="mv-img" src="Property2/WEB 2.jpg" alt="Top-middle">
+            </figure>
+            <figure class="mv-rt-t2 mv-tile" data-open="2" tabindex="0" aria-label="Open photo 3">
+              <img class="mv-img" src="Property2/WEB 3.jpg" alt="Top-right">
+            </figure>
+            <figure class="mv-rt-b1 mv-tile" data-open="3" tabindex="0" aria-label="Open photo 4">
+              <img class="mv-img" src="Property2/WEB 4.jpg" alt="Bottom-middle">
+            </figure>
+            <figure class="mv-rt-b2 mv-tile" data-open="4" tabindex="0" aria-label="Open photo 5">
+              <img class="mv-img" src="Property2/WEB 5.jpg" alt="Bottom-right">
+            </figure>
+          </div>
+    
+          <!-- RIGHT: Details Card -->
+          <aside class="mv-card">
+            <h2>Cosy Two Bedroom Luxury Apartment - Central London</h2>
+            <div class="mv-sub">London • W9</div>
+    
+            <div class="mv-specs" role="list">
+              <div class="mv-spec"><div class="spec-ico"><img src="icons/bed.png" alt="Bedrooms"></div><div class="spec-text">2 Bedrooms</div></div>
+              <div class="mv-spec"><div class="spec-ico"><img src="icons/bath.png" alt="Bathrooms"></div><div class="spec-text">1 Bathrooms</div></div>
+              <div class="mv-spec"><div class="spec-ico"><img src="icons/sofa.png" alt="Sofa beds"></div><div class="spec-text">4 Beds</div></div>
+              <div class="mv-spec"><div class="spec-ico"><img src="icons/peep.png" alt="Sleeps"></div><div class="spec-text">Sleeps 6</div></div>
+            </div>
+    
+            <div class="mv-actions">
+              <a class="btn-primary" href="booknow.html">Enquire Now</a>
+              <a class="btn-secondary" href="nine1-detail.html">More Details</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    
+      <!-- Lightbox -->
+      <div class="mv-lightbox" id="mvLightbox" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="mv-lightbox__inner">
+          <img class="mv-lightbox__img" id="mvLightboxImg" alt="Property photo preview">
+          <button class="mv-lightbox__close" id="mvLbClose" aria-label="Close">✕</button>
+          <button class="mv-lightbox__prev" id="mvLbPrev" aria-label="Previous">‹</button>
+          <button class="mv-lightbox__next" id="mvLbNext" aria-label="Next">›</button>
+          <div class="mv-lightbox__counter" id="mvLbCounter">1 / 1</div>
+        </div>
+      </div>
+    
+      <script>
+        (function(){
+          // Scope to THIS section only (even if id="mv-wireframe" appears elsewhere)
+          const root = document.currentScript.closest('#mv-wireframe');
+    
+          // Gather gallery tiles & image srcs
+          const tiles = Array.from(root.querySelectorAll('.mv-gallery .mv-tile'));
+          const srcList = tiles.map(t => t.querySelector('img.mv-img')?.getAttribute('src')).filter(Boolean);
+    
+          // Lightbox elements
+          const lb = root.querySelector('#mvLightbox');
+          const lbImg = root.querySelector('#mvLightboxImg');
+          const btnClose = root.querySelector('#mvLbClose');
+          const btnPrev = root.querySelector('#mvLbPrev');
+          const btnNext = root.querySelector('#mvLbNext');
+          const counter = root.querySelector('#mvLbCounter');
+    
+          let idx = 0;
+          let lastFocus = null;
+    
+          function updateCounter(){ counter.textContent = (idx + 1) + ' / ' + srcList.length; }
+          function showIndex(i){
+            if (!srcList.length) return;
+            idx = (i + srcList.length) % srcList.length;
+            lbImg.src = srcList[idx];
+            updateCounter();
+          }
+          function openAt(i){
+            lastFocus = document.activeElement;
+            showIndex(i || 0);
+            lb.classList.add('is-open');
+            lb.setAttribute('aria-hidden', 'false');
+            btnClose.focus();
+            document.addEventListener('keydown', onKey);
+          }
+          function close(){
+            lb.classList.remove('is-open');
+            lb.setAttribute('aria-hidden', 'true');
+            document.removeEventListener('keydown', onKey);
+            if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+          }
+          function onKey(e){
+            if (e.key === 'Escape') close();
+            else if (e.key === 'ArrowRight') showIndex(idx + 1);
+            else if (e.key === 'ArrowLeft') showIndex(idx - 1);
+          }
+    
+          // Click handlers for tiles (and keyboard access)
+          tiles.forEach(t => {
+            const start = parseInt(t.getAttribute('data-open') || '0', 10);
+            t.addEventListener('click', () => openAt(start));
+            t.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openAt(start); }
+            });
+            if (!t.hasAttribute('tabindex')) t.setAttribute('tabindex', '0');
+          });
+    
+          // "View All" button
+          const viewAllBtn = root.querySelector('.mv-photos-btn');
+          if (viewAllBtn) {
+            viewAllBtn.addEventListener('click', (e) => {
+              e.stopPropagation(); // avoid double fire via figure
+              const start = parseInt(viewAllBtn.getAttribute('data-open') || '0', 10);
+              openAt(start);
+            });
+          }
+    
+          // Lightbox controls & outside click
+          btnClose.addEventListener('click', close);
+          btnPrev.addEventListener('click', () => showIndex(idx - 1));
+          btnNext.addEventListener('click', () => showIndex(idx + 1));
+          lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+    
+          // Preload neighbors each time the image changes
+          function preload(src){ const i = new Image(); i.src = src; }
+          const observer = new MutationObserver(() => {
+            const next = srcList[(idx + 1) % srcList.length];
+            const prev = srcList[(idx - 1 + srcList.length) % srcList.length];
+            if (next) preload(next);
+            if (prev) preload(prev);
+          });
+          observer.observe(lbImg, { attributes: true, attributeFilter: ['src'] });
+        })();
+      </script>
+    </section>
+    
+
+<!-- =========================
+     Flat K – Gallery + Details (3×2 grid + Lightbox)
+     ========================= -->
+     <section id="mv-wireframe" class="mv-section">
+      <style>
+        :root{
+          --stone:#363633; --light:#fffffff7; --off:#fffffff7;
+          --ink:var(--stone); --bg:var(--off); --card:#fff;
+          --radius:16px; --shadow:0 12px 35px rgba(54,54,51,.10);
+          --shadow-soft:0 6px 18px rgba(54,54,51,.08);
+          --gallery-h:560px; --header-clear: clamp(48px, 9vh, 100px);
+          --accent:#1f5f79;
+        }
+    
+        #mv-wireframe{
+          background:var(--bg); color:var(--ink);
+          font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+          padding: calc(var(--header-clear) + 20px) 18px 48px;
+          scroll-margin-top: calc(var(--header-clear) + 12px);
+        }
+        .mv-wrap{max-width:1200px;margin:0 auto}
+        .mv-title{
+          text-align:center;font-size:clamp(26px,3vw,34px);
+          font-weight:800;margin:0 0 24px;color:var(--stone);letter-spacing:.2px;
+        }
+    
+        .mv-cols{
+          display:grid;
+          grid-template-columns: minmax(0, 2fr) minmax(280px, 360px);
+          gap:28px; align-items:start;
+          opacity:0; transform:translateY(20px);
+          animation:fadeUp 0.8s ease forwards;
+        }
+        @media (max-width:980px){.mv-cols{grid-template-columns:1fr}}
+    
+        /* Gallery */
+        .mv-gallery{
+          display:grid;
+          grid-template-columns: 2fr 0.9fr 0.9fr;
+          grid-template-rows: 1fr 1fr;
+          gap:16px;height:var(--gallery-h);align-items:stretch;
+          opacity:0; transform:translateX(-30px);
+          animation:slideInLeft 0.9s ease forwards;
+        }
+        .mv-tile{position:relative;border-radius:16px;overflow:hidden;background:#fffffff7;cursor:pointer}
+        .mv-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+        .mv-tile:hover .mv-img{transform:scale(1.05)}
+    
+        .mv-left{grid-column:1; grid-row:1 / 3;}
+        .mv-rt-t1{grid-column:2; grid-row:1;}
+        .mv-rt-t2{grid-column:3; grid-row:1;}
+        .mv-rt-b1{grid-column:2; grid-row:2;}
+        .mv-rt-b2{grid-column:3; grid-row:2;}
+    
+        .mv-photos-btn{
+          position:absolute;left:16px;bottom:16px;display:inline-flex;align-items:center;gap:10px;
+          background:#fff;border:1px solid var(--light);padding:11px 16px;border-radius:999px;
+          box-shadow:var(--shadow-soft);font-weight:800;color:var(--ink);cursor:pointer;text-decoration:none;
+          transition:transform .2s ease;
+        }
+        .mv-photos-btn:hover{transform:scale(1.05)}
+        .mv-photos-btn .dot{height:10px;width:10px;border-radius:999px;background:var(--accent);display:inline-block}
+    
+        /* Details Card */
+        .mv-card{
+          background:var(--card);
+          border:none;
+          border-radius:var(--radius);
+          box-shadow:var(--shadow);
+          padding:22px;display:flex;flex-direction:column;gap:16px;
+          margin-left:-28px;height:var(--gallery-h);box-sizing:border-box;
+          opacity:0; transform:translateX(30px);
+          animation:slideInRight 0.9s ease forwards;
+        }
+        @media (max-width:980px){
+          .mv-card{margin-left:0;height:auto}
+        }
+    
+        .mv-card h2{font-size:clamp(22px,2.4vw,28px);margin:6px 0 2px;color:var(--stone)}
+        .mv-sub{color:#6b6b6b;font-weight:700}
+    
+        .mv-specs{display:grid;gap:10px;margin-top:6px}
+        .mv-spec{display:flex;align-items:center;gap:10px;padding:8px 0;border:none;background:transparent}
+        .spec-ico{display:flex;align-items:center;justify-content:center}
+        .spec-ico img{width:40px;height:40px;display:block}
+        .spec-text{font-weight:800px}
+    
+        .mv-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}
+        .btn-primary,.btn-secondary{transition:transform .2s ease}
+        .btn-primary:hover,.btn-secondary:hover{transform:translateY(-2px)}
+    
+        .btn-primary{background:var(--stone);color:#fff;border:none;border-radius:10px;padding:12px 16px;font-weight:800;text-decoration:none}
+        .btn-secondary{background:#fff;color:var(--stone);border:1px solid var(--light);border-radius:10px;padding:12px 16px;font-weight:800;text-decoration:none}
+    
+        /* Animations */
+        @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+        @keyframes slideInLeft{to{opacity:1;transform:translateX(0)}}
+        @keyframes slideInRight{to{opacity:1;transform:translateX(0)}}
+    
+        /* ==== Mobile (desktop untouched) ==== */
+        @media (max-width: 768px) {
+          #mv-wireframe{
+            padding: calc(var(--header-clear) + 10px) 12px 28px !important;
+          }
+          .mv-cols{
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            row-gap: 16px !important;
+          }
+          .mv-gallery{
+            grid-template-columns: 2fr 0.9fr 0.9fr !important;
+            grid-template-rows: 1fr 1fr !important;
+            gap: 10px !important;
+            height: clamp(360px, 88vw, 520px) !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 auto !important;
+            overflow: hidden !important;
+          }
+          .mv-tile{ border-radius: 12px !important; }
+          .mv-img{ object-fit: cover !important; }
+          .mv-photos-btn{ left: 12px !important; bottom: 12px !important; transform: none !important; }
+          .mv-card{ margin: 0 !important; height: auto !important; }
+        }
+    
+        /* -------- Lightbox -------- */
+        .mv-lightbox{
+          position:fixed; inset:0; display:none; place-items:center;
+          background:rgba(0,0,0,.75); z-index:9999;
+        }
+        .mv-lightbox.is-open{ display:grid; }
+        .mv-lightbox__inner{
+          width:min(1000px, 92vw); height:min(80vh, 80svh);
+          background:#000; border-radius:12px; position:relative;
+          box-shadow:0 20px 60px rgba(0,0,0,.5); overflow:hidden;
+          display:flex; align-items:center; justify-content:center;
+        }
+        .mv-lightbox__img{ max-width:100%; max-height:100%; object-fit:contain; display:block; }
+        .mv-lightbox__close,
+        .mv-lightbox__prev,
+        .mv-lightbox__next{
+          position:absolute; top:50%; transform:translateY(-50%);
+          background:rgba(255,255,255,.15); border:none; color:#fff;
+          width:44px; height:44px; border-radius:999px; cursor:pointer;
+          display:grid; place-items:center; font-size:18px;
+          backdrop-filter: blur(4px);
+        }
+        .mv-lightbox__close{ top:12px; right:12px; transform:none; width:40px; height:40px; }
+        .mv-lightbox__prev{ left:12px; }
+        .mv-lightbox__next{ right:12px; }
+        .mv-lightbox__close:hover,
+        .mv-lightbox__prev:hover,
+        .mv-lightbox__next:hover{ background:rgba(255,255,255,.25); }
+        .mv-lightbox__counter{
+          position:absolute; left:16px; bottom:12px; color:#fff;
+          font-weight:700; font-size:14px; background:rgba(0,0,0,.35);
+          padding:6px 10px; border-radius:999px;
+        }
+        @media (max-width: 520px){
+          .mv-lightbox__inner{ width:94vw; height:70svh; }
+          .mv-lightbox__prev, .mv-lightbox__next{ top:auto; bottom:12px; transform:none; }
+          .mv-lightbox__prev{ left:12px; } .mv-lightbox__next{ right:12px; }
+        }
+      </style>
+    
+      <div class="mv-wrap">
+        <div class="mv-cols">
+          <!-- LEFT: Mosaic -->
+          <div class="mv-gallery">
+            <figure class="mv-left mv-tile" data-open="0" tabindex="0" aria-label="Open photo 1">
+              <img class="mv-img" src="Property2/FlatK/WEB 1.jpg" alt="Main photo">
+              <button class="mv-photos-btn" type="button" data-open="0" aria-label="View all photos">
+                <span class="dot"></span> View All
+              </button>
+            </figure>
+            <figure class="mv-rt-t1 mv-tile" data-open="1" tabindex="0" aria-label="Open photo 2">
+              <img class="mv-img" src="Property2/FlatK/WEB 2.jpg" alt="Top-middle">
+            </figure>
+            <figure class="mv-rt-t2 mv-tile" data-open="2" tabindex="0" aria-label="Open photo 3">
+              <img class="mv-img" src="Property2/FlatK/WEB 3.jpg" alt="Top-right">
+            </figure>
+            <figure class="mv-rt-b1 mv-tile" data-open="3" tabindex="0" aria-label="Open photo 4">
+              <img class="mv-img" src="Property2/FlatK/WEB 4.jpg" alt="Bottom-middle">
+            </figure>
+            <figure class="mv-rt-b2 mv-tile" data-open="4" tabindex="0" aria-label="Open photo 5">
+              <img class="mv-img" src="Property2/FlatK/WEB 5.jpg" alt="Bottom-right">
+            </figure>
+          </div>
+    
+          <!-- RIGHT: Details Card -->
+          <aside class="mv-card">
+            <h2>Luxury Two Bedroom Duplex - Battersea (C London)</h2>
+            <div class="mv-sub">London • W9</div>
+    
+            <div class="mv-specs" role="list">
+              <div class="mv-spec"><div class="spec-ico"><img src="icons/bed.png" alt="Bedrooms"></div><div class="spec-text">2 Bedrooms</div></div>
+              <div class="mv-spec"><div class="spec-ico"><img src="icons/bath.png" alt="Bathrooms"></div><div class="spec-text">1 Bathrooms</div></div>
+              <div class="mv-spec"><div class="spec-ico"><img src="icons/sofa.png" alt="Sofa beds"></div><div class="spec-text">5 Beds</div></div>
+              <div class="mv-spec"><div class="spec-ico"><img src="icons/peep.png" alt="Sleeps"></div><div class="spec-text">Sleeps 7</div></div>
+            </div>
+    
+            <div class="mv-actions">
+              <a class="btn-primary" href="booknow.html">Enquire Now</a>
+              <a class="btn-secondary" href="nine2-detail.html">More Details</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    
+      <!-- Lightbox -->
+      <div class="mv-lightbox" id="mvLightbox" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="mv-lightbox__inner">
+          <img class="mv-lightbox__img" id="mvLightboxImg" alt="Property photo preview">
+          <button class="mv-lightbox__close" id="mvLbClose" aria-label="Close">✕</button>
+          <button class="mv-lightbox__prev" id="mvLbPrev" aria-label="Previous">‹</button>
+          <button class="mv-lightbox__next" id="mvLbNext" aria-label="Next">›</button>
+          <div class="mv-lightbox__counter" id="mvLbCounter">1 / 1</div>
+        </div>
+      </div>
+    
+      <script>
+        (function(){
+          // Scope strictly to this section (even if same ID is reused elsewhere)
+          const root = document.currentScript.closest('#mv-wireframe');
+    
+          // Collect gallery tiles & image sources
+          const tiles = Array.from(root.querySelectorAll('.mv-gallery .mv-tile'));
+          const srcList = tiles.map(t => t.querySelector('img.mv-img')?.getAttribute('src')).filter(Boolean);
+    
+          // Lightbox elements
+          const lb = root.querySelector('#mvLightbox');
+          const lbImg = root.querySelector('#mvLightboxImg');
+          const btnClose = root.querySelector('#mvLbClose');
+          const btnPrev = root.querySelector('#mvLbPrev');
+          const btnNext = root.querySelector('#mvLbNext');
+          const counter = root.querySelector('#mvLbCounter');
+    
+          let idx = 0;
+          let lastFocus = null;
+    
+          function updateCounter(){ counter.textContent = (idx + 1) + ' / ' + srcList.length; }
+          function showIndex(i){
+            if (!srcList.length) return;
+            idx = (i + srcList.length) % srcList.length;
+            lbImg.src = srcList[idx];
+            updateCounter();
+          }
+          function openAt(i){
+            lastFocus = document.activeElement;
+            showIndex(i || 0);
+            lb.classList.add('is-open');
+            lb.setAttribute('aria-hidden', 'false');
+            btnClose.focus();
+            document.addEventListener('keydown', onKey);
+          }
+          function close(){
+            lb.classList.remove('is-open');
+            lb.setAttribute('aria-hidden', 'true');
+            document.removeEventListener('keydown', onKey);
+            if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+          }
+          function onKey(e){
+            if (e.key === 'Escape') close();
+            else if (e.key === 'ArrowRight') showIndex(idx + 1);
+            else if (e.key === 'ArrowLeft') showIndex(idx - 1);
+          }
+    
+          // Click handlers for tiles
+          tiles.forEach(t => {
+            const start = parseInt(t.getAttribute('data-open') || '0', 10);
+            t.addEventListener('click', () => openAt(start));
+            t.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openAt(start); }
+            });
+            // a11y: make focusable
+            if (!t.hasAttribute('tabindex')) t.setAttribute('tabindex', '0');
+          });
+    
+          // "View All" button
+          const viewAllBtn = root.querySelector('.mv-photos-btn');
+          if (viewAllBtn) {
+            viewAllBtn.addEventListener('click', (e) => {
+              e.stopPropagation(); // prevent figure click from double-firing
+              const start = parseInt(viewAllBtn.getAttribute('data-open') || '0', 10);
+              openAt(start);
+            });
+          }
+    
+          // Lightbox controls & outside click
+          btnClose.addEventListener('click', close);
+          btnPrev.addEventListener('click', () => showIndex(idx - 1));
+          btnNext.addEventListener('click', () => showIndex(idx + 1));
+          lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+    
+          // Preload neighbors
+          function preload(src){ const i = new Image(); i.src = src; }
+          const observer = new MutationObserver(() => {
+            const next = srcList[(idx + 1) % srcList.length];
+            const prev = srcList[(idx - 1 + srcList.length) % srcList.length];
+            if (next) preload(next);
+            if (prev) preload(prev);
+          });
+          observer.observe(lbImg, { attributes: true, attributeFilter: ['src'] });
+        })();
+      </script>
+    </section>
+    
+
+
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      
+      <!-- LEFT SIDE: All links grouped -->
+      <div class="footer-links-group">
+        <div class="footer-column">
+          <h4>BLISS STAYS</h4>
+          <ul>
+            <li><a href="property.html">Properties</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            
+            
+          </ul>
+        </div>
+  
+        <div class="footer-column">
+          <h4>ENQUIRIES</h4>
+          <ul>
+            <li><a href="booknow.html">Corporate Bookings</a></li>
+            <li><a href="booknow.html">Group Bookings</a></li>
+            <li><a href="booknow.html">Apart-hotels</a></li>
+          </ul> 
+        </div>
+      </div>
+  
+      <!-- RIGHT SIDE: Logo and socials -->
+      <div class="footer-logo-section">
+        <img src="logo.png" alt="Bliss Stays Logo" class="footer-logo" />
+        <div class="social-icons">
+          <a href="#"><img src="icons/insta.png" alt="Instagram" /></a>
+          <a href="#"><img src="icons/fb.png" alt="Facebook" /></a>
+        </div>
+      </div>
+  
+    </div>
+  
+    <div class="footer-bottom">
+      <p>&copy; Bliss Stays Ltd. 2025. All rights reserved.</p>
+    </div>
+  </footer>
+  
+  <style>
+  .footer {
+  background-color: #f7f7f9; 
+  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 60px 20px 20px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  gap: 40px;
+}
+
+.footer-links-group {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.footer-column {
+  min-width: 180px;
+}
+
+.footer-column h4 {
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #999;
+  padding-bottom: 6px;
+  color: #333;
+}
+
+.footer-column .footer-sub {
+  margin-top: 20px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li {
+  margin: 10px 0;
+}
+
+.footer-column a {
+  color: #333;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #666;
+}
+
+.footer-logo-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.footer-logo {
+  width: 270px;
+  margin-bottom: 20px;
+}
+
+.footer-logo-section .social-icons a {
+  margin-left: 12px;
+}
+
+.footer-logo-section .social-icons img {
+  width: 22px;
+  filter: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 13px;
+  color: #555;
+  border-top: 1px solid #999;
+  padding-top: 12px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-links-group {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-logo-section {
+    align-items: flex-start;
+    text-align: left;
+    margin-top: 30px;
+  }
+
+  .footer-logo {
+    width: 120px;
+  }
+}
+
+  </style> 
+
+
+  
+
+</body>
+</html>

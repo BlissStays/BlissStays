@@ -1,0 +1,2947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bliss Stays</title>
+
+          <!-- Customized Bootstrap Stylesheet -->
+          <link href="css/bootstrap.min.css" rel="stylesheet">
+
+          <!-- Template Stylesheet -->
+          <link href="css/style.css" rel="stylesheet">
+          <!-- jQuery (must load before Owl) -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- Owl Carousel CSS + JS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.theme.default.min.css">
+<script src="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js"></script>
+
+
+  <style>
+    /* Reset */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      color: #444;
+      line-height: 1.6;
+      background-color: #ffffff;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      width: 100%;
+      min-height: 100%;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* Colors */
+    :root {
+      --primary: #4b4b38;
+      --accent: #6b6b50;
+      --light: #ffffff;
+    }
+
+    /* Hero with video */
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.255);
+      z-index: 1;
+    }
+
+    .hero-logo {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+    }
+
+    .hero-logo img {
+      max-width: 300px;
+      width: 90%;
+      height: auto;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+    }
+
+
+    
+
+    .logo-block {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.logo-text {
+  letter-spacing: 0.5px;
+}
+
+.home-message-wrapper {
+  background-color: #f4f0e0; /* Makes the entire width same color */
+  width: 100%;
+}
+
+.home-message {
+  padding: 100px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.home-message-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 320px;
+}
+
+.home-message-left {
+  flex: 1 1 300px;
+  font-size: 2.0rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--primary);
+}
+
+.home-message-right {
+  flex: 1 1 500px;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .home-message-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .home-message-left {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .home-message-right {
+    font-size: 1rem;
+  }
+}
+
+/* Outer full-width background wrapper */
+.bliss-brands-fullwrap {
+  background-color: #ffffff;
+  width: 100%;
+}
+
+/* Section inside wrapper */
+.bliss-brands-showcase {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Content wrapper */
+.brands-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brands-left {
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 40px;
+}
+
+.brands-left h5 {
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.brands-left h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.brands-left p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* Cards container */
+.brands-right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.brand-card {
+  background: #ffffff;
+  text-align: center;
+  flex: 1 1 250px;
+  max-width: 300px;
+  padding-bottom: 20px;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.brand-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.brand-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 15px 15px 5px;
+}
+
+.brand-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0 15px 10px;
+}
+
+.brand-card a {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.brand-card a:hover {
+  color: var(--accent);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .brands-right {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .brand-card {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+/* Click-triggered animation keyframes */
+@keyframes clickBounce {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Class that triggers the animation */
+.animate-on-click {
+  animation: clickBounce 0.3s ease;
+}
+
+.brand-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+
+
+
+  </style>
+</head>
+<body>
+
+
+  <main>
+
+
+    <!-- ===== Site-wide Scroll Transitions (drop-in) ===== -->
+<style id="site-scroll-transitions">
+  :root{
+    --rv-dur: 700ms;
+    --rv-ease: cubic-bezier(.2,.7,.3,1);
+    --rv-distance: 16px;
+  }
+  /* base */
+  .revealify{
+    opacity: 0;
+    transform: translate3d(0,var(--rv-distance),0) scale(0.995);
+    will-change: transform, opacity;
+    transition:
+      opacity var(--rv-dur) var(--rv-ease) var(--rv-delay,0ms),
+      transform var(--rv-dur) var(--rv-ease) var(--rv-delay,0ms);
+  }
+  .revealify.in{ opacity: 1; transform: none; }
+
+  /* variants */
+  .revealify.up{ transform: translate3d(0,var(--rv-distance),0) scale(0.995); }
+  .revealify.left{ transform: translate3d(calc(var(--rv-distance) * -1),0,0) scale(0.995); }
+  .revealify.right{ transform: translate3d(var(--rv-distance),0,0) scale(0.995); }
+  .revealify.scale{ transform: scale(0.96); }
+
+  /* allow per-element overrides via data attributes */
+  [data-reveal-distance]{ --rv-distance: attr(data-reveal-distance px); }
+  [data-reveal-delay]{ --rv-delay: attr(data-reveal-delay ms); }
+  [data-reveal-duration]{ --rv-dur: attr(data-reveal-duration ms); }
+
+  /* respectful fallback */
+  @media (prefers-reduced-motion: reduce){
+    .revealify, .revealify.in{ opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+</style>
+
+<script>
+(function(){
+  // Guard: only run once
+  if (window.__revealifyLoaded) return; window.__revealifyLoaded = true;
+
+  const prefersReduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // 1) Auto-tag common elements so you don't have to add classes manually
+  function autoTag(){
+    const groups = [
+      // hero logo
+      ['.hero .hero-logo', 'up', 0, 0],
+      // home message
+      ['.home-message-left, .home-message-right', 'up', 16, 60],
+      // about section
+      ['#about-us .about-title, #about-us .about-lead', 'up', 14, 60],
+      ['#about-us .stat-card', 'up', 18, 80],
+      // properties / sliders
+      ['.properties-slider .slide, .bliss-slider .attractions-item, .attractions .attractions-item', 'up', 18, 80],
+      // feature grid
+      ['.bliss-features .feature-box', 'up', 16, 70],
+      // reviews (cards/track items)
+      ['#bliss-reviews .review-card, #reviews-banner .rb-card', 'up', 16, 80],
+      // faq items
+      ['#faq .faq-item', 'up', 14, 70],
+      // newsletter
+      ['.newsletter-text, .newsletter-form', 'up', 14, 80],
+      // footer columns
+      ['.footer-column, .footer-logo-section', 'up', 14, 80]
+    ];
+
+    groups.forEach(([sel, variant, distance, stagger])=>{
+      document.querySelectorAll(sel).forEach((el, i)=>{
+        if (!el.classList.contains('revealify')){
+          el.classList.add('revealify', variant || 'up');
+          // stagger each group
+          el.style.setProperty('--rv-delay', (i * (stagger||60)) + 'ms');
+          if (distance != null) el.style.setProperty('--rv-distance', (distance||16) + 'px');
+        }
+      });
+    });
+  }
+
+  // 2) Observer to reveal elements on scroll
+  function setupObserver(){
+    if (prefersReduce){
+      document.querySelectorAll('.revealify').forEach(el => el.classList.add('in'));
+      return;
+    }
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if (e.isIntersecting){
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -4% 0px' });
+
+    document.querySelectorAll('.revealify').forEach(el => io.observe(el));
+  }
+
+  // 3) Optional: subtle hero parallax for the YouTube bg (kept very light)
+  function setupParallax(){
+    const hero = document.querySelector('.hero .hero-video');
+    if (!hero || prefersReduce) return;
+    let ticking = false;
+    function onScroll(){
+      if (ticking) return; ticking = true;
+      requestAnimationFrame(()=>{
+        const y = Math.min(60, window.scrollY * 0.06);
+        hero.style.transform = `translate3d(0, ${y}px, 0)`;
+        ticking = false;
+      });
+    }
+    addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  // 4) Initialize now and on DOM changes (useful if sliders inject nodes)
+  function init(){
+    autoTag();
+    setupObserver();
+    setupParallax();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else { init(); }
+
+  // re-run autoTag when carousels render/clone items
+  const mo = new MutationObserver(() => autoTag());
+  mo.observe(document.documentElement, { childList: true, subtree: true });
+})();
+</script>
+  
+<!-- ======================= HEADER (updated + mobile) ======================= -->
+<!-- ================ HEADER (desktop unchanged, mobile hamburger) ================ -->
+<header>
+  <div class="header-inner">
+    <div class="logo-block">
+      <a href="index.html" class="logo-text">BLISS STAYS</a>
+    </div>
+
+    <div class="spacer"></div>
+
+    <!-- DESKTOP NAV (hidden on mobile) -->
+    <nav class="main-nav" aria-label="Primary">
+      <ul>
+        <li class="has-dropdown locations-menu">
+          <a href="#">Locations <span>▾</span></a>
+          <div class="drop-panel">
+            <div class="loc-group">
+              <div class="loc-title">London</div>
+              <ul class="loc-list">
+                <li><a href="property.html">Maida Vale</a></li>
+                <li><a href="property1.html">Paddington</a></li>
+                <li><a href="property2.html">Nine Elms</a></li>
+                <li><a href="property3.html">Kennington</a></li>
+                <li><a href="property4.html">Wimbledon</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="has-dropdown menu-menu">
+          <a href="#">Menu <span>▾</span></a>
+          <div class="drop-panel">
+            <ul class="menu-list">
+              <li><a href="faq.html">FAQs</a></li>
+              <li><a href="terms.html">Terms & Conditions</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="book-now">
+      <a href="booknow.html">Book now</a>
+    </div>
+
+    <!-- MOBILE HAMBURGER (only visible on mobile) -->
+    <button id="mnavBtn" class="mnav-btn" aria-label="Open menu" aria-controls="mnav" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE SHEET -->
+<aside id="mnav" class="mnav-sheet" aria-hidden="true">
+  <div class="mnav-backdrop"></div>
+  <div class="mnav-panel" role="dialog" aria-modal="true">
+    <div class="mnav-head">
+      <div class="mnav-brand">BLISS STAYS</div>
+      <button id="mnavClose" class="mnav-close" aria-label="Close">×</button>
+    </div>
+
+    <div class="mnav-body">
+      <div class="mnav-group">
+        <div class="mnav-label">Locations</div>
+        <a class="mnav-item" href="property.html">Maida Vale</a>
+        <a class="mnav-item" href="property1.html">Paddington</a>
+        <a class="mnav-item" href="property2.html">Nine Elms</a>
+        <a class="mnav-item" href="property3.html">Kennington</a>
+        <a class="mnav-item" href="property4.html">Wimbledon</a>
+      </div>
+
+      <div class="mnav-group">
+        <div class="mnav-label">Menu</div>
+        <a class="mnav-item" href="faq.html">FAQs</a>
+        <a class="mnav-item" href="terms.html">Terms & Conditions</a>
+        <a class="mnav-item" href="privacy.html">Privacy Policy</a>
+      </div>
+
+      <div class="mnav-cta">
+        <a class="mnav-book" href="booknow.html">Book now</a>
+      </div>
+</div>      
+  </div>
+</aside>
+
+<style>
+/* ——— Desktop keeps your existing look ——— */
+header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:transparent;padding:10px 16px;transition:padding .25s}
+.header-inner{max-width:1200px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:20px;background:#ffffffF5;border:1px solid rgba(0,0,0,.06);border-radius:12px;box-shadow:0 14px 30px rgba(0,0,0,.12),0 4px 10px rgba(0,0,0,.08);backdrop-filter:saturate(140%) blur(6px)}
+header.scrolled{padding-top:6px;padding-bottom:6px}
+header.scrolled .header-inner{background:#fff;border-radius:10px;box-shadow:0 10px 24px rgba(0,0,0,.10),0 3px 8px rgba(0,0,0,.08)}
+.logo-block{font-family:"Times New Roman",Times,serif;font-size:20px;font-weight:700;color:#363633}
+.spacer{flex:1}
+.main-nav ul{display:flex;list-style:none;gap:40px;margin:0;padding:0}
+.main-nav a{font-size:16px;font-weight:500;color:#363633;text-decoration:none;position:relative;padding-bottom:3px}
+.main-nav a:hover{color:#6b6b50}
+.main-nav a:hover::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:#363633}
+.book-now{margin-left:12px}
+.book-now a{background:#4b4b38;color:#fff;font-weight:600;font-size:15px;padding:10px 22px;border-radius:6px;box-shadow:0 2px 6px rgba(0,0,0,.12);transition:transform .2s,box-shadow .2s,background .2s;display:inline-block}
+.book-now a:hover{background:#363626;transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.16)}
+.main-nav .has-dropdown{position:relative}
+.main-nav .has-dropdown>.drop-panel{position:absolute;top:100%;left:0;z-index:1002;display:none;min-width:220px;max-width:260px;padding:14px 16px;background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:12px;box-shadow:0 10px 24px rgba(0,0,0,.10),0 3px 8px rgba(0,0,0,.06)}
+.main-nav .has-dropdown:hover>.drop-panel{display:block}
+.main-nav .locations-menu .loc-title{display:inline-block;font-weight:800;font-size:16px;color:#363633;margin:2px 0 8px;padding-bottom:5px;border-bottom:3px solid #363633}
+.main-nav .locations-menu .loc-list,.menu-menu .menu-list{display:block;list-style:disc;margin:0;padding-left:1.15rem}
+.main-nav .locations-menu .loc-list li,.menu-menu .menu-list li{display:list-item;margin:6px 0}
+.main-nav .locations-menu .loc-list a,.menu-menu .menu-list a{display:inline;white-space:nowrap;color:#363633;font-weight:600}
+
+/* ——— Mobile only ——— */
+.mnav-btn,.mnav-sheet{display:none}
+
+@media (max-width:768px){
+  .main-nav,.book-now{display:none!important}
+  .mnav-btn{display:grid;place-items:center;width:44px;height:44px;border:1px solid rgba(0,0,0,.12);border-radius:10px;background:#fff;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+  .mnav-btn span{display:block;width:22px;height:2px;background:#222;margin:3px 0;border-radius:2px}
+  .mnav-btn:active{transform:scale(.98)}
+
+  .mnav-sheet{display:block;pointer-events:none;position:fixed;inset:0;z-index:1500}
+  .mnav-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.45);opacity:0;transition:opacity .25s}
+  .mnav-panel{position:absolute;top:0;right:0;height:100%;width:min(92vw,420px);background:#fff;border-top-left-radius:16px;border-bottom-left-radius:16px;transform:translateX(100%);transition:transform .25s;box-shadow:-10px 0 30px rgba(0,0,0,.25)}
+  .mnav-sheet.open{pointer-events:auto}
+  .mnav-sheet.open .mnav-backdrop{opacity:1}
+  .mnav-sheet.open .mnav-panel{transform:translateX(0)}
+
+  .mnav-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid #eee;position:sticky;top:0;background:#fff;z-index:1}
+  .mnav-brand{font-size:18px;font-weight:800}
+  .mnav-close{all:unset;font-size:30px;line-height:1;cursor:pointer;padding:4px 8px;border-radius:8px}
+  .mnav-close:active{background:#f3f3f3}
+
+  .mnav-body{display:grid;gap:28px;padding:20px}
+  .mnav-group{display:grid;gap:4px}
+  .mnav-label{font-size:12px;font-weight:800;color:#6b6b6b;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+  .mnav-item{display:block;padding:14px 0;font-size:16px;color:#111;text-decoration:none;border-bottom:1px solid #eee}
+  .mnav-item:active{background:#f7f7f7}
+  .mnav-cta{text-align:center;display:block;background:#4b4b38;color:#fff;font-weight:800;font-size:16px;padding:14px;border-radius:10px;text-decoration:none}
+}
+
+/* --- Enable scrolling inside the mobile sheet --- */
+@media (max-width:768px){
+  /* make the panel a flex column */
+  .mnav-panel{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    max-height:100%;
+    overflow:hidden;                 /* keep scroll confined to body below */
+  }
+  /* the content area becomes the scroller */
+  .mnav-body{
+    flex:1 1 auto;
+    overflow-y:auto;
+    -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
+    overscroll-behavior: contain;      /* prevent rubber-banding to page */
+  }
+  /* keep header fixed at top of the sheet */
+  .mnav-head{
+    position:sticky;
+    top:0;
+    z-index:1;
+    background:#fff;
+  }
+}
+
+</style>
+<style>
+  /* Make room for the sticky CTA so last list item isn't hidden */
+@media (max-width: 768px){
+  .mnav-body{ padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+
+  /* Sticky footer area inside the sheet */
+  .mnav-cta{
+    position: sticky;
+    bottom: 0;
+    left: 0; right: 0;
+    z-index: 3;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    background: #fff;               /* clean, not dark */
+    border-top: 1px solid rgba(0,0,0,.06);
+    backdrop-filter: blur(4px);
+  }
+
+  /* Force our button styles to win over .book-now a */
+  .mnav-cta .mnav-book{
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #4b4b38 !important; /* your primary */
+    color: #fff !important;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1;
+    padding: 16px 18px;
+    border-radius: 12px;
+    border: 0 !important;
+    box-shadow: 0 10px 24px rgba(0,0,0,.12), 0 2px 6px rgba(0,0,0,.08);
+    text-decoration: none !important;
+    transition: transform .06s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .mnav-cta .mnav-book:hover{ box-shadow: 0 14px 30px rgba(0,0,0,.16); }
+  .mnav-cta .mnav-book:active{ transform: translateY(1px); }
+
+  /* Nuke any inherited “panel” look from other styles */
+  .mnav-cta .mnav-book::before,
+  .mnav-cta .mnav-book::after{ content:none !important; }
+}
+
+/* Hide or move WhatsApp while menu is open (choose ONE) */
+@media (max-width: 768px){
+  /* Option A: hide it */
+  body.menu-open #wa-widget{ display: none !important; }
+
+  /* Option B (if you prefer visible, but out of the way):
+  body.menu-open #wa-widget{
+    transform: translateY(80px);
+    opacity: .5;
+    pointer-events: none;
+  } */
+}
+
+</style>
+
+<script>
+  // when opening the mobile sheet
+document.body.classList.add('menu-open');
+document.documentElement.style.overflow = 'hidden';
+document.body.style.overflow = 'hidden';
+
+// when closing the mobile sheet
+document.body.classList.remove('menu-open');
+document.documentElement.style.overflow = '';
+document.body.style.overflow = '';
+
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  });
+
+  const btn   = document.getElementById('mnavBtn');
+  const sheet = document.getElementById('mnav');
+  const close = document.getElementById('mnavClose');
+
+  function openSheet(){
+    sheet.classList.add('open');
+    sheet.setAttribute('aria-hidden','false');
+    btn.setAttribute('aria-expanded','true');
+    document.body.style.overflow='hidden';
+  }
+  function closeSheet(){
+    sheet.classList.remove('open');
+    sheet.setAttribute('aria-hidden','true');
+    btn.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  }
+
+  if (btn){
+    btn.addEventListener('click', openSheet, {passive:true});
+  }
+  document.getElementById('mnavClose')?.addEventListener('click', closeSheet, {passive:true});
+  sheet.querySelector('.mnav-backdrop')?.addEventListener('click', closeSheet, {passive:true});
+  sheet.querySelectorAll('a').forEach(a => a.addEventListener('click', closeSheet, {passive:true}));
+});
+</script>
+
+<!-- ===================== /HEADER (updated + mobile) ===================== -->
+
+
+
+
+<!-- Floating WhatsApp (bottom-left) -->
+<!-- ===== WhatsApp Chat Teaser (final, wide like the reference) ===== -->
+<div id="wa-widget" aria-live="polite">
+  <!-- Floating action button -->
+  <a id="wa-fab"
+     href="https://wa.me/447365208676?text=Hi%20Bliss%20Stays!%20I%20have%20a%20question."
+     target="_blank" rel="noopener"
+     aria-label="Open WhatsApp chat">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path fill="currentColor"
+        d="M19.11 17.71c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.17-.43-2.23-1.37-.82-.73-1.37-1.63-1.53-1.9-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.02-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.3s.98 2.66 1.12 2.84c.14.18 1.93 2.95 4.68 4.14.65.28 1.15.45 1.54.59.65.21 1.25.18 1.72.11.52-.08 1.6-.65 1.82-1.29.22-.64.22-1.18.16-1.29-.07-.11-.23-.18-.5-.32zM16.02 3.2c-6.99 0-12.66 5.67-12.66 12.66 0 2.23.59 4.32 1.62 6.12L3 29l7.19-1.89c1.72.94 3.69 1.47 5.83 1.47 6.99 0 12.66-5.67 12.66-12.66S23.01 3.2 16.02 3.2zm0 22.88c-1.95 0-3.76-.57-5.29-1.55l-.38-.24-4.28 1.12 1.15-4.17-.25-.43a9.98 9.98 0 0 1-1.49-5.25c0-5.53 4.5-10.02 10.02-10.02s10.02 4.5 10.02 10.02-4.5 10.02-10.02 10.02z"/>
+    </svg>
+  </a>
+
+  <!-- Teaser card -->
+  <div id="wa-card" role="dialog" aria-modal="false" aria-label="WhatsApp quick chat">
+    <button id="wa-close" aria-label="Dismiss">×</button>
+    <div class="wa-row">
+      <div class="wa-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path fill="currentColor"
+          d="M16.2 13.6c-.2-.1-1.1-.6-1.3-.7-.2-.1-.3-.1-.5.1l-.6.7c-.2.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.1-.7-.6-1.1-1.3-1.2-1.5-.1-.2 0-.3.1-.5l.4-.4c.1-.1.1-.3.2-.4s0-.3-.1-.5-.5-1.2-.7-1.7c-.2-.4-.4-.3-.6-.3h-.4c-.1 0-.4.1-.6.3-.2.2-.8.7-.8 1.8s.8 2.1.9 2.2c.1.1 1.5 2.3 3.7 3.3.5.2.9.4 1.2.5.5.2 1 .1 1.3.1.4-.1 1.3-.5 1.5-1 .2-.5.2-.9.1-1 0-.1-.2-.2-.4-.3zM12 2C6.5 2 2 6.3 2 11.6c0 2 .6 3.9 1.6 5.4L2 22l5.1-1.3c1.5.8 3.2 1.2 4.9 1.2 5.5 0 10-4.3 10-9.6S17.5 2 12 2z"/></svg>
+      </div>
+      <div class="wa-text">
+        <div class="wa-title">Have any questions? Let’s chat! <span class="wa-wave">👋</span></div>
+        <a class="wa-cta"
+           href="https://wa.me/447365208676?text=Hi%20Bliss%20Stays%2C%20I%27d%20like%20to%20enquire..."
+           target="_blank" rel="noopener">Click here to start a conversation</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* Placement */
+#wa-widget{position:fixed;right:18px;bottom:18px;z-index:2147483647;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+
+/* Floating button */
+#wa-fab{
+  display:grid;place-items:center;width:64px;height:64px;border-radius:999px;
+  background:#22c55e;color:#0b4126;text-decoration:none;
+  box-shadow:0 12px 30px rgba(0,0,0,.25), inset 0 -6px 0 rgba(0,0,0,.08);
+  animation:wa-bounce 1.4s ease infinite;
+}
+#wa-fab svg{width:34px;height:34px}
+
+/* Card — WIDER & HORIZONTAL like your ref */
+#wa-card{
+  position:absolute;right:88px;bottom:6px;
+  width:360px; min-width:360px; /* keeps it wide */
+  background:#fff;border-radius:20px;
+  box-shadow:0 18px 50px rgba(0,0,0,.25);
+  padding:16px 18px;display:none;opacity:0;transform:translateY(10px)
+}
+#wa-card.show{display:block;animation:wa-in .35s cubic-bezier(.2,.7,.2,1) forwards}
+
+#wa-close{all:unset;position:absolute;top:8px;right:10px;width:26px;height:26px;border-radius:999px;display:grid;place-items:center;cursor:pointer;color:#64748b;font-weight:700}
+#wa-close:hover{background:#f1f5f9;color:#0f172a}
+
+.wa-row{display:flex;gap:12px;align-items:center}
+.wa-icon{width:36px;height:36px;background:#22c55e;color:#0b4126;border-radius:999px;display:grid;place-items:center;flex:0 0 36px}
+.wa-icon svg{width:20px;height:20px}
+
+.wa-text{min-width:0} /* prevent squish */
+.wa-title{font-size:18px;font-weight:800;color:#111827;margin:0 22px 6px 0;line-height:1.25}
+.wa-cta{display:inline-block;color:#3e3a35;;text-decoration:none;font-size:15px;line-height:1.3}
+.wa-cta:hover{text-decoration:underline}
+.wa-wave{display:inline-block;animation:wa-wave 1.6s ease-in-out infinite;transform-origin:70% 70%}
+
+/* Animations */
+@keyframes wa-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes wa-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes wa-wave{0%{transform:rotate(0)}10%{transform:rotate(14deg)}20%{transform:rotate(-8deg)}30%{transform:rotate(14deg)}40%{transform:rotate(-4deg)}50%{transform:rotate(10deg)}60%,100%{transform:rotate(0)}}
+
+/* Mobile — use full width but same look */
+@media (max-width:520px){
+  #wa-card{right:0;bottom:76px;width:auto;min-width:0;max-width:min(92vw,380px)}
+}
+</style>
+
+<script>
+(function(){
+  const fab   = document.getElementById('wa-fab');
+  const card  = document.getElementById('wa-card');
+  const close = document.getElementById('wa-close');
+  const KEY   = 'waTeaserDismissedUntil';
+  const now = Date.now();
+  const until = Number(localStorage.getItem(KEY) || 0);
+
+  // Show once (per 24h) like the reference
+  if (now > until) setTimeout(()=> card.classList.add('show'), 600);
+
+  close.addEventListener('click', ()=>{
+    localStorage.setItem(KEY, String(Date.now() + 24*60*60*1000));
+    card.remove();
+  });
+})();
+</script>
+
+
+
+  <!-- HERO (self-hosted video) -->
+<div class="hero" id="book">
+  <video class="hero-bg"
+         autoplay
+         muted
+         loop
+         playsinline
+         preload="auto"
+         poster="assets/hero-poster.jpg">
+    <!-- Optional smaller/faster WebM first -->
+    <source src="assets/hero.webm" type="video/webm">
+    <source src="herovid.mp4"  type="video/mp4">
+    <!-- Fallback text/image if video can't play -->
+    Your browser doesn’t support videos.
+  </video>
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-logo">
+    <img src="logowhite.png" alt="Bliss Stays">
+  </div>
+</div>
+
+<style>
+/* --- Base hero --- */
+.hero{
+  position: relative;
+  width: 100%;
+  height: 100vh;           /* full viewport */
+  min-height: 520px;       /* desktop floor */
+  overflow: hidden;
+}
+.hero-bg{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* no black bars */
+  object-position: center; /* crop evenly */
+  z-index: 0;
+}
+.hero-overlay{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.25); /* subtle dark film */
+  z-index: 1;
+}
+/* Center the logo dead-middle */
+.hero-logo{
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+.hero-logo img{
+  width: clamp(180px, 28vw, 320px);
+  height: auto;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.2));
+}
+
+/* ---- Mobile tweaks only (desktop untouched) ---- */
+@media (max-width: 768px){
+  .hero{
+    min-height: 460px;     /* comfortable on phones */
+  }
+  .hero-bg{
+    object-position: center; /* keep subject centered */
+  }
+  .hero-logo img{
+    width: clamp(160px, 46vw, 260px);
+  }
+}
+
+/* Respect reduced motion: show poster instead */
+@media (prefers-reduced-motion: reduce){
+  .hero-bg{ display:none; }
+  .hero{ background: url("assets/hero-poster.jpg") center/cover no-repeat; }
+}
+</style>
+
+
+
+  
+  <!-- Home message -->
+  <div class="home-message-wrapper home-message--compact">
+    <section class="home-message">
+      <div class="home-message-inner">
+        <div class="home-message-left">
+          <h2 class="type-wrap about-title">
+            <span id="hm-type" class="type" data-text="A Home Away From Home"></span>
+          </h2>          
+        </div>
+  
+        <div class="home-message-right">
+          <p>
+            Enjoy the comfort, serenity, and convenience of fully furnished apartments
+            with hotel-style amenities in prime central London.
+          </p>
+          <p>
+            Whether you're here for business or leisure, we’re committed to delivering a
+            seamless and memorable stay that truly feels like home.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+</section>
+
+<style> 
+
+  /* Compact variant + slightly darker shade */
+.home-message--compact {
+  background-color: #ffffff;            /* a touch darker than #f4f0e0 */
+}
+
+/* tighten vertical space */
+.home-message--compact .home-message {
+  padding: clamp(48px, 5vw, 72px) 20px; /* was 100px; now tighter */
+}
+
+
+
+/* slightly smaller body copy for balance */
+.home-message--compact .home-message-right {
+  font-size: clamp(14px, 1.9vw, 18px) !important;
+  line-height: 1.7;
+  color: var(--primary);
+}
+
+/* keep the layout snug on large screens */
+@media (min-width: 1024px) {
+  .home-message--compact .home-message-inner {
+    gap: 40px;          /* was 60px */
+    min-height: unset;  /* remove fixed minimum height */
+  }
+}
+
+/* mobile: same stacking you already had; no change needed */
+
+ /* Two-tone background with a brown vertical divider */
+ .home-message-wrapper.home-message--compact{
+    /* tweak the split position to line up exactly after the H2 (e.g., 46%–52%) */
+    --split: 50%;
+    --divider: 2px;
+    --left-bg:  #efe6d6;   /* headline side shade (sand)   */
+    --right-bg: #efe6d6;   /* paragraph side shade (sage)  */
+
+ }
+
+  /* Make the section a bit shorter */
+  .home-message--compact .home-message{
+    padding: clamp(20px, 3.2vw, 36px) 20px !important;
+  }
+
+  /* Ensure columns themselves are transparent (no card look) */
+  .home-message--compact .home-message-left,
+  .home-message--compact .home-message-right{
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  /* typewriter caret */
+  .type-wrap{ position: relative; display:inline-block; }
+  .type{ position: relative; white-space: pre-line; }
+  .type::after{
+    content: "▌";
+    margin-left: 4px;
+    animation: blink 1s steps(1) infinite;
+    color: var(--primary);
+  }
+  .type.done::after{ animation: none; opacity: 0; }
+
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* --- MOBILE ONLY: force stacked + centered --- */
+@media (max-width: 768px) {
+  /* kill any split/divider logic */
+  .home-message-wrapper.home-message--compact {
+    --split: 100% !important;
+    --divider: 0 !important;
+    background: #fff !important;
+  }
+
+  /* section spacing */
+  .home-message-wrapper.home-message--compact .home-message{
+    padding: 40px 16px 28px !important;
+  }
+
+  /* hard stack */
+  .home-message-wrapper.home-message--compact .home-message-inner{
+    display: block !important;
+    min-height: auto !important;
+    gap: 0 !important;
+  }
+
+  /* title block */
+  .home-message-wrapper.home-message--compact .home-message-left{
+    text-align: center !important;
+    margin: 0 auto 16px !important;
+    padding: 0 !important;
+  }
+  .home-message-wrapper.home-message--compact .home-message-left .about-title{
+    font-size: clamp(24px, 6.2vw, 32px) !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+  }
+  /* typewriter text should wrap normally */
+  .home-message-wrapper.home-message--compact #hm-type{
+    white-space: normal !important;
+    display: inline !important;
+  }
+
+  /* body copy centered and narrow for readability */
+  .home-message-wrapper.home-message--compact .home-message-right{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center !important;
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+    color: var(--primary) !important;
+    max-width: 520px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+  .home-message-wrapper.home-message--compact .home-message-right p{
+    margin: 0 0 14px !important;
+  }
+}
+
+
+</style>
+<script>
+  (function () {
+    function setSplit() {
+      const wrap = document.querySelector('.home-message-wrapper.home-message--compact');
+      if (!wrap) return;
+      const container = wrap.querySelector('.home-message');
+      const leftCol   = wrap.querySelector('.home-message-left');
+      if (!container || !leftCol) return;
+  
+      const wr = wrap.getBoundingClientRect();
+      const lr = leftCol.getBoundingClientRect();
+  
+      // Divider should sit exactly at the right edge of the left column
+      let splitX = lr.right - wr.left;                 // px from wrapper's left
+      splitX = Math.max(0, Math.min(splitX, wr.width)); // clamp
+      const pct = (splitX / wr.width) * 100;
+  
+      wrap.style.setProperty('--split', pct + '%');
+    }
+    window.addEventListener('load', setSplit);
+    window.addEventListener('resize', setSplit);
+  })();
+  </script>
+  
+<script>
+  (() => {
+    const el = document.getElementById('hm-type');
+    if (!el) return;
+  
+    const text = (el.dataset.text || '').toString();
+    const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  
+    function render(str){
+      // keep line breaks
+      el.textContent = '';
+      str.split('\n').forEach((line, i) => {
+        if (i) el.appendChild(document.createElement('br'));
+        el.appendChild(document.createTextNode(line));
+      });
+    }
+  
+    if (prefersReduce){ render(text); el.classList.add('done'); return; }
+  
+    const chars = text.split('');
+    let i = 0, buf = '';
+  
+    function step(){
+      if (i >= chars.length){ el.classList.add('done'); return; }
+      const ch = chars[i++];
+      buf += ch;
+      render(buf);
+      setTimeout(step, 45);  // typing speed
+    }
+    step();
+  })();
+  </script>
+  
+
+<!-- =============== About Us (centered + 4 review cards) =============== -->
+<section id="about-us" class="about-us-section" aria-labelledby="about-title">
+  <div class="about-us-wrap">
+    <!-- Cover image 
+    <figure class="about-cover">
+      <img src="family.jpg" alt="Guests enjoying Bliss Stays apartments" />
+    </figure> -->
+
+    <h2 id="about-title" class="about-title">About Us</h2>
+
+    <p class="about-lead">
+      At Bliss Stays, we are dedicated to providing exceptional, short-term accommodations in the heart of
+      London. With a focus on comfort, quality, and convenience, we offer a range of thoughtfully curated
+      properties to suit any traveler, whether on business or leisure.
+    </p>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+      <article class="about-card stat-card">
+        <div class="stat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+            <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm-8.5 8a8.5 8.5 0 0 1 17 0 1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1Z"/>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <div class="stat-number"><span class="count" data-target="1814">0</span>+</div>
+          <div class="stat-label">Guests hosted</div>
+        </div>
+      </article>
+
+      <article class="about-card stat-card">
+        <div class="stat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+            <path d="M7 2a1 1 0 0 1 1 1v1h8V3a1 1 0 0 1 2 0v1h1a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h1V3a1 1 0 0 1 1-1Zm13 8H4v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1Z"/>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <div class="stat-number"><span class="count" data-target="2031">0</span>+</div>
+          <div class="stat-label">Nights hosted</div>
+        </div>
+      </article>
+      <article class="about-card stat-card">
+        <div class="stat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+            <path d="M7 2a1 1 0 0 1 1 1v1h8V3a1 1 0 0 1 2 0v1h1a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h1V3a1 1 0 0 1 1-1Zm13 8H4v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1Z"/>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <div class="stat-number"><span class="count" data-target="3">0</span>+</div>
+          <div class="stat-label">No of years hosted</div>
+        </div>
+      </article>
+    </div>
+    <!-- As of text -->
+<p class="as-of-text">As of 18-Aug-2025</p>
+
+<style>
+  .as-of-text {
+    text-align: center;
+    margin-top: 12px;
+    margin-bottom: 30px;  /* 👈 added extra space below */
+    font-size: 14px;
+    font-style: italic;
+    color: #555;
+  }
+</style>
+  </div>
+   <!-- =============== Reviews (slider with modal) =============== -->
+
+  </div>
+
+</section>
+
+
+<style>
+/* ====== Theme & layout (mirrors your locations slider approach) ====== */
+#bliss-reviews { --card-w: 280px; --gap: 24px; --rv-primary:#4b4b38; --rv-star:#f6b800; --rv-border: rgba(0,0,0,.12); }
+#bliss-reviews .reviews-carousel{ margin-top: 6px; }
+#bliss-reviews .rv-viewport{ overflow: hidden; max-width: 1200px; margin: 0 auto; }
+#bliss-reviews .rv-track{ display:flex; gap: var(--gap); will-change: transform; transition: transform 600ms ease; padding: 6px 0 10px; }
+
+#bliss-reviews .review-card{
+  flex: 0 0 var(--card-w);
+  list-style: none;
+  border: 1px solid var(--rv-border);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #f4f0e0, #f4f0e0);
+  box-shadow: 0 10px 24px rgba(0,0,0,.10);
+  padding: 14px 14px 16px;
+  display: flex; flex-direction: column;
+}
+
+#bliss-reviews .rv-head{ display:flex; align-items:center; gap:10px; }
+#bliss-reviews .rv-badge{
+  min-width:44px; height:32px; display:grid; place-items:center;
+  font-weight:700; border-radius:999px;
+  background: linear-gradient(135deg,#f4f0e0,#f4f0e0); color:#000000;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 4px 10px rgba(0,0,0,.12);
+}
+#bliss-reviews .rv-stars{ display:inline-flex; gap:2px; color: var(--rv-star); }
+#bliss-reviews .star path{ fill: currentColor; }
+#bliss-reviews .rv-small{ margin:6px 0 6px; font-size:.9rem; opacity:.8; color:#222; }
+
+#bliss-reviews .rv-quote{
+  font-size:1rem; line-height:1.55; color:#111; margin:8px 0 10px;
+  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+  position:relative; padding-left:.2em;
+}
+#bliss-reviews .rv-quote:before{ content:"“"; position:absolute; left:-8px; top:-10px; font-size:2rem; opacity:.2; }
+
+#bliss-reviews .rv-read{
+  align-self:flex-start;
+  appearance:none; border:1px solid var(--rv-border); background:#f4f0e0; color:#333;
+  font-weight:600; font-size:.9rem; padding:8px 12px; border-radius:999px; cursor:pointer;
+  transition:transform .14s ease, box-shadow .14s ease, background .14s ease;
+  box-shadow:0 3px 8px rgba(0,0,0,.06);
+}
+#bliss-reviews .rv-read:hover{ transform: translateY(-1px); box-shadow:0 6px 14px rgba(0,0,0,.12); }
+
+/* Responsive: follow your breakpoints */
+@media (max-width: 1200px){ #bliss-reviews { --card-w: 260px; --gap: 20px; } }
+@media (max-width: 900px){  #bliss-reviews { --card-w: 300px; --gap: 20px; } }
+@media (max-width: 620px){  #bliss-reviews { --card-w: 86vw; --gap: 16px; } }
+
+/* ===== Modal ===== */
+.rv-modal{
+  position: fixed; inset: 0; z-index: 999; display: none;
+  align-items: center; justify-content: center;
+  background: rgba(0,0,0,.35); backdrop-filter: blur(3px);
+}
+.rv-modal[open]{ display:flex; }
+.rv-dialog{
+  width: min(680px, 92vw);
+  border-radius: 18px; background:#f4f0e0; color:#111;
+  border: 1px solid rgba(0,0,0,.08);
+  box-shadow: 0 24px 60px rgba(0,0,0,.28);
+  padding: 16px;
+}
+.rv-dialog header{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom: 6px; }
+.rv-dialog h3{ font-size:1.05rem; margin:0; font-weight:700; color:#222; }
+.rv-close{
+  appearance:none; border:0; background: var(--rv-primary); color:#fff;
+  width:36px; height:36px; border-radius:999px; cursor:pointer; display:grid; place-items:center;
+}
+.rv-content{ font-size:1.02rem; line-height:1.6; color:#222; padding: 8px 2px 2px; }
+</style>
+
+<script>
+(() => {
+  // ===== Carousel (same mechanics as your locations slider) =====
+  const section  = document.querySelector('#bliss-reviews');
+  const viewport = section.querySelector('.rv-viewport');
+  const track    = section.querySelector('.rv-track');
+
+  const originals = Array.from(track.children);
+  let index = 0, timer;
+
+  function num(v){ return parseFloat(v) || 0; }
+  function getVars(){
+    const cs = getComputedStyle(section);
+    return { cardW: num(cs.getPropertyValue('--card-w')), gap: num(cs.getPropertyValue('--gap')) };
+  }
+  function setTransform(noAnim){
+    const {cardW, gap} = getVars();
+    track.style.transition = noAnim ? 'none' : 'transform 600ms ease';
+    track.style.transform  = `translateX(${ -index * (cardW + gap) }px)`;
+  }
+  function setup(){
+    // remove clones
+    track.querySelectorAll('.is-clone').forEach(n => n.remove());
+    // slidesPerView based on current viewport
+    const {cardW, gap} = getVars();
+    const vw = viewport.clientWidth;
+    const perView = Math.max(1, Math.floor((vw + gap) / (cardW + gap)));
+    // clone first N
+    for (let i=0; i<perView; i++){
+      const c = originals[i].cloneNode(true);
+      c.classList.add('is-clone');
+      track.appendChild(c);
+    }
+    index = 0; setTransform(true);
+    requestAnimationFrame(() => track.style.transition = 'transform 600ms ease');
+  }
+  function start(){
+    stop();
+    timer = setInterval(() => { index++; setTransform(false); }, 3500);
+  }
+  function stop(){ if (timer) clearInterval(timer); }
+
+  track.addEventListener('transitionend', () => {
+    if (index >= originals.length){
+      index = 0; setTransform(true);
+      requestAnimationFrame(() => track.style.transition = 'transform 600ms ease');
+    }
+  });
+  viewport.addEventListener('mouseenter', stop);
+  viewport.addEventListener('mouseleave', start);
+  window.addEventListener('resize', setup);
+
+  setup(); start();
+
+  // ===== Modal (Read more) =====
+  const modal = document.createElement('div');
+  modal.className = 'rv-modal';
+  modal.id = 'reviewModal';
+  modal.setAttribute('role','dialog');
+  modal.setAttribute('aria-modal','true');
+  modal.setAttribute('aria-labelledby','rvModalTitle');
+  modal.innerHTML = `
+    <div class="rv-dialog" role="document">
+      <header>
+        <h3 id="rvModalTitle">Guest review</h3>
+        <button class="rv-close" type="button" aria-label="Close">&times;</button>
+      </header>
+      <div class="rv-content"></div>
+    </div>`;
+  document.body.appendChild(modal);
+
+  const contentEl = modal.querySelector('.rv-content');
+  const closeBtn  = modal.querySelector('.rv-close');
+  let lastFocus;
+
+  function openModal(text){
+    contentEl.textContent = text;
+    modal.setAttribute('open','');
+    lastFocus = document.activeElement;
+    closeBtn.focus({preventScroll:true});
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    modal.removeAttribute('open');
+    document.body.style.overflow = '';
+    lastFocus && lastFocus.focus({preventScroll:true});
+  }
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+  window.addEventListener('keydown', (e) => { if(e.key === 'Escape' && modal.hasAttribute('open')) closeModal(); });
+
+  // Delegate clicks from the track (works for clones too)
+  track.addEventListener('click', (e) => {
+    const btn = e.target.closest('.rv-read');
+    if(!btn) return;
+    const card = btn.closest('.review-card');
+    const full = (card?.getAttribute('data-full') || card?.querySelector('.rv-quote')?.textContent || '').trim();
+    openModal(full);
+  });
+})();
+</script>
+
+  
+
+<style>
+/* ---- About Us styles (centered, Bliss palette) ---- */
+  .about-us-section{
+    background: #fffffff7;                 /* site section bg */
+    padding: clamp(48px,6vw,96px) 20px;
+    scroll-margin-top: 120px;
+    font-family: 'Segoe UI', sans-serif;    
+  }
+  .about-us-wrap{
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;                   /* center everything */
+  }
+
+  /* Cover */
+  .about-cover{
+    margin: 0 auto 28px auto;
+    max-width: 1200px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.10), 0 6px 12px rgba(0,0,0,0.06);
+  }
+  .about-cover img{
+    width: 100%;
+    display: block;
+    aspect-ratio: 16/7;
+    object-fit: cover;
+  }
+
+  .about-title {
+  font-family: Arial, Helvetica, sans-serif; /* same as "Our Properties" */
+  font-weight: 600;                         /* matches thickness */
+  font-size: 2.4rem;
+  line-height: 1.05;
+  color: #3f3d34;                           /* dark grey, like screenshot */
+  margin: 6px 0 18px;
+  letter-spacing: normal;                   /* reset extra spacing */
+  }
+  .about-lead{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    color: #3f3d34;                       /* darker olive/grey */
+    max-width: 900px;
+    margin: 0 auto 32px auto;             /* center the paragraph block */
+  }
+/* make the 3 stat cards slightly rounded */
+#about-us .about-card{
+  border-radius: 16px;      /* tweak: 14–18px also looks good */
+  overflow: hidden;         /* keeps glow/border neatly following the curve */
+}
+
+/* (optional) a touch more roundness on small screens */
+@media (max-width: 640px){
+  #about-us .about-card{ border-radius: 18px; }
+}
+
+  /* Cards common */
+ /* Outline + glow for About cards (stats + reviews) */
+ #about-us .about-card{
+    background: transparent !important;                     /* no white fill */
+    border: 2px solid rgba(107, 107, 80, 0.55) !important;  /* brown outline (brand tone) */
+    box-shadow:
+      0 0 0 3px rgba(107, 107, 80, 0.08),                   /* subtle halo glow */
+      0 12px 28px rgba(107, 107, 80, 0.18),
+      0 6px 14px rgba(0, 0, 0, 0.06) !important;            /* depth */
+  }
+
+  /* Stats */
+  .stats-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(280px,1fr)); /* was 2 → now 3 in one row */
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto 24px auto;
+}
+
+@media (max-width: 640px){
+  .stats-grid{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 900px){
+  .stats-grid{ grid-template-columns: repeat(2, minmax(220px,1fr)); }
+}
+
+  .stat-card{
+    min-height: 110px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    padding: 22px 24px;
+    text-align: left;
+  }
+  .stat-icon{
+    color: var(--primary);
+    background: rgba(75,75,56,0.08);      /* brand tint */
+    border-radius:12px;
+    width:52px;height:52px;
+    display:grid;place-items:center;
+    flex:0 0 52px;
+  }
+  .stat-number{
+    font-weight:800;
+    font-size: clamp(24px,4.2vw,36px);
+    color:#2d2c24;                        /* deep brand text */
+    line-height:1.1;
+  }
+  .stat-label{
+    font-size:16px;
+    color:#6b6b50;                         /* brand accent */
+    margin-top: 4px;
+  }
+
+  /* Reviews: 4 cards */
+  .reviews-grid{
+    display:grid;
+    grid-template-columns: repeat(4, minmax(220px,1fr));
+    gap: 24px;
+    margin-top: 6px;
+  }
+  .review-card{
+    padding: 20px 22px;
+    text-align: left;
+  }
+  .review-top{
+    display:flex; align-items:center; gap:10px; margin-bottom:6px;
+    color: var(--primary);
+  }
+  .rating-number{ font-weight:800; font-size: 26px; color:#2d2c24; }
+  .rating-stars .star{ fill: var(--primary); opacity:.95; }
+  .rating-small{ color:#6b6b50; font-size:14px; margin-bottom:10px; }
+  .review-quote{
+    font-size: 16px; line-height:1.55; color:#2f2e26;
+  }
+
+  /* Responsive */
+  @media (max-width: 1100px){
+    .reviews-grid{ grid-template-columns: repeat(2, minmax(220px,1fr)); }
+  }
+  @media (max-width: 640px){
+    .stats-grid{ grid-template-columns: 1fr; }
+    .reviews-grid{ grid-template-columns: 1fr; }
+    .review-card, .stat-card{ text-align: center; }
+    .stat-card{ justify-content: center; }
+  }
+</style>
+
+<script>
+  // Count-up animation (runs once)
+  (function(){
+    const section = document.querySelector('#about-us');
+    if (!section) return;
+    const counters = section.querySelectorAll('.count');
+    const fmt = new Intl.NumberFormat();
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const setFinal = () => counters.forEach(c => c.textContent = fmt.format(+c.dataset.target));
+
+    function animate(el){
+      const target = +el.dataset.target;
+      const dur = 1400;
+      const start = performance.now();
+      function tick(now){
+        const p = Math.min(1,(now-start)/dur);
+        const eased = 1 - Math.pow(1-p,3);
+        el.textContent = fmt.format(Math.floor(eased * target));
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    if (reduced){ setFinal(); return; }
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => {
+        if (e.isIntersecting){ counters.forEach(animate); obs.disconnect(); }
+      });
+    }, { threshold: 0.35 });
+    io.observe(section);
+  })();
+</script>
+<!-- ============ /About Us ============ -->
+
+
+<!-- Bliss Brands Showcase 
+<div class="bliss-brands-fullwrap">
+  <section class="bliss-brands-showcase">
+    <div class="brands-left">
+      <h5>STAY WITH US</h5>
+      <h2>Bliss Stays Brands</h2>
+      <p>At Bliss Stays, we offer a stay for every kind of journey.</p>
+      <p>Whether you choose a Premium Apartment for a peaceful retreat, a Studio for a quick stopover, or a Family Suite for the comfort of home, you’ll always find comfort, space, and control.</p>
+      <p>Make the most of London, on your terms.</p>
+    </div>
+    <div class="brands-right">
+      <div class="brand-card">
+        <img src="premium.jpg" alt="Premium Apartment" />
+        <h3>Premium Apartment</h3>
+        <p>Your urban sanctuary with all comforts included.</p>
+        <a href="#">Learn more</a>
+      </div>
+      <div class="brand-card">
+        <img src="studio.jpg" alt="Studio" />
+        <h3>Studio</h3>
+        <p>A stylish, compact space for business or leisure.</p>
+        <a href="#">Learn more</a>
+      </div>
+      <div class="brand-card">
+        <img src="family.jpg" alt="Family Suite" />
+        <h3>Family Suite</h3>
+        <p>The comfort of home, with space for everyone.</p>
+        <a href="#">Learn more</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.querySelectorAll('.brand-card').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.remove('animate-on-click'); // reset
+        void card.offsetWidth; // force reflow
+        card.classList.add('animate-on-click'); // re-add
+      });
+    });
+  </script>
+</section>
+-->
+
+<!-- =========================
+     Our Properties – Rotating Slider (default font + arrows)
+     ========================= -->
+     <section id="properties-section" style="background:#fff; position:relative; z-index:1;">
+
+      <style>
+        /* scope everything to this section; inherit the site's default font */
+        #properties-section{ padding:100px 0; font-family:inherit; }
+        #properties-section .container{ max-width:1200px; margin:0 auto; padding:60px 16px; }
+    
+        /* header */
+        #properties-section .row{
+          display:flex; justify-content:space-between; align-items:flex-start;
+          flex-wrap:wrap; gap:40px; text-align:left;
+        }
+        #properties-section h2{ font-size:48px; line-height:1; margin:0 0 12px; color:#0b1320; }
+        #properties-section .eyebrow{ font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#6b6b50; margin:0; font-family: Arial, Helvetica, sans-serif;}
+        #properties-section .lead{ font-size:15px; line-height:1.7; color:#111827; margin:0 0 12px; font-family: Arial, Helvetica, sans-serif; }
+    
+        /* ===== rotating slider ===== */
+        #properties-section .ps-wrap{ margin-top:28px; position:relative; }
+        #properties-section .ps-viewport{ overflow:hidden; width:100%; }
+        #properties-section .ps-shift{ transform:translateX(var(--shift,0px)); transition:transform .35s ease; will-change:transform; }
+        #properties-section .ps-track{
+          display:flex; align-items:stretch; gap:24px; width:max-content;
+          --dur:38s; animation:ps-scroll var(--dur) linear infinite;
+        }
+        #properties-section .ps-track:hover{ animation-play-state:paused; }
+        @keyframes ps-scroll{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+        @media (max-width:1000px){ #properties-section .ps-track{ --dur:32s; } }
+        @media (max-width:600px) { #properties-section .ps-track{ --dur:24s; } }
+    
+        /* cards */
+        #properties-section .slide{ flex:0 0 clamp(230px,25vw,280px); margin-bottom:12px; }
+        #properties-section .slide a{ text-decoration:none; color:inherit; display:block; }
+        #properties-section .slide img{ width:100%; height:280px; object-fit:cover; border-radius:6px; display:block; }
+        #properties-section .caption{ display:flex; align-items:center; gap:6px; font-size:14px; margin-top:6px; color:#111; }
+        #properties-section .caption .pin-icon{ width:20px; height:20px; object-fit:contain; }
+        #properties-section .caption .name{ font-weight:500; }
+        #properties-section .caption .dot{ padding:0 3px; color:#444; }
+        #properties-section .caption .walk{ font-weight:600; }
+    
+        /* arrows (placed after slider in DOM; positioned at sides) */
+        #properties-section .ps-arrows{
+          position:relative; height:0; /* so they appear 'after' in markup but sit at the sides */
+        }
+        #properties-section .ps-nav{
+          position:absolute; top:calc(-50% - 21px); transform:translateY(-50%);
+          width:42px; height:42px; border-radius:50%;
+          border:1px solid #0b0b0b; background:#fff; color:#000;
+          display:grid; place-items:center; font-size:0; box-shadow:0 2px 10px rgba(0,0,0,.12);
+          z-index:3; cursor:pointer;
+        }
+        #properties-section .ps-prev{ left:-16px; }
+        #properties-section .ps-next{ right:-16px; }
+        #properties-section .ps-nav span{ font-size:20px; line-height:1; }
+        @media (max-width:768px){
+          #properties-section{ padding-top:36px; }
+          #properties-section .ps-nav{ width:36px; height:36px; }
+          #properties-section .ps-prev{ left:-8px; } 
+          #properties-section .ps-next{ right:-8px; }
+        }
+      </style>
+    
+      <div class="container">
+        <!-- header -->
+        <div class="row">
+          <div style="flex:1 1 380px; min-width:320px;">
+            <h2>Our Properties</h2>
+            <p class="eyebrow">Explore your next stay</p>
+          </div>
+          <div style="flex:1 1 520px; min-width:360px; max-width:640px;">
+            <p class="eyebrow">Where We Are</p>
+            <p class="lead">Bliss Stays properties place you right where the city comes alive — within walking distance of iconic attractions, vibrant dining, and cultural landmarks.</p>
+            <p class="lead">Perfectly positioned and thoughtfully designed, each stay offers the comfort of a peaceful escape, with the best of London just moments away.</p>
+            <p class="lead" style="margin:0;">Your perfect London stay starts with us.</p>
+          </div>
+        </div>
+    
+        <!-- rotating slider -->
+        <div class="ps-wrap">
+          <div class="ps-viewport">
+            <div class="ps-shift" id="psShift">
+              <div class="ps-track" id="psTrack">
+                <!-- one set -->
+                <div class="slide">
+                  <a href="property.html">
+                    <img src="Property/1.jpg" alt="Maida Vale cover">
+                    <div class="caption">
+                      <img src="icons/pinn.png" alt="Location" class="pin-icon">
+                      <span class="name">Maida Vale</span><span class="dot">·</span><span class="walk">London</span>
+                    </div>
+                  </a>
+                </div>
+                <div class="slide">
+                  <a href="property1.html">
+                    <img src="Property1/F1/WEB 1.jpg" alt="Paddington cover">
+                    <div class="caption">
+                      <img src="icons/pinn.png" alt="Location" class="pin-icon">
+                      <span class="name">Paddington</span><span class="dot">·</span><span class="walk">London</span>
+                    </div>
+                  </a>
+                </div>
+                <div class="slide">
+                  <a href="property2.html">
+                    <img src="Property2/WEB 1.jpg" alt="Nine Elms cover">
+                    <div class="caption">
+                      <img src="icons/pinn.png" alt="Location" class="pin-icon">
+                      <span class="name">Nine Elms</span><span class="dot">·</span><span class="walk">London</span>
+                    </div>
+                  </a>
+                </div>
+                <div class="slide">
+                  <a href="property3.html">
+                    <img src="Property3/WEB 1.jpg" alt="Kennington cover">
+                    <div class="caption">
+                      <img src="icons/pinn.png" alt="Location" class="pin-icon">
+                      <span class="name">Kennington</span><span class="dot">·</span><span class="walk">London</span>
+                    </div>
+                  </a>
+                </div>
+                <div class="slide">
+                  <a href="property4.html">
+                    <img src="property4/266/WEB 1.jpg" alt="Wimbledon cover">
+                    <div class="caption">
+                      <img src="icons/pinn.png" alt="Location" class="pin-icon">
+                      <span class="name">Wimbledon</span><span class="dot">·</span><span class="walk">London</span>
+                    </div>
+                  </a>
+                </div>
+                <!-- JS duplicates this set once more for seamless loop -->
+              </div>
+            </div>
+          </div>
+    
+          <!-- arrows (after the slider in markup) -->
+          <div class="ps-arrows" aria-hidden="false">
+            <button class="ps-nav ps-prev" type="button" aria-label="Previous"><span>&lsaquo;</span></button>
+            <button class="ps-nav ps-next" type="button" aria-label="Next"><span>&rsaquo;</span></button>
+          </div>
+        </div>
+      </div>
+    
+      <script>
+        // Build seamless loop + arrow nudge logic
+        (function(){
+          const track  = document.getElementById('psTrack');
+          const shifter= document.getElementById('psShift');
+          const prev   = document.querySelector('#properties-section .ps-prev');
+          const next   = document.querySelector('#properties-section .ps-next');
+    
+          // Duplicate one full set for the marquee
+          const firstSet = Array.from(track.children);
+          firstSet.forEach(n => track.appendChild(n.cloneNode(true)));
+    
+          let gap = 24, cardW = null, step = null, setWidth = null, shift = 0;
+    
+          function measure(){
+            const cs = getComputedStyle(track);
+            gap = parseFloat(cs.gap || 24);
+            const card = track.querySelector('.slide');
+            if(!card) return;
+            cardW = card.getBoundingClientRect().width;
+            step = cardW + gap;                       // nudge amount
+            setWidth = step * (firstSet.length);      // one original set width
+          }
+          function clampShift(){
+            // keep shift bounded within one set width so numbers don't grow forever
+            if (shift <= -setWidth) shift += setWidth;
+            if (shift >=  setWidth) shift -= setWidth;
+          }
+          function applyShift(){
+            shifter.style.setProperty('--shift', shift + 'px');
+          }
+    
+          function nudge(dir){ // dir: 1 => next (left), -1 => prev (right)
+            // pause while nudging (mouse still pauses via :hover as well)
+            track.style.animationPlayState = 'paused';
+            if (cardW === null) measure();
+            shift += (dir * -step);    // moving "next" means negative translate (content slides left)
+            clampShift();
+            applyShift();
+            // resume animation after short delay
+            clearTimeout(nudge._t);
+            nudge._t = setTimeout(()=>{ track.style.animationPlayState = 'running'; }, 300);
+          }
+    
+          prev.addEventListener('click', ()=> nudge(-1));
+          next.addEventListener('click', ()=> nudge( 1));
+          window.addEventListener('resize', ()=>{ cardW=null; measure(); });
+    
+          // initial measure once images are ready (safe even if already cached)
+          const imgs = track.querySelectorAll('img');
+          let left = imgs.length;
+          if (!left) measure();
+          imgs.forEach(img=>{
+            if (img.complete) { if(--left===0) measure(); }
+            else {
+              img.addEventListener('load', ()=>{ if(--left===0) measure(); });
+              img.addEventListener('error',()=>{ if(--left===0) measure(); });
+            }
+          });
+        })();
+      </script>
+    </section>
+    
+
+
+<section id="bliss-way" class="bliss-standard-wrapper">
+  <div class="bliss-standard">
+    <h2>The Bliss Stays Way</h2>
+    <p class="bliss-subtext">A collection of thoughtful touches that make every stay feel like home.</p>
+  
+    <div class="bliss-features">
+      <div class="feature-box">
+        <img src="icons/apt.png" alt="Apartment Icon" />
+        <h4>Fully Furnished Apartments</h4>
+        <p>Comfortable beds, stylish living spaces, and everything you need to unwind.</p>
+      </div>
+      <div class="feature-box">
+        <img src="icons/linens.png" alt="Linens Icon" />
+        <h4>Fresh Linens & Towels</h4>
+        <p>Hotel quality bedding and towels, always freshly prepared for your stay.</p>
+      </div>
+      <div class="feature-box">
+        <img src="icons/toilet.png" alt="Toiletries Icon" />
+        <h4>Toiletries Provided</h4>
+        <p>Shampoo, soap, and more all ready for your arrival, so you can travel lighter.</p>
+      </div>
+      <div class="feature-box">
+        <img src="icons/temp.png" alt="Thermostat Icon" />
+        <h4>Comfort Control</h4>
+        <p>Adjust the space to your preference cool, calm, and perfectly cozy.</p>
+      </div>
+      <div class="feature-box">
+        <img src="icons/wifi.png" alt="Wi-Fi Icon" />
+        <h4>Fast Wi-Fi</h4>
+        <p>Unlimited high-speed internet for work, streaming, and everything in between.</p>
+      </div>
+      <div class="feature-box">
+        <img src="icons/checking.png" alt="Check-in Icon" />
+        <h4>Self Check-In</h4>
+        <p>Flexible arrival with keypad access or smart locks arrive on your own time.</p>
+      </div>
+      <div class="feature-box">
+        <img src="icons/support.png" alt="Support Icon" />
+        <h4>24/7 Guest Support</h4>
+        <p>Always-on help and guidance your comfort is our priority.</p>
+      </div>
+      <div class="feature-box">
+        <img src="icons/key.png" alt="Key Icon" />
+        <h4>Prime Central Locations</h4>
+        <p>Stay close to top attractions, restaurants, and nightlife.</p>
+      </div>
+      <div class="feature-box">
+        <img src="icons/laundry.png" alt="Laundry Icon" />
+        <h4>Laundry Facilities</h4>
+        <p>Access washer/dryer in unit for longer, more comfortable stays.</p>
+      </div>
+      <div class="feature-box">
+        <img src="icons/pin.png" alt="Location Icon" />
+        <h4>Heart of the City</h4>
+        <p>Be in the center of it all with everything you need within walking distance.</p>
+      </div>
+      <div class="feature-box">
+        <img src="icons/cleaning.png" alt="Cleaning Icon" />
+        <h4>Professional Cleaning</h4>
+        <p>Enjoy a spotless space with our high-standard, hotel-grade cleaning between every stay.</p>
+      </div>
+      <div class="feature-box">
+        <img src="icons/kitchen.png" alt="Kitchen Icon" />
+        <h4>Fully Equipped Kitchen</h4>
+        <p>Cook up your favourites anytime with our modern kitchen essentials at your fingertips.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: #3e3a35;
+  overflow-x: hidden;   /* prevent horizontal scrollbars */
+}
+
+/* full-bleed background */
+.bliss-standard-wrapper {
+  background: #3e3a35;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  width: 100vw;
+  padding: 0;
+}
+
+.bliss-standard {
+  color: #f9f6f0;
+  padding: 70px 20px;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 1200px;
+  box-sizing: border-box;
+}
+
+.bliss-standard h2 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.bliss-subtext {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 50px;
+  color: #d8d3c8;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.bliss-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.feature-box {
+  text-align: center;
+}
+
+.feature-box img {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 15px;
+  filter: brightness(1000%);
+}
+
+.feature-box h4 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.feature-box p {
+  font-size: 0.95rem;
+  color: #d8d3c8;
+  line-height: 1.5;
+}
+</style>
+
+
+<!-- ===== Reviews Section (drop-in) ===== -->
+<!-- ================== Reviews (Wide Banner + Slider) ================== --> 
+<!-- ===== Reviews Section (drop-in) ===== -->
+<!-- ================== Reviews (Wide Banner + Slider) ================== --> 
+<section id="reviews-banner" aria-label="Guest reviews">
+  <style>
+    html, body { margin: 0; }
+
+    #reviews-banner{
+      --arrow-color:#2b2f33;
+      --arrow-color-hover:#111;
+      background:#ffffff;
+      padding:56px 0 60px;
+      font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:#0b1320;
+
+      width:100vw;
+      position:relative;
+      left:50%;right:50%;
+      margin-left:-50vw;margin-right:-50vw;
+    }
+
+    #reviews-banner .wrap{max-width:1200px;margin:0 auto;padding:0 16px;position:relative;}
+    #reviews-banner .title{font-size:34px;font-weight:800;text-align:center;margin:0 0 10px; font-family: Arial, Helvetica, sans-serif;}
+    #reviews-banner .sub{color:#6b7280;text-align:center;margin:0 0 28px; font-family: Arial, Helvetica, sans-serif;}
+
+    /* Slider */
+    #reviews-banner .slider{position:relative;overflow:hidden;}
+    #reviews-banner .slides{display:flex;transition:transform .6s ease-in-out;}
+
+    /* Card */
+    #reviews-banner .rb-card{
+      min-width:100%;max-width:100%;
+      background:transparent;border:none;box-shadow:none;
+      border-radius:18px;padding:26px;position:relative;
+    }
+
+    /* Inner grid */
+    .rb-grid{
+      display:grid;grid-template-columns:1fr 220px 220px;
+      align-items:center;gap:18px;min-height:170px;
+      border-radius:14px;padding:24px;background:transparent;
+    }
+    .rb-quote{font-size:16px;line-height:1.5;font-style:italic;color:#4b5563;margin:0;letter-spacing:.25px; font-family: Arial, Helvetica, sans-serif;}
+    .rb-center{text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;}
+    .rb-name{font-weight:800;font-size:18px;color:#2a2f23;}
+    .rb-date{color:#6b7280;font-size:16px;}
+    .rb-flag img{width:150px;height:auto;display:block;}
+
+    /* Booking.com logo */
+    .rb-src{
+      position:absolute;
+      right:16px;
+      bottom:40px;   /* moved upwards (was 12px) */
+    }
+    .rb-src img{width:120px;height:auto;display:block;opacity:0.85;}
+
+    /* Arrows */
+    #reviews-banner .arrow{
+      position:absolute;top:50%;transform:translateY(-50%);
+      width:36px;height:36px;padding:0;background:transparent;border:0;
+      color:var(--arrow-color);cursor:pointer;z-index:2;
+      display:flex;align-items:center;justify-content:center;
+      transition:transform .15s ease,color .15s ease,opacity .15s ease;
+      opacity:.9;
+    }
+    #reviews-banner .arrow:hover{color:var(--arrow-color-hover);transform:translateY(-50%) scale(1.06);opacity:1;}
+    #reviews-banner .left{left:6px;} .right{right:6px;}
+    #reviews-banner .arrow svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .rb-grid{grid-template-columns:1fr;gap:16px;text-align:center;}
+      .rb-flag img{width:120px;margin:0 auto;}
+      .rb-src{position:static;margin-top:10px;text-align:center;}
+      .rb-src img{margin:0 auto;}
+    }
+    @media (max-width:730px){.rb-quote{font-size:18px;}}
+  </style>
+
+  <div class="wrap">
+    <h2 class="title">Hear From Our Previous Guests</h2>
+    <p class="sub">Real feedback from recent stays.</p>
+
+    <div class="slider">
+      <!-- left arrow -->
+      <button class="arrow left" aria-label="Previous review" data-dir="-1">
+        <svg viewBox="0 0 24 24"><path d="M15 19 L8 12 L15 5"/></svg>
+      </button>
+
+      <!-- All reviews INSIDE .slides -->
+      <div class="slides" id="rb-slides">
+        
+        <!-- 1 -->
+        <article class="rb-card">
+          <div class="rb-grid">
+            <p class="rb-quote">I had a wonderful experience staying here. The host was very friendly and incredibly responsive, always quick to answer any questions and make sure everything was going smoothly. The apartment itself was spotless – clean, well-maintained, and exactly as described. I’d happily stay again and definitely recommend it to others looking for a hassle-free, comfortable stay!
+            </p>
+            <div class="rb-center"><div class="rb-name">Luke</div><div class="rb-date">May 2025</div></div>
+            <div class="rb-flag"><img src="flags/1.png" alt="UK"></div>
+          </div>
+          <div class="rb-src"><img src="logos/booking.png" alt="Booking"></div>
+        </article>
+
+        <!-- 2 -->
+        <article class="rb-card">
+          <div class="rb-grid">
+            <p class="rb-quote">This apartment is a real gem! We had a wonderful time here and will definitely come back. The location is simply great - close to everything, an ideal base for sightseeing and enjoying the charms of the city. The apartment itself offers all the possible amenities you could need for a short-term rental.</p>
+            <div class="rb-center"><div class="rb-name">Kalina</div><div class="rb-date">May 2025</div></div>
+            <div class="rb-flag"><img src="flags/2.png" alt="Poland"></div>
+          </div>
+          <div class="rb-src"><img src="logos/booking.png" alt="Booking"></div>
+        </article>
+
+        <!-- 3 -->
+        <article class="rb-card">
+          <div class="rb-grid">
+            <p class="rb-quote">Spent one night at Nine Elms, booked last minute but everything was fine. I asked for a late check out and it was ok with no problem. The apartment was very clean and comfortable. The location was perfect too, close to the metro so easy to get everywhere. The host was quick to respond and helpful. I didn't expect it to be this good but it was very good for a short stay. Good price and great location, would recommend.
+            </p>
+            <div class="rb-center"><div class="rb-name">Yiyin</div><div class="rb-date">Feb 2025</div></div>
+            <div class="rb-flag"><img src="flags/3.png" alt="Guest"></div>
+          </div>
+          <div class="rb-src"><img src="logos/booking.png" alt="Booking"></div>
+        </article>
+
+        <!-- 4 -->
+        <article class="rb-card">
+          <div class="rb-grid">
+            <p class="rb-quote">Beautiful apartment with everything you need: iron, washing machine, dishwasher, lots of blankets and pillows. The host was very proactive in offering his help. The area may seem intimidating at first, but it's not really. There are many local businesses and people are very friendly. All parts of the city are easily accessible by metro, bus, taxi, Uber or ferry. There are excellent Portuguese restaurants nearby, supermarkets, grocery stores, etc.
+            </p>
+            <div class="rb-center"><div class="rb-name">David</div><div class="rb-date">Jan 2025</div></div>
+            <div class="rb-flag"><img src="flags/4.png" alt="Spain"></div>
+          </div>
+          <div class="rb-src"><img src="logos/booking.png" alt="Booking"></div>
+        </article>
+
+        <!-- 5 -->
+        <article class="rb-card">
+          <div class="rb-grid">
+            <p class="rb-quote">Stayed here for a couple nights and it was perfect. The space was tidy and had everything I needed. The hosts were really helpful and responsive too, we loved the hospitality. Great stay overall!
+            </p>
+            <div class="rb-center"><div class="rb-name">Rozita</div><div class="rb-date">Apr 2025</div></div>
+            <div class="rb-flag"><img src="flags/5.png" alt="Malaysia"></div>
+          </div>
+          <div class="rb-src"><img src="logos/booking.png" alt="Booking"></div>
+        </article>
+
+        <!-- 6 -->
+        <article class="rb-card">
+          <div class="rb-grid">
+            <p class="rb-quote">Very good place, perfect for staying a few days or a longer period of time. The internet is very good and all the facilities were working fine. The support staff is extremely helpful and always answer very fast.I recommend this place very much!
+            </p>
+            <div class="rb-center"><div class="rb-name">Eduardo</div><div class="rb-date">Jun 2025</div></div>
+            <div class="rb-flag"><img src="logos/airbnb.png" alt="Airbnb"></div>
+          </div>
+        </article>
+
+        <!-- 7 -->
+        <article class="rb-card">
+          <div class="rb-grid">
+            <p class="rb-quote">The flat was really warm and cosy. Condition of the rooms and furniture were spotless. Bed was very comfortable. The host responded quickly to my check in queries and were very welcoming. An ideal place to stay if you are visiting the nearby area.
+            </p>
+            <div class="rb-center"><div class="rb-name">Craig</div><div class="rb-date">Jul 2025</div></div>
+            <div class="rb-flag"><img src="logos/airbnb.png" alt="Airbnb"></div>
+          </div>
+        </article>
+      </div>
+
+      <!-- right arrow -->
+      <button class="arrow right" aria-label="Next review" data-dir="1">
+        <svg viewBox="0 0 24 24"><path d="M9 5 L16 12 L9 19"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const slides = document.getElementById('rb-slides');
+      const total = slides.children.length;
+      let index = 0;
+      function showSlide(i){
+        index = (i + total) % total;
+        slides.style.transform = `translateX(-${index * 100}%)`;
+      }
+      document.querySelectorAll('#reviews-banner .arrow').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const dir = Number(btn.dataset.dir);
+          showSlide(index + dir);
+        });
+      });
+    })();
+  </script>
+</section>
+<!-- ================== /Reviews ================== -->
+
+
+<!-- ====================== FAQ (Accordion + Animations) ====================== -->
+<section id="faq" aria-labelledby="faq-title" class="faq-wrap">
+  <style>
+    /* ----- theme (inherits your palette) ----- */
+    :root{
+      --faq-ink: #0b1320;
+      --faq-primary: #4b4b38;   /* matches your --primary */
+      --faq-accent: #6b6b50;    /* matches your --accent  */
+      --faq-paper: #ffffff;
+      --faq-bg: #f3f3f4;        /* same tone used in reviews section */
+      --faq-border: rgba(0,0,0,.10);
+      --faq-shadow: 0 20px 40px rgba(0,0,0,.10), 0 6px 12px rgba(0,0,0,.06);
+    }
+
+    /* full-bleed like your reviews */
+    #faq.faq-wrap{
+      background: var(--faq-bg);
+      width: 100vw;
+      position: relative;
+      left: 50%; right: 50%;
+      margin-left: -50vw; margin-right: -50vw;
+      padding: clamp(48px, 6vw, 80px) 20px;
+      font: 16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color: var(--faq-ink);
+      overflow: clip;
+      isolation: isolate;
+    }
+
+    /* subtle moving gradient wash */
+    #faq.faq-wrap::before{
+      content:"";
+      position:absolute; inset:-20% -10%;
+      background:
+        radial-gradient(60% 40% at 20% 10%, rgba(255,255,255,.55), transparent 60%),
+        radial-gradient(40% 30% at 85% 80%, rgba(255,255,255,.45), transparent 60%),
+        linear-gradient(120deg, rgba(255,255,255,.18), rgba(0,0,0,0));
+      animation: faqWash 16s ease-in-out infinite alternate;
+      pointer-events:none; z-index:-1; filter: blur(2px);
+    }
+    @keyframes faqWash{
+      0%{ transform: translate3d(-2%, -1%, 0) scale(1); opacity:.9; }
+      100%{ transform: translate3d(2%, 1%, 0) scale(1.02); opacity:1; }
+    }
+    @media (prefers-reduced-motion: reduce){
+      #faq.faq-wrap::before{ animation:none; }
+    }
+
+    /* container */
+    .faq-inner{ max-width: 1100px; margin: 0 auto; }
+
+    .faq-eyebrow{
+      font-size: 12px; font-weight: 800; letter-spacing: 1.4px;
+      text-transform: uppercase; color: var(--faq-accent); margin: 0 0 8px;
+      text-align: center;
+    }
+    #faq-title{
+      font-size: clamp(28px, 3.6vw, 40px);
+      text-align: center; margin: 0 0 28px; color: #0b1320; font-weight: 700;
+    }
+    .faq-sub{
+      text-align:center; color:#475569; margin: 0 auto 28px; max-width: 760px;
+    }
+
+    /* accordion list */
+    .faq-list{ display:grid; gap: 14px; margin-top: 14px; }
+
+    .faq-item{
+      background: var(--faq-paper);
+      border: 1px solid var(--faq-border);
+      border-radius: 14px;
+      box-shadow: var(--faq-shadow);
+      overflow: hidden;
+      transform-origin: 50% 0%;
+      opacity: 0; transform: translateY(10px) scale(.985);
+      transition: opacity .4s ease, transform .45s cubic-bezier(.2,.7,.3,1);
+    }
+    .faq-item.is-in{ opacity: 1; transform: translateY(0) scale(1); }
+
+    /* question button */
+    .faq-q{
+      width: 100%;
+      text-align: left;
+      display:flex; align-items:center; gap:12px;
+      padding: 16px 18px;
+      background: transparent; border: 0; cursor: pointer;
+      font-weight: 700; color: #1f2937;
+    }
+    .faq-q:focus-visible{ outline: 2px solid #2563eb66; outline-offset: 2px; border-radius: 10px; }
+
+    .faq-icon{
+      flex: 0 0 34px; width:34px; height:34px;
+      border-radius: 999px; display:grid; place-items:center;
+      background: #f1f5f9; color: var(--faq-primary);
+      transition: transform .25s ease, background .25s ease, color .25s ease;
+    }
+    .faq-q:hover .faq-icon{ background:#e2e8f0; color:#111; }
+
+    .faq-icon svg{ width:18px; height:18px; stroke: currentColor; stroke-width: 2.6; fill:none; transition: transform .25s ease; }
+    .faq-item[open] .faq-icon svg{ transform: rotate(180deg); } /* chevron flip */
+
+    .faq-question {
+  flex: 1;
+  font-size: 17px;
+  line-height: 1.35;
+  font-weight: normal; /* 👈 makes the questions unbold */
+}
+
+    /* answer (smooth height) */
+    .faq-a{
+      padding: 0 18px 16px 64px;  /* indented to align with icon */
+      color: #374151; font-size: 15px;
+    }
+    .faq-a > p{ margin: 8px 0 0; }
+
+    /* micro details element reset for animation */
+    .faq-item[open] .faq-content{ grid-template-rows: 1fr; }
+    .faq-content{
+      display: grid; grid-template-rows: 0fr;
+      transition: grid-template-rows .35s ease;
+    }
+    .faq-content > div{ overflow: hidden; }
+
+    /* divider line */
+    .faq-divider{ height:1px; background: rgba(0,0,0,.06); margin: 0 18px; }
+
+    /* helpful bar */
+    .faq-help{
+      text-align:center; margin-top: 20px; color:#475569; font-size: 14px;
+    }
+    .faq-help a{
+      color:#3e3a35;; text-decoration:none; font-weight:700; border-bottom:1px dashed rgba(3, 3, 3, 0.45);
+    }
+    .faq-help a:hover{ border-bottom-color:#3e3a35; }
+  </style>
+
+  <div class="faq-inner">
+    <p class="faq-eyebrow">Good to know</p>
+    <h2 id="faq-title">Frequently Asked Questions</h2>
+    <p class="faq-sub">Quick answers to common questions about arriving, access, and flexibility at Bliss Stays.</p>
+
+    <div class="faq-list" id="faqList">
+      <!-- 1 -->
+      <details class="faq-item" id="faq-times">
+        <summary class="faq-q">
+          <span class="faq-icon" aria-hidden="true">
+            <!-- chevron -->
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+          <span class="faq-question">What are your check-in and check-out times?</span>
+        </summary>
+        <div class="faq-content">
+          <div>
+            <div class="faq-divider"></div>
+            <div class="faq-a">
+              <p>Check-in is from <strong>15:00</strong>, and check-out is by <strong>11:00</strong>.</p>
+              <p>Early check-in or late check-out is available for <strong>£15 per hour</strong> (subject to availability). Please contact us in advance to arrange.</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 2 -->
+      <details class="faq-item" id="faq-how-checkin">
+        <summary class="faq-q">
+          <span class="faq-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+          <span class="faq-question">How does check-in work?</span>
+        </summary>
+        <div class="faq-content">
+          <div>
+            <div class="faq-divider"></div>
+            <div class="faq-a">
+              <p>Most stays use <strong>self-service check-in</strong> via a lockbox or smart lock. Access details are sent to you via <strong>WhatsApp</strong> before arrival.</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 3 -->
+      <details class="faq-item" id="faq-cancel">
+        <summary class="faq-q">
+          <span class="faq-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+          <span class="faq-question">Can I cancel or change my booking?</span>
+        </summary>
+        <div class="faq-content">
+          <div>
+            <div class="faq-divider"></div>
+            <div class="faq-a">
+              <p>Yes—policies depend on your booking type. Please check your confirmation email or contact us and we’ll be happy to help.</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 4 -->
+      <details class="faq-item" id="faq-id">
+        <summary class="faq-q">
+          <span class="faq-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+          <span class="faq-question">Do I need to provide ID at check-in?</span>
+        </summary>
+        <div class="faq-content">
+          <div>
+            <div class="faq-divider"></div>
+            <div class="faq-a">
+              <p>Yes, a valid ID with <strong>proof of address</strong> is required. You may also be asked to show your booking confirmation.</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 5 -->
+      <details class="faq-item" id="faq-luggage">
+        <summary class="faq-q">
+          <span class="faq-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+          <span class="faq-question">Can I store luggage before check-in or after check-out?</span>
+        </summary>
+        <div class="faq-content">
+          <div>
+            <div class="faq-divider"></div>
+            <div class="faq-a">
+              <p>Yes, luggage drop-off is available for <strong>£25</strong> between <strong>11:00–15:00</strong> (subject to availability). Please contact us in advance to arrange.</p>
+            </div>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <p class="faq-help">Still need help? <a href="https://wa.me/447365208676" target="_blank" rel="noopener">Chat with us on WhatsApp</a>.</p>
+  </div>
+
+  <script>
+    (function(){
+      const wrap = document.getElementById('faq');
+      if(!wrap) return;
+
+      const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // 1) Staggered reveal on scroll
+      const items = Array.from(wrap.querySelectorAll('.faq-item'));
+      if(prefersReduce){
+        items.forEach(n => n.classList.add('is-in'));
+      }else{
+        const io = new IntersectionObserver((entries, obs) => {
+          entries.forEach((e, i) => {
+            if(e.isIntersecting){
+              const el = e.target;
+              const delay = items.indexOf(el) * 60; // stagger
+              setTimeout(()=> el.classList.add('is-in'), delay);
+              obs.unobserve(el);
+            }
+          });
+        }, { threshold: .2 });
+        items.forEach(n => io.observe(n));
+      }
+
+      // 2) Smooth accordion + close others (true accordion behaviour)
+      const list = document.getElementById('faqList');
+      list.addEventListener('click', (ev) => {
+        const sum = ev.target.closest('summary.faq-q');
+        if(!sum) return;
+        const det = sum.parentElement;
+
+        // allow default toggle to occur first, then close siblings
+        requestAnimationFrame(() => {
+          if(det.open){
+            items.forEach(d => { if(d !== det) d.removeAttribute('open'); });
+          }
+        });
+      });
+
+      // 3) Deep-link support: #faq-id opens the matching item
+      if(location.hash){
+        const target = wrap.querySelector(location.hash);
+        if(target && target.classList.contains('faq-item')){
+          target.setAttribute('open','');
+          target.scrollIntoView({behavior: prefersReduce ? 'auto' : 'smooth', block:'start'});
+        }
+      }
+    })();
+  </script>
+</section>
+<!-- ==================== /FAQ (Accordion) ==================== -->
+
+<section class="newsletter-section">
+  <div class="newsletter-content reveal">
+    <div class="newsletter-text">
+      <p class="label">Stay Updated</p>
+      <h2>Newsletter</h2>
+      <p>Subscribe for exclusive deals, product updates & local tips from Athletic Fit.</p>
+    </div>
+
+    <!-- Formspree-enabled form -->
+    <form class="newsletter-form" id="newsletterForm"
+          action="https://formspree.io/f/mvgqjpkv"
+          method="POST" novalidate>
+      <div class="input-group" id="inputGroup">
+        <input type="text" id="firstName" name="firstName" placeholder="First Name" required />
+        <input type="text" id="surname" name="surname" placeholder="Surname" required />
+      </div>
+
+      <input type="email" id="email" name="email" placeholder="Enter your email address" required />
+
+      <!-- Honeypot -->
+      <input type="text" name="_gotcha" class="nl-hp" tabindex="-1" autocomplete="off" />
+
+      <!-- Optional subject -->
+      <input type="hidden" name="_subject" value="New Newsletter Signup - Bliss Stays" />
+
+      <p class="disclaimer">
+        By clicking the Sign Up button, you agree to our <a href="privacy.html">Privacy Policy</a>.
+      </p>
+      <button type="submit" class="nl-btn">Sign up</button>
+      <p class="nl-status" id="nlStatus" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<style>
+  :root{
+    --ink:#333;
+    --paper:#ffffff;;
+    --brand:#5f5c52;
+    --brandDark:#4e4b44;
+    --glow: rgba(95,92,82,.25);
+  }
+
+  .newsletter-section{
+    position: relative;
+    overflow: clip;
+    background: var(--paper);
+    padding: clamp(36px,6vw,72px) 20px;
+    font-family: 'Segoe UI', sans-serif;
+    isolation: isolate;
+  }
+  /* animated gradient wash */
+  .newsletter-section::before{
+    content:"";
+    position:absolute; inset:-30% -10%;
+    background:
+      radial-gradient(60% 40% at 20% 10%, rgba(255,255,255,.45), transparent 60%),
+      radial-gradient(40% 30% at 85% 80%, rgba(255,255,255,.35), transparent 60%),
+      linear-gradient(120deg, rgba(255,255,255,.18), rgba(0,0,0,0));
+    animation: gradientShift 16s ease-in-out infinite alternate;
+    pointer-events:none;
+    z-index:-1;
+    filter: blur(2px);
+  }
+  @keyframes gradientShift{
+    0%{ transform: translate3d(-2%, -1%, 0) scale(1); opacity:.9; }
+    100%{ transform: translate3d(2%, 1%, 0) scale(1.02); opacity:1; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .newsletter-section::before{ animation:none; }
+  }
+
+  .newsletter-content{
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(20px,4vw,40px);
+    align-items: flex-start;
+    will-change: transform, opacity;
+  }
+
+  .newsletter-text{ flex:1; min-width: 260px; }
+  .newsletter-text .label{
+    font-size: 12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color: var(--ink);
+  }
+  .newsletter-text h2{
+    font-size: clamp(26px,3.6vw,36px);
+    margin: 10px 0; color: var(--ink);
+  }
+  .newsletter-text p{ font-size: 15px; color: var(--ink); }
+
+  .newsletter-form{
+    flex:2; min-width: 280px;
+    display:flex; flex-direction:column; gap:16px; width:100%;
+    transform-origin: 20% 50%;
+  }
+  .newsletter-form .input-group{
+    display:flex; gap: clamp(12px,2.4vw,20px); flex-wrap: wrap;
+  }
+  .newsletter-form .input-group input{ flex:1 1 260px; min-width: 160px; }
+
+  .newsletter-form input[type="text"],
+  .newsletter-form input[type="email"]{
+    padding: 12px 4px 10px;
+    border: none;
+    border-bottom: 2px solid rgba(0,0,0,.25);
+    background: transparent;
+    color: var(--ink);
+    font-size: 15px; width: 100%;
+    transition: box-shadow .25s ease, border-color .25s ease, transform .12s ease;
+    outline: none;
+  }
+  .newsletter-form input::placeholder{ color: rgba(0,0,0,.55); }
+  .newsletter-form input:focus{
+    border-color: var(--brand);
+    box-shadow: 0 6px 18px var(--glow);
+    transform: translateY(-1px);
+  }
+
+  .disclaimer{ font-size: 12px; color: var(--ink); margin-top: -4px; }
+  .disclaimer a{ color: var(--ink); font-weight: 700; text-decoration: none; border-bottom:1px dashed rgba(0,0,0,.35); }
+  .disclaimer a:hover{ border-bottom-color: var(--ink); }
+
+  .nl-btn{
+    background: var(--brand); color:#ffffff; font-weight:600;
+    padding: 12px 26px; border: none; cursor: pointer; border-radius: 8px;
+    align-self: flex-start;
+    box-shadow: 0 8px 18px rgba(0,0,0,.15);
+    transition: transform .12s ease, box-shadow .25s ease, background .25s ease, filter .25s ease;
+    position: relative; overflow: hidden;
+  }
+  .nl-btn:hover{ background: var(--brandDark); transform: translateY(-1px); box-shadow: 0 12px 26px rgba(0,0,0,.18); }
+  .nl-btn:active{ transform: translateY(0); box-shadow: 0 6px 14px rgba(0,0,0,.16); }
+  /* subtle sheen */
+  .nl-btn::after{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,.32) 40%, transparent 60%);
+    transform: translateX(-120%); filter: blur(1px);
+  }
+  .nl-btn:hover::after{ animation: btnSheen .9s ease; }
+  @keyframes btnSheen{
+    from{ transform: translateX(-120%); }
+    to  { transform: translateX(120%); }
+  }
+
+  .nl-hp{ position:absolute; left:-10000px; opacity:0; }
+
+  .nl-status{ margin-top: 6px; font-size: 13px; color: var(--ink); min-height: 1.2em; }
+  .nl-status.ok{ color: #1f6d3b; }
+  .nl-status.err{ color: #8b2e2e; }
+
+  /* Reveal-on-scroll */
+  .reveal{ opacity: 0; transform: translateY(12px) scale(.985); }
+  .reveal.is-in{
+    animation: floatIn .6s cubic-bezier(.2,.7,.3,1) forwards, slightFloat 6s ease-in-out .6s infinite alternate;
+  }
+  @keyframes floatIn{
+    to{ opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes slightFloat{
+    from{ transform: translateY(0) scale(1); }
+    to  { transform: translateY(-2px) scale(1.002); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .reveal, .reveal.is-in{ animation: none !important; opacity: 1; transform:none; }
+  }
+
+  /* Responsive tweak: stack inputs vertically below 768px (JS also guards) */
+  @media (max-width: 768px){
+    .newsletter-form .input-group{ flex-direction: column; }
+    .nl-btn{ align-self: stretch; text-align: center; }
+  }
+
+  /* ===== Newsletter — MOBILE ONLY, user-friendly (desktop untouched) ===== */
+@media (max-width: 768px) {
+  .newsletter-section{
+    padding: 28px 16px !important;
+    background: var(--paper) !important;
+  }
+
+  /* Stack: text first, form below */
+  .newsletter-content{
+    display:block !important;
+    max-width: 640px !important;
+    margin: 0 auto !important;
+  }
+
+  /* Copy sizes */
+  .newsletter-text .label{
+    font-size: 12px !important;
+    letter-spacing: 1px !important;
+  }
+  .newsletter-text h2{
+    font-size: 26px !important;
+    line-height: 1.2 !important;
+    margin: 8px 0 6px !important;
+  }
+  .newsletter-text p{
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    margin: 0 0 10px !important;
+  }
+
+  /* Form: single column, big tap targets, same underline style as web */
+  .newsletter-form{
+    display:block !important;
+    margin-top: 8px !important;
+    gap: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .newsletter-form .input-group{
+    display:block !important;         /* stack first + surname */
+    margin: 0 !important;
+  }
+
+  .newsletter-form input[type="text"],
+  .newsletter-form input[type="email"]{
+    width: 100% !important;
+    font-size: 16px !important;       /* avoid iOS zoom */
+    padding: 14px 4px 12px !important;
+    border: none !important;
+    border-bottom: 2px solid rgba(0,0,0,.25) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    margin-bottom: 16px !important;
+  }
+  .newsletter-form input:focus{
+    border-bottom-color: var(--brand) !important;
+    box-shadow: none !important;
+  }
+
+  /* Disclaimer + CTA */
+  .disclaimer{
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+    margin: 2px 0 10px !important;
+    color: #555 !important;
+  }
+  .nl-btn{
+    width: 100% !important;
+    padding: 13px !important;
+    border-radius: 10px !important;
+    align-self: stretch !important;
+  }
+}
+
+</style>
+
+<script>
+  // Responsive input-group orientation (keeps your original intention)
+  function handleNewsletterLayout() {
+    const group = document.getElementById('inputGroup');
+    if (!group) return;
+    if (window.innerWidth <= 768) {
+      group.style.flexDirection = 'column';
+    } else {
+      group.style.flexDirection = 'row';
+    }
+  }
+  window.addEventListener('resize', handleNewsletterLayout);
+  document.addEventListener('DOMContentLoaded', handleNewsletterLayout);
+
+  // Reveal-on-scroll
+  (function(){
+    const el = document.querySelector('.newsletter-content');
+    if(!el) return;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduced){ el.classList.add('is-in'); return; }
+
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => {
+        if(e.isIntersecting){
+          el.classList.add('is-in');
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.35 });
+    io.observe(el);
+  })();
+
+  // Tiny email validator
+  function validateEmail(email){
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  // Formspree AJAX submit
+  (function () {
+    const form = document.getElementById('newsletterForm');
+    const status = document.getElementById('nlStatus');
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const first = document.getElementById('firstName').value.trim();
+      const sur   = document.getElementById('surname').value.trim();
+      const mail  = document.getElementById('email').value.trim();
+
+      if (!first || !sur || !mail) {
+        status.textContent = "Please fill in all fields.";
+        status.classList.remove('ok'); status.classList.add('err');
+        return;
+      }
+      if (!validateEmail(mail)) {
+        status.textContent = "Please enter a valid email address.";
+        status.classList.remove('ok'); status.classList.add('err');
+        return;
+      }
+
+      status.textContent = "Signing you up…";
+      status.classList.remove('ok','err');
+
+      try{
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if(res.ok){
+          form.reset();
+          status.textContent = "Thanks! You're on the list.";
+          status.classList.remove('err'); status.classList.add('ok');
+        }else{
+          status.textContent = "Something went wrong. Please try again.";
+          status.classList.remove('ok'); status.classList.add('err');
+        }
+      }catch(err){
+        status.textContent = "Network error. Please try again.";
+        status.classList.remove('ok'); status.classList.add('err');
+      }
+    });
+  })();
+</script>
+
+
+
+
+
+
+<style>
+  /* temporary gap killer */
+.attractions.py-5:empty { display:none !important; }
+#faq { padding-bottom:24px !important; }
+footer { margin-top:0 !important; }
+
+</style>
+
+
+</main>
+
+  <!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- LEFT SIDE: All links grouped -->
+    <div class="footer-links-group">
+      <div class="footer-column">
+        <h4>BLISS STAYS</h4>
+        <ul>
+          <li><a href="property.html">Properties</a></li>
+          <li><a href="terms.html">Terms & Conditions</a></li>
+          <li><a href="faq.html">FAQs</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>ENQUIRIES</h4>
+        <ul>
+          <li><a href="booknow.html">Corporate Bookings</a></li>
+          <li><a href="booknow.html">Group Bookings</a></li>
+          <li><a href="booknow.html">Apart-hotels</a></li>
+        </ul> 
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE: Logo and socials -->
+    <div class="footer-logo-section">
+      <img src="logo.png" alt="Bliss Stays Logo" class="footer-logo" />
+      <div class="social-icons">
+        <a href="#" class="social"><img src="icons/insta.png" alt="Instagram" /></a>
+        <a href="#" class="social"><img src="icons/fb.png" alt="Facebook" /></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; Bliss Stays Ltd. 2025. All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+  body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;  /* pushes footer to bottom */
+}
+
+.footer {
+  background: #f7f7f9;
+  padding: 60px 20px 20px;
+  color: #333;
+  width: 100%;
+  box-sizing: border-box;
+}
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 40px;
+  }
+  
+  .footer-links-group {
+    display: flex;
+    gap: 60px;
+    flex-wrap: wrap;
+  }
+  
+  .footer-column {
+    min-width: 180px;
+  }
+  
+  .footer-column h4 {
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #999;
+    padding-bottom: 6px;
+    color: #333;
+  }
+  
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-column li {
+    margin: 10px 0;
+  }
+  
+  .footer-column a {
+    color: #333;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-column a:hover {
+    color: #666;
+  }
+  
+  .footer-logo-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    text-align: right;
+  }
+  
+  .footer-logo {
+    width: 220px;
+    margin-bottom: 20px;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 14px;
+  }
+  
+  .social-icons img {
+    width: 22px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+  
+  .social-icons img:hover {
+    transform: scale(1.2);
+    filter: brightness(0.6) sepia(1) hue-rotate(160deg) saturate(2);
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 13px;
+    color: #555;
+    border-top: 1px solid #999;
+    padding-top: 12px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .footer-links-group {
+      flex-direction: column;
+      gap: 30px;
+    }
+  
+    .footer-logo-section {
+      align-items: flex-start;
+      text-align: left;
+      margin-top: 30px;
+    }
+  
+    .footer-logo {
+      width: 150px;
+    }
+  }
+
+
+
+  </style>
+  
+
+
+
+</body>
+</html>
