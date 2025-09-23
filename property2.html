@@ -276,6 +276,7 @@
 <body>
 
 
+<!-- ======================= HEADER (updated + mobile) ======================= -->
 <!-- ================ HEADER (desktop unchanged, mobile hamburger) ================ -->
 <header>
   <div class="header-inner">
@@ -353,8 +354,10 @@
         <a class="mnav-item" href="privacy.html">Privacy Policy</a>
       </div>
 
-      <a class="mnav-cta" href="booknow.html">Book now</a>
-    </div>
+      <div class="mnav-cta">
+        <a class="mnav-book" href="booknow.html">Book now</a>
+      </div>
+</div>      
   </div>
 </aside>
 
@@ -386,8 +389,25 @@ header.scrolled .header-inner{background:#fff;border-radius:10px;box-shadow:0 10
 
 @media (max-width:768px){
   .main-nav,.book-now{display:none!important}
-  .mnav-btn{display:grid;place-items:center;width:44px;height:44px;border:1px solid rgba(0,0,0,.12);border-radius:10px;background:#fff;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08)}
-  .mnav-btn span{display:block;width:22px;height:2px;background:#222;margin:3px 0;border-radius:2px}
+  .mnav-btn {
+  display:grid;
+  place-items:center;
+  width:44px;
+  height:44px;
+  border:none;              /* remove border */
+  border-radius:0;          /* no rounded box */
+  background:transparent;   /* transparent background */
+  box-shadow:none;          /* no shadow */
+  cursor:pointer;
+}
+.mnav-btn span {
+  display:block;
+  width:22px;
+  height:2px;
+  background:#222; /* your menu lines */
+  margin:4px 0;
+  border-radius:2px;
+}
   .mnav-btn:active{transform:scale(.98)}
 
   .mnav-sheet{display:block;pointer-events:none;position:fixed;inset:0;z-index:1500}
@@ -437,6 +457,75 @@ header.scrolled .header-inner{background:#fff;border-radius:10px;box-shadow:0 10
 }
 
 </style>
+<style>
+  /* Make room for the sticky CTA so last list item isn't hidden */
+@media (max-width: 768px){
+  .mnav-body{ padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+
+  /* Sticky footer area inside the sheet */
+  .mnav-cta{
+    position: sticky;
+    bottom: 0;
+    left: 0; right: 0;
+    z-index: 3;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    background: #fff;               /* clean, not dark */
+    border-top: 1px solid rgba(0,0,0,.06);
+    backdrop-filter: blur(4px);
+  }
+
+  /* Force our button styles to win over .book-now a */
+  .mnav-cta .mnav-book{
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #4b4b38 !important; /* your primary */
+    color: #fff !important;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1;
+    padding: 16px 18px;
+    border-radius: 12px;
+    border: 0 !important;
+    box-shadow: 0 10px 24px rgba(0,0,0,.12), 0 2px 6px rgba(0,0,0,.08);
+    text-decoration: none !important;
+    transition: transform .06s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .mnav-cta .mnav-book:hover{ box-shadow: 0 14px 30px rgba(0,0,0,.16); }
+  .mnav-cta .mnav-book:active{ transform: translateY(1px); }
+
+  /* Nuke any inherited “panel” look from other styles */
+  .mnav-cta .mnav-book::before,
+  .mnav-cta .mnav-book::after{ content:none !important; }
+}
+
+/* Hide or move WhatsApp while menu is open (choose ONE) */
+@media (max-width: 768px){
+  /* Option A: hide it */
+  body.menu-open #wa-widget{ display: none !important; }
+
+  /* Option B (if you prefer visible, but out of the way):
+  body.menu-open #wa-widget{
+    transform: translateY(80px);
+    opacity: .5;
+    pointer-events: none;
+  } */
+}
+
+</style>
+
+<script>
+  // when opening the mobile sheet
+document.body.classList.add('menu-open');
+document.documentElement.style.overflow = 'hidden';
+document.body.style.overflow = 'hidden';
+
+// when closing the mobile sheet
+document.body.classList.remove('menu-open');
+document.documentElement.style.overflow = '';
+document.body.style.overflow = '';
+
+</script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -944,6 +1033,37 @@ document.addEventListener('DOMContentLoaded', function () {
           .mv-lightbox__prev, .mv-lightbox__next{ top:auto; bottom:12px; transform:none; }
           .mv-lightbox__prev{ left:12px; } .mv-lightbox__next{ right:12px; }
         }
+        /* === Beige border for the "More Details" button === */
+:root{
+  /* tweak if you want it lighter/darker */
+  --beige-border: #d9cbb5;   /* soft beige */
+  --beige-bg:     #f7f2e7;   /* hover fill */
+}
+
+.mv-actions .btn-secondary{
+  background:#fff;
+  color: var(--stone);
+  border: 2px solid var(--beige-border) !important; /* beige border */
+  border-radius: 10px;
+}
+
+/* hover/active/focus states */
+.mv-actions .btn-secondary:hover{
+  background: var(--beige-bg);
+  box-shadow: 0 2px 10px rgba(217,203,181,.35);
+  transform: translateY(-2px);
+}
+
+.mv-actions .btn-secondary:active{
+  transform: translateY(-1px);
+}
+
+.mv-actions .btn-secondary:focus-visible{
+  outline: 2px solid color-mix(in oklab, var(--beige-border) 65%, black);
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+
       </style>
     
       <div class="mv-wrap">
