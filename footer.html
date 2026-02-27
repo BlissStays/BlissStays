@@ -1,0 +1,78 @@
+<style>
+/* ====== Shared Footer – source of truth, matches index.html ====== */
+footer {
+  background: #f7f7f9;
+  padding: clamp(48px, 6vw, 72px) 20px 20px;
+  font-family: var(--font-body, 'DM Sans', system-ui, sans-serif);
+  color: var(--dark, #2d2c24);
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+}
+.footer-links-group { display: flex; gap: 60px; flex-wrap: wrap; }
+.footer-column { min-width: 160px; }
+.footer-column h4 {
+  font-size: 12px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 1px; margin-bottom: 14px;
+  padding-bottom: 6px; border-bottom: 1px solid #ccc;
+  color: var(--dark, #2d2c24);
+}
+.footer-column ul { list-style: none; padding: 0; margin: 0; }
+.footer-column li { margin: 10px 0; }
+.footer-column a { color: #555; font-size: 14px; font-weight: 500; transition: color .2s; }
+.footer-column a:hover { color: var(--dark, #2d2c24); }
+.footer-logo-section { display: flex; flex-direction: column; align-items: flex-end; }
+.footer-logo { width: 200px; margin-bottom: 18px; }
+.social-icons { display: flex; gap: 14px; }
+.social-icons img { width: 22px; transition: transform .2s, filter .2s; }
+.social-icons img:hover { transform: scale(1.2); filter: brightness(0.5); }
+.footer-bottom {
+  text-align: center; margin-top: 40px; font-size: 13px; color: #888;
+  border-top: 1px solid #ddd; padding-top: 14px;
+  max-width: 1200px; margin-left: auto; margin-right: auto;
+}
+@media (max-width: 768px) {
+  .footer-container { flex-direction: column; }
+  .footer-links-group { flex-direction: column; gap: 28px; }
+  .footer-logo-section { align-items: flex-start; }
+  .footer-logo { width: 150px; }
+}
+</style>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-links-group">
+      <div class="footer-column">
+        <h4>Bliss Living</h4>
+        <ul>
+          <li><a href="property.html">Properties</a></li>
+          <li><a href="terms.html">Terms &amp; Conditions</a></li>
+          <li><a href="faq.html">FAQs</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Enquiries</h4>
+        <ul>
+          <li><a href="booknow.html">Corporate Bookings</a></li>
+          <li><a href="booknow.html">Group Bookings</a></li>
+          <li><a href="booknow.html">Apart-hotels</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-logo-section">
+      <img src="Footnote_Logo.png" alt="Bliss Living" class="footer-logo" width="200" loading="lazy">
+      <div class="social-icons">
+        <a href="#" class="social" aria-label="Instagram"><img src="icons/insta.png" alt="Instagram" width="22" height="22"></a>
+        <a href="#" class="social" aria-label="Facebook"><img src="icons/fb.png" alt="Facebook" width="22" height="22"></a>
+      </div>
+    </div>
+  </div>
+  <p class="footer-bottom">&copy; Bliss Living Ltd. 2025. All rights reserved.</p>
+</footer>
