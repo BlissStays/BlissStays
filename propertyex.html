@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="preconnect" href="https://code.jquery.com" crossorigin>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Bliss Living</title>
 
           <!-- Customized Bootstrap Stylesheet -->
           <link href="css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="css/common.css">
 
           <!-- Template Stylesheet -->
           <link href="css/style.css" rel="stylesheet">
           <!-- jQuery (must load before Owl) -->
-<script  src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 <!-- Owl Carousel CSS + JS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.carousel.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.theme.default.min.css">
-<script  src="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js"></script>
+
 
   <style>
     /* Reset */
@@ -86,6 +83,7 @@
       height: auto;
       filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
     }
+
 
     
 
@@ -284,6 +282,9 @@
   object-fit: cover;
   display: block;
 }
+
+
+
 
   </style>
 </head>
@@ -544,6 +545,7 @@
   });
 </script>
 
+
 <!-- Floating WhatsApp (bottom-left) -->
 <!-- ===== WhatsApp Chat Teaser (final, wide like the reference) ===== -->
 <div id="wa-widget" aria-live="polite">
@@ -766,13 +768,13 @@
         <div class="card">
           <div class="gallery">
             <div class="main">
-              <img src="Property/1.webp" alt="Main photo" loading="lazy" onclick="mvOpen(0)">
+              <img src="Property/1.jpg" alt="Main photo" loading="lazy" onclick="mvOpen(0)">
             </div>
             <div class="thumbs">
-              <img src="Property/2.webp" alt="Living room" loading="lazy" onclick="mvOpen(1)">
-              <img src="Property/5.webp" alt="Bedroom" loading="lazy" onclick="mvOpen(2)">
-              <img src="Property/4.webp" alt="Single room" loading="lazy" onclick="mvOpen(3)">
-              <img src="Property/5.webp" alt="Bathroom" loading="lazy" onclick="mvOpen(4)">
+              <img src="Property/2.jpg" alt="Living room" loading="lazy" onclick="mvOpen(1)">
+              <img src="Property/5.jpg" alt="Bedroom" loading="lazy" onclick="mvOpen(2)">
+              <img src="Property/4.jpg" alt="Single room" loading="lazy" onclick="mvOpen(3)">
+              <img src="Property/5.jpg" alt="Bathroom" loading="lazy" onclick="mvOpen(4)">
             </div>
           </div>
           <a class="view-link" href="#" onclick="mvOpen(0);return false;">🖼️ View photos</a>
@@ -880,9 +882,9 @@
 
     /* Lightbox */
     const MV = [
-      "Property/1.webp","Property/2.webp","Property/3.jpg","Property/4.webp","Property/5.webp",
-      "Property/6.webp","Property/7.webp","Property/8.webp","Property/9.webp","Property/10.webp",
-      "Property/11.webp","Property/12.webp","Property/13.webp"
+      "Property/1.jpg","Property/2.jpg","Property/3.jpg","Property/4.jpg","Property/5.jpg",
+      "Property/6.jpg","Property/7.jpg","Property/8.jpg","Property/9.jpg","Property/10.jpg",
+      "Property/11.jpg","Property/12.jpg","Property/13.jpg"
     ];
     let mvIdx = 0;
     const mvBox = document.getElementById('mv-overlay');
@@ -954,10 +956,10 @@
 
     <!-- RIGHT SIDE: Logo and socials -->
     <div class="footer-logo-section">
-  <img src="logo.webp" alt="Bliss Living Logo" class="footer-logo"  loading="lazy">
+  <img src="logo.png" alt="Bliss Living Logo" class="footer-logo" />
       <div class="social-icons">
-        <a href="#" class="social"><img src="icons/insta.webp" alt="Instagram"  loading="lazy"></a>
-        <a href="#" class="social"><img src="icons/fb.webp" alt="Facebook"  loading="lazy"></a>
+        <a href="#" class="social"><img src="icons/insta.png" alt="Instagram" /></a>
+        <a href="#" class="social"><img src="icons/fb.png" alt="Facebook" /></a>
       </div>
     </div>
   </div>
@@ -1098,51 +1100,12 @@ main {
     }
   }
 
+
+
   </style>
   
 
-<script>
-(function(){
-  if(window.__revealifyLoaded)return;window.__revealifyLoaded=true;
-  const pr=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  function tag(){
-    const g=[
-      ['.hero .hero-logo','up',0,0],
-      ['.home-message-left,.home-message-right','up',16,60],
-      ['#about-us .about-title,#about-us .about-lead','up',14,60],
-      ['#about-us .stat-card','up',18,80],
-      ['.properties-slider .slide,.bliss-slider .attractions-item,.attractions .attractions-item','up',18,80],
-      ['.bliss-features .feature-box','up',16,70],
-      ['#bliss-reviews .review-card,#reviews-banner .rb-card','up',16,80],
-      ['#faq .faq-item','up',14,70],
-      ['.newsletter-text,.newsletter-form','up',14,80],
-      ['.footer-column,.footer-logo-section','up',14,80]
-    ];
-    g.forEach(([s,v,d,st])=>{
-      document.querySelectorAll(s).forEach((el,i)=>{
-        if(!el.classList.contains('revealify')){
-          el.classList.add('revealify',v||'up');
-          el.style.setProperty('--rv-delay',(i*(st||60))+'ms');
-          if(d!=null)el.style.setProperty('--rv-distance',(d||16)+'px');
-        }
-      });
-    });
-  }
-  function obs(){
-    if(pr){document.querySelectorAll('.revealify').forEach(e=>e.classList.add('in'));return;}
-    const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.18,rootMargin:'0px 0px -4% 0px'});
-    document.querySelectorAll('.revealify').forEach(e=>io.observe(e));
-  }
-  function par(){
-    const h=document.querySelector('.hero .hero-video');
-    if(!h||pr)return;
-    let t=false;
-    addEventListener('scroll',()=>{if(t)return;t=true;requestAnimationFrame(()=>{h.style.transform='translate3d(0,'+Math.min(60,scrollY*.06)+'px,0)';t=false;});},{passive:true});
-  }
-  function init(){tag();obs();par();}
-  document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
-  new MutationObserver(tag).observe(document.documentElement,{childList:true,subtree:true});
-})();
-</script>
+
+
 </body>
 </html>

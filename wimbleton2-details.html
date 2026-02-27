@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="css/common.css">
-
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="preconnect" href="https://code.jquery.com" crossorigin>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Bliss Living</title>
@@ -270,9 +265,13 @@
   display: block;
 }
 
+
+
+
   </style>
 </head>
 <body>
+
 
 <!-- ======================= HEADER (updated + mobile) ======================= -->
 <!-- ================ HEADER (desktop unchanged, mobile hamburger) ================ -->
@@ -1003,6 +1002,7 @@ document.addEventListener('DOMContentLoaded', function () {
   gap: 20px;
 }
 
+
 /* Each card has its own alternating background */
 .policy-section .policy-card:nth-of-type(odd) {
   background: #e5e5e5;   /* light grey */
@@ -1056,6 +1056,9 @@ document.addEventListener('DOMContentLoaded', function () {
 .policy-box span { font-size:.85rem; color:#555; }
 .policy-box strong { font-size:1rem; font-weight:700; color:#000; }
 .policy-box img { width:18px; height:18px; object-fit:contain; }
+
+
+
 
     /* ====== Right column: sticky booking ====== */
     .book-card{
@@ -1132,6 +1135,7 @@ document.addEventListener('DOMContentLoaded', function () {
   .lb-prev,.lb-next{ width:48px; height:48px; font-size:26px; }
 }
 
+
     /* ====== Responsive ====== */
     @media (max-width:1100px){ .bd-two{ grid-template-columns: 1.4fr 1fr; } }
     @media (max-width:980px){
@@ -1172,6 +1176,7 @@ document.addEventListener('DOMContentLoaded', function () {
       background: #eef1ea;
     }
     .map-holder > [hidden] { display:none !important; }
+
 
       /* Title-only tweak */
   #bd-title {
@@ -1245,6 +1250,7 @@ document.addEventListener('DOMContentLoaded', function () {
   width: 150px;
 }
 }
+
 
 /* ===== MOBILE GALLERY FIX ===== */
 @media (max-width: 768px) {
@@ -1559,12 +1565,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     <!-- ================= GALLERY ================= -->
     <div class="bd-gallery" id="bd-gallery">
-      <a class="g-item g-hero" href="property4/glass/WEB 2.webp"><img src="property4/glass/WEB 1.webp" alt="Living room"></a>
-      <a class="g-item g-2"   href="property4/glass/WEB 6.webp"><img src="property4/glass/WEB 3.webp" alt="Bedroom" loading="lazy"></a>
-      <a class="g-item g-3"   href="property4/glass/WEB 7.webp"><img src="property4/glass/WEB 4.webp" alt="Kitchen" loading="lazy"></a>
-      <a class="g-item g-4"   href="property4/glass/WEB 8.webp"><img src="property4/glass/WEB 5.webp" alt="Bathroom" loading="lazy"></a>
-      <a class="g-item g-5"   href="property4/glass/WEB 9.webp">
-        <img src="property4/glass/WEB 1.webp" alt="Exterior" loading="lazy"><!-- keep id and add class so CSS applies -->
+      <a class="g-item g-hero" href="property4/glass/WEB 2.jpg"><img src="property4/glass/WEB 1.jpg" alt="Living room"></a>
+      <a class="g-item g-2"   href="property4/glass/WEB 6.jpg"><img src="property4/glass/WEB 3.jpg" alt="Bedroom"></a>
+      <a class="g-item g-3"   href="property4/glass/WEB 7.jpg"><img src="property4/glass/WEB 4.jpg" alt="Kitchen"></a>
+      <a class="g-item g-4"   href="property4/glass/WEB 8.jpg"><img src="property4/glass/WEB 5.jpg" alt="Bathroom"></a>
+      <a class="g-item g-5"   href="property4/glass/WEB 9.jpg">
+        <img src="property4/glass/WEB 1.jpg" alt="Exterior"><!-- keep id and add class so CSS applies -->
         <button class="view-all" type="button" id="bd-view">View all photos</button>
       </a>
     </div>
@@ -1572,7 +1578,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <!-- ====== Lightbox (gallery) ====== -->
     <div class="lb" id="bd-lb" aria-hidden="true">
       <div class="lb-inner">
-        <img class="lb-img" id="lb-img" alt="" loading="lazy">
+        <img class="lb-img" id="lb-img" alt="">
         <button class="lb-close" id="lb-close" aria-label="Close">×</button>
         <button class="lb-prev"  id="lb-prev"  aria-label="Previous">‹</button>
         <button class="lb-next"  id="lb-next"  aria-label="Next">›</button>
@@ -1699,10 +1705,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     <!-- ================= PROPERTY FACTS ================= -->
     <div class="bd-facts">
-      <div class="fact"><img src="icons/bed.webp" alt="Bedrooms" loading="lazy"><span><strong>2</strong> Bedrooms</span></div>
-      <div class="fact"><img src="icons/bath.webp" alt="Bathrooms" loading="lazy"><span><strong>2</strong> Bathrooms</span></div>
-      <div class="fact"><img src="icons/sofa.webp" alt="Sofa beds" loading="lazy"><span><strong>4</strong> Beds</span></div>
-      <div class="fact"><img src="icons/peep.webp" alt="Sleeps" loading="lazy"><span>Sleeps <strong>6</strong></span></div>
+      <div class="fact"><img src="icons/bed.png" alt="Bedrooms"><span><strong>2</strong> Bedrooms</span></div>
+      <div class="fact"><img src="icons/bath.png" alt="Bathrooms"><span><strong>2</strong> Bathrooms</span></div>
+      <div class="fact"><img src="icons/sofa.png" alt="Sofa beds"><span><strong>4</strong> Beds</span></div>
+      <div class="fact"><img src="icons/peep.png" alt="Sleeps"><span>Sleeps <strong>6</strong></span></div>
     </div>
 
     <!-- ================= TWO COLUMN ================= -->
@@ -1735,56 +1741,56 @@ document.addEventListener('DOMContentLoaded', function () {
           <div class="amen-wrap clamped" id="amen-wrap">
             <div class="amen-grid">
               <!-- FIRST 9 -->
-              <div class="amen"><img src="prop icon/1.png" alt="" loading="lazy"><span>Garden View</span></div>
-              <div class="amen"><img src="prop icon/2.png" alt="" loading="lazy"><span>Bath</span></div>
-              <div class="amen"><img src="prop icon/3.png" alt="" loading="lazy"><span>Hair Dryer</span></div>
-              <div class="amen"><img src="prop icon/4.png" alt="" loading="lazy"><span>Cleaning Products</span></div>
-              <div class="amen"><img src="prop icon/5.png" alt="" loading="lazy"><span>Shampoo</span></div>
-              <div class="amen"><img src="prop icon/6.png" alt="" loading="lazy"><span>Body Soap</span></div>
-              <div class="amen"><img src="prop icon/7.png" alt="" loading="lazy"><span>Hot Water</span></div>
-              <div class="amen"><img src="prop icon/8.png" alt="" loading="lazy"><span>Shower Gel</span></div>
-              <div class="amen"><img src="prop icon/9.png" alt="" loading="lazy"><span>Washing Machine</span></div>
+              <div class="amen"><img src="prop icon/1.png" alt=""><span>Garden View</span></div>
+              <div class="amen"><img src="prop icon/2.png" alt=""><span>Bath</span></div>
+              <div class="amen"><img src="prop icon/3.png" alt=""><span>Hair Dryer</span></div>
+              <div class="amen"><img src="prop icon/4.png" alt=""><span>Cleaning Products</span></div>
+              <div class="amen"><img src="prop icon/5.png" alt=""><span>Shampoo</span></div>
+              <div class="amen"><img src="prop icon/6.png" alt=""><span>Body Soap</span></div>
+              <div class="amen"><img src="prop icon/7.png" alt=""><span>Hot Water</span></div>
+              <div class="amen"><img src="prop icon/8.png" alt=""><span>Shower Gel</span></div>
+              <div class="amen"><img src="prop icon/9.png" alt=""><span>Washing Machine</span></div>
 
               <!-- EXTRAS -->
-              <div class="amen amen-extra"><img src="prop icon/10.png" alt="" loading="lazy"><span>Dryer</span></div>
-              <div class="amen amen-extra"><img src="prop icon/11.png" alt="" loading="lazy"><span>Essentials</span></div>
-              <div class="amen amen-extra"><img src="prop icon/12.png" alt="" loading="lazy"><span>Hangers</span></div>
-              <div class="amen amen-extra"><img src="prop icon/13.png" alt="" loading="lazy"><span>Bed Linen</span></div>
-              <div class="amen amen-extra"><img src="prop icon/14.png" alt="" loading="lazy"><span>Room-darkening blinds</span></div>
-              <div class="amen amen-extra"><img src="prop icon/15.png" alt="" loading="lazy"><span>Iron</span></div>
-              <div class="amen amen-extra"><img src="prop icon/16.png" alt="" loading="lazy"><span>Clothes drying rack</span></div>
-              <div class="amen amen-extra"><img src="prop icon/17.png" alt="" loading="lazy"><span>TV</span></div>
-              <div class="amen amen-extra"><img src="prop icon/18.png" alt="" loading="lazy"><span>Books and reading material</span></div>
-              <div class="amen amen-extra"><img src="prop icon/19.png" alt="" loading="lazy"><span>Heating</span></div>
-              <div class="amen amen-extra"><img src="prop icon/20.png" alt="" loading="lazy"><span>Smoke alarm</span></div>
-              <div class="amen amen-extra"><img src="prop icon/21.png" alt="" loading="lazy"><span>Carbon monoxide alarm</span></div>
-              <div class="amen amen-extra"><img src="prop icon/22.png" alt="" loading="lazy"><span>First aid kit</span></div>
-              <div class="amen amen-extra"><img src="prop icon/23.png" alt="" loading="lazy"><span>Wifi</span></div>
-              <div class="amen amen-extra"><img src="prop icon/24.png" alt="" loading="lazy"><span>Dedicated workspace</span></div>
-              <div class="amen amen-extra"><img src="prop icon/25.png" alt="" loading="lazy"><span>Kitchen</span></div>
-              <div class="amen amen-extra"><img src="prop icon/26.png" alt="" loading="lazy"><span>Fridge</span></div>
-              <div class="amen amen-extra"><img src="prop icon/27.png" alt="" loading="lazy"><span>Microwave</span></div>
-              <div class="amen amen-extra"><img src="prop icon/28.png" alt="" loading="lazy"><span>Cooking basics</span></div>
-              <div class="amen amen-extra"><img src="prop icon/29.png" alt="" loading="lazy"><span>Dishes and cutlery</span></div>
-              <div class="amen amen-extra"><img src="prop icon/30.png" alt="" loading="lazy"><span>Freezer</span></div>
-              <div class="amen amen-extra"><img src="prop icon/31.png" alt="" loading="lazy"><span>Dishwasher</span></div>
-              <div class="amen amen-extra"><img src="prop icon/32.png" alt="" loading="lazy"><span>Cooker</span></div>
-              <div class="amen amen-extra"><img src="prop icon/33.png" alt="" loading="lazy"><span>Oven</span></div>
-              <div class="amen amen-extra"><img src="prop icon/34.png" alt="" loading="lazy"><span>Kettle</span></div>
-              <div class="amen amen-extra"><img src="prop icon/35.png" alt="" loading="lazy"><span>Wine glasses</span></div>
-              <div class="amen amen-extra"><img src="prop icon/36.png" alt="" loading="lazy"><span>Toaster</span></div>
-              <div class="amen amen-extra"><img src="prop icon/37.png" alt="" loading="lazy"><span>Dining table</span></div>
-              <div class="amen amen-extra"><img src="prop icon/38.png" alt="" loading="lazy"><span>Private entrance</span></div>
-              <div class="amen amen-extra"><img src="prop icon/39.png" alt="" loading="lazy"><span>Launderette nearby</span></div>
-              <div class="amen amen-extra"><img src="prop icon/40.png" alt="" loading="lazy"><span>Private back garden</span></div>
-              <div class="amen amen-extra"><img src="prop icon/41.png" alt="" loading="lazy"><span>Outdoor furniture</span></div>
-              <div class="amen amen-extra"><img src="prop icon/42.png" alt="" loading="lazy"><span>Free parking on premises</span></div>
-              <div class="amen amen-extra"><img src="prop icon/43.png" alt="" loading="lazy"><span>Paid street parking off premises</span></div>
-              <div class="amen amen-extra"><img src="prop icon/44.png" alt="" loading="lazy"><span>Single level home</span></div>
-              <div class="amen amen-extra"><img src="prop icon/45.png" alt="" loading="lazy"><span>Pets allowed</span></div>
-              <div class="amen amen-extra"><img src="prop icon/46.png" alt="" loading="lazy"><span>Luggage drop-off allowed</span></div>
-              <div class="amen amen-extra"><img src="prop icon/47.png" alt="" loading="lazy"><span>Long-term stays allowed</span></div>
-              <div class="amen amen-extra"><img src="prop icon/48.png" alt="" loading="lazy"><span>Cleaning available during stay</span></div>
+              <div class="amen amen-extra"><img src="prop icon/10.png" alt=""><span>Dryer</span></div>
+              <div class="amen amen-extra"><img src="prop icon/11.png" alt=""><span>Essentials</span></div>
+              <div class="amen amen-extra"><img src="prop icon/12.png" alt=""><span>Hangers</span></div>
+              <div class="amen amen-extra"><img src="prop icon/13.png" alt=""><span>Bed Linen</span></div>
+              <div class="amen amen-extra"><img src="prop icon/14.png" alt=""><span>Room-darkening blinds</span></div>
+              <div class="amen amen-extra"><img src="prop icon/15.png" alt=""><span>Iron</span></div>
+              <div class="amen amen-extra"><img src="prop icon/16.png" alt=""><span>Clothes drying rack</span></div>
+              <div class="amen amen-extra"><img src="prop icon/17.png" alt=""><span>TV</span></div>
+              <div class="amen amen-extra"><img src="prop icon/18.png" alt=""><span>Books and reading material</span></div>
+              <div class="amen amen-extra"><img src="prop icon/19.png" alt=""><span>Heating</span></div>
+              <div class="amen amen-extra"><img src="prop icon/20.png" alt=""><span>Smoke alarm</span></div>
+              <div class="amen amen-extra"><img src="prop icon/21.png" alt=""><span>Carbon monoxide alarm</span></div>
+              <div class="amen amen-extra"><img src="prop icon/22.png" alt=""><span>First aid kit</span></div>
+              <div class="amen amen-extra"><img src="prop icon/23.png" alt=""><span>Wifi</span></div>
+              <div class="amen amen-extra"><img src="prop icon/24.png" alt=""><span>Dedicated workspace</span></div>
+              <div class="amen amen-extra"><img src="prop icon/25.png" alt=""><span>Kitchen</span></div>
+              <div class="amen amen-extra"><img src="prop icon/26.png" alt=""><span>Fridge</span></div>
+              <div class="amen amen-extra"><img src="prop icon/27.png" alt=""><span>Microwave</span></div>
+              <div class="amen amen-extra"><img src="prop icon/28.png" alt=""><span>Cooking basics</span></div>
+              <div class="amen amen-extra"><img src="prop icon/29.png" alt=""><span>Dishes and cutlery</span></div>
+              <div class="amen amen-extra"><img src="prop icon/30.png" alt=""><span>Freezer</span></div>
+              <div class="amen amen-extra"><img src="prop icon/31.png" alt=""><span>Dishwasher</span></div>
+              <div class="amen amen-extra"><img src="prop icon/32.png" alt=""><span>Cooker</span></div>
+              <div class="amen amen-extra"><img src="prop icon/33.png" alt=""><span>Oven</span></div>
+              <div class="amen amen-extra"><img src="prop icon/34.png" alt=""><span>Kettle</span></div>
+              <div class="amen amen-extra"><img src="prop icon/35.png" alt=""><span>Wine glasses</span></div>
+              <div class="amen amen-extra"><img src="prop icon/36.png" alt=""><span>Toaster</span></div>
+              <div class="amen amen-extra"><img src="prop icon/37.png" alt=""><span>Dining table</span></div>
+              <div class="amen amen-extra"><img src="prop icon/38.png" alt=""><span>Private entrance</span></div>
+              <div class="amen amen-extra"><img src="prop icon/39.png" alt=""><span>Launderette nearby</span></div>
+              <div class="amen amen-extra"><img src="prop icon/40.png" alt=""><span>Private back garden</span></div>
+              <div class="amen amen-extra"><img src="prop icon/41.png" alt=""><span>Outdoor furniture</span></div>
+              <div class="amen amen-extra"><img src="prop icon/42.png" alt=""><span>Free parking on premises</span></div>
+              <div class="amen amen-extra"><img src="prop icon/43.png" alt=""><span>Paid street parking off premises</span></div>
+              <div class="amen amen-extra"><img src="prop icon/44.png" alt=""><span>Single level home</span></div>
+              <div class="amen amen-extra"><img src="prop icon/45.png" alt=""><span>Pets allowed</span></div>
+              <div class="amen amen-extra"><img src="prop icon/46.png" alt=""><span>Luggage drop-off allowed</span></div>
+              <div class="amen amen-extra"><img src="prop icon/47.png" alt=""><span>Long-term stays allowed</span></div>
+              <div class="amen amen-extra"><img src="prop icon/48.png" alt=""><span>Cleaning available during stay</span></div>
               
             </div>
             <div class="amen-fade" aria-hidden="true"></div>
@@ -1797,19 +1803,19 @@ document.addEventListener('DOMContentLoaded', function () {
           <h3 id="pol-head" class="h4">Stay Policies</h3>
           <div class="policy-section">
             <div class="policy-card">
-              <div class="policy-title"><img src="prop icon/ch_ch.png" alt="" loading="lazy"><span>Check-in & Check-out</span></div>
+              <div class="policy-title"><img src="prop icon/ch_ch.png" alt=""><span>Check-in & Check-out</span></div>
               <div class="policy-grid">
                 <div class="policy-box"><span>Check-in time</span>3:00 PM</div>
                 <div class="policy-box"><span>Check-out time</span>10:00 AM</div>
               </div>
             </div>
             <div class="policy-card">
-              <div class="policy-title"><img src="prop icon/rules.png" alt="" loading="lazy"><span>House Rules</span></div>
+              <div class="policy-title"><img src="prop icon/rules.png" alt=""><span>House Rules</span></div>
               <div class="policy-grid">
-                <div class="policy-box"><img src="prop icon/smoke.webp" alt="" loading="lazy"> No smoking</div>
-                <div class="policy-box"><img src="prop icon/pet.png" alt="" loading="lazy"> No pets</div>
-                <div class="policy-box"><img src="prop icon/party.webp" alt="" loading="lazy"> No parties or events</div>
-                <div class="policy-box"><img src="prop icon/deposit.png" alt="" loading="lazy"> Security deposit required</div>
+                <div class="policy-box"><img src="prop icon/smoke.png" alt=""> No smoking</div>
+                <div class="policy-box"><img src="prop icon/pet.png" alt=""> No pets</div>
+                <div class="policy-box"><img src="prop icon/party.png" alt=""> No parties or events</div>
+                <div class="policy-box"><img src="prop icon/deposit.png" alt=""> Security deposit required</div>
               </div>
             </div>
           </div>
@@ -1915,10 +1921,11 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 </style>
 
+
   <!-- ============ Lightbox ============ -->
   <div class="lb" id="bd-lb" aria-hidden="true">
     <div class="lb-inner">
-      <img class="lb-img" id="lb-img" alt="" loading="lazy">
+      <img class="lb-img" id="lb-img" alt="">
       <button class="lb-close" id="lb-close" aria-label="Close">×</button>
     </div>
   </div>
@@ -2026,6 +2033,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
+
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-container">
@@ -2056,10 +2064,10 @@ document.addEventListener('DOMContentLoaded', function () {
   
       <!-- RIGHT SIDE: Logo and socials -->
       <div class="footer-logo-section">
-  <img src="logo.webp" alt="Bliss Living Logo" class="footer-logo"  loading="lazy">
+  <img src="logo.png" alt="Bliss Living Logo" class="footer-logo" />
         <div class="social-icons">
-          <a href="#"><img src="icons/insta.webp" alt="Instagram"  loading="lazy"></a>
-          <a href="#"><img src="icons/fb.webp" alt="Facebook"  loading="lazy"></a>
+          <a href="#"><img src="icons/insta.png" alt="Instagram" /></a>
+          <a href="#"><img src="icons/fb.png" alt="Facebook" /></a>
         </div>
       </div>
   
@@ -2187,48 +2195,5 @@ document.addEventListener('DOMContentLoaded', function () {
 }
   </style> 
 
-<script>
-(function(){
-  if(window.__revealifyLoaded)return;window.__revealifyLoaded=true;
-  const pr=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  function tag(){
-    const g=[
-      ['.hero .hero-logo','up',0,0],
-      ['.home-message-left,.home-message-right','up',16,60],
-      ['#about-us .about-title,#about-us .about-lead','up',14,60],
-      ['#about-us .stat-card','up',18,80],
-      ['.properties-slider .slide,.bliss-slider .attractions-item,.attractions .attractions-item','up',18,80],
-      ['.bliss-features .feature-box','up',16,70],
-      ['#bliss-reviews .review-card,#reviews-banner .rb-card','up',16,80],
-      ['#faq .faq-item','up',14,70],
-      ['.newsletter-text,.newsletter-form','up',14,80],
-      ['.footer-column,.footer-logo-section','up',14,80]
-    ];
-    g.forEach(([s,v,d,st])=>{
-      document.querySelectorAll(s).forEach((el,i)=>{
-        if(!el.classList.contains('revealify')){
-          el.classList.add('revealify',v||'up');
-          el.style.setProperty('--rv-delay',(i*(st||60))+'ms');
-          if(d!=null)el.style.setProperty('--rv-distance',(d||16)+'px');
-        }
-      });
-    });
-  }
-  function obs(){
-    if(pr){document.querySelectorAll('.revealify').forEach(e=>e.classList.add('in'));return;}
-    const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.18,rootMargin:'0px 0px -4% 0px'});
-    document.querySelectorAll('.revealify').forEach(e=>io.observe(e));
-  }
-  function par(){
-    const h=document.querySelector('.hero .hero-video');
-    if(!h||pr)return;
-    let t=false;
-    addEventListener('scroll',()=>{if(t)return;t=true;requestAnimationFrame(()=>{h.style.transform='translate3d(0,'+Math.min(60,scrollY*.06)+'px,0)';t=false;});},{passive:true});
-  }
-  function init(){tag();obs();par();}
-  document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
-  new MutationObserver(tag).observe(document.documentElement,{childList:true,subtree:true});
-})();
-</script>
 </body>
 </html>
