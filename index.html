@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://code.jquery.com" crossorigin>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.webp" />
   <title>Bliss Living</title>
 
           <!-- Customized Bootstrap Stylesheet -->
           <link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/common.css">
 
           <!-- Template Stylesheet -->
           <link href="css/style.css" rel="stylesheet">
           <!-- jQuery (must load before Owl) -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script  src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
 
 <!-- Owl Carousel CSS + JS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.carousel.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.theme.default.min.css">
-<script src="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js"></script>
-
+<script  src="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js" defer></script>
 
   <style>
     /* Reset */
@@ -84,7 +87,6 @@
       height: auto;
       filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
     }
-
 
     
 
@@ -284,145 +286,14 @@
   display: block;
 }
 
-
-
-
   </style>
 </head>
 <body>
 
-
   <main>
 
-
     <!-- ===== Site-wide Scroll Transitions (drop-in) ===== -->
-<style id="site-scroll-transitions">
-  :root{
-    --rv-dur: 700ms;
-    --rv-ease: cubic-bezier(.2,.7,.3,1);
-    --rv-distance: 16px;
-  }
-  /* base */
-  .revealify{
-    opacity: 0;
-    transform: translate3d(0,var(--rv-distance),0) scale(0.995);
-    will-change: transform, opacity;
-    transition:
-      opacity var(--rv-dur) var(--rv-ease) var(--rv-delay,0ms),
-      transform var(--rv-dur) var(--rv-ease) var(--rv-delay,0ms);
-  }
-  .revealify.in{ opacity: 1; transform: none; }
 
-  /* variants */
-  .revealify.up{ transform: translate3d(0,var(--rv-distance),0) scale(0.995); }
-  .revealify.left{ transform: translate3d(calc(var(--rv-distance) * -1),0,0) scale(0.995); }
-  .revealify.right{ transform: translate3d(var(--rv-distance),0,0) scale(0.995); }
-  .revealify.scale{ transform: scale(0.96); }
-
-  /* allow per-element overrides via data attributes */
-  [data-reveal-distance]{ --rv-distance: attr(data-reveal-distance px); }
-  [data-reveal-delay]{ --rv-delay: attr(data-reveal-delay ms); }
-  [data-reveal-duration]{ --rv-dur: attr(data-reveal-duration ms); }
-
-  /* respectful fallback */
-  @media (prefers-reduced-motion: reduce){
-    .revealify, .revealify.in{ opacity: 1 !important; transform: none !important; transition: none !important; }
-  }
-</style>
-
-<script>
-(function(){
-  // Guard: only run once
-  if (window.__revealifyLoaded) return; window.__revealifyLoaded = true;
-
-  const prefersReduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // 1) Auto-tag common elements so you don't have to add classes manually
-  function autoTag(){
-    const groups = [
-      // hero logo
-      ['.hero .hero-logo', 'up', 0, 0],
-      // home message
-      ['.home-message-left, .home-message-right', 'up', 16, 60],
-      // about section
-      ['#about-us .about-title, #about-us .about-lead', 'up', 14, 60],
-      ['#about-us .stat-card', 'up', 18, 80],
-      // properties / sliders
-      ['.properties-slider .slide, .bliss-slider .attractions-item, .attractions .attractions-item', 'up', 18, 80],
-      // feature grid
-      ['.bliss-features .feature-box', 'up', 16, 70],
-      // reviews (cards/track items)
-      ['#bliss-reviews .review-card, #reviews-banner .rb-card', 'up', 16, 80],
-      // faq items
-      ['#faq .faq-item', 'up', 14, 70],
-      // newsletter
-      ['.newsletter-text, .newsletter-form', 'up', 14, 80],
-      // footer columns
-      ['.footer-column, .footer-logo-section', 'up', 14, 80]
-    ];
-
-    groups.forEach(([sel, variant, distance, stagger])=>{
-      document.querySelectorAll(sel).forEach((el, i)=>{
-        if (!el.classList.contains('revealify')){
-          el.classList.add('revealify', variant || 'up');
-          // stagger each group
-          el.style.setProperty('--rv-delay', (i * (stagger||60)) + 'ms');
-          if (distance != null) el.style.setProperty('--rv-distance', (distance||16) + 'px');
-        }
-      });
-    });
-  }
-
-  // 2) Observer to reveal elements on scroll
-  function setupObserver(){
-    if (prefersReduce){
-      document.querySelectorAll('.revealify').forEach(el => el.classList.add('in'));
-      return;
-    }
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if (e.isIntersecting){
-          e.target.classList.add('in');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.18, rootMargin: '0px 0px -4% 0px' });
-
-    document.querySelectorAll('.revealify').forEach(el => io.observe(el));
-  }
-
-  // 3) Optional: subtle hero parallax for the YouTube bg (kept very light)
-  function setupParallax(){
-    const hero = document.querySelector('.hero .hero-video');
-    if (!hero || prefersReduce) return;
-    let ticking = false;
-    function onScroll(){
-      if (ticking) return; ticking = true;
-      requestAnimationFrame(()=>{
-        const y = Math.min(60, window.scrollY * 0.06);
-        hero.style.transform = `translate3d(0, ${y}px, 0)`;
-        ticking = false;
-      });
-    }
-    addEventListener('scroll', onScroll, { passive: true });
-  }
-
-  // 4) Initialize now and on DOM changes (useful if sliders inject nodes)
-  function init(){
-    autoTag();
-    setupObserver();
-    setupParallax();
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else { init(); }
-
-  // re-run autoTag when carousels render/clone items
-  const mo = new MutationObserver(() => autoTag());
-  mo.observe(document.documentElement, { childList: true, subtree: true });
-})();
-</script>
   
 <!-- ======================= HEADER (updated + mobile) ======================= -->
 <!-- ================ HEADER (desktop unchanged, mobile hamburger) ================ -->
@@ -711,9 +582,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <!-- ===================== /HEADER (updated + mobile) ===================== -->
 
-
-
-
 <!-- Floating WhatsApp (bottom-left) -->
 <!-- ===== WhatsApp Chat Teaser (final, wide like the reference) ===== -->
 <div id="wa-widget" aria-live="polite">
@@ -812,8 +680,6 @@ document.addEventListener('DOMContentLoaded', function () {
 })();
 </script>
 
-
-
   <!-- HERO (self-hosted video) -->
 <div class="hero" id="book">
   <video class="hero-bg"
@@ -821,7 +687,7 @@ document.addEventListener('DOMContentLoaded', function () {
          muted
          loop
          playsinline
-         preload="auto"
+         preload="none"
          poster="assets/hero-poster.jpg">
     <!-- Optional smaller/faster WebM first -->
     <source src="assets/hero.webm" type="video/webm">
@@ -833,7 +699,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="hero-overlay"></div>
 
   <div class="hero-logo">
-  <img src="Bliss_Living.png" alt="Bliss Living">
+  <img src="Bliss_Living.webp" alt="Bliss Living">
   </div>
 </div>
 
@@ -896,8 +762,6 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 </style>
 
-
-
   
   <!-- Home message -->
   <div class="home-message-wrapper home-message--compact">
@@ -936,8 +800,6 @@ document.addEventListener('DOMContentLoaded', function () {
 .home-message--compact .home-message {
   padding: clamp(48px, 5vw, 72px) 20px; /* was 100px; now tighter */
 }
-
-
 
 /* slightly smaller body copy for balance */
 .home-message--compact .home-message-right {
@@ -1050,7 +912,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 }
 
-
 </style>
 <script>
   (function () {
@@ -1115,7 +976,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="about-us-wrap">
     <!-- Cover image 
     <figure class="about-cover">
-  <img src="family.jpg" alt="Guests enjoying Bliss Living apartments" />
+  <img src="family.webp" alt="Guests enjoying Bliss Living apartments"  loading="lazy">
     </figure> -->
 
     <h2 id="about-title" class="about-title">About Us</h2>
@@ -1182,7 +1043,6 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 
 </section>
-
 
 <style>
 /* ====== Theme & layout (mirrors your locations slider approach) ====== */
@@ -1544,7 +1404,6 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 <!-- ============ /About Us ============ -->
 
-
 <!-- Bliss Brands Showcase 
 <div class="bliss-brands-fullwrap">
   <section class="bliss-brands-showcase">
@@ -1557,19 +1416,19 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
     <div class="brands-right">
       <div class="brand-card">
-        <img src="premium.jpg" alt="Premium Apartment" />
+        <img src="premium.webp" alt="Premium Apartment"  loading="lazy">
         <h3>Premium Apartment</h3>
         <p>Your urban sanctuary with all comforts included.</p>
         <a href="#">Learn more</a>
       </div>
       <div class="brand-card">
-        <img src="studio.jpg" alt="Studio" />
+        <img src="studio.webp" alt="Studio"  loading="lazy">
         <h3>Studio</h3>
         <p>A stylish, compact space for business or leisure.</p>
         <a href="#">Learn more</a>
       </div>
       <div class="brand-card">
-        <img src="family.jpg" alt="Family Suite" />
+        <img src="family.webp" alt="Family Suite"  loading="lazy">
         <h3>Family Suite</h3>
         <p>The comfort of home, with space for everyone.</p>
         <a href="#">Learn more</a>
@@ -1675,45 +1534,45 @@ document.addEventListener('DOMContentLoaded', function () {
                 <!-- one set -->
                 <div class="slide">
                   <a href="property.html">
-                    <img src="Property/1.jpg" alt="Maida Vale cover">
+                    <img src="Property/1.webp" alt="Maida Vale cover" loading="lazy">
                     <div class="caption">
-                      <img src="icons/pinn.png" alt="Location" class="pin-icon">
+                      <img src="icons/pinn.webp" alt="Location" class="pin-icon" loading="lazy">
                       <span class="name">Maida Vale</span><span class="dot">·</span><span class="walk">London</span>
                     </div>
                   </a>
                 </div>
                 <div class="slide">
                   <a href="property1.html">
-                    <img src="Property1/F1/WEB 1.jpg" alt="Paddington cover">
+                    <img src="Property1/F1/WEB 1.webp" alt="Paddington cover" loading="lazy">
                     <div class="caption">
-                      <img src="icons/pinn.png" alt="Location" class="pin-icon">
+                      <img src="icons/pinn.webp" alt="Location" class="pin-icon" loading="lazy">
                       <span class="name">Paddington</span><span class="dot">·</span><span class="walk">London</span>
                     </div>
                   </a>
                 </div>
                 <div class="slide">
                   <a href="property2.html">
-                    <img src="Property2/WEB 1.jpg" alt="Nine Elms cover">
+                    <img src="Property2/WEB 1.webp" alt="Nine Elms cover" loading="lazy">
                     <div class="caption">
-                      <img src="icons/pinn.png" alt="Location" class="pin-icon">
+                      <img src="icons/pinn.webp" alt="Location" class="pin-icon" loading="lazy">
                       <span class="name">Nine Elms</span><span class="dot">·</span><span class="walk">London</span>
                     </div>
                   </a>
                 </div>
                 <div class="slide">
                   <a href="property3.html">
-                    <img src="Property3/WEB 1.jpg" alt="Kennington cover">
+                    <img src="Property3/WEB 1.webp" alt="Kennington cover" loading="lazy">
                     <div class="caption">
-                      <img src="icons/pinn.png" alt="Location" class="pin-icon">
+                      <img src="icons/pinn.webp" alt="Location" class="pin-icon" loading="lazy">
                       <span class="name">Kennington</span><span class="dot">·</span><span class="walk">London</span>
                     </div>
                   </a>
                 </div>
                 <div class="slide">
                   <a href="property4.html">
-                    <img src="property4/266/WEB 1.jpg" alt="Wimbledon cover">
+                    <img src="property4/266/WEB 1.webp" alt="Wimbledon cover" loading="lazy">
                     <div class="caption">
-                      <img src="icons/pinn.png" alt="Location" class="pin-icon">
+                      <img src="icons/pinn.webp" alt="Location" class="pin-icon" loading="lazy">
                       <span class="name">Wimbledon</span><span class="dot">·</span><span class="walk">London</span>
                     </div>
                   </a>
@@ -1877,62 +1736,62 @@ document.addEventListener('DOMContentLoaded', function () {
   
     <div class="bliss-features">
       <div class="feature-box">
-        <img src="icons/apt.png" alt="Apartment Icon" />
+        <img src="icons/apt.webp" alt="Apartment Icon"  loading="lazy">
         <h4>Fully Furnished Apartments</h4>
         <p>Comfortable beds, stylish living spaces, and everything you need to unwind.</p>
       </div>
       <div class="feature-box">
-        <img src="icons/linens.png" alt="Linens Icon" />
+        <img src="icons/linens.webp" alt="Linens Icon"  loading="lazy">
         <h4>Fresh Linens & Towels</h4>
         <p>Hotel quality bedding and towels, always freshly prepared for your stay.</p>
       </div>
       <div class="feature-box">
-        <img src="icons/toilet.png" alt="Toiletries Icon" />
+        <img src="icons/toilet.webp" alt="Toiletries Icon"  loading="lazy">
         <h4>Toiletries Provided</h4>
         <p>Shampoo, soap, and more all ready for your arrival, so you can travel lighter.</p>
       </div>
       <div class="feature-box">
-        <img src="icons/temp.png" alt="Thermostat Icon" />
+        <img src="icons/temp.webp" alt="Thermostat Icon"  loading="lazy">
         <h4>Comfort Control</h4>
         <p>Adjust the space to your preference cool, calm, and perfectly cozy.</p>
       </div>
       <div class="feature-box">
-        <img src="icons/wifi.png" alt="Wi-Fi Icon" />
+        <img src="icons/wifi.webp" alt="Wi-Fi Icon"  loading="lazy">
         <h4>Fast Wi-Fi</h4>
         <p>Unlimited high-speed internet for work, streaming, and everything in between.</p>
       </div>
       <div class="feature-box">
-        <img src="icons/checking.png" alt="Check-in Icon" />
+        <img src="icons/checking.webp" alt="Check-in Icon"  loading="lazy">
         <h4>Self Check-In</h4>
         <p>Flexible arrival with keypad access or smart locks arrive on your own time.</p>
       </div>
       <div class="feature-box">
-        <img src="icons/support.png" alt="Support Icon" />
+        <img src="icons/support.webp" alt="Support Icon"  loading="lazy">
         <h4>24/7 Guest Support</h4>
         <p>Always-on help and guidance your comfort is our priority.</p>
       </div>
       <div class="feature-box">
-        <img src="icons/key.png" alt="Key Icon" />
+        <img src="icons/key.webp" alt="Key Icon"  loading="lazy">
         <h4>Prime Central Locations</h4>
         <p>Stay close to top attractions, restaurants, and nightlife.</p>
       </div>
       <div class="feature-box">
-        <img src="icons/laundry.png" alt="Laundry Icon" />
+        <img src="icons/laundry.webp" alt="Laundry Icon"  loading="lazy">
         <h4>Laundry Facilities</h4>
         <p>Access washer/dryer in unit for longer, more comfortable stays.</p>
       </div>
       <div class="feature-box">
-        <img src="icons/pin.png" alt="Location Icon" />
+        <img src="icons/pin.webp" alt="Location Icon"  loading="lazy">
         <h4>Heart of the City</h4>
         <p>Be in the center of it all with everything you need within walking distance.</p>
       </div>
       <div class="feature-box">
-        <img src="icons/cleaning.png" alt="Cleaning Icon" />
+        <img src="icons/cleaning.webp" alt="Cleaning Icon"  loading="lazy">
         <h4>Professional Cleaning</h4>
         <p>Enjoy a spotless space with our high-standard, hotel-grade cleaning between every stay.</p>
       </div>
       <div class="feature-box">
-        <img src="icons/kitchen.png" alt="Kitchen Icon" />
+        <img src="icons/kitchen.webp" alt="Kitchen Icon"  loading="lazy">
         <h4>Fully Equipped Kitchen</h4>
         <p>Cook up your favourites anytime with our modern kitchen essentials at your fingertips.</p>
       </div>
@@ -2013,7 +1872,6 @@ body {
   line-height: 1.5;
 }
 </style>
-
 
 <!-- ===== Reviews Section (drop-in) ===== -->
 <!-- ================== Reviews (Wide Banner + Slider) ================== --> 
@@ -2114,9 +1972,9 @@ body {
             <p class="rb-quote">I had a wonderful experience staying here. The host was very friendly and incredibly responsive, always quick to answer any questions and make sure everything was going smoothly. The apartment itself was spotless – clean, well-maintained, and exactly as described. I’d happily stay again and definitely recommend it to others looking for a hassle-free, comfortable stay!
             </p>
             <div class="rb-center"><div class="rb-name">Luke</div><div class="rb-date">May 2025</div></div>
-            <div class="rb-flag"><img src="flags/1.png" alt="UK"></div>
+            <div class="rb-flag"><img src="flags/1.png" alt="UK" loading="lazy"></div>
           </div>
-          <div class="rb-src"><img src="logos/booking.png" alt="Booking"></div>
+          <div class="rb-src"><img src="logos/booking.png" alt="Booking" loading="lazy"></div>
         </article>
 
         <!-- 2 -->
@@ -2124,9 +1982,9 @@ body {
           <div class="rb-grid">
             <p class="rb-quote">This apartment is a real gem! We had a wonderful time here and will definitely come back. The location is simply great - close to everything, an ideal base for sightseeing and enjoying the charms of the city. The apartment itself offers all the possible amenities you could need for a short-term rental.</p>
             <div class="rb-center"><div class="rb-name">Kalina</div><div class="rb-date">May 2025</div></div>
-            <div class="rb-flag"><img src="flags/2.png" alt="Poland"></div>
+            <div class="rb-flag"><img src="flags/2.png" alt="Poland" loading="lazy"></div>
           </div>
-          <div class="rb-src"><img src="logos/booking.png" alt="Booking"></div>
+          <div class="rb-src"><img src="logos/booking.png" alt="Booking" loading="lazy"></div>
         </article>
 
         <!-- 3 -->
@@ -2135,9 +1993,9 @@ body {
             <p class="rb-quote">Spent one night at Nine Elms, booked last minute but everything was fine. I asked for a late check out and it was ok with no problem. The apartment was very clean and comfortable. The location was perfect too, close to the metro so easy to get everywhere. The host was quick to respond and helpful. I didn't expect it to be this good but it was very good for a short stay. Good price and great location, would recommend.
             </p>
             <div class="rb-center"><div class="rb-name">Yiyin</div><div class="rb-date">Feb 2025</div></div>
-            <div class="rb-flag"><img src="flags/3.png" alt="Guest"></div>
+            <div class="rb-flag"><img src="flags/3.png" alt="Guest" loading="lazy"></div>
           </div>
-          <div class="rb-src"><img src="logos/booking.png" alt="Booking"></div>
+          <div class="rb-src"><img src="logos/booking.png" alt="Booking" loading="lazy"></div>
         </article>
 
         <!-- 4 -->
@@ -2146,9 +2004,9 @@ body {
             <p class="rb-quote">Beautiful apartment with everything you need: iron, washing machine, dishwasher, lots of blankets and pillows. The host was very proactive in offering his help. The area may seem intimidating at first, but it's not really. There are many local businesses and people are very friendly. All parts of the city are easily accessible by metro, bus, taxi, Uber or ferry. There are excellent Portuguese restaurants nearby, supermarkets, grocery stores, etc.
             </p>
             <div class="rb-center"><div class="rb-name">David</div><div class="rb-date">Jan 2025</div></div>
-            <div class="rb-flag"><img src="flags/4.png" alt="Spain"></div>
+            <div class="rb-flag"><img src="flags/4.png" alt="Spain" loading="lazy"></div>
           </div>
-          <div class="rb-src"><img src="logos/booking.png" alt="Booking"></div>
+          <div class="rb-src"><img src="logos/booking.png" alt="Booking" loading="lazy"></div>
         </article>
 
         <!-- 5 -->
@@ -2157,9 +2015,9 @@ body {
             <p class="rb-quote">Stayed here for a couple nights and it was perfect. The space was tidy and had everything I needed. The hosts were really helpful and responsive too, we loved the hospitality. Great stay overall!
             </p>
             <div class="rb-center"><div class="rb-name">Rozita</div><div class="rb-date">Apr 2025</div></div>
-            <div class="rb-flag"><img src="flags/5.png" alt="Malaysia"></div>
+            <div class="rb-flag"><img src="flags/5.png" alt="Malaysia" loading="lazy"></div>
           </div>
-          <div class="rb-src"><img src="logos/booking.png" alt="Booking"></div>
+          <div class="rb-src"><img src="logos/booking.png" alt="Booking" loading="lazy"></div>
         </article>
 
         <!-- 6 -->
@@ -2168,7 +2026,7 @@ body {
             <p class="rb-quote">Very good place, perfect for staying a few days or a longer period of time. The internet is very good and all the facilities were working fine. The support staff is extremely helpful and always answer very fast.I recommend this place very much!
             </p>
             <div class="rb-center"><div class="rb-name">Eduardo</div><div class="rb-date">Jun 2025</div></div>
-            <div class="rb-flag"><img src="logos/airbnb.png" alt="Airbnb"></div>
+            <div class="rb-flag"><img src="logos/airbnb.png" alt="Airbnb" loading="lazy"></div>
           </div>
         </article>
 
@@ -2178,7 +2036,7 @@ body {
             <p class="rb-quote">The flat was really warm and cosy. Condition of the rooms and furniture were spotless. Bed was very comfortable. The host responded quickly to my check in queries and were very welcoming. An ideal place to stay if you are visiting the nearby area.
             </p>
             <div class="rb-center"><div class="rb-name">Craig</div><div class="rb-date">Jul 2025</div></div>
-            <div class="rb-flag"><img src="logos/airbnb.png" alt="Airbnb"></div>
+            <div class="rb-flag"><img src="logos/airbnb.png" alt="Airbnb" loading="lazy"></div>
           </div>
         </article>
       </div>
@@ -2209,7 +2067,6 @@ body {
   </script>
 </section>
 <!-- ================== /Reviews ================== -->
-
 
 <!-- ====================== FAQ (Accordion + Animations) ====================== -->
 <section id="faq" aria-labelledby="faq-title" class="faq-wrap">
@@ -2849,11 +2706,6 @@ summary::marker {
   })();
 </script>
 
-
-
-
-
-
 <style>
   /* temporary gap killer */
 .attractions.py-5:empty { display:none !important; }
@@ -2861,7 +2713,6 @@ summary::marker {
 footer { margin-top:0 !important; }
 
 </style>
-
 
 </main>
 
@@ -2893,10 +2744,10 @@ footer { margin-top:0 !important; }
 
     <!-- RIGHT SIDE: Logo and socials -->
     <div class="footer-logo-section">
-  <img src="Footnote_Logo.png" alt="Bliss Living Logo" class="footer-logo" />
+  <img src="Footnote_Logo.webp" alt="Bliss Living Logo" class="footer-logo"  loading="lazy">
       <div class="social-icons">
-        <a href="#" class="social"><img src="icons/insta.png" alt="Instagram" /></a>
-        <a href="#" class="social"><img src="icons/fb.png" alt="Facebook" /></a>
+        <a href="#" class="social"><img src="icons/insta.webp" alt="Instagram"  loading="lazy"></a>
+        <a href="#" class="social"><img src="icons/fb.webp" alt="Facebook"  loading="lazy"></a>
       </div>
     </div>
   </div>
@@ -3037,12 +2888,51 @@ main {
     }
   }
 
-
-
   </style>
   
 
-
-
+<script>
+(function(){
+  if(window.__revealifyLoaded)return;window.__revealifyLoaded=true;
+  const pr=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function tag(){
+    const g=[
+      ['.hero .hero-logo','up',0,0],
+      ['.home-message-left,.home-message-right','up',16,60],
+      ['#about-us .about-title,#about-us .about-lead','up',14,60],
+      ['#about-us .stat-card','up',18,80],
+      ['.properties-slider .slide,.bliss-slider .attractions-item,.attractions .attractions-item','up',18,80],
+      ['.bliss-features .feature-box','up',16,70],
+      ['#bliss-reviews .review-card,#reviews-banner .rb-card','up',16,80],
+      ['#faq .faq-item','up',14,70],
+      ['.newsletter-text,.newsletter-form','up',14,80],
+      ['.footer-column,.footer-logo-section','up',14,80]
+    ];
+    g.forEach(([s,v,d,st])=>{
+      document.querySelectorAll(s).forEach((el,i)=>{
+        if(!el.classList.contains('revealify')){
+          el.classList.add('revealify',v||'up');
+          el.style.setProperty('--rv-delay',(i*(st||60))+'ms');
+          if(d!=null)el.style.setProperty('--rv-distance',(d||16)+'px');
+        }
+      });
+    });
+  }
+  function obs(){
+    if(pr){document.querySelectorAll('.revealify').forEach(e=>e.classList.add('in'));return;}
+    const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.18,rootMargin:'0px 0px -4% 0px'});
+    document.querySelectorAll('.revealify').forEach(e=>io.observe(e));
+  }
+  function par(){
+    const h=document.querySelector('.hero .hero-video');
+    if(!h||pr)return;
+    let t=false;
+    addEventListener('scroll',()=>{if(t)return;t=true;requestAnimationFrame(()=>{h.style.transform='translate3d(0,'+Math.min(60,scrollY*.06)+'px,0)';t=false;});},{passive:true});
+  }
+  function init(){tag();obs();par();}
+  document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
+  new MutationObserver(tag).observe(document.documentElement,{childList:true,subtree:true});
+})();
+</script>
 </body>
 </html>

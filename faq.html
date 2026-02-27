@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="css/common.css">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://code.jquery.com" crossorigin>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Bliss Living</title>
@@ -68,7 +73,6 @@
       height: auto;
       filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
     }
-
 
     
 
@@ -268,14 +272,9 @@
   display: block;
 }
 
-
-
-
   </style>
 </head>
 <body>
-
-
 
 <!-- ======================= HEADER (updated + mobile) ======================= -->
 <!-- ================ HEADER (desktop unchanged, mobile hamburger) ================ -->
@@ -881,13 +880,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <section id="faq" class="faq-section" style="background-color:#fffffff7;">
   <!-- HERO (matches Maida Vale) -->
-  <div class="faq-hero" style="--faq-img: url('faq.jpg'); --faq-pos: center 45%;">
+  <div class="faq-hero" style="--faq-img: url('faq.webp'); --faq-pos: center 45%;">
     <div class="faq-hero__content">
       <p class="faq-hero__kicker">Got a question?</p>
   <h1 class="faq-hero__title">Bliss Living Frequently Asked Questions</h1>
     </div>
   </div>
-
 
   <div class="faq-list" id="faqList">
     <!-- Booking & Check-in -->
@@ -1260,8 +1258,6 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('resize', setHeaderClear);
   </script>
 
-
-
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-container">
@@ -1292,10 +1288,10 @@ document.addEventListener('DOMContentLoaded', function () {
   
       <!-- RIGHT SIDE: Logo and socials -->
       <div class="footer-logo-section">
-  <img src="logo.png" alt="Bliss Living Logo" class="footer-logo" />
+  <img src="logo.webp" alt="Bliss Living Logo" class="footer-logo" />
         <div class="social-icons">
-          <a href="#"><img src="icons/insta.png" alt="Instagram" /></a>
-          <a href="#"><img src="icons/fb.png" alt="Facebook" /></a>
+          <a href="#"><img src="icons/insta.webp" alt="Instagram"  loading="lazy"></a>
+          <a href="#"><img src="icons/fb.webp" alt="Facebook"  loading="lazy"></a>
         </div>
       </div>
   
@@ -1424,5 +1420,48 @@ document.addEventListener('DOMContentLoaded', function () {
 
   </style> 
 
+<script>
+(function(){
+  if(window.__revealifyLoaded)return;window.__revealifyLoaded=true;
+  const pr=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function tag(){
+    const g=[
+      ['.hero .hero-logo','up',0,0],
+      ['.home-message-left,.home-message-right','up',16,60],
+      ['#about-us .about-title,#about-us .about-lead','up',14,60],
+      ['#about-us .stat-card','up',18,80],
+      ['.properties-slider .slide,.bliss-slider .attractions-item,.attractions .attractions-item','up',18,80],
+      ['.bliss-features .feature-box','up',16,70],
+      ['#bliss-reviews .review-card,#reviews-banner .rb-card','up',16,80],
+      ['#faq .faq-item','up',14,70],
+      ['.newsletter-text,.newsletter-form','up',14,80],
+      ['.footer-column,.footer-logo-section','up',14,80]
+    ];
+    g.forEach(([s,v,d,st])=>{
+      document.querySelectorAll(s).forEach((el,i)=>{
+        if(!el.classList.contains('revealify')){
+          el.classList.add('revealify',v||'up');
+          el.style.setProperty('--rv-delay',(i*(st||60))+'ms');
+          if(d!=null)el.style.setProperty('--rv-distance',(d||16)+'px');
+        }
+      });
+    });
+  }
+  function obs(){
+    if(pr){document.querySelectorAll('.revealify').forEach(e=>e.classList.add('in'));return;}
+    const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.18,rootMargin:'0px 0px -4% 0px'});
+    document.querySelectorAll('.revealify').forEach(e=>io.observe(e));
+  }
+  function par(){
+    const h=document.querySelector('.hero .hero-video');
+    if(!h||pr)return;
+    let t=false;
+    addEventListener('scroll',()=>{if(t)return;t=true;requestAnimationFrame(()=>{h.style.transform='translate3d(0,'+Math.min(60,scrollY*.06)+'px,0)';t=false;});},{passive:true});
+  }
+  function init(){tag();obs();par();}
+  document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
+  new MutationObserver(tag).observe(document.documentElement,{childList:true,subtree:true});
+})();
+</script>
 </body>
 </html>
