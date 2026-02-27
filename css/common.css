@@ -1,0 +1,98 @@
+/* =========================================================
+   Bliss Living — shared site styles
+   Loaded by every page. Contains: reset, variables, header,
+   nav, mobile nav, footer, scroll reveal, back-to-top.
+   ========================================================= */
+
+/* ── Reset & base ───────────────────────────────────────── */
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Helvetica Neue',Arial,sans-serif;color:#444;line-height:1.6;background:#fff;width:100%;min-height:100%}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;height:auto}
+
+/* ── CSS variables ──────────────────────────────────────── */
+:root{
+  --primary:#4b4b38;
+  --accent:#6b6b50;
+  --light:#fff;
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:transparent;padding:10px 16px;transition:padding .25s}
+.header-inner{max-width:1200px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:20px;background:#ffffffF5;border:1px solid rgba(0,0,0,.06);border-radius:12px;box-shadow:0 14px 30px rgba(0,0,0,.12),0 4px 10px rgba(0,0,0,.08);backdrop-filter:saturate(140%) blur(6px)}
+header.scrolled{padding-top:6px;padding-bottom:6px}
+header.scrolled .header-inner{background:#fff;border-radius:10px;box-shadow:0 10px 24px rgba(0,0,0,.10),0 3px 8px rgba(0,0,0,.08)}
+.spacer{flex:1}
+
+/* ── Logo ───────────────────────────────────────────────── */
+.logo-block{font-family:"Times New Roman",Times,serif;font-size:20px;font-weight:700;color:#363633}
+.logo-text{letter-spacing:.5px}
+
+/* ── Desktop nav ────────────────────────────────────────── */
+.main-nav ul{display:flex;list-style:none;gap:40px;margin:0;padding:0}
+.main-nav a{font-size:16px;font-weight:500;color:#363633;text-decoration:none;position:relative;padding-bottom:3px}
+.main-nav a:hover{color:#6b6b50}
+.main-nav a:hover::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:#363633}
+.main-nav .has-dropdown{position:relative}
+.main-nav .has-dropdown>.drop-panel{position:absolute;top:100%;left:0;z-index:1002;display:none;min-width:220px;max-width:260px;padding:14px 16px;background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:12px;box-shadow:0 10px 24px rgba(0,0,0,.10),0 3px 8px rgba(0,0,0,.06)}
+.main-nav .has-dropdown:hover>.drop-panel{display:block}
+.main-nav .locations-menu .loc-title{display:inline-block;font-weight:800;font-size:16px;color:#363633;margin:2px 0 8px;padding-bottom:5px;border-bottom:3px solid #363633}
+.main-nav .locations-menu .loc-list,.menu-menu .menu-list{display:block;list-style:disc;margin:0;padding-left:1.15rem}
+.main-nav .locations-menu .loc-list li,.menu-menu .menu-list li{display:list-item;margin:6px 0}
+.main-nav .locations-menu .loc-list a,.menu-menu .menu-list a{display:inline;white-space:nowrap;color:#363633;font-weight:600}
+
+/* ── Book-now button ────────────────────────────────────── */
+.book-now{display:inline-block;padding:10px 22px;background:#4b4b38;color:#fff!important;border-radius:8px;font-weight:700;font-size:15px;transition:background .2s}
+.book-now:hover{background:#6b6b50}
+
+/* ── Mobile nav button ──────────────────────────────────── */
+.mnav-btn{display:none}
+@media(max-width:900px){
+  .main-nav,.book-now{display:none!important}
+  .mnav-btn{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;padding:6px;cursor:pointer;z-index:1100}
+  .mnav-btn span{display:block;width:24px;height:2px;background:#363633;border-radius:2px;transition:transform .2s,opacity .2s}
+  .mnav-btn:active{transform:scale(.98)}
+}
+
+/* ── Mobile nav sheet ───────────────────────────────────── */
+.mnav-sheet{display:block;pointer-events:none;position:fixed;inset:0;z-index:1500}
+.mnav-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.45);opacity:0;transition:opacity .25s}
+.mnav-panel{position:absolute;top:0;right:0;height:100%;width:min(92vw,420px);background:#fff;border-top-left-radius:16px;border-bottom-left-radius:16px;transform:translateX(100%);transition:transform .25s;box-shadow:-10px 0 30px rgba(0,0,0,.25)}
+.mnav-sheet.open{pointer-events:auto}
+.mnav-sheet.open .mnav-backdrop{opacity:1}
+.mnav-sheet.open .mnav-panel{transform:translateX(0)}
+.mnav-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid #eee;position:sticky;top:0;background:#fff;z-index:1}
+.mnav-brand{font-size:18px;font-weight:800}
+.mnav-close{all:unset;font-size:30px;line-height:1;cursor:pointer;padding:4px 8px;border-radius:8px}
+.mnav-close:active{background:#f3f3f3}
+.mnav-body{display:grid;gap:28px;padding:20px}
+.mnav-group{display:grid;gap:4px}
+.mnav-label{font-size:12px;font-weight:800;color:#6b6b6b;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.mnav-item{display:block;padding:14px 0;font-size:16px;color:#111;text-decoration:none;border-bottom:1px solid #eee}
+.mnav-item:active{background:#f7f7f7}
+.mnav-cta{text-align:center;display:block;background:#4b4b38;color:#fff;font-weight:800;font-size:16px;padding:14px;border-radius:10px;text-decoration:none}
+
+/* ── Hero (video) ───────────────────────────────────────── */
+.hero{position:relative;height:100vh;overflow:hidden;display:flex;justify-content:center;align-items:center;text-align:center;background:url("../assets/hero-poster.jpg") center/cover no-repeat}
+.hero video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero::after{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.255);z-index:1}
+.hero-logo{position:relative;z-index:2;padding:20px}
+.hero-logo img{max-width:300px;width:90%;height:auto;filter:drop-shadow(0 2px 8px rgba(0,0,0,.2))}
+@media(prefers-reduced-motion:reduce){.hero video{display:none}}
+
+/* ── Scroll reveal ──────────────────────────────────────── */
+:root{--rv-dur:700ms;--rv-ease:cubic-bezier(.2,.7,.3,1);--rv-distance:16px}
+.revealify{opacity:0;transform:translate3d(0,var(--rv-distance),0) scale(.995);will-change:transform,opacity;transition:opacity var(--rv-dur) var(--rv-ease) var(--rv-delay,0ms),transform var(--rv-dur) var(--rv-ease) var(--rv-delay,0ms)}
+.revealify.in{opacity:1;transform:none}
+.revealify.up{transform:translate3d(0,var(--rv-distance),0) scale(.995)}
+.revealify.left{transform:translate3d(calc(var(--rv-distance)*-1),0,0) scale(.995)}
+.revealify.right{transform:translate3d(var(--rv-distance),0,0) scale(.995)}
+.revealify.scale{transform:scale(.96)}
+@media(prefers-reduced-motion:reduce){.revealify,.revealify.in{opacity:1!important;transform:none!important;transition:none!important}}
+
+/* ── Back to top ────────────────────────────────────────── */
+.back-to-top{position:fixed;right:30px;bottom:30px;transition:.5s;z-index:99}
+
+/* ── Utility ────────────────────────────────────────────── */
+.animate-on-click{animation:clickBounce .3s ease}
+@keyframes clickBounce{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}

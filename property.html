@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="css/common.css">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://code.jquery.com" crossorigin>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Bliss Living</title>
@@ -265,13 +270,9 @@
   display: block;
 }
 
-
-
-
   </style>
 </head>
 <body>
-
 
 <!-- ======================= HEADER (updated + mobile) ======================= -->
 <!-- ================ HEADER (desktop unchanged, mobile hamburger) ================ -->
@@ -1097,22 +1098,22 @@ document.addEventListener('DOMContentLoaded', function () {
           <!-- LEFT: Mosaic -->
           <div class="mv-gallery">
             <figure class="mv-left mv-tile" data-open="0" tabindex="0" aria-label="Open photo 1">
-              <img class="mv-img" src="Property/1.jpg" alt="Main photo">
+              <img class="mv-img" src="Property/1.webp" alt="Main photo">
               <button class="mv-photos-btn" type="button" data-open="0" aria-label="View all photos">
                 <span class="dot"></span> View All
               </button>
             </figure>
             <figure class="mv-rt-t1 mv-tile" data-open="1" tabindex="0" aria-label="Open photo 2">
-              <img class="mv-img" src="Property/2.jpg" alt="Top-middle">
+              <img class="mv-img" src="Property/2.webp" alt="Top-middle" loading="lazy">
             </figure>
             <figure class="mv-rt-t2 mv-tile" data-open="2" tabindex="0" aria-label="Open photo 3">
-              <img class="mv-img" src="Property/6.jpg" alt="Top-right">
+              <img class="mv-img" src="Property/6.webp" alt="Top-right" loading="lazy">
             </figure>
             <figure class="mv-rt-b1 mv-tile" data-open="3" tabindex="0" aria-label="Open photo 4">
-              <img class="mv-img" src="Property/4.jpg" alt="Bottom-middle">
+              <img class="mv-img" src="Property/4.webp" alt="Bottom-middle" loading="lazy">
             </figure>
             <figure class="mv-rt-b2 mv-tile" data-open="4" tabindex="0" aria-label="Open photo 5">
-              <img class="mv-img" src="Property/5.jpg" alt="Bottom-right">
+              <img class="mv-img" src="Property/5.webp" alt="Bottom-right" loading="lazy">
             </figure>
           </div>
     
@@ -1122,10 +1123,10 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="mv-sub">London • W9</div>
     
             <div class="mv-specs" role="list">
-              <div class="mv-spec"><div class="spec-ico"><img src="icons/bed.png" alt="Bedrooms"></div><div class="spec-text">2 Bedrooms</div></div>
-              <div class="mv-spec"><div class="spec-ico"><img src="icons/bath.png" alt="Bathrooms"></div><div class="spec-text">1 Bathroom</div></div>
-              <div class="mv-spec"><div class="spec-ico"><img src="icons/sofa.png" alt="Sofa beds"></div><div class="spec-text">5 Beds</div></div>
-              <div class="mv-spec"><div class="spec-ico"><img src="icons/peep.png" alt="Sleeps"></div><div class="spec-text">Sleeps 7</div></div>
+              <div class="mv-spec"><div class="spec-ico"><img src="icons/bed.webp" alt="Bedrooms" loading="lazy"></div><div class="spec-text">2 Bedrooms</div></div>
+              <div class="mv-spec"><div class="spec-ico"><img src="icons/bath.webp" alt="Bathrooms" loading="lazy"></div><div class="spec-text">1 Bathroom</div></div>
+              <div class="mv-spec"><div class="spec-ico"><img src="icons/sofa.webp" alt="Sofa beds" loading="lazy"></div><div class="spec-text">5 Beds</div></div>
+              <div class="mv-spec"><div class="spec-ico"><img src="icons/peep.webp" alt="Sleeps" loading="lazy"></div><div class="spec-text">Sleeps 7</div></div>
             </div>
     
             <div class="mv-actions">
@@ -1139,7 +1140,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <!-- Lightbox -->
       <div class="mv-lightbox" id="mvLightbox" aria-hidden="true" role="dialog" aria-modal="true">
         <div class="mv-lightbox__inner">
-          <img class="mv-lightbox__img" id="mvLightboxImg" alt="Property photo preview">
+          <img class="mv-lightbox__img" id="mvLightboxImg" alt="Property photo preview" loading="lazy">
           <button class="mv-lightbox__close" id="mvLbClose" aria-label="Close">✕</button>
           <button class="mv-lightbox__prev" id="mvLbPrev" aria-label="Previous">‹</button>
           <button class="mv-lightbox__next" id="mvLbNext" aria-label="Next">›</button>
@@ -1240,7 +1241,6 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-container">
@@ -1271,10 +1271,10 @@ document.addEventListener('DOMContentLoaded', function () {
   
       <!-- RIGHT SIDE: Logo and socials -->
       <div class="footer-logo-section">
-  <img src="logo.png" alt="Bliss Living Logo" class="footer-logo" />
+  <img src="logo.webp" alt="Bliss Living Logo" class="footer-logo"  loading="lazy">
         <div class="social-icons">
-          <a href="#"><img src="icons/insta.png" alt="Instagram" /></a>
-          <a href="#"><img src="icons/fb.png" alt="Facebook" /></a>
+          <a href="#"><img src="icons/insta.webp" alt="Instagram"  loading="lazy"></a>
+          <a href="#"><img src="icons/fb.webp" alt="Facebook"  loading="lazy"></a>
         </div>
       </div>
   
@@ -1402,5 +1402,48 @@ document.addEventListener('DOMContentLoaded', function () {
 }
   </style> 
 
+<script>
+(function(){
+  if(window.__revealifyLoaded)return;window.__revealifyLoaded=true;
+  const pr=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function tag(){
+    const g=[
+      ['.hero .hero-logo','up',0,0],
+      ['.home-message-left,.home-message-right','up',16,60],
+      ['#about-us .about-title,#about-us .about-lead','up',14,60],
+      ['#about-us .stat-card','up',18,80],
+      ['.properties-slider .slide,.bliss-slider .attractions-item,.attractions .attractions-item','up',18,80],
+      ['.bliss-features .feature-box','up',16,70],
+      ['#bliss-reviews .review-card,#reviews-banner .rb-card','up',16,80],
+      ['#faq .faq-item','up',14,70],
+      ['.newsletter-text,.newsletter-form','up',14,80],
+      ['.footer-column,.footer-logo-section','up',14,80]
+    ];
+    g.forEach(([s,v,d,st])=>{
+      document.querySelectorAll(s).forEach((el,i)=>{
+        if(!el.classList.contains('revealify')){
+          el.classList.add('revealify',v||'up');
+          el.style.setProperty('--rv-delay',(i*(st||60))+'ms');
+          if(d!=null)el.style.setProperty('--rv-distance',(d||16)+'px');
+        }
+      });
+    });
+  }
+  function obs(){
+    if(pr){document.querySelectorAll('.revealify').forEach(e=>e.classList.add('in'));return;}
+    const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.18,rootMargin:'0px 0px -4% 0px'});
+    document.querySelectorAll('.revealify').forEach(e=>io.observe(e));
+  }
+  function par(){
+    const h=document.querySelector('.hero .hero-video');
+    if(!h||pr)return;
+    let t=false;
+    addEventListener('scroll',()=>{if(t)return;t=true;requestAnimationFrame(()=>{h.style.transform='translate3d(0,'+Math.min(60,scrollY*.06)+'px,0)';t=false;});},{passive:true});
+  }
+  function init(){tag();obs();par();}
+  document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
+  new MutationObserver(tag).observe(document.documentElement,{childList:true,subtree:true});
+})();
+</script>
 </body>
 </html>
