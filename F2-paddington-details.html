@@ -4,27 +4,45 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Bliss Living</title>
+
+  <!-- Google Fonts: matches index.html -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
   <style>
     /* Reset */
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      color: #444;
+      font-family: var(--font-body);
+      color: var(--ink);
       line-height: 1.6;
-      background-color: #ffffff;
+      background-color: var(--white);
       margin: 0;
       padding: 0;
-      background-color: #ffffff;
       width: 100%;
       min-height: 100%;
     }
     a { text-decoration: none; color: inherit; }
 
-    /* Colors */
+    /* Colors – aligned with index.html */
     :root {
-      --primary: #4b4b38;
-      --accent: #6b6b50;
-      --light: #f8f5ee;
+      --primary:   #4b4b38;
+      --accent:    #6b6b50;
+      --light:     #f8f5ee;
+      --sand:      #ede8dc;
+      --dark:      #2d2c24;
+      --ink:       #1a1917;
+      --muted:     #6b7280;
+      --white:     #ffffff;
+      --charcoal:  #3e3a35;
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+
+      --radius:   14px;
+      --shadow:   0 20px 40px rgba(0,0,0,.10), 0 6px 12px rgba(0,0,0,.06);
+      --transition: .25s cubic-bezier(.2,.7,.3,1);
     }
 
     /* Hero with video */
@@ -70,10 +88,11 @@
     }
 
     .logo-block {
-  font-size: 22px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
   font-weight: 700;
-  color: var(--primary);
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: var(--dark);
+  white-space: nowrap;
 }
 
 .logo-text {
@@ -711,9 +730,10 @@ document.addEventListener('DOMContentLoaded', function () {
   
     /* Logo */
     .logo-block {
+      font-family: 'Times New Roman', Times, serif;
       font-size: 20px;
       font-weight: 700;
-      color: var(--primary);
+      color: var(--dark);
     }
   
     .spacer { flex-grow: 1; }
@@ -929,19 +949,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* ====== Theme & container ====== */
     #bliss-details{
-      --ink: var(--primary, #4b4b38);
-      --muted:#6f7569;
-      --paper:#fffffff7; 
+      --paper:#fffffff7;
       --card:#ffffff;
       --stroke:rgba(0,0,0,.12);
-      --brand: var(--accent, #2a5b53);
-      background:#fffffff7;  color:var(--ink);
+      background:#fffffff7; color: var(--ink);
       display:grid; place-items:center; padding:48px 16px 120px;
     }
     .bd-wrap{ width:min(70vw, 1200px); display:grid; gap:22px; }
 
     /* ====== Title ====== */
-    .bd-title{ font-size:clamp(1.9rem, 3vw, 2.4rem); font-weight:800; margin:0; }
+    .bd-title{ font-family: var(--font-display); font-size:clamp(1.9rem, 3vw, 2.6rem); font-weight:500; color: var(--dark); margin:0; }
 
     /* ====== 5-tile Gallery ====== */
     .bd-gallery{
@@ -974,15 +991,15 @@ document.addEventListener('DOMContentLoaded', function () {
     .card{ background:var(--card); border:1px solid var(--stroke); border-radius:16px;
            box-shadow:0 8px 24px rgba(0,0,0,.06); }
     .pad{ padding:18px 20px; }
-    .h4{ font-size:1.05rem; color:#68726a; margin:0 0 10px; letter-spacing:.2px; }
+    .h4{ font-size:1.05rem; color: var(--accent); margin:0 0 10px; letter-spacing:.2px; font-weight:600; }
 
     /* About + clamp */
-    .about-body{ color:#4d4f49; line-height:1.75; font-size:1rem; }
+    .about-body{ color: var(--dark); line-height:1.75; font-size:1rem; }
     .clamp-wrap{ position:relative; overflow:hidden; }
     .clamp-wrap.clamped{ max-height:135px; }
     .fade{ position:absolute; left:0; right:0; bottom:0; height:44px;
            background:linear-gradient(to bottom, rgba(255,255,255,0), var(--card)); }
-    .link{ background:none; border:0; padding:0; color:var(--brand); font-weight:800;
+    .link{ background:none; border:0; padding:0; color: var(--primary); font-weight:700;
            text-decoration:underline; text-underline-offset:2px; cursor:pointer; }
 
     /* Amenities grid */
@@ -995,7 +1012,7 @@ document.addEventListener('DOMContentLoaded', function () {
       min-height:28px;
     }
     .amen img{ width:28px; height:28px; object-fit:contain; display:block; filter:grayscale(100%); }
-    .amen span{ font-size:.95rem; color:#3f433d; }
+    .amen span{ font-size:.95rem; color: var(--dark); }
 
     /* Amenities clamp */
     .amen-wrap{ position:relative; overflow:hidden; }
@@ -1021,23 +1038,24 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 
 
-/* Each card has its own alternating background */
+/* Policy card backgrounds – warm sand to match brand */
 .policy-section .policy-card:nth-of-type(odd) {
-  background: #e5e5e5;   /* light grey */
+  background: var(--sand, #ede8dc);
   border-radius: 12px;
   padding: 0;
 }
 .policy-section .policy-card:nth-of-type(even) {
-  background: #e5e5e5;   /* slightly darker grey */
+  background: var(--sand, #ede8dc);
   border-radius: 12px;
   padding: 0;
 }
 
 /* Header strip inside */
 .policy-title {
-  background: #e5e5e5;   /* uniform strip */
+  background: var(--sand, #ede8dc);
   padding: 12px 16px;
-  font-weight: 800;
+  font-weight: 700;
+  color: var(--dark);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -1071,8 +1089,8 @@ document.addEventListener('DOMContentLoaded', function () {
   gap: 8px;
   border: 1px solid #e5e5e5;
 }
-.policy-box span { font-size:.85rem; color:#555; }
-.policy-box strong { font-size:1rem; font-weight:700; color:#000; }
+.policy-box span { font-size:.85rem; color: var(--muted); }
+.policy-box strong { font-size:1rem; font-weight:700; color: var(--dark); }
 .policy-box img { width:18px; height:18px; object-fit:contain; }
 
 
@@ -1086,8 +1104,8 @@ document.addEventListener('DOMContentLoaded', function () {
       overflow: visible;
       align-self: start;
     }
-    .book-head{ background:#f3f3f3fb; color:#000; padding:16px 18px; font-weight:800; }
-    .book-body{ background:#fff; color:#000; padding:14px; display:grid; gap:12px; }
+    .book-head{ background: var(--primary); color: var(--white); padding:16px 18px; font-weight:700; font-family: var(--font-display); font-size:1.15rem; letter-spacing:.3px; border-radius: 16px 16px 0 0; }
+    .book-body{ background:#fff; color: var(--ink); padding:14px; display:grid; gap:12px; }
     .f{ display:grid; gap:6px; }
     .f label{ font-size:.85rem; opacity:.9; }
     .f input,.f textarea,.f select{
@@ -1095,8 +1113,9 @@ document.addEventListener('DOMContentLoaded', function () {
       border:1px solid #bbb; background:#fff; color:#111; caret-color:#111;
     }
     .f input::placeholder,.f textarea::placeholder{ color:#6b6b6b; opacity:1; }
-    .btn{ border:0; border-radius:10px; padding:12px 14px; font-weight:800; cursor:pointer; }
-    .btn.primary{ background:#f3f3f3fb; color:#000; }
+    .btn{ border:0; border-radius:10px; padding:12px 14px; font-weight:700; font-family: var(--font-body); font-size:15px; cursor:pointer; transition: background .2s, transform .15s, box-shadow .2s; }
+    .btn.primary{ background: var(--primary); color: var(--white); box-shadow: 0 8px 18px rgba(0,0,0,.12); }
+    .btn.primary:hover{ background: var(--dark); transform: translateY(-1px); box-shadow: 0 12px 24px rgba(0,0,0,.16); }
     .note{ font-size:.85rem; opacity:.9; }
 
     /* ===== Lightbox (updated) ===== */
@@ -1931,12 +1950,12 @@ document.addEventListener('DOMContentLoaded', function () {
   .flatpickr-day.selected,
   .flatpickr-day.startRange,
   .flatpickr-day.endRange {
-    background: #2a5b53;
-    border-color: #2a5b53;
+    background: #4b4b38;
+    border-color: #4b4b38;
     color: #fff;
   }
   .flatpickr-day.inRange {
-    background: rgba(42,91,83,.12);
+    background: rgba(75,75,56,.12);
   }
 </style>
 
@@ -2100,8 +2119,8 @@ document.addEventListener('DOMContentLoaded', function () {
   <style>
   .footer {
   background-color: #f7f7f9;
-  color: #333;
-  font-family: 'Segoe UI', sans-serif;
+  color: var(--dark);
+  font-family: var(--font-body);
   padding: 60px 20px 20px;
 }
 
