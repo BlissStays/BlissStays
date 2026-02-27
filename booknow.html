@@ -275,9 +275,375 @@
 </head>
 
 <body>
-<script src="navbar.js"></script>
 
-  
+
+
+  <!-- ======================= HEADER (updated + mobile) ======================= -->
+<!-- ================ HEADER (desktop unchanged, mobile hamburger) ================ -->
+<header>
+  <div class="header-inner">
+    <div class="logo-block">
+  <a href="index.html" class="logo-text">BLISS LIVING</a>
+    </div>
+
+    <div class="spacer"></div>
+
+    <!-- DESKTOP NAV (hidden on mobile) -->
+    <nav class="main-nav" aria-label="Primary">
+      <ul>
+        <li class="has-dropdown locations-menu">
+          <a href="#">Locations <span>▾</span></a>
+          <div class="drop-panel">
+            <div class="loc-group">
+              <div class="loc-title">London</div>
+              <ul class="loc-list">
+                <li><a href="property.html">Maida Vale</a></li>
+                <li><a href="property1.html">Paddington</a></li>
+                <li><a href="property2.html">Nine Elms</a></li>
+                <li><a href="property3.html">Kennington</a></li>
+                <li><a href="property4.html">Wimbledon</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="has-dropdown menu-menu">
+          <a href="#">Menu <span>▾</span></a>
+          <div class="drop-panel">
+            <ul class="menu-list">
+              <li><a href="faq.html">FAQs</a></li>
+              <li><a href="terms.html">Terms & Conditions</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="book-now">
+      <a href="booknow.html">Book now</a>
+    </div>
+
+    <!-- MOBILE HAMBURGER (only visible on mobile) -->
+    <button id="mnavBtn" class="mnav-btn" aria-label="Open menu" aria-controls="mnav" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE SHEET -->
+<aside id="mnav" class="mnav-sheet" aria-hidden="true">
+  <div class="mnav-backdrop"></div>
+  <div class="mnav-panel" role="dialog" aria-modal="true">
+    <div class="mnav-head">
+  <div class="mnav-brand">BLISS LIVING</div>
+      <button id="mnavClose" class="mnav-close" aria-label="Close">×</button>
+    </div>
+
+    <div class="mnav-body">
+      <div class="mnav-group">
+        <div class="mnav-label">Locations</div>
+        <a class="mnav-item" href="property.html">Maida Vale</a>
+        <a class="mnav-item" href="property1.html">Paddington</a>
+        <a class="mnav-item" href="property2.html">Nine Elms</a>
+        <a class="mnav-item" href="property3.html">Kennington</a>
+        <a class="mnav-item" href="property4.html">Wimbledon</a>
+      </div>
+
+      <div class="mnav-group">
+        <div class="mnav-label">Menu</div>
+        <a class="mnav-item" href="faq.html">FAQs</a>
+        <a class="mnav-item" href="terms.html">Terms & Conditions</a>
+        <a class="mnav-item" href="privacy.html">Privacy Policy</a>
+      </div>
+
+      <div class="mnav-cta">
+        <a class="mnav-book" href="booknow.html">Book now</a>
+      </div>
+</div>      
+  </div>
+</aside>
+
+<style>
+/* ——— Desktop keeps your existing look ——— */
+header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:transparent;padding:10px 16px;transition:padding .25s}
+.header-inner{max-width:1200px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:20px;background:#ffffffF5;border:1px solid rgba(0,0,0,.06);border-radius:12px;box-shadow:0 14px 30px rgba(0,0,0,.12),0 4px 10px rgba(0,0,0,.08);backdrop-filter:saturate(140%) blur(6px)}
+header.scrolled{padding-top:6px;padding-bottom:6px}
+header.scrolled .header-inner{background:#fff;border-radius:10px;box-shadow:0 10px 24px rgba(0,0,0,.10),0 3px 8px rgba(0,0,0,.08)}
+.logo-block{font-family:"Times New Roman",Times,serif;font-size:20px;font-weight:700;color:#363633}
+.spacer{flex:1}
+.main-nav ul{display:flex;list-style:none;gap:40px;margin:0;padding:0}
+.main-nav a{font-size:16px;font-weight:500;color:#363633;text-decoration:none;position:relative;padding-bottom:3px}
+.main-nav a:hover{color:#6b6b50}
+.main-nav a:hover::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:#363633}
+.book-now{margin-left:12px}
+.book-now a{background:#4b4b38;color:#fff;font-weight:600;font-size:15px;padding:10px 22px;border-radius:6px;box-shadow:0 2px 6px rgba(0,0,0,.12);transition:transform .2s,box-shadow .2s,background .2s;display:inline-block}
+.book-now a:hover{background:#363626;transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.16)}
+.main-nav .has-dropdown{position:relative}
+.main-nav .has-dropdown>.drop-panel{position:absolute;top:100%;left:0;z-index:1002;display:none;min-width:220px;max-width:260px;padding:14px 16px;background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:12px;box-shadow:0 10px 24px rgba(0,0,0,.10),0 3px 8px rgba(0,0,0,.06)}
+.main-nav .has-dropdown:hover>.drop-panel{display:block}
+.main-nav .locations-menu .loc-title{display:inline-block;font-weight:800;font-size:16px;color:#363633;margin:2px 0 8px;padding-bottom:5px;border-bottom:3px solid #363633}
+.main-nav .locations-menu .loc-list,.menu-menu .menu-list{display:block;list-style:disc;margin:0;padding-left:1.15rem}
+.main-nav .locations-menu .loc-list li,.menu-menu .menu-list li{display:list-item;margin:6px 0}
+.main-nav .locations-menu .loc-list a,.menu-menu .menu-list a{display:inline;white-space:nowrap;color:#363633;font-weight:600}
+
+/* ——— Mobile only ——— */
+.mnav-btn,.mnav-sheet{display:none}
+
+@media (max-width:768px){
+  .main-nav,.book-now{display:none!important}
+  .mnav-btn {
+  display:grid;
+  place-items:center;
+  width:44px;
+  height:44px;
+  border:none;              /* remove border */
+  border-radius:0;          /* no rounded box */
+  background:transparent;   /* transparent background */
+  box-shadow:none;          /* no shadow */
+  cursor:pointer;
+}
+.mnav-btn span {
+  display:block;
+  width:22px;
+  height:2px;
+  background:#222; /* your menu lines */
+  margin:4px 0;
+  border-radius:2px;
+}
+  .mnav-btn:active{transform:scale(.98)}
+
+  .mnav-sheet{display:block;pointer-events:none;position:fixed;inset:0;z-index:1500}
+  .mnav-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.45);opacity:0;transition:opacity .25s}
+  .mnav-panel{position:absolute;top:0;right:0;height:100%;width:min(92vw,420px);background:#fff;border-top-left-radius:16px;border-bottom-left-radius:16px;transform:translateX(100%);transition:transform .25s;box-shadow:-10px 0 30px rgba(0,0,0,.25)}
+  .mnav-sheet.open{pointer-events:auto}
+  .mnav-sheet.open .mnav-backdrop{opacity:1}
+  .mnav-sheet.open .mnav-panel{transform:translateX(0)}
+
+  .mnav-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid #eee;position:sticky;top:0;background:#fff;z-index:1}
+  .mnav-brand{font-size:18px;font-weight:800}
+  .mnav-close{all:unset;font-size:30px;line-height:1;cursor:pointer;padding:4px 8px;border-radius:8px}
+  .mnav-close:active{background:#f3f3f3}
+
+  .mnav-body{display:grid;gap:28px;padding:20px}
+  .mnav-group{display:grid;gap:4px}
+  .mnav-label{font-size:12px;font-weight:800;color:#6b6b6b;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+  .mnav-item{display:block;padding:14px 0;font-size:16px;color:#111;text-decoration:none;border-bottom:1px solid #eee}
+  .mnav-item:active{background:#f7f7f7}
+  .mnav-cta{text-align:center;display:block;background:#4b4b38;color:#fff;font-weight:800;font-size:16px;padding:14px;border-radius:10px;text-decoration:none}
+}
+
+/* --- Enable scrolling inside the mobile sheet --- */
+@media (max-width:768px){
+  /* make the panel a flex column */
+  .mnav-panel{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    max-height:100%;
+    overflow:hidden;                 /* keep scroll confined to body below */
+  }
+  /* the content area becomes the scroller */
+  .mnav-body{
+    flex:1 1 auto;
+    overflow-y:auto;
+    -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
+    overscroll-behavior: contain;      /* prevent rubber-banding to page */
+  }
+  /* keep header fixed at top of the sheet */
+  .mnav-head{
+    position:sticky;
+    top:0;
+    z-index:1;
+    background:#fff;
+  }
+}
+
+</style>
+<style>
+  /* Make room for the sticky CTA so last list item isn't hidden */
+@media (max-width: 768px){
+  .mnav-body{ padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+
+  /* Sticky footer area inside the sheet */
+  .mnav-cta{
+    position: sticky;
+    bottom: 0;
+    left: 0; right: 0;
+    z-index: 3;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    background: #fff;               /* clean, not dark */
+    border-top: 1px solid rgba(0,0,0,.06);
+    backdrop-filter: blur(4px);
+  }
+
+  /* Force our button styles to win over .book-now a */
+  .mnav-cta .mnav-book{
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #4b4b38 !important; /* your primary */
+    color: #fff !important;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1;
+    padding: 16px 18px;
+    border-radius: 12px;
+    border: 0 !important;
+    box-shadow: 0 10px 24px rgba(0,0,0,.12), 0 2px 6px rgba(0,0,0,.08);
+    text-decoration: none !important;
+    transition: transform .06s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .mnav-cta .mnav-book:hover{ box-shadow: 0 14px 30px rgba(0,0,0,.16); }
+  .mnav-cta .mnav-book:active{ transform: translateY(1px); }
+
+  /* Nuke any inherited “panel” look from other styles */
+  .mnav-cta .mnav-book::before,
+  .mnav-cta .mnav-book::after{ content:none !important; }
+}
+
+/* Hide or move WhatsApp while menu is open (choose ONE) */
+@media (max-width: 768px){
+  /* Option A: hide it */
+  body.menu-open #wa-widget{ display: none !important; }
+
+  /* Option B (if you prefer visible, but out of the way):
+  body.menu-open #wa-widget{
+    transform: translateY(80px);
+    opacity: .5;
+    pointer-events: none;
+  } */
+}
+
+</style>
+
+<script>
+  // when opening the mobile sheet
+document.body.classList.add('menu-open');
+document.documentElement.style.overflow = 'hidden';
+document.body.style.overflow = 'hidden';
+
+// when closing the mobile sheet
+document.body.classList.remove('menu-open');
+document.documentElement.style.overflow = '';
+document.body.style.overflow = '';
+
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  });
+
+  const btn   = document.getElementById('mnavBtn');
+  const sheet = document.getElementById('mnav');
+  const close = document.getElementById('mnavClose');
+
+  function openSheet(){
+    sheet.classList.add('open');
+    sheet.setAttribute('aria-hidden','false');
+    btn.setAttribute('aria-expanded','true');
+    document.body.style.overflow='hidden';
+  }
+  function closeSheet(){
+    sheet.classList.remove('open');
+    sheet.setAttribute('aria-hidden','true');
+    btn.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  }
+
+  if (btn){
+    btn.addEventListener('click', openSheet, {passive:true});
+  }
+  document.getElementById('mnavClose')?.addEventListener('click', closeSheet, {passive:true});
+  sheet.querySelector('.mnav-backdrop')?.addEventListener('click', closeSheet, {passive:true});
+  sheet.querySelectorAll('a').forEach(a => a.addEventListener('click', closeSheet, {passive:true}));
+});
+</script>
+
+<!-- ===================== /HEADER (updated + mobile) ===================== -->
+
+
+<!-- Floating WhatsApp (bottom-left) -->
+<!-- ===== WhatsApp Chat Teaser (final, wide like the reference) ===== -->
+<div id="wa-widget" aria-live="polite">
+  <!-- Floating action button -->
+  <a id="wa-fab"
+     href="https://wa.me/447365208676?text=Hi%20Bliss%20Stays!%20I%20have%20a%20question."
+     target="_blank" rel="noopener"
+     aria-label="Open WhatsApp chat">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path fill="currentColor"
+        d="M19.11 17.71c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.17-.43-2.23-1.37-.82-.73-1.37-1.63-1.53-1.9-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.02-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.3s.98 2.66 1.12 2.84c.14.18 1.93 2.95 4.68 4.14.65.28 1.15.45 1.54.59.65.21 1.25.18 1.72.11.52-.08 1.6-.65 1.82-1.29.22-.64.22-1.18.16-1.29-.07-.11-.23-.18-.5-.32zM16.02 3.2c-6.99 0-12.66 5.67-12.66 12.66 0 2.23.59 4.32 1.62 6.12L3 29l7.19-1.89c1.72.94 3.69 1.47 5.83 1.47 6.99 0 12.66-5.67 12.66-12.66S23.01 3.2 16.02 3.2zm0 22.88c-1.95 0-3.76-.57-5.29-1.55l-.38-.24-4.28 1.12 1.15-4.17-.25-.43a9.98 9.98 0 0 1-1.49-5.25c0-5.53 4.5-10.02 10.02-10.02s10.02 4.5 10.02 10.02-4.5 10.02-10.02 10.02z"/>
+    </svg>
+  </a>
+
+  <!-- Teaser card -->
+  <div id="wa-card" role="dialog" aria-modal="false" aria-label="WhatsApp quick chat">
+    <button id="wa-close" aria-label="Dismiss">×</button>
+    <div class="wa-row">
+      <div class="wa-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path fill="currentColor"
+          d="M16.2 13.6c-.2-.1-1.1-.6-1.3-.7-.2-.1-.3-.1-.5.1l-.6.7c-.2.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.1-.7-.6-1.1-1.3-1.2-1.5-.1-.2 0-.3.1-.5l.4-.4c.1-.1.1-.3.2-.4s0-.3-.1-.5-.5-1.2-.7-1.7c-.2-.4-.4-.3-.6-.3h-.4c-.1 0-.4.1-.6.3-.2.2-.8.7-.8 1.8s.8 2.1.9 2.2c.1.1 1.5 2.3 3.7 3.3.5.2.9.4 1.2.5.5.2 1 .1 1.3.1.4-.1 1.3-.5 1.5-1 .2-.5.2-.9.1-1 0-.1-.2-.2-.4-.3zM12 2C6.5 2 2 6.3 2 11.6c0 2 .6 3.9 1.6 5.4L2 22l5.1-1.3c1.5.8 3.2 1.2 4.9 1.2 5.5 0 10-4.3 10-9.6S17.5 2 12 2z"/></svg>
+      </div>
+      <div class="wa-text">
+        <div class="wa-title">Have any questions? Let’s chat! <span class="wa-wave">👋</span></div>
+        <a class="wa-cta"
+           href="https://wa.me/447365208676?text=Hi%20Bliss%20Stays%2C%20I%27d%20like%20to%20enquire..."
+           target="_blank" rel="noopener">Click here to start a conversation</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* Placement */
+#wa-widget{position:fixed;right:18px;bottom:18px;z-index:2147483647;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+
+/* Floating button */
+#wa-fab{
+  display:grid;place-items:center;width:64px;height:64px;border-radius:999px;
+  background:#22c55e;color:#0b4126;text-decoration:none;
+  box-shadow:0 12px 30px rgba(0,0,0,.25), inset 0 -6px 0 rgba(0,0,0,.08);
+  animation:wa-bounce 1.4s ease infinite;
+}
+#wa-fab svg{width:34px;height:34px}
+
+/* Card — WIDER & HORIZONTAL like your ref */
+#wa-card{
+  position:absolute;right:88px;bottom:6px;
+  width:360px; min-width:360px; /* keeps it wide */
+  background:#fff;border-radius:20px;
+  box-shadow:0 18px 50px rgba(0,0,0,.25);
+  padding:16px 18px;display:none;opacity:0;transform:translateY(10px)
+}
+#wa-card.show{display:block;animation:wa-in .35s cubic-bezier(.2,.7,.2,1) forwards}
+
+#wa-close{all:unset;position:absolute;top:8px;right:10px;width:26px;height:26px;border-radius:999px;display:grid;place-items:center;cursor:pointer;color:#64748b;font-weight:700}
+#wa-close:hover{background:#f1f5f9;color:#0f172a}
+
+.wa-row{display:flex;gap:12px;align-items:center}
+.wa-icon{width:36px;height:36px;background:#22c55e;color:#0b4126;border-radius:999px;display:grid;place-items:center;flex:0 0 36px}
+.wa-icon svg{width:20px;height:20px}
+
+.wa-text{min-width:0} /* prevent squish */
+.wa-title{font-size:18px;font-weight:800;color:#111827;margin:0 22px 6px 0;line-height:1.25}
+.wa-cta{display:inline-block;color:#2563eb;text-decoration:none;font-size:15px;line-height:1.3}
+.wa-cta:hover{text-decoration:underline}
+.wa-wave{display:inline-block;animation:wa-wave 1.6s ease-in-out infinite;transform-origin:70% 70%}
+
+/* Animations */
+@keyframes wa-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes wa-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes wa-wave{0%{transform:rotate(0)}10%{transform:rotate(14deg)}20%{transform:rotate(-8deg)}30%{transform:rotate(14deg)}40%{transform:rotate(-4deg)}50%{transform:rotate(10deg)}60%,100%{transform:rotate(0)}}
+
+/* Mobile — use full width but same look */
+@media (max-width:520px){
+  #wa-card{right:0;bottom:76px;width:auto;min-width:0;max-width:min(92vw,380px)}
+}
+</style>
 
 <script>
 (function(){
@@ -297,6 +663,7 @@
   });
 })();
 </script>
+
 
 <!-- ========== Contact / Book-now ========== -->
 <section id="book-contact" class="contact-section" aria-labelledby="contact-title">
@@ -731,6 +1098,7 @@
   render();
 })();
 
+
   // Add to your existing IIFE that handles submit + reveal
   (function () {
     const form = document.getElementById('contactForm');
@@ -856,13 +1224,174 @@
   }
 })();
 
+
   </script>
   <!-- ====== /Contact section ====== -->
   
 
+
+
   <!-- Footer -->
-<script src="footer.js"></script>
+  <footer class="footer">
+    <div class="footer-container">
+      
+      <!-- LEFT SIDE: All links grouped -->
+      <div class="footer-links-group">
+        <div class="footer-column">
+          <h4>BLISS LIVING</h4>
+          <ul>
+            <li><a href="property.html">Properties</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            
+            
+          </ul>
+        </div>
   
+        <div class="footer-column">
+          <h4>ENQUIRIES</h4>
+          <ul>
+            <li><a href="booknow.html">Corporate Bookings</a></li>
+            <li><a href="booknow.html">Group Bookings</a></li>
+            <li><a href="booknow.html">Apart-hotels</a></li>
+          </ul> 
+        </div>
+      </div>
+  
+      <!-- RIGHT SIDE: Logo and socials -->
+      <div class="footer-logo-section">
+  <img src="logo.png" alt="Bliss Living Logo" class="footer-logo" />
+        <div class="social-icons">
+          <a href="#"><img src="icons/insta.png" alt="Instagram" /></a>
+          <a href="#"><img src="icons/fb.png" alt="Facebook" /></a>
+        </div>
+      </div>
+  
+    </div>
+  
+    <div class="footer-bottom">
+  <p>&copy; Bliss Living Ltd. 2025. All rights reserved.</p>
+    </div>
+  </footer>
+  
+  <style>
+  .footer {
+  background-color: #f7f7f9;
+  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 60px 20px 20px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  gap: 40px;
+}
+
+.footer-links-group {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.footer-column {
+  min-width: 180px;
+}
+
+.footer-column h4 {
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #999;
+  padding-bottom: 6px;
+  color: #333;
+}
+
+.footer-column .footer-sub {
+  margin-top: 20px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li {
+  margin: 10px 0;
+}
+
+.footer-column a {
+  color: #333;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #666;
+}
+
+.footer-logo-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.footer-logo {
+  width: 270px;
+  margin-bottom: 20px;
+}
+
+.footer-logo-section .social-icons a {
+  margin-left: 12px;
+}
+
+.footer-logo-section .social-icons img {
+  width: 22px;
+  filter: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 13px;
+  color: #555;
+  border-top: 1px solid #999;
+  padding-top: 12px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-links-group {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-logo-section {
+    align-items: flex-start;
+    text-align: left;
+    margin-top: 30px;
+  }
+
+  .footer-logo {
+    width: 120px;
+  }
+}
+
+  </style> 
 
 </body>
 </html>

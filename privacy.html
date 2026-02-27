@@ -274,8 +274,605 @@
   </style>
 </head>
 <body>
-<script src="navbar.js"></script>
 
+
+
+<!-- ======================= HEADER (updated + mobile) ======================= -->
+<!-- ================ HEADER (desktop unchanged, mobile hamburger) ================ -->
+<header>
+  <div class="header-inner">
+    <div class="logo-block">
+  <a href="index.html" class="logo-text">BLISS LIVING</a>
+    </div>
+
+    <div class="spacer"></div>
+
+    <!-- DESKTOP NAV (hidden on mobile) -->
+    <nav class="main-nav" aria-label="Primary">
+      <ul>
+        <li class="has-dropdown locations-menu">
+          <a href="#">Locations <span>▾</span></a>
+          <div class="drop-panel">
+            <div class="loc-group">
+              <div class="loc-title">London</div>
+              <ul class="loc-list">
+                <li><a href="property.html">Maida Vale</a></li>
+                <li><a href="property1.html">Paddington</a></li>
+                <li><a href="property2.html">Nine Elms</a></li>
+                <li><a href="property3.html">Kennington</a></li>
+                <li><a href="property4.html">Wimbledon</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="has-dropdown menu-menu">
+          <a href="#">Menu <span>▾</span></a>
+          <div class="drop-panel">
+            <ul class="menu-list">
+              <li><a href="faq.html">FAQs</a></li>
+              <li><a href="terms.html">Terms & Conditions</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="book-now">
+      <a href="booknow.html">Book now</a>
+    </div>
+
+    <!-- MOBILE HAMBURGER (only visible on mobile) -->
+    <button id="mnavBtn" class="mnav-btn" aria-label="Open menu" aria-controls="mnav" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE SHEET -->
+<aside id="mnav" class="mnav-sheet" aria-hidden="true">
+  <div class="mnav-backdrop"></div>
+  <div class="mnav-panel" role="dialog" aria-modal="true">
+    <div class="mnav-head">
+  <div class="mnav-brand">BLISS LIVING</div>
+      <button id="mnavClose" class="mnav-close" aria-label="Close">×</button>
+    </div>
+
+    <div class="mnav-body">
+      <div class="mnav-group">
+        <div class="mnav-label">Locations</div>
+        <a class="mnav-item" href="property.html">Maida Vale</a>
+        <a class="mnav-item" href="property1.html">Paddington</a>
+        <a class="mnav-item" href="property2.html">Nine Elms</a>
+        <a class="mnav-item" href="property3.html">Kennington</a>
+        <a class="mnav-item" href="property4.html">Wimbledon</a>
+      </div>
+
+      <div class="mnav-group">
+        <div class="mnav-label">Menu</div>
+        <a class="mnav-item" href="faq.html">FAQs</a>
+        <a class="mnav-item" href="terms.html">Terms & Conditions</a>
+        <a class="mnav-item" href="privacy.html">Privacy Policy</a>
+      </div>
+
+      <div class="mnav-cta">
+        <a class="mnav-book" href="booknow.html">Book now</a>
+      </div>
+</div>      
+  </div>
+</aside>
+
+<style>
+/* ——— Desktop keeps your existing look ——— */
+header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:transparent;padding:10px 16px;transition:padding .25s}
+.header-inner{max-width:1200px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:20px;background:#ffffffF5;border:1px solid rgba(0,0,0,.06);border-radius:12px;box-shadow:0 14px 30px rgba(0,0,0,.12),0 4px 10px rgba(0,0,0,.08);backdrop-filter:saturate(140%) blur(6px)}
+header.scrolled{padding-top:6px;padding-bottom:6px}
+header.scrolled .header-inner{background:#fff;border-radius:10px;box-shadow:0 10px 24px rgba(0,0,0,.10),0 3px 8px rgba(0,0,0,.08)}
+.logo-block{font-family:"Times New Roman",Times,serif;font-size:20px;font-weight:700;color:#363633}
+.spacer{flex:1}
+.main-nav ul{display:flex;list-style:none;gap:40px;margin:0;padding:0}
+.main-nav a{font-size:16px;font-weight:500;color:#363633;text-decoration:none;position:relative;padding-bottom:3px}
+.main-nav a:hover{color:#6b6b50}
+.main-nav a:hover::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:#363633}
+.book-now{margin-left:12px}
+.book-now a{background:#4b4b38;color:#fff;font-weight:600;font-size:15px;padding:10px 22px;border-radius:6px;box-shadow:0 2px 6px rgba(0,0,0,.12);transition:transform .2s,box-shadow .2s,background .2s;display:inline-block}
+.book-now a:hover{background:#363626;transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.16)}
+.main-nav .has-dropdown{position:relative}
+.main-nav .has-dropdown>.drop-panel{position:absolute;top:100%;left:0;z-index:1002;display:none;min-width:220px;max-width:260px;padding:14px 16px;background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:12px;box-shadow:0 10px 24px rgba(0,0,0,.10),0 3px 8px rgba(0,0,0,.06)}
+.main-nav .has-dropdown:hover>.drop-panel{display:block}
+.main-nav .locations-menu .loc-title{display:inline-block;font-weight:800;font-size:16px;color:#363633;margin:2px 0 8px;padding-bottom:5px;border-bottom:3px solid #363633}
+.main-nav .locations-menu .loc-list,.menu-menu .menu-list{display:block;list-style:disc;margin:0;padding-left:1.15rem}
+.main-nav .locations-menu .loc-list li,.menu-menu .menu-list li{display:list-item;margin:6px 0}
+.main-nav .locations-menu .loc-list a,.menu-menu .menu-list a{display:inline;white-space:nowrap;color:#363633;font-weight:600}
+
+/* ——— Mobile only ——— */
+.mnav-btn,.mnav-sheet{display:none}
+
+@media (max-width:768px){
+  .main-nav,.book-now{display:none!important}
+  .mnav-btn{display:grid;place-items:center;width:44px;height:44px;border:1px solid rgba(0,0,0,.12);border-radius:10px;background:#fff;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+  .mnav-btn span{display:block;width:22px;height:2px;background:#222;margin:3px 0;border-radius:2px}
+  .mnav-btn:active{transform:scale(.98)}
+
+  .mnav-sheet{display:block;pointer-events:none;position:fixed;inset:0;z-index:1500}
+  .mnav-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.45);opacity:0;transition:opacity .25s}
+  .mnav-panel{position:absolute;top:0;right:0;height:100%;width:min(92vw,420px);background:#fff;border-top-left-radius:16px;border-bottom-left-radius:16px;transform:translateX(100%);transition:transform .25s;box-shadow:-10px 0 30px rgba(0,0,0,.25)}
+  .mnav-sheet.open{pointer-events:auto}
+  .mnav-sheet.open .mnav-backdrop{opacity:1}
+  .mnav-sheet.open .mnav-panel{transform:translateX(0)}
+
+  .mnav-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid #eee;position:sticky;top:0;background:#fff;z-index:1}
+  .mnav-brand{font-size:18px;font-weight:800}
+  .mnav-close{all:unset;font-size:30px;line-height:1;cursor:pointer;padding:4px 8px;border-radius:8px}
+  .mnav-close:active{background:#f3f3f3}
+
+  .mnav-body{display:grid;gap:28px;padding:20px}
+  .mnav-group{display:grid;gap:4px}
+  .mnav-label{font-size:12px;font-weight:800;color:#6b6b6b;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+  .mnav-item{display:block;padding:14px 0;font-size:16px;color:#111;text-decoration:none;border-bottom:1px solid #eee}
+  .mnav-item:active{background:#f7f7f7}
+  .mnav-cta{text-align:center;display:block;background:#4b4b38;color:#fff;font-weight:800;font-size:16px;padding:14px;border-radius:10px;text-decoration:none}
+}
+
+/* --- Enable scrolling inside the mobile sheet --- */
+@media (max-width:768px){
+  /* make the panel a flex column */
+  .mnav-panel{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    max-height:100%;
+    overflow:hidden;                 /* keep scroll confined to body below */
+  }
+  /* the content area becomes the scroller */
+  .mnav-body{
+    flex:1 1 auto;
+    overflow-y:auto;
+    -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
+    overscroll-behavior: contain;      /* prevent rubber-banding to page */
+  }
+  /* keep header fixed at top of the sheet */
+  .mnav-head{
+    position:sticky;
+    top:0;
+    z-index:1;
+    background:#fff;
+  }
+}
+
+</style>
+<style>
+  /* Make room for the sticky CTA so last list item isn't hidden */
+@media (max-width: 768px){
+  .mnav-body{ padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+
+  /* Sticky footer area inside the sheet */
+  .mnav-cta{
+    position: sticky;
+    bottom: 0;
+    left: 0; right: 0;
+    z-index: 3;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    background: #fff;               /* clean, not dark */
+    border-top: 1px solid rgba(0,0,0,.06);
+    backdrop-filter: blur(4px);
+  }
+
+  /* Force our button styles to win over .book-now a */
+  .mnav-cta .mnav-book{
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #4b4b38 !important; /* your primary */
+    color: #fff !important;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1;
+    padding: 16px 18px;
+    border-radius: 12px;
+    border: 0 !important;
+    box-shadow: 0 10px 24px rgba(0,0,0,.12), 0 2px 6px rgba(0,0,0,.08);
+    text-decoration: none !important;
+    transition: transform .06s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .mnav-cta .mnav-book:hover{ box-shadow: 0 14px 30px rgba(0,0,0,.16); }
+  .mnav-cta .mnav-book:active{ transform: translateY(1px); }
+
+  /* Nuke any inherited “panel” look from other styles */
+  .mnav-cta .mnav-book::before,
+  .mnav-cta .mnav-book::after{ content:none !important; }
+}
+
+/* Hide or move WhatsApp while menu is open (choose ONE) */
+@media (max-width: 768px){
+  /* Option A: hide it */
+  body.menu-open #wa-widget{ display: none !important; }
+
+  /* Option B (if you prefer visible, but out of the way):
+  body.menu-open #wa-widget{
+    transform: translateY(80px);
+    opacity: .5;
+    pointer-events: none;
+  } */
+}
+
+</style>
+
+<script>
+  // when opening the mobile sheet
+document.body.classList.add('menu-open');
+document.documentElement.style.overflow = 'hidden';
+document.body.style.overflow = 'hidden';
+
+// when closing the mobile sheet
+document.body.classList.remove('menu-open');
+document.documentElement.style.overflow = '';
+document.body.style.overflow = '';
+
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  });
+
+  const btn   = document.getElementById('mnavBtn');
+  const sheet = document.getElementById('mnav');
+  const close = document.getElementById('mnavClose');
+
+  function openSheet(){
+    sheet.classList.add('open');
+    sheet.setAttribute('aria-hidden','false');
+    btn.setAttribute('aria-expanded','true');
+    document.body.style.overflow='hidden';
+  }
+  function closeSheet(){
+    sheet.classList.remove('open');
+    sheet.setAttribute('aria-hidden','true');
+    btn.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  }
+
+  if (btn){
+    btn.addEventListener('click', openSheet, {passive:true});
+  }
+  document.getElementById('mnavClose')?.addEventListener('click', closeSheet, {passive:true});
+  sheet.querySelector('.mnav-backdrop')?.addEventListener('click', closeSheet, {passive:true});
+  sheet.querySelectorAll('a').forEach(a => a.addEventListener('click', closeSheet, {passive:true}));
+});
+</script>
+
+<!-- ===================== /HEADER (updated + mobile) ===================== -->
+
+
+<!-- =============== Privacy Policy (Bliss Stays) =============== -->
+<section id="privacy" class="tc-section" aria-labelledby="pp-title">
+    <!-- Hero -->
+    <div class="tc-hero" style="--tc-img:url('privacy-hero.jpg'); --tc-pos:center 40%;">
+      <div class="tc-hero__inner">
+        <h1 id="pp-title">Privacy Policy</h1>
+      </div>
+    </div>
+  
+    <!-- Content -->
+    <div class="tc-container">
+      <p class="tc-updated">Last updated: <strong>April 2025</strong></p>
+  
+      <article class="tc-block">
+        <h3>Who We Are</h3>
+        <p>
+          Bliss Living Ltd is a serviced accommodation provider based in London. We offer
+          short-term accommodations to contractors, families, and professionals. Our
+          company manages and sources its own properties or those under lease
+          agreements.
+        </p>
+      </article>
+  
+      <article class="tc-block">
+        <h3>Introduction</h3>
+        <p>
+          Bliss Living Ltd is committed to respecting and protecting your privacy.
+          Whether you are a customer of Bliss Stays, a client or user of one of our
+          customers, or a visitor to one of our properties, we aim to safeguard your
+          personal data as outlined in this policy.
+        </p>
+        <p>
+          This Privacy Policy explains our practices for collecting, using, and
+          disclosing information that we gather through our websites, web-based
+          applications, and services (collectively, our “Applications”). It also covers
+          the information we obtain via email communication and other electronic
+          messages (collectively, the “Services”).
+        </p>
+        <p>
+          Additionally, this policy applies to information collected through:
+        </p>
+        <ul>
+          <li>Electronic communications between you and Bliss Living Ltd, such as emails and texts.</li>
+          <li>Your interactions with our advertisements or applications on third-party platforms.</li>
+        </ul>
+        <p>
+          This policy does not cover data collection by third parties, including content
+          or applications (such as advertisements) linked to or accessible from our
+          Services.
+        </p>
+      </article>
+  
+      <article class="tc-block">
+        <h3>Information We Collect</h3>
+        <p>We collect two primary types of information:</p>
+        <ol>
+          <li>
+            <strong>Personal Information:</strong> Data that identifies or can be used to
+            identify an individual. Examples include your name, organisation, job title,
+            postal address, email address, telephone number, social media identifiers, or
+            other online/offline contact details.
+          </li>
+          <li>
+            <strong>Other Information:</strong> Data that does not directly reveal your
+            identity, either by itself or when combined with other collected information.
+            Examples include browser and device details, app usage data, information
+            obtained via cookies or pixel tags, and general demographic information like
+            age, gender, location, interests, and preferences.
+          </li>
+        </ol>
+        <p>
+          Bliss Living Ltd may collect Personal Information and Other Information from
+          customers and website visitors. In certain cases, we may combine this “Other
+          Information” with Personal Information (for example, associating a visitor’s
+          name with their browsing activity on our website). When such a combination
+          occurs, we treat the combined information as Personal Information.
+        </p>
+      </article>
+  
+      <article class="tc-block">
+        <h3>How We Collect Information</h3>
+        <ul>
+          <li>
+            <strong>Directly from you:</strong> Information you voluntarily provide to us,
+            for example when filling out forms or contacting us.
+          </li>
+          <li>
+            <strong>Automatically:</strong> As you interact with our Applications or
+            navigate our websites, we may collect technical data such as your browser
+            type, IP address, device information, and browsing patterns. This is often
+            done using technologies like cookies and web beacons (see “Cookies and
+            Similar Technologies”).
+          </li>
+          <li>
+            <strong>From third parties:</strong> We may also gather data from external
+            sources such as public databases, marketing partners, or social media
+            platforms. For example, if you link your social media account to our
+            services, certain profile information may be shared with us.
+          </li>
+        </ul>
+      </article>
+  
+      <article class="tc-block">
+        <h3>How We Use Your Information</h3>
+        <p>
+          We will never sell your personal information to third parties. We use the
+          information we collect for various legitimate purposes, including:
+        </p>
+        <ul>
+          <li>To deliver and maintain our Services and their contents;</li>
+          <li>To analyse usage and preferences of our products and services;</li>
+          <li>
+            For business operations, such as data analysis, auditing, fraud prevention,
+            developing new products, improving our existing services, identifying trends,
+            and assessing the success of promotional campaigns;
+          </li>
+          <li>For any other purpose for which you provide the information or with your consent.</li>
+        </ul>
+      </article>
+  
+      <article class="tc-block">
+        <h3>Sharing Your Information</h3>
+        <p>
+          We may share aggregated, non-identifiable information without restrictions.
+          This data does not identify any individual user.
+        </p>
+      </article>
+  
+      <article class="tc-block">
+        <h3>Cookies and Similar Technologies</h3>
+        <p>
+          We may collect information about your online behaviour over time and across
+          different websites using automatic data collection technologies. These can
+          include cookies and web beacons, which help us understand your browsing
+          activity and improve our services.
+        </p>
+      </article>
+  
+      <article class="tc-block">
+        <h3>Accessing and Correcting Your Information</h3>
+        <p>
+          You have the right to request access to, correct, or delete the personal
+          information we hold about you. To make such a request, please contact us via
+          email at <a href="mailto:contact@blissstays.co.uk">contact@blissstays.co.uk</a>.
+          We will make every effort to comply with your request promptly.
+        </p>
+        <p>
+          Please note that we may not be able to accommodate changes if doing so would
+          violate any legal obligations or result in incorrect information.
+        </p>
+      </article>
+  
+      <article class="tc-block">
+        <h3>Data Security</h3>
+        <p>
+          We employ reasonable organisational, technical, and administrative measures to
+          protect your personal data. However, no system can guarantee absolute
+          security. If you suspect that your data has been compromised, please contact
+          us immediately.
+        </p>
+      </article>
+  
+      <article class="tc-block">
+        <h3>Data Retention</h3>
+        <p>
+          We will retain your personal information only as long as necessary to fulfil
+          the purposes outlined in this policy unless a longer retention period is
+          required or permitted by law.
+        </p>
+      </article>
+  
+      <article class="tc-block">
+        <h3>Changes to This Privacy Policy</h3>
+        <p>
+          We may update this policy from time to time. Any changes will become effective
+          when posted on our Services. Continued use of our Services after these updates
+          signifies your acceptance of the revised policy.
+        </p>
+      </article>
+  
+      <!-- Compact Contact Form (Bliss Stays + Formspree) -->
+<section id="contact" class="contact-mini" aria-labelledby="contact-title">
+    <div class="cm-wrap">
+      <h2 id="contact-title" class="cm-title">Contact us</h2>
+      <p class="cm-lead">Have a question or a booking request? Send us a quick note below.</p>
+  
+      <form id="cm-form"
+        action="https://formspree.io/f/mvgqjpkv"
+        method="POST"
+        class="cm-form"
+        autocomplete="on">
+  
+        <div class="cm-grid">
+          <label>Full name
+            <input type="text" name="name" placeholder="Jane Doe" required />
+          </label>
+  
+          <label>Email*
+            <input type="email" name="email" placeholder="you@example.com" required />
+          </label>
+  
+          <label>Phone
+            <input type="tel" name="phone" inputmode="tel" placeholder="+44 7xxx xxxxxx" />
+          </label>
+  
+          <label>Subject
+            <input type="text" name="subject" placeholder="Booking enquiry" />
+          </label>
+        </div>
+  
+        <label>Message*
+          <textarea name="message" rows="5" placeholder="How can we help?" required></textarea>
+        </label>
+  
+        <!-- Honeypot (spam trap) -->
+        <input type="text" name="_gotcha" class="cm-hp" tabindex="-1" autocomplete="off" />
+  
+        <!-- Optional: set email subject or redirect page -->
+  <input type="hidden" name="_subject" value="New enquiry from Bliss Living website" />
+        <!-- <input type="hidden" name="_redirect" value="https://yourdomain.com/thanks.html" /> -->
+  
+        <button type="submit" class="cm-btn">Send message</button>
+        <p class="cm-note" id="cm-status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+  
+  <style>
+    :root {
+      --primary: #4b4b38;
+      --accent: #6b6b50;
+      --paper: #fffdf7;
+      --ink: #2f2e26;
+      --line: #ddd5c5;
+    }
+  
+    .contact-mini{
+      background:#f4f0e6;
+      padding: clamp(36px,6vw,72px) 20px;
+    }
+    .cm-wrap{ max-width: 820px; margin: 0 auto; }
+    .cm-title{
+      color: var(--primary);
+      font-weight: 800;
+      font-size: clamp(24px,4.5vw,42px);
+      line-height: 1.1;
+      margin-bottom: .25rem;
+      text-align: center;
+    }
+    .cm-lead{
+      text-align: center;
+      color: #5b594f;
+      margin: 0 auto 18px;
+      max-width: 620px;
+    }
+  
+    .cm-form{
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,.04);
+      border-radius: 16px;
+      padding: clamp(16px,3vw,22px);
+      box-shadow: 0 8px 28px rgba(0,0,0,.10), 0 3px 10px rgba(0,0,0,.06);
+    }
+  
+    .cm-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    @media (min-width: 640px){
+      .cm-grid{ grid-template-columns: 1fr 1fr; }
+    }
+  
+    label{ display:block; font-size: 14px; color: var(--primary); font-weight: 600; }
+    input, textarea{
+      width: 100%;
+      margin-top: 6px;
+      font: inherit;
+      color: var(--ink);
+      background: #f9f7f1;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 12px 14px;
+      outline: none;
+      transition: box-shadow .2s ease, border-color .2s ease, background-color .2s;
+    }
+    input::placeholder, textarea::placeholder{ color: #9a9584; }
+    input:focus, textarea:focus{
+      border-color: #cfc5ae;
+      background: #fffdf8;
+      box-shadow: 0 0 0 4px rgba(75,75,56,.12);
+    }
+  
+    .cm-btn{
+      margin-top: 8px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .12s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .cm-btn:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,.14); background:#3a3a2a; }
+  
+    .cm-note{
+      margin-top: 10px;
+      font-size: 14px;
+      color: #4f4d43;
+    }
+    .cm-note.ok{ color: #226b3a; }
+    .cm-note.err{ color: #8b2e2e; }
+  
+    /* Honeypot hidden */
+    .cm-hp{ position:absolute; left:-50000px; opacity:0; }
+  
+    /* Tiny entrance animation */
+    .cm-form{ animation: popin .28s cubic-bezier(.2,.7,.3,1) both; }
+    @keyframes popin{
+      from{ transform: translateY(10px); opacity: 0; }
+      to  { transform: translateY(0); opacity: 1; }
+    }
+  </style>
   
   <script>
     // AJAX submit to keep user on page and show a friendly status
@@ -418,6 +1015,7 @@
     }
     </style>
 
+
 <script>
     (function(){
       const blocks = document.querySelectorAll('#privacy .tc-block');
@@ -438,9 +1036,169 @@
     
     
 
+
+
   <!-- Footer -->
-<script src="footer.js"></script>
+  <footer class="footer">
+    <div class="footer-container">
+      
+      <!-- LEFT SIDE: All links grouped -->
+      <div class="footer-links-group">
+        <div class="footer-column">
+          <h4>BLISS LIVING</h4>
+          <ul>
+            <li><a href="property.html">Properties</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            
+            
+          </ul>
+        </div>
   
+        <div class="footer-column">
+          <h4>ENQUIRIES</h4>
+          <ul>
+            <li><a href="booknow.html">Corporate Bookings</a></li>
+            <li><a href="booknow.html">Group Bookings</a></li>
+            <li><a href="booknow.html">Apart-hotels</a></li>
+          </ul> 
+        </div>
+      </div>
+  
+      <!-- RIGHT SIDE: Logo and socials -->
+      <div class="footer-logo-section">
+  <img src="logo.png" alt="Bliss Living Logo" class="footer-logo" />
+        <div class="social-icons">
+          <a href="#"><img src="icons/insta.png" alt="Instagram" /></a>
+          <a href="#"><img src="icons/fb.png" alt="Facebook" /></a>
+        </div>
+      </div>
+  
+    </div>
+  
+    <div class="footer-bottom">
+  <p>&copy; Bliss Living Ltd. 2025. All rights reserved.</p>
+    </div>
+  </footer>
+  
+  <style>
+  .footer {
+  background-color: #f7f7f9;
+  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 60px 20px 20px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  gap: 40px;
+}
+
+.footer-links-group {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.footer-column {
+  min-width: 180px;
+}
+
+.footer-column h4 {
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #999;
+  padding-bottom: 6px;
+  color: #333;
+}
+
+.footer-column .footer-sub {
+  margin-top: 20px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li {
+  margin: 10px 0;
+}
+
+.footer-column a {
+  color: #333;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #666;
+}
+
+.footer-logo-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.footer-logo {
+  width: 270px;
+  margin-bottom: 20px;
+}
+
+.footer-logo-section .social-icons a {
+  margin-left: 12px;
+}
+
+.footer-logo-section .social-icons img {
+  width: 22px;
+  filter: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 13px;
+  color: #555;
+  border-top: 1px solid #999;
+  padding-top: 12px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-links-group {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-logo-section {
+    align-items: flex-start;
+    text-align: left;
+    margin-top: 30px;
+  }
+
+  .footer-logo {
+    width: 120px;
+  }
+}
+
+  </style> 
 
 </body>
 </html>
