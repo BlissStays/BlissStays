@@ -560,6 +560,137 @@
       .footer-logo-section { text-align: left; justify-items: start; }
       .social-icons { justify-content: flex-start; }
     }
+
+    /* =====================================================================
+       MOBILE OPTIMISATION — iPhone (≤430px) + general phone (≤768px)
+       Covers: safe areas, tap targets, type scale, spacing, all sections
+    ===================================================================== */
+
+    /* ── Safe area + body ── */
+    @supports (padding-bottom: env(safe-area-inset-bottom)) {
+      body { padding-bottom: env(safe-area-inset-bottom); }
+    }
+
+    @media (max-width: 768px) {
+
+      /* ── Header: tighter pill on phone ── */
+      header { padding: 8px 12px; }
+      .header-inner { padding: 11px 16px; border-radius: 14px; gap: 12px; }
+      .logo { font-size: 19px; }
+
+      /* ── Hero: shorter on phone, logo visible ── */
+      .hero { height: 80vh; min-height: 420px; }
+      .hero-overlay { background: rgba(0,0,0,.35); }
+      .hero-logo img { width: clamp(150px, 55vw, 240px); }
+
+      /* ── Home message: stack cleanly ── */
+      .home-message { padding: 44px 20px; }
+      .home-message-inner { gap: 16px; }
+      .home-message-left h2 { font-size: clamp(26px, 7vw, 34px); }
+      .home-message-right p { font-size: 14px; }
+
+      /* ── About section ── */
+      .about-us-section { padding: 52px 20px; }
+      .about-lead { font-size: 14px; margin-bottom: 28px; }
+
+      /* ── Stat cards: full width single column on phones ── */
+      .stats-grid { grid-template-columns: 1fr !important; gap: 14px; }
+      .stat-card { padding: 18px 20px; border-radius: 14px; }
+      .stat-icon { width: 44px; height: 44px; flex: 0 0 44px; border-radius: 10px; }
+      .stat-number { font-size: clamp(26px, 6vw, 34px); }
+
+      /* ── Properties section header: stack ── */
+      #properties-section { padding: 48px 0; }
+      #properties-section .container { padding: 0 16px; }
+      .props-header { gap: 16px; margin-bottom: 28px; }
+      .props-header-left .section-title { font-size: clamp(26px, 6.5vw, 36px); }
+      .lead { font-size: 14px; }
+
+      /* ── Property slider cards ── */
+      .slide { flex: 0 0 clamp(180px, 60vw, 230px); }
+      .slide img { height: 220px; }
+      .caption { font-size: 13px; }
+
+      /* ── Arrow nav: hide on phone (finger-swipe is natural) ── */
+      .ps-arrows { display: none; }
+
+      /* ── Bliss Way: 2-col grid on phone ── */
+      #bliss-way { padding: 52px 20px; }
+      #bliss-way h2 { font-size: clamp(26px, 6.5vw, 36px); margin-bottom: 8px; }
+      .bliss-subtext { font-size: 14px; margin-bottom: 36px; }
+      .bliss-features {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px 20px;
+      }
+      .feature-box img { width: 44px; height: 44px; margin-bottom: 10px; }
+      .feature-box h4 { font-size: 13px; }
+      .feature-box p { font-size: 12px; line-height: 1.5; }
+
+      /* ── Reviews: tighter card ── */
+      #reviews-banner { padding: 48px 0; }
+      .reviews-title { font-size: clamp(24px, 6vw, 32px); }
+      .rb-card { padding: 8px 12px; }
+      .rb-grid {
+        padding: 20px 18px;
+        border-radius: 14px;
+        gap: 14px;
+      }
+      .rb-quote { font-size: 15px; line-height: 1.55; }
+      .rb-name { font-size: 15px; }
+      /* hide flag on small phones — saves space */
+      .rb-flag { display: none; }
+      /* keep arrow buttons large enough to tap */
+      .arrow { width: 44px; height: 44px; }
+      .arrow.left { left: 0; }
+      .arrow.right { right: 0; }
+
+      /* ── FAQ: larger tap targets ── */
+      #faq { padding: 48px 16px; }
+      .faq-q { padding: 16px 14px; gap: 10px; }
+      .faq-question { font-size: 14px; }
+      .faq-icon { width: 30px; height: 30px; flex: 0 0 30px; }
+      .faq-a { padding: 0 14px 16px 52px; font-size: 13.5px; }
+
+      /* ── Newsletter: full-width, comfortable ── */
+      .newsletter-section { padding: 48px 20px; }
+      .newsletter-content { gap: 20px; }
+      .newsletter-text h2 { font-size: clamp(24px, 6vw, 32px); }
+      .newsletter-form input[type="text"],
+      .newsletter-form input[type="email"] {
+        font-size: 16px; /* prevents iOS zoom on focus */
+        padding: 14px 4px 12px;
+      }
+      .nl-btn { padding: 14px 28px; font-size: 16px; }
+
+      /* ── Footer ── */
+      footer { padding: 44px 20px 32px; }
+      .footer-column h4 { font-size: 12px; }
+      .footer-column a { font-size: 14px; padding: 4px 0; display: inline-block; }
+      .footer-logo { width: 160px; }
+      .social-icons img { width: 22px; height: 22px; opacity: .7; }
+      .footer-bottom { font-size: 12px; margin-top: 28px; }
+
+      /* ── WhatsApp: smaller on phone, stays out of the way ── */
+      #wa-widget { right: 14px; bottom: 14px; }
+      #wa-fab { width: 52px; height: 52px; }
+      #wa-fab svg { width: 26px; height: 26px; }
+    }
+
+    /* ── iPhone-specific: very small screens (≤390px SE/mini) ── */
+    @media (max-width: 390px) {
+      .home-message { padding: 36px 16px; }
+      .home-message-left h2 { font-size: 24px; }
+      .bliss-features { grid-template-columns: 1fr 1fr; gap: 20px 14px; }
+      .feature-box p { display: none; } /* text too tight; icon+title enough */
+      .stat-card { flex-direction: column; text-align: center; gap: 10px; }
+      .stat-icon { margin: 0 auto; }
+    }
+
+    /* ── Ensure no horizontal overflow on any phone ── */
+    @media (max-width: 768px) {
+      html, body { max-width: 100%; overflow-x: hidden; }
+      * { -webkit-tap-highlight-color: transparent; } /* remove grey flash on tap */
+    }
   </style>
 </head>
 <body>
@@ -1197,6 +1328,38 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // iOS touch events (enable :active states)
   document.addEventListener('touchstart', () => {}, { passive: true });
+
+  // ---- Properties slider: finger swipe ----
+  (function(){
+    const viewport = document.querySelector('.ps-viewport');
+    if (!viewport) return;
+    let x0 = null;
+    viewport.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+    viewport.addEventListener('touchend', e => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      x0 = null;
+      if (Math.abs(dx) < 30) return;
+      document.querySelector(dx > 0 ? '.ps-prev' : '.ps-next')?.click();
+    }, { passive: true });
+  })();
+
+  // ---- Reviews slider: finger swipe ----
+  (function(){
+    const sl = document.getElementById('rb-slides');
+    if (!sl) return;
+    let x0 = null;
+    sl.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+    sl.addEventListener('touchend', e => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      x0 = null;
+      if (Math.abs(dx) < 40) return;
+      const btns = document.querySelectorAll('#reviews-banner .arrow');
+      (dx > 0 ? btns[0] : btns[1])?.click();
+    }, { passive: true });
+  })();
+
 });
 </script>
 
