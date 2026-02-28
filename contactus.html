@@ -274,15 +274,261 @@
   </style>
 </head>
 <body>
-<script src="navbar.js"></script>
+
+
 
   <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <div class="logo-block">
+  <a href="index.html" class="logo-text">Bliss Living</a>
+      </div>
+      <div class="spacer"></div>
+      <nav class="main-nav">
+        <ul>
+          <li class="has-dropdown">
+            <a href="#">Locations <span>&#9662;</span></a>
+            <ul class="dropdown">
+              <li><a href="property.html">Maida Vale</a></li>
+              <li><a href="property1.html">Paddington</a></li>
+              <li><a href="property2.html">Nine Elms</a></li>
+              <li><a href="property3.html">Kennington</a></li>
+              <li><a href="property4.html">Wimbledon</a></li>
+            </ul>
+          <li class="has-dropdown">
+            <a href="#">Menu <span>&#9662;</span></a>
+            <ul class="dropdown">
+              <li><a href="faq.html">FAQs</a></li>
+              <li><a href="terms.html">Terms & Conditions</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="book-now">
+        <a href="booknow.html">Book now</a>
+      </div>
+    </div>
+  </header>
   
   
   
 
+  <style>
+    /* Floating, centered panel header (Zedwell-style) */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
   
+      /* Make the bar itself transparent so the panel “floats” */
+      background: transparent;
+      /* Add a little breathing room from the very top */
+      padding: 10px 16px;
+      /* Smooth transitions */
+      transition: padding 0.25s ease;
+    }
   
+    /* The floating panel */
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+  
+      /* Panel look */
+      background: rgba(248, 245, 238, 0.96); /* #f8f5ee with slight transparency */
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow:
+        0 14px 30px rgba(0,0,0,0.12),
+        0 4px 10px rgba(0,0,0,0.08);
+  
+      /* Layout */
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+  
+      /* Nice glassy feel on capable browsers */
+      backdrop-filter: saturate(140%) blur(6px);
+    }
+  
+    /* Compact the panel slightly on scroll */
+    header.scrolled { padding-top: 6px; padding-bottom: 6px; }
+    header.scrolled .header-inner {
+      background: rgba(248, 245, 238, 0.98);
+      border-radius: 10px;
+      box-shadow:
+        0 10px 24px rgba(0,0,0,0.10),
+        0 3px 8px rgba(0,0,0,0.08);
+    }
+  
+    /* Logo */
+    .logo-block {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+  
+    .spacer { flex-grow: 1; }
+  
+    /* Nav */
+    .main-nav ul {
+      display: flex;
+      list-style: none;
+      gap: 40px;
+      margin: 0;
+      padding: 0;
+    }
+  
+    .main-nav a {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--primary);
+      position: relative;
+      padding-bottom: 3px;
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+  
+    .main-nav a:hover { color: var(--accent); }
+  
+    .main-nav a:hover::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 100%; height: 2px;
+      background-color: var(--primary);
+    }
+  
+    .main-nav span {
+      font-size: 10px;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+  
+    /* Book button */
+    .book-now { margin-left: 20px; }
+    .book-now a {
+      background-color: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 10px 22px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+      display: inline-block;
+    }
+    .book-now a:hover {
+      background-color: #363626;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.16);
+    }
+  
+    /* Dropdown (keeps same behavior; just sits above the panel) */
+    .main-nav .has-dropdown { position: relative; }
+    .main-nav .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%; left: 0;
+      min-width: 160px;
+      list-style: none;
+      margin: 10px 0 0;
+      padding: 6px;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 10px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.10), 0 3px 8px rgba(0,0,0,0.06);
+      z-index: 1001;
+    }
+    .main-nav .has-dropdown:hover .dropdown { display: block; }
+    .main-nav .dropdown li a {
+      display: block;
+      padding: 10px 12px;
+      color: var(--primary);
+      font-size: 14px;
+      border-radius: 6px;
+    }
+    .main-nav .dropdown li a:hover {
+      background-color: #f5f2ea;
+    }
+  
+    /* Small screens: keep the floating look, just tighter padding */
+    @media (max-width: 768px) {
+      .header-inner {
+        padding: 12px 16px;
+        gap: 12px;
+      }
+      .main-nav ul { gap: 20px; }
+      .book-now { margin-left: 12px; }
+    }
+  
+    
+      /* Dropdown */
+      .main-nav .has-dropdown {
+        position: relative;
+      }
+    
+      .main-nav .dropdown {
+        display: none;
+        position: absolute;
+        background-color: var(--light);
+        top: 100%;
+        left: 0;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        min-width: 140px;
+        z-index: 1001;
+      }
+    
+      .main-nav .has-dropdown:hover .dropdown {
+        display: block;
+      }
+    
+      .main-nav .dropdown li a {
+        display: block;
+        padding: 10px 16px;
+        color: var(--primary);
+        font-size: 14px;
+        text-decoration: none;
+      }
+    
+      .main-nav .dropdown li a:hover {
+        background-color: #f0f0f0;
+      }
+    </style>
+  
+  <script>
+    // Toggle compact floating style when scrolling
+    document.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 40) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    });
+  </script>
+  
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const dropdown = document.querySelector('.dropdown');
+
+    menuToggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.has-dropdown')) {
+        dropdown.style.display = 'none';
+      }
+    });
+  });
+</script>
+
 
 <!-- =============== Privacy Policy (Bliss Stays) =============== -->
 <section id="privacy" class="tc-section" aria-labelledby="pp-title">
@@ -582,6 +828,7 @@
     }
     </style>
 
+
 <script>
     (function(){
       const blocks = document.querySelectorAll('#privacy .tc-block');
@@ -602,9 +849,169 @@
     
     
 
+
+
   <!-- Footer -->
-<script src="footer.js"></script>
+  <footer class="footer">
+    <div class="footer-container">
+      
+      <!-- LEFT SIDE: All links grouped -->
+      <div class="footer-links-group">
+        <div class="footer-column">
+          <h4>BLISS LIVING</h4>
+          <ul>
+            <li><a href="property.html">Properties</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            
+            
+          </ul>
+        </div>
   
+        <div class="footer-column">
+          <h4>ENQUIRIES</h4>
+          <ul>
+            <li><a href="booknow.html">Corporate Bookings</a></li>
+            <li><a href="booknow.html">Group Bookings</a></li>
+            <li><a href="booknow.html">Apart-hotels</a></li>
+          </ul> 
+        </div>
+      </div>
+  
+      <!-- RIGHT SIDE: Logo and socials -->
+      <div class="footer-logo-section">
+  <img src="logo.png" alt="Bliss Living Logo" class="footer-logo" />
+        <div class="social-icons">
+          <a href="#"><img src="icons/insta.png" alt="Instagram" /></a>
+          <a href="#"><img src="icons/fb.png" alt="Facebook" /></a>
+        </div>
+      </div>
+  
+    </div>
+  
+    <div class="footer-bottom">
+  <p>&copy; Bliss Living Ltd. 2025. All rights reserved.</p>
+    </div>
+  </footer>
+  
+  <style>
+  .footer {
+  background-color: #f4f0e0;
+  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 60px 20px 20px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  gap: 40px;
+}
+
+.footer-links-group {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.footer-column {
+  min-width: 180px;
+}
+
+.footer-column h4 {
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #999;
+  padding-bottom: 6px;
+  color: #333;
+}
+
+.footer-column .footer-sub {
+  margin-top: 20px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li {
+  margin: 10px 0;
+}
+
+.footer-column a {
+  color: #333;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #666;
+}
+
+.footer-logo-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.footer-logo {
+  width: 270px;
+  margin-bottom: 20px;
+}
+
+.footer-logo-section .social-icons a {
+  margin-left: 12px;
+}
+
+.footer-logo-section .social-icons img {
+  width: 22px;
+  filter: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 13px;
+  color: #555;
+  border-top: 1px solid #999;
+  padding-top: 12px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-links-group {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-logo-section {
+    align-items: flex-start;
+    text-align: left;
+    margin-top: 30px;
+  }
+
+  .footer-logo {
+    width: 120px;
+  }
+}
+
+  </style> 
 
 </body>
 </html>
