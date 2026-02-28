@@ -359,8 +359,10 @@
     .home-message-right p { font-size: 15px; line-height: 1.75; color: var(--dark); margin-bottom: 14px; }
     .home-message-right p:last-child { margin-bottom: 0; }
     @media (max-width: 768px) {
-      .home-message-inner { flex-direction: column; gap: 20px; }
-      .home-message-left h2 { font-size: clamp(24px, 6.5vw, 32px); }
+      .home-message-inner { flex-direction: column; gap: 16px; align-items: flex-start; }
+      .home-message-left { flex: 0 0 auto; width: 100%; min-width: 0; }
+      .home-message-right { flex: 0 0 auto; width: 100%; min-width: 0; }
+      .home-message-left h2 { font-size: clamp(26px, 7vw, 34px); }
     }
 
     /* =====================================================================
@@ -392,12 +394,15 @@
     .lead { font-size: 14px; line-height: 1.75; color: var(--muted); margin-bottom: 10px; }
     .ps-wrap { position: relative; }
     .ps-viewport { overflow: hidden; width: 100%; }
+    @media (max-width: 768px) {
+      .ps-viewport { overflow: visible; } /* let the track handle its own scroll */
+      .ps-wrap { overflow: hidden; }      /* clip at the wrap level instead */
+    }
     .ps-shift { transform: translateX(var(--shift, 0px)); transition: transform .35s ease; }
     .ps-track { display: flex; align-items: stretch; gap: 24px; width: max-content; animation: ps-scroll 36s linear infinite; will-change: transform; }
     .ps-track:hover { animation-play-state: paused; }
     @keyframes ps-scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-    @media (max-width: 600px) { .ps-track { animation-duration: 22s; } }
-    .slide { flex: 0 0 clamp(220px, 23vw, 270px); }
+    .slide { flex: 0 0 270px; }
     .slide a { text-decoration: none; color: inherit; display: block; }
     .slide img { width: 100%; height: 280px; object-fit: cover; border-radius: 8px; display: block; transition: transform .4s ease; }
     .slide a:hover img { transform: scale(1.02); }
@@ -411,6 +416,32 @@
     .ps-nav:hover { border-color: var(--dark); box-shadow: 0 4px 14px rgba(0,0,0,.15); transform: translateY(calc(-50% - 1px)); }
     .ps-prev { left: -12px; }
     .ps-next { right: -12px; }
+
+    /* Mobile: kill the auto-marquee animation, use native scroll-snap instead */
+    @media (max-width: 768px) {
+      .ps-shift { transform: none !important; transition: none; }
+      .ps-track {
+        animation: none !important;
+        width: 100%;
+        display: flex;
+        gap: 14px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;          /* Firefox */
+        padding: 4px 16px 12px;
+      }
+      .ps-track::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+      /* Only show real slides, not JS-cloned duplicates */
+      .ps-track .slide:nth-child(n+6) { display: none; }
+      .slide {
+        flex: 0 0 72vw;
+        max-width: 260px;
+        scroll-snap-align: start;
+      }
+      .slide img { height: 200px; border-radius: 10px; }
+      .caption { font-size: 13px; }
+    }
 
     /* =====================================================================
        THE BLISS WAY (unchanged)
@@ -496,7 +527,7 @@
     .newsletter-form { flex: 2; min-width: 280px; display: flex; flex-direction: column; gap: 16px; }
     .newsletter-form .input-group { display: flex; gap: 20px; flex-wrap: wrap; }
     .newsletter-form .input-group input { flex: 1 1 200px; }
-    .newsletter-form input[type="text"], .newsletter-form input[type="email"] { width: 100%; padding: 12px 4px 10px; border: none; border-bottom: 2px solid rgba(0,0,0,.2); background: transparent; color: var(--dark); font-size: 15px; font-family: var(--font-body); outline: none; transition: border-color .2s; }
+    .newsletter-form input[type="text"], .newsletter-form input[type="email"] { width: 100%; padding: 12px 4px 10px; border: none; border-bottom: 2px solid rgba(0,0,0,.2); background: transparent; color: var(--dark); font-size: 16px; font-family: var(--font-body); outline: none; transition: border-color .2s; }
     .newsletter-form input:focus { border-color: var(--primary); }
     .newsletter-form input::placeholder { color: rgba(0,0,0,.4); }
     .disclaimer { font-size: 12px; color: var(--muted); }
@@ -508,8 +539,15 @@
     .nl-status.ok { color: #1f6d3b; }
     .nl-status.err { color: #8b2e2e; }
     @media (max-width: 768px) {
-      .newsletter-form .input-group { flex-direction: column; }
-      .nl-btn { width: 100%; text-align: center; }
+      .newsletter-section { padding: 44px 20px; }
+      .newsletter-content { flex-direction: column; gap: 20px; }
+      .newsletter-text { flex: 0 0 auto; width: 100%; min-width: 0; }
+      .newsletter-text h2 { font-size: clamp(24px, 6vw, 30px); margin-bottom: 6px; }
+      .newsletter-form { flex: 0 0 auto; width: 100%; min-width: 0; gap: 12px; }
+      .newsletter-form .input-group { flex-direction: column; gap: 12px; }
+      .newsletter-form .input-group input { flex: none; width: 100%; }
+      .newsletter-form input[type="text"], .newsletter-form input[type="email"] { padding: 10px 4px 8px; }
+      .nl-btn { width: 100%; text-align: center; padding: 14px; align-self: stretch; }
     }
 
     /* =====================================================================
@@ -606,12 +644,9 @@
       .props-header-left .section-title { font-size: clamp(26px, 6.5vw, 36px); }
       .lead { font-size: 14px; }
 
-      /* ── Property slider cards ── */
-      .slide { flex: 0 0 clamp(180px, 60vw, 230px); }
-      .slide img { height: 220px; }
-      .caption { font-size: 13px; }
+      /* ── Property slider cards — handled by main CSS scroll-snap block ── */
 
-      /* ── Arrow nav: hide on phone (finger-swipe is natural) ── */
+      /* ── Arrow nav: hidden on mobile ── */
       .ps-arrows { display: none; }
 
       /* ── Bliss Way: 2-col grid on phone ── */
@@ -650,17 +685,6 @@
       .faq-question { font-size: 14px; }
       .faq-icon { width: 30px; height: 30px; flex: 0 0 30px; }
       .faq-a { padding: 0 14px 16px 52px; font-size: 13.5px; }
-
-      /* ── Newsletter: full-width, comfortable ── */
-      .newsletter-section { padding: 48px 20px; }
-      .newsletter-content { gap: 20px; }
-      .newsletter-text h2 { font-size: clamp(24px, 6vw, 32px); }
-      .newsletter-form input[type="text"],
-      .newsletter-form input[type="email"] {
-        font-size: 16px; /* prevents iOS zoom on focus */
-        padding: 14px 4px 12px;
-      }
-      .nl-btn { padding: 14px 28px; font-size: 16px; }
 
       /* ── Footer ── */
       footer { padding: 44px 20px 32px; }
@@ -1228,29 +1252,35 @@ document.addEventListener('DOMContentLoaded', function () {
   const track   = document.getElementById('psTrack');
   const shifter = document.getElementById('psShift');
   if (track) {
-    Array.from(track.children).forEach(n => track.appendChild(n.cloneNode(true)));
-    let gap = 24, cardW = null, shift = 0;
-    function measure() {
-      const card = track.querySelector('.slide');
-      if (!card) return;
-      gap = parseFloat(getComputedStyle(track).gap) || 24;
-      cardW = card.getBoundingClientRect().width;
+    const isMobile = () => window.innerWidth <= 768;
+
+    if (!isMobile()) {
+      // Desktop: auto-scroll marquee with cloned nodes
+      Array.from(track.children).forEach(n => track.appendChild(n.cloneNode(true)));
+      let gap = 24, cardW = null, shift = 0;
+      function measure() {
+        const card = track.querySelector('.slide');
+        if (!card) return;
+        gap = parseFloat(getComputedStyle(track).gap) || 24;
+        cardW = card.getBoundingClientRect().width;
+      }
+      function nudge(dir) {
+        track.style.animationPlayState = 'paused';
+        if (!cardW) measure();
+        shift += dir * -(cardW + gap);
+        const setWidth = (cardW + gap) * (track.children.length / 2);
+        if (shift <= -setWidth) shift += setWidth;
+        if (shift >= setWidth) shift -= setWidth;
+        shifter.style.setProperty('--shift', shift + 'px');
+        clearTimeout(nudge._t);
+        nudge._t = setTimeout(() => { track.style.animationPlayState = 'running'; }, 280);
+      }
+      document.querySelector('.ps-prev')?.addEventListener('click', () => nudge(-1));
+      document.querySelector('.ps-next')?.addEventListener('click', () => nudge(1));
+      window.addEventListener('resize', () => { cardW = null; }, { passive: true });
+      measure();
     }
-    function nudge(dir) {
-      track.style.animationPlayState = 'paused';
-      if (!cardW) measure();
-      shift += dir * -(cardW + gap);
-      const setWidth = (cardW + gap) * (track.children.length / 2);
-      if (shift <= -setWidth) shift += setWidth;
-      if (shift >= setWidth) shift -= setWidth;
-      shifter.style.setProperty('--shift', shift + 'px');
-      clearTimeout(nudge._t);
-      nudge._t = setTimeout(() => { track.style.animationPlayState = 'running'; }, 280);
-    }
-    document.querySelector('.ps-prev')?.addEventListener('click', () => nudge(-1));
-    document.querySelector('.ps-next')?.addEventListener('click', () => nudge(1));
-    window.addEventListener('resize', () => { cardW = null; }, { passive: true });
-    measure();
+    // Mobile: scroll-snap handled entirely by CSS, no JS needed
   }
 
   // ---- Reviews slider + dots ----
