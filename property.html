@@ -99,17 +99,18 @@
     }
     .main-nav a:hover { color: var(--warm); }
     .main-nav a:hover::after { width: 100%; }
-    .main-nav .has-dropdown { position: relative; }
+    .main-nav .has-dropdown { position: relative; padding-bottom: 14px; }
     .main-nav .drop-panel {
       display: none;
       position: absolute;
-      top: calc(100% + 14px); left: 0;
+      top: 100%; left: 0;
       min-width: 200px;
       background: var(--white);
       border: 1px solid rgba(184,164,122,.2);
       border-radius: var(--radius-sm);
       box-shadow: var(--shadow-md);
       padding: 12px 0;
+      z-index: 9001;
     }
     .main-nav .has-dropdown:hover .drop-panel { display: block; }
     .drop-panel a {
@@ -784,7 +785,7 @@
       </ul>
     </div>
     <div class="footer-col footer-logo-col">
-      <img src="logo.png" alt="Bliss Living" class="footer-logo-img">
+      <img src="Footnote_Logo.png" alt="Bliss Living" class="footer-logo-img">
       <div class="footer-socials">
         <a href="#"><img src="icons/insta.png" alt="Instagram"></a>
         <a href="#"><img src="icons/fb.png" alt="Facebook"></a>
