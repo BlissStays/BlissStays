@@ -3,28 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Bliss Living</title>
+  <title>The Hideaway Cottage – Maida Vale · Bliss Living</title>
+
+  <!-- Google Fonts: matches index.html -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
   <style>
     /* Reset */
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      color: #444;
+      font-family: var(--font-body);
+      color: var(--ink);
       line-height: 1.6;
-      background-color: #ffffff;
+      background-color: var(--white);
       margin: 0;
       padding: 0;
-      background-color: #ffffff;
       width: 100%;
       min-height: 100%;
     }
     a { text-decoration: none; color: inherit; }
 
-    /* Colors */
+    /* Colors – aligned with index.html */
     :root {
-      --primary: #4b4b38;
-      --accent: #6b6b50;
-      --light: #ffffff;
+      --primary:   #4b4b38;
+      --accent:    #6b6b50;
+      --light:     #f8f5ee;
+      --sand:      #ede8dc;
+      --dark:      #2d2c24;
+      --ink:       #1a1917;
+      --muted:     #6b7280;
+      --white:     #ffffff;
+      --charcoal:  #3e3a35;
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+
+      --radius:   14px;
+      --shadow:   0 20px 40px rgba(0,0,0,.10), 0 6px 12px rgba(0,0,0,.06);
+      --transition: .25s cubic-bezier(.2,.7,.3,1);
     }
 
     /* Hero with video */
@@ -70,10 +88,11 @@
     }
 
     .logo-block {
-  font-size: 22px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
   font-weight: 700;
-  color: var(--primary);
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: var(--dark);
+  white-space: nowrap;
 }
 
 .logo-text {
@@ -829,12 +848,12 @@
   .flatpickr-day.selected,
   .flatpickr-day.startRange,
   .flatpickr-day.endRange {
-    background: #2a5b53;
-    border-color: #2a5b53;
+    background: #4b4b38;
+    border-color: #4b4b38;
     color: #fff;
   }
   .flatpickr-day.inRange {
-    background: rgba(42,91,83,.12);
+    background: rgba(75,75,56,.12);
   }
 </style>
 
@@ -949,9 +968,14 @@
     
     
 
-  <!-- Footer -->
-<script src="footer.js"></script>
-  
+  <!-- Shared footer -->
+  <div id="site-footer"></div>
+  <script>
+    fetch('footer.html')
+      .then(function(r){ return r.text(); })
+      .then(function(h){ document.getElementById('site-footer').innerHTML = h; });
+  </script>
 
+<script src="footer.js"></script>
 </body>
 </html>
