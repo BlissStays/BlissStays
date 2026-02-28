@@ -101,19 +101,51 @@
     .main-nav a:hover { color: var(--warm); }
     .main-nav a:hover::after { width: 100%; }
 
-    /* Dropdown */
-    .main-nav .has-dropdown { position: relative; }
-    .main-nav .drop-panel {
-      display: none;
-      position: absolute;
-      top: calc(100% + 14px); left: 0;
-      min-width: 200px;
-      background: var(--white);
-      border: 1px solid rgba(184,164,122,.2);
-      border-radius: var(--radius-sm);
-      box-shadow: var(--shadow-md);
-      padding: 12px 0;
-    }
+ /* Dropdown */
+.main-nav .has-dropdown { 
+  position: relative; 
+}
+
+/* Hover bridge so the gap doesn't kill hover */
+.main-nav .has-dropdown::after{
+  content:"";
+  position:absolute;
+  left:0;
+  top:100%;
+  width:100%;
+  height:14px; /* matches the old gap */
+}
+
+/* (Optional but helps) bigger hover/click target */
+.main-nav .has-dropdown > a{
+  display:inline-flex;
+  align-items:center;
+  padding:10px 0;
+}
+
+.main-nav .drop-panel {
+  display: none;
+  position: absolute;
+  top: 100%;
+  margin-top: 12px;   /* keeps the visual spacing */
+  left: 0;
+  min-width: 200px;
+  background: var(--white);
+  border: 1px solid rgba(184,164,122,.2);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  padding: 12px 0;
+  z-index: 999;
+}
+
+/* open on hover + keyboard */
+.main-nav .has-dropdown:hover .drop-panel,
+.main-nav .has-dropdown:focus-within .drop-panel {
+  display: block;
+}
+
+/* if you're using the JS click-toggle */
+.main-nav .drop-panel.open { display:block; }
     .drop-panel a {
       display: block;
       padding: 9px 18px;
@@ -1041,4 +1073,5 @@
 
 </body>
 </html>
+
 
