@@ -6,6 +6,7 @@
   <title>Paddington – Bliss Living</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <style>
     /* ─── Reset & Base ─────────────────────────────────────────── */
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -99,6 +100,8 @@
     }
     .main-nav a:hover { color: var(--warm); }
     .main-nav a:hover::after { width: 100%; }
+
+    /* Dropdown */
     .main-nav .has-dropdown { position: relative; }
     .main-nav .drop-panel {
       display: none;
@@ -111,7 +114,6 @@
       box-shadow: var(--shadow-md);
       padding: 12px 0;
     }
-    .main-nav .has-dropdown:hover .drop-panel { display: block; }
     .drop-panel a {
       display: block;
       padding: 9px 18px;
@@ -120,6 +122,15 @@
       transition: background .15s;
     }
     .drop-panel a:hover { background: var(--mist); }
+
+    /* ✅ Hover + keyboard open */
+    .main-nav .has-dropdown:hover .drop-panel,
+    .main-nav .has-dropdown:focus-within .drop-panel {
+      display: block;
+    }
+    /* ✅ Click-open support */
+    .main-nav .drop-panel.open { display: block; }
+
     .btn-book {
       background: var(--stone);
       color: var(--white);
@@ -158,6 +169,7 @@
         transition: transform .2s, opacity .2s;
       }
     }
+
     /* Mobile sheet */
     .mnav-sheet { display: none; pointer-events: none; position: fixed; inset: 0; z-index: 1500; }
     @media (max-width: 768px) {
@@ -365,10 +377,7 @@
       display: flex; align-items: center; gap: 5px;
       margin-bottom: 22px;
     }
-    .prop-card__loc::before {
-      content: '◎';
-      font-size: 11px;
-    }
+    .prop-card__loc::before { content: '◎'; font-size: 11px; }
     .prop-card__divider {
       width: 100%; height: 1px;
       background: var(--parch);
@@ -438,7 +447,7 @@
       transform: translateY(-2px);
     }
 
-    /* ─── Separator between property blocks ─────────────────── */
+    /* Separator */
     .prop-sep {
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--parch) 20%, var(--parch) 80%, transparent);
@@ -481,7 +490,7 @@
     .lightbox__close:hover,
     .lightbox__prev:hover,
     .lightbox__next:hover { background: rgba(255,255,255,.22); }
-    .lightbox__close { top: 14px; right: 14px; top:14px; transform: none; position: absolute; }
+    .lightbox__close { top: 14px; right: 14px; }
     .lightbox__prev  { left: 16px; top: 50%; transform: translateY(-50%); }
     .lightbox__next  { right: 16px; top: 50%; transform: translateY(-50%); }
     .lightbox__counter {
@@ -539,25 +548,26 @@
     @keyframes waIn { to { opacity:1; transform:translateY(0); } }
     @media (max-width: 520px) { #wa-card { right: 0; bottom: 72px; width: min(90vw, 340px); } }
 
-    /* ─── Footer ─────────────────────────────────────────────── */
+    /* ─── Footer (UPDATED) ───────────────────────────────────── */
     footer {
       background: var(--stone);
       color: rgba(255,255,255,.7);
       padding: 56px 20px 28px;
     }
-    .footer-inner {
-      max-width: 1240px; margin: 0 auto;
+    .footer-container {
+      max-width: 1240px;
+      margin: 0 auto 18px;
       display: grid;
-      grid-template-columns: 1fr 1fr auto;
+      grid-template-columns: 1fr auto;
       gap: 40px;
       align-items: start;
-      margin-bottom: 40px;
     }
-    @media (max-width: 700px) {
-      .footer-inner { grid-template-columns: 1fr 1fr; }
-      .footer-logo-col { grid-column: 1 / -1; }
+    .footer-links-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
     }
-    .footer-col h4 {
+    .footer-column h4 {
       font-family: var(--font-display);
       font-size: 13px;
       font-weight: 600;
@@ -568,28 +578,46 @@
       padding-bottom: 8px;
       border-bottom: 1px solid rgba(255,255,255,.12);
     }
-    .footer-col ul { list-style: none; display: grid; gap: 9px; }
-    .footer-col a {
-      font-size: 14px; color: rgba(255,255,255,.62);
+    .footer-column ul { list-style: none; display: grid; gap: 9px; }
+    .footer-column a {
+      font-size: 14px;
+      color: rgba(255,255,255,.62);
       transition: color .2s;
     }
-    .footer-col a:hover { color: var(--gold-lt); }
-    .footer-logo-col { text-align: right; }
-    .footer-logo-img { width: 200px; opacity: .8; margin-bottom: 16px; margin-left: auto; }
-    .footer-socials { display: flex; gap: 12px; justify-content: flex-end; }
-    .footer-socials img { width: 20px; opacity: .55; transition: opacity .2s; }
-    .footer-socials img:hover { opacity: .9; }
+    .footer-column a:hover { color: var(--gold-lt); }
+    .footer-logo-section {
+      text-align: right;
+      display: grid;
+      gap: 14px;
+      justify-items: end;
+    }
+    .footer-logo { opacity: .85; height: auto; }
+    .social-icons {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+    }
+    .social-icons img {
+      width: 20px;
+      height: 20px;
+      opacity: .55;
+      transition: opacity .2s;
+    }
+    .social-icons img:hover { opacity: .9; }
     .footer-bottom {
-      max-width: 1240px; margin: 0 auto;
+      max-width: 1240px;
+      margin: 0 auto;
       padding-top: 22px;
       border-top: 1px solid rgba(255,255,255,.1);
       text-align: center;
-      font-size: 13px; color: rgba(255,255,255,.35);
+      font-size: 13px;
+      color: rgba(255,255,255,.35);
     }
     @media (max-width: 700px) {
-      .footer-logo-col { text-align: left; }
-      .footer-logo-img { margin-left: 0; }
-      .footer-socials { justify-content: flex-start; }
+      .footer-container { grid-template-columns: 1fr; }
+      .footer-links-group { grid-template-columns: 1fr 1fr; }
+      .footer-logo-section { text-align: left; justify-items: start; }
+      .social-icons { justify-content: flex-start; }
     }
 
     /* ─── Scroll reveal ──────────────────────────────────────── */
@@ -604,6 +632,7 @@
     }
   </style>
 </head>
+
 <body>
 
 <!-- ═══ HEADER ════════════════════════════════════════════════ -->
@@ -799,7 +828,7 @@
   </section>
 </main>
 
-<!-- ═══ LIGHTBOX (one shared instance) ═══════════════════════ -->
+<!-- ═══ LIGHTBOX ══════════════════════════════════════════════ -->
 <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
   <div class="lightbox__inner">
     <img class="lightbox__img" id="lbImg" alt="Property photo">
@@ -829,153 +858,186 @@
   </div>
 </div>
 
-<!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+<!-- ═══ FOOTER (UPDATED LOGO) ═════════════════════════════════ -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-col">
-      <h4>Bliss Living</h4>
-      <ul>
-        <li><a href="property.html">Properties</a></li>
-        <li><a href="terms.html">Terms & Conditions</a></li>
-        <li><a href="faq.html">FAQs</a></li>
-        <li><a href="privacy.html">Privacy Policy</a></li>
-      </ul>
+  <div class="footer-container">
+    <div class="footer-links-group">
+      <div class="footer-column">
+        <h4>Bliss Living</h4>
+        <ul>
+          <li><a href="property.html">Properties</a></li>
+          <li><a href="terms.html">Terms & Conditions</a></li>
+          <li><a href="faq.html">FAQs</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Enquiries</h4>
+        <ul>
+          <li><a href="booknow.html">Corporate Bookings</a></li>
+          <li><a href="booknow.html">Group Bookings</a></li>
+          <li><a href="booknow.html">Apart-hotels</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-col">
-      <h4>Enquiries</h4>
-      <ul>
-        <li><a href="booknow.html">Corporate Bookings</a></li>
-        <li><a href="booknow.html">Group Bookings</a></li>
-        <li><a href="booknow.html">Apart-hotels</a></li>
-      </ul>
-    </div>
-    <div class="footer-col footer-logo-col">
-      <img src="logo.png" alt="Bliss Living" class="footer-logo-img">
-      <div class="footer-socials">
-        <a href="#"><img src="icons/insta.png" alt="Instagram"></a>
-        <a href="#"><img src="icons/fb.png" alt="Facebook"></a>
+    <div class="footer-logo-section">
+      <img src="Footnote_Logo.png" alt="Bliss Living" class="footer-logo" width="200" loading="lazy">
+      <div class="social-icons">
+        <a href="#" class="social" aria-label="Instagram"><img src="icons/insta.png" alt="Instagram" width="22" height="22"></a>
+        <a href="#" class="social" aria-label="Facebook"><img src="icons/fb.png" alt="Facebook" width="22" height="22"></a>
       </div>
     </div>
   </div>
-  <div class="footer-bottom">
-    <p>&copy; Bliss Living Ltd. 2025. All rights reserved.</p>
-  </div>
+  <p class="footer-bottom">&copy; Bliss Living Ltd. 2025. All rights reserved.</p>
 </footer>
 
 <!-- ═══ SCRIPTS ═══════════════════════════════════════════════ -->
 <script>
-// ─── Header scroll compact
-const header = document.getElementById('site-header');
-window.addEventListener('scroll', () => {
-  header.classList.toggle('scrolled', window.scrollY > 40);
-}, { passive: true });
+  // ─── Header scroll compact
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
 
-// ─── Mobile nav
-const mnavBtn   = document.getElementById('mnavBtn');
-const mnav      = document.getElementById('mnav');
-const mnavClose = document.getElementById('mnavClose');
+  // ─── Mobile nav
+  const mnavBtn   = document.getElementById('mnavBtn');
+  const mnav      = document.getElementById('mnav');
+  const mnavClose = document.getElementById('mnavClose');
 
-function openSheet() {
-  mnav.classList.add('open');
-  mnav.setAttribute('aria-hidden', 'false');
-  mnavBtn.setAttribute('aria-expanded', 'true');
-  document.body.style.overflow = 'hidden';
-}
-function closeSheet() {
-  mnav.classList.remove('open');
-  mnav.setAttribute('aria-hidden', 'true');
-  mnavBtn.setAttribute('aria-expanded', 'false');
-  document.body.style.overflow = '';
-}
-mnavBtn?.addEventListener('click', openSheet);
-mnavClose?.addEventListener('click', closeSheet);
-mnav.querySelector('.mnav-backdrop')?.addEventListener('click', closeSheet);
-mnav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeSheet));
+  function openSheet() {
+    mnav.classList.add('open');
+    mnav.setAttribute('aria-hidden', 'false');
+    mnavBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeSheet() {
+    mnav.classList.remove('open');
+    mnav.setAttribute('aria-hidden', 'true');
+    mnavBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  mnavBtn?.addEventListener('click', openSheet);
+  mnavClose?.addEventListener('click', closeSheet);
+  mnav.querySelector('.mnav-backdrop')?.addEventListener('click', closeSheet);
+  mnav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeSheet));
 
-// ─── Lightbox (shared, gallery-aware)
-const lb        = document.getElementById('lightbox');
-const lbImg     = document.getElementById('lbImg');
-const lbCounter = document.getElementById('lbCounter');
-const lbClose   = document.getElementById('lbClose');
-const lbPrev    = document.getElementById('lbPrev');
-const lbNext    = document.getElementById('lbNext');
+  // ✅ Dropdown click support (also helps touch devices)
+  document.querySelectorAll('.main-nav .has-dropdown > a').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      if (trigger.getAttribute('href') === '#') e.preventDefault();
 
-let lbSrcs = [];
-let lbIdx  = 0;
-let lbLast = null;
+      const parent = trigger.parentElement;
+      const panel = parent.querySelector('.drop-panel');
 
-function lbCollectSrcs(galleryId) {
-  const g = document.getElementById(galleryId);
-  if (!g) return [];
-  return Array.from(g.querySelectorAll('img')).map(i => i.getAttribute('src')).filter(Boolean);
-}
-function lbShow(i) {
-  lbIdx = (i + lbSrcs.length) % lbSrcs.length;
-  lbImg.src = lbSrcs[lbIdx];
-  lbCounter.textContent = (lbIdx + 1) + ' / ' + lbSrcs.length;
-}
-function lbOpen(galleryId, idx) {
-  lbLast = document.activeElement;
-  lbSrcs = lbCollectSrcs('gallery-' + galleryId);
-  lbShow(idx || 0);
-  lb.classList.add('open');
-  lb.setAttribute('aria-hidden', 'false');
-  lbClose.focus();
-  document.addEventListener('keydown', lbKey);
-}
-function lbCloseF() {
-  lb.classList.remove('open');
-  lb.setAttribute('aria-hidden', 'true');
-  document.removeEventListener('keydown', lbKey);
-  lbLast?.focus();
-}
-function lbKey(e) {
-  if (e.key === 'Escape')      lbCloseF();
-  if (e.key === 'ArrowRight')  lbShow(lbIdx + 1);
-  if (e.key === 'ArrowLeft')   lbShow(lbIdx - 1);
-}
+      const isOpen = panel?.classList.contains('open');
 
-lbClose.addEventListener('click', lbCloseF);
-lbPrev.addEventListener('click', () => lbShow(lbIdx - 1));
-lbNext.addEventListener('click', () => lbShow(lbIdx + 1));
-lb.addEventListener('click', e => { if (e.target === lb) lbCloseF(); });
+      // close others
+      document.querySelectorAll('.main-nav .drop-panel.open').forEach(p => {
+        if (p !== panel) p.classList.remove('open');
+      });
 
-// Attach tile clicks
-document.querySelectorAll('[data-lightbox]').forEach(el => {
-  el.addEventListener('click', e => {
-    e.stopPropagation();
-    lbOpen(el.dataset.lightbox, parseInt(el.dataset.idx || '0'));
+      panel?.classList.toggle('open', !isOpen);
+    });
   });
-  el.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      lbOpen(el.dataset.lightbox, parseInt(el.dataset.idx || '0'));
+
+  // Close dropdowns on outside click
+  document.addEventListener('click', (e) => {
+    const nav = document.querySelector('.main-nav');
+    if (!nav) return;
+    if (!nav.contains(e.target)) {
+      document.querySelectorAll('.main-nav .drop-panel.open').forEach(p => p.classList.remove('open'));
     }
   });
-});
 
-// ─── WhatsApp teaser
-(function() {
-  const card  = document.getElementById('wa-card');
-  const waClose = document.getElementById('wa-close');
-  const KEY = 'waHiddenUntil';
-  if (Date.now() > Number(localStorage.getItem(KEY) || 0)) {
-    setTimeout(() => card?.classList.add('show'), 800);
+  // ─── Lightbox (shared, gallery-aware)
+  const lb        = document.getElementById('lightbox');
+  const lbImg     = document.getElementById('lbImg');
+  const lbCounter = document.getElementById('lbCounter');
+  const lbClose   = document.getElementById('lbClose');
+  const lbPrev    = document.getElementById('lbPrev');
+  const lbNext    = document.getElementById('lbNext');
+
+  let lbSrcs = [];
+  let lbIdx  = 0;
+  let lbLast = null;
+
+  function lbCollectSrcs(galleryElId) {
+    const g = document.getElementById(galleryElId);
+    if (!g) return [];
+    return Array.from(g.querySelectorAll('img'))
+      .map(i => i.getAttribute('src'))
+      .filter(Boolean);
   }
-  waClose?.addEventListener('click', () => {
-    localStorage.setItem(KEY, String(Date.now() + 86400000));
-    card.remove();
-  });
-})();
+  function lbShow(i) {
+    lbIdx = (i + lbSrcs.length) % lbSrcs.length;
+    lbImg.src = lbSrcs[lbIdx];
+    lbCounter.textContent = (lbIdx + 1) + ' / ' + lbSrcs.length;
+  }
+  function lbOpen(galleryElId, idx) {
+    lbLast = document.activeElement;
+    lbSrcs = lbCollectSrcs(galleryElId);
+    if (!lbSrcs.length) return;
+    lbShow(idx || 0);
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden', 'false');
+    lbClose.focus();
+    document.addEventListener('keydown', lbKey);
+  }
+  function lbCloseF() {
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden', 'true');
+    document.removeEventListener('keydown', lbKey);
+    lbLast?.focus();
+  }
+  function lbKey(e) {
+    if (e.key === 'Escape')      lbCloseF();
+    if (e.key === 'ArrowRight')  lbShow(lbIdx + 1);
+    if (e.key === 'ArrowLeft')   lbShow(lbIdx - 1);
+  }
 
-// ─── Scroll reveal
-const revealEls = document.querySelectorAll('.reveal');
-const revObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); }
+  lbClose.addEventListener('click', lbCloseF);
+  lbPrev.addEventListener('click', () => lbShow(lbIdx - 1));
+  lbNext.addEventListener('click', () => lbShow(lbIdx + 1));
+  lb.addEventListener('click', e => { if (e.target === lb) lbCloseF(); });
+
+  // Attach tile clicks
+  document.querySelectorAll('[data-lightbox]').forEach(el => {
+    const open = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const group = el.dataset.lightbox; // f1 / f2
+      const idx = parseInt(el.dataset.idx || '0', 10);
+      lbOpen('gallery-' + group, idx);
+    };
+    el.addEventListener('click', open);
+    el.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') open(e);
+    });
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-revealEls.forEach(el => revObs.observe(el));
+
+  // ─── WhatsApp teaser
+  (function() {
+    const card  = document.getElementById('wa-card');
+    const waClose = document.getElementById('wa-close');
+    const KEY = 'waHiddenUntil';
+    if (Date.now() > Number(localStorage.getItem(KEY) || 0)) {
+      setTimeout(() => card?.classList.add('show'), 800);
+    }
+    waClose?.addEventListener('click', () => {
+      localStorage.setItem(KEY, String(Date.now() + 86400000));
+      card.remove();
+    });
+  })();
+
+  // ─── Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const revObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => revObs.observe(el));
 </script>
+
 </body>
 </html>
