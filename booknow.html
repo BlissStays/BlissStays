@@ -2,343 +2,545 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Bliss Living</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#faf8f4" />
+  <title>Book Now – Bliss Living</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
   <style>
-    /* Reset */
-    * { margin:0; padding:0; box-sizing:border-box; }
+    /* ─── Reset & Base ─────────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --ink:        #1e1e1b;
+      --stone:      #3a3a30;
+      --warm:       #5c5843;
+      --mist:       #f5f2ec;
+      --cream:      #faf8f4;
+      --parch:      #ece8dd;
+      --gold:       #b8a47a;
+      --gold-lt:    #d4c5a0;
+      --white:      #ffffff;
+      --radius-sm:  10px;
+      --radius-md:  18px;
+      --shadow-sm:  0 2px 12px rgba(30,30,27,.08);
+      --shadow-md:  0 8px 32px rgba(30,30,27,.12);
+      --shadow-lg:  0 20px 60px rgba(30,30,27,.16);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'DM Sans', sans-serif;
+      --header-h:   72px;
+      --safe-b:     env(safe-area-inset-bottom, 0px);
+    }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
     body {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      color: #444;
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--cream);
       line-height: 1.6;
-      background-color: #ffffff;
-      margin: 0;
-      padding: 0;
-      background-color: #ffffff;
-      width: 100%;
-      min-height: 100%;
+      -webkit-font-smoothing: antialiased;
     }
     a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
 
-    /* Colors */
-    :root {
-      --primary: #4b4b38;
-      --accent: #6b6b50;
-      --light: #ffffff;
+    /* ─── Header ─────────────────────────────────────────────── */
+    header {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      z-index: 900;
+      padding: 10px 20px;
+      transition: padding .25s;
     }
-
-    /* Hero with video */
-    .hero {
-      position: relative;
-      height: 100vh;
-      overflow: hidden;
+    .header-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 14px 28px;
       display: flex;
-      justify-content: center;
       align-items: center;
-      text-align: center;
+      gap: 24px;
+      background: rgba(250,248,244,.92);
+      border: 1px solid rgba(184,164,122,.18);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(10px) saturate(160%);
+    }
+    header.scrolled { padding: 6px 20px; }
+    header.scrolled .header-inner {
+      background: rgba(250,248,244,.97);
+      box-shadow: var(--shadow-sm);
+    }
+    .logo {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--stone);
+      letter-spacing: .5px;
+      white-space: nowrap;
+    }
+    .spacer { flex: 1; }
+    .main-nav ul { display: flex; list-style: none; gap: 36px; }
+    .main-nav a {
+      font-size: 14px; font-weight: 500;
+      color: var(--stone); letter-spacing: .3px;
+      padding-bottom: 2px; position: relative;
+      transition: color .2s;
+    }
+    .main-nav a::after {
+      content: ''; position: absolute; left: 0; bottom: 0;
+      width: 0; height: 1px; background: var(--gold); transition: width .25s;
+    }
+    .main-nav a:hover { color: var(--warm); }
+    .main-nav a:hover::after { width: 100%; }
+
+    /* Dropdown */
+    .main-nav .has-dropdown { position: relative; }
+    .main-nav .has-dropdown::after {
+      content: ""; position: absolute; left: 0; top: 100%; width: 100%; height: 14px;
+    }
+    .main-nav .has-dropdown > a { display: inline-flex; align-items: center; padding: 10px 0; }
+    .main-nav .drop-panel {
+      display: none; position: absolute;
+      top: 100%; margin-top: 12px; left: 0;
+      min-width: 200px;
+      background: var(--white);
+      border: 1px solid rgba(184,164,122,.2);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-md);
+      padding: 12px 0; z-index: 999;
+    }
+    .main-nav .has-dropdown:hover .drop-panel,
+    .main-nav .has-dropdown:focus-within .drop-panel { display: block; }
+    .main-nav .drop-panel.open { display: block; }
+    .drop-panel a {
+      display: block; padding: 9px 18px;
+      font-size: 13.5px; color: var(--stone); transition: background .15s;
+    }
+    .drop-panel a:hover { background: var(--mist); }
+
+    .btn-book {
+      background: var(--stone); color: var(--white);
+      font-family: var(--font-body); font-weight: 600;
+      font-size: 14px; padding: 10px 22px;
+      border-radius: 8px; letter-spacing: .3px;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 2px 10px rgba(58,58,48,.2); white-space: nowrap;
+    }
+    .btn-book:hover {
+      background: var(--warm); transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(58,58,48,.25);
     }
 
-    .hero video {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
+    /* Mobile hamburger */
+    .mnav-btn { display: none; }
+    @media (max-width: 768px) {
+      .main-nav, .btn-book { display: none !important; }
+      .mnav-btn {
+        display: grid; place-items: center;
+        width: 44px; height: 44px;
+        border: none; background: transparent; cursor: pointer;
+      }
+      .mnav-btn span {
+        display: block; width: 22px; height: 2px;
+        background: var(--stone); margin: 4px 0;
+        border-radius: 2px; transition: transform .2s, opacity .2s;
+      }
     }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(255, 255, 255, 0.4);
-      z-index: 1;
+    /* Mobile sheet */
+    .mnav-sheet { display: none; pointer-events: none; position: fixed; inset: 0; z-index: 1500; }
+    @media (max-width: 768px) {
+      .mnav-sheet { display: block; }
+      .mnav-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.45); opacity: 0; transition: opacity .25s; }
+      .mnav-panel {
+        position: absolute; top: 0; right: 0;
+        height: 100%; width: min(90vw, 380px);
+        background: var(--white);
+        border-top-left-radius: 20px; border-bottom-left-radius: 20px;
+        transform: translateX(100%); transition: transform .28s cubic-bezier(.4,0,.2,1);
+        box-shadow: -12px 0 40px rgba(0,0,0,.18);
+        display: flex; flex-direction: column;
+      }
+      .mnav-sheet.open { pointer-events: auto; }
+      .mnav-sheet.open .mnav-backdrop { opacity: 1; }
+      .mnav-sheet.open .mnav-panel { transform: translateX(0); }
+      .mnav-head {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 20px 22px; border-bottom: 1px solid var(--parch);
+        font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--stone);
+      }
+      .mnav-close {
+        all: unset; width: 34px; height: 34px; display: grid; place-items: center;
+        cursor: pointer; font-size: 22px; border-radius: 50%; color: var(--warm);
+      }
+      .mnav-close:hover { background: var(--mist); }
+      .mnav-body { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 22px 22px 100px; display: grid; gap: 28px; }
+      .mnav-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--gold); margin-bottom: 8px; }
+      .mnav-group { display: grid; gap: 2px; }
+      .mnav-item {
+        display: block; padding: 13px 0;
+        font-size: 16px; color: var(--stone); font-weight: 500;
+        border-bottom: 1px solid var(--parch);
+      }
+      .mnav-cta {
+        position: sticky; bottom: 0;
+        padding: 14px 22px calc(14px + var(--safe-b));
+        background: var(--white); border-top: 1px solid var(--parch);
+      }
+      .mnav-book {
+        display: block; width: 100%; text-align: center;
+        background: var(--stone); color: var(--white);
+        font-weight: 700; font-size: 16px; padding: 16px;
+        border-radius: 12px; letter-spacing: .3px;
+        box-shadow: var(--shadow-md);
+      }
     }
 
-    .hero-logo {
+    /* ─── Page wrapper ───────────────────────────────────────── */
+    .page-wrapper {
+      padding-top: calc(var(--header-h) + 10px);
+      padding-bottom: calc(60px + var(--safe-b));
+    }
+
+    /* ─── Hero banner ────────────────────────────────────────── */
+    .contact-hero {
+      --h: min(38vh, 360px);
+      height: var(--h);
+      max-width: 1400px; width: min(96%, 1400px);
+      margin: 0 auto 32px;
+      position: relative; border-radius: var(--radius-md); overflow: hidden;
+      background-image: linear-gradient(0deg, rgba(0,0,0,.48), rgba(0,0,0,.22)), url('faq.jpg');
+      background-size: cover; background-position: center 45%;
+      box-shadow: var(--shadow-lg);
+    }
+    .contact-hero__inner {
+      position: absolute; inset: 0;
+      display: grid; place-items: center;
+      text-align: center; color: var(--white); padding: 0 20px;
+    }
+    .contact-hero__eyebrow {
+      font-size: 12px; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--gold-lt); margin-bottom: 10px;
+    }
+    .contact-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 58px);
+      font-weight: 400; line-height: 1.1;
+      text-shadow: 0 3px 14px rgba(0,0,0,.5);
+    }
+
+    /* ─── Wrap ───────────────────────────────────────────────── */
+    .contact-wrap { max-width: 1040px; width: min(96%, 1040px); margin: 0 auto; }
+
+    /* ─── Channel cards ──────────────────────────────────────── */
+    .contact-channels {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px; margin-bottom: 20px;
+    }
+    @media (max-width: 640px) { .contact-channels { grid-template-columns: 1fr; gap: 10px; } }
+
+    .channel-card {
+      display: flex; gap: 14px; align-items: center;
+      background: var(--white);
+      border: 1px solid rgba(184,164,122,.18);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+      box-shadow: var(--shadow-sm);
+      color: var(--ink); text-decoration: none;
+      transition: transform .15s, box-shadow .15s, border-color .15s;
+      min-height: 72px;
+    }
+    .channel-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: rgba(184,164,122,.4); }
+    .ch-icon {
+      flex-shrink: 0; width: 40px; height: 40px;
+      background: var(--mist); border-radius: var(--radius-sm);
+      display: grid; place-items: center;
+      color: var(--warm);
+    }
+    .ch-icon svg { width: 20px; height: 20px; }
+    .ch-body { line-height: 1.2; min-width: 0; }
+    .ch-title { font-weight: 600; font-size: 13px; color: var(--stone); text-transform: uppercase; letter-spacing: .06em; }
+    .ch-main { font-size: 14px; color: var(--ink); margin-top: 3px; font-weight: 500; }
+    .ch-sub { font-size: 12px; color: var(--warm); margin-top: 2px; }
+
+    /* ─── Form card ──────────────────────────────────────────── */
+    .contact-card {
+      background: var(--white);
+      border: 1px solid rgba(184,164,122,.18);
+      border-radius: var(--radius-md);
+      padding: clamp(20px, 3vw, 32px);
+      box-shadow: var(--shadow-sm);
+    }
+    .contact-card .hp { display: none !important; }
+
+    /* Grid */
+    .grid { display: grid; gap: 16px; }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; gap: 14px; } }
+
+    /* Fields */
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label {
+      font-size: 13px; font-weight: 500;
+      color: var(--warm); letter-spacing: .02em;
+    }
+    .field label span[aria-hidden] { color: var(--gold); margin-left: 2px; }
+    .sub-label {
+      font-size: 12px; font-weight: 500; color: var(--warm);
+      letter-spacing: .02em; margin-top: 12px; margin-bottom: 4px; display: block;
+    }
+
+    /* Inputs – 16px font prevents iOS auto-zoom */
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%; border: 1px solid var(--parch);
+      background: var(--cream); color: var(--ink);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-family: var(--font-body); font-size: 16px;
+      outline: none; min-height: 48px;
+      transition: border-color .2s, box-shadow .2s;
+      -webkit-appearance: none; appearance: none;
+    }
+    .field textarea { resize: vertical; min-height: 110px; line-height: 1.5; }
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(184,164,122,.2);
+      background: var(--white);
+    }
+    .field input::placeholder,
+    .field textarea::placeholder { color: #aaa; opacity: 1; }
+
+    /* Select wrapper */
+    .select-wrap { position: relative; }
+    .select-wrap select { padding-right: 36px; cursor: pointer; }
+    .sel-caret {
+      position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+      pointer-events: none; color: var(--warm); font-size: 12px;
+    }
+
+    /* Date picker */
+    .dates-wrap { display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: center; }
+    .dates-arrow { color: var(--gold); text-align: center; font-size: 18px; }
+
+    /* Location chips */
+    .loc-options { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+    .loc-chip {
       position: relative;
-      z-index: 2;
-      padding: 20px;
+      border: 1px solid var(--parch); background: var(--white); color: var(--stone);
+      padding: 8px 12px; border-radius: 999px;
+      font-family: var(--font-body); font-size: 14px; font-weight: 500;
+      cursor: pointer; transition: all .18s ease; min-height: 36px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .loc-chip:hover { border-color: var(--gold); background: var(--mist); }
+    .loc-chip.active { background: var(--mist); border-color: var(--warm); color: var(--stone); font-weight: 600; }
+    .loc-chip .badge {
+      display: none; margin-left: 6px;
+      min-width: 18px; height: 18px; line-height: 18px;
+      border-radius: 9px; background: var(--warm);
+      color: var(--white); font-size: 11px; font-weight: 700;
+      text-align: center; padding: 0 5px;
+    }
+    .loc-chip.active .badge { display: inline-block; }
+
+    .loc-selected { margin: 10px 0 4px; padding-left: 1.2rem; color: var(--stone); }
+    .loc-item { display: flex; align-items: center; gap: 8px; padding: 6px 0; }
+    .loc-item .rank { font-size: 12px; color: var(--warm); }
+    .loc-item .name { font-weight: 600; font-size: 14px; flex: 1; }
+    .loc-actions { display: inline-flex; gap: 4px; margin-left: auto; }
+    .loc-btn {
+      border: 1px solid var(--parch); background: var(--white); color: var(--stone);
+      width: 30px; height: 30px; border-radius: 8px;
+      display: grid; place-items: center; cursor: pointer;
+      font-size: 13px; transition: all .18s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .loc-btn:hover { border-color: var(--gold); background: var(--mist); }
+
+    /* Preferred contact */
+    .pref-row {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 4px;
+    }
+    .pref-label { font-size: 13px; color: var(--warm); font-weight: 500; }
+    .radio { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; min-height: 44px; }
+    .radio input { accent-color: var(--warm); width: 18px; height: 18px; cursor: pointer; }
+    .radio span { font-size: 14px; color: var(--stone); }
+
+    /* Consent */
+    .consent {
+      display: flex; align-items: flex-start; gap: 12px;
+      margin-top: 10px; font-size: 14px; color: var(--warm); cursor: pointer;
+    }
+    .consent input { accent-color: var(--warm); width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; cursor: pointer; }
+
+    /* Divider */
+    .form-divider { height: 1px; background: var(--parch); margin: 6px 0; }
+
+    /* ─── Buttons row ────────────────────────────────────────── */
+    .btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 14px 24px; min-height: 50px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body); font-weight: 600; font-size: 15px;
+      letter-spacing: .2px; cursor: pointer;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      border: none; white-space: nowrap;
+      -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+    }
+    .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .btn-primary { background: var(--stone); color: var(--white); box-shadow: 0 4px 14px rgba(58,58,48,.22); flex: 1 1 160px; }
+    .btn-primary:hover { background: var(--warm); transform: translateY(-1px); box-shadow: 0 8px 22px rgba(58,58,48,.28); }
+    .btn-outline { background: var(--white); color: var(--stone); border: 1.5px solid var(--parch); flex: 0 0 auto; }
+    .btn-outline:hover { border-color: var(--gold); background: var(--mist); transform: translateY(-1px); }
+    @media (max-width: 480px) {
+      .btn-row { flex-direction: column; }
+      .btn { width: 100%; flex: none; }
     }
 
-    .hero-logo img {
-      max-width: 300px;
-      width: 90%;
-      height: auto;
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+    /* Form messages */
+    .form-msg { margin-top: 12px; font-size: 14px; padding: 12px 16px; border-radius: var(--radius-sm); }
+    .form-msg.ok { background: #f0faf4; color: #2f6b4b; border: 1px solid #c3e6d2; }
+    .form-msg.err { background: #fef4f3; color: #a13b2a; border: 1px solid #f1c4be; }
+
+    /* Flatpickr theming */
+    .flatpickr-calendar { border-radius: var(--radius-sm); box-shadow: var(--shadow-lg); font-family: var(--font-body); }
+    .flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange { background: var(--stone); border-color: var(--stone); color: #fff; }
+    .flatpickr-day.inRange { background: rgba(58,58,48,.1); }
+
+    /* ─── WhatsApp Widget ────────────────────────────────────── */
+    #wa-widget { position: fixed; right: 20px; bottom: calc(20px + var(--safe-b)); z-index: 800; font-family: var(--font-body); }
+    #wa-fab {
+      display: grid; place-items: center;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: #22c55e; color: #0b4126;
+      box-shadow: 0 8px 24px rgba(34,197,94,.35);
+      animation: waBounce 2s ease infinite; text-decoration: none;
+    }
+    #wa-fab svg { width: 30px; height: 30px; }
+    #wa-card {
+      position: absolute; right: 70px; bottom: 4px;
+      width: 320px; background: var(--white);
+      border: 1px solid var(--parch); border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg); padding: 16px;
+      display: none; opacity: 0; transform: translateY(8px);
+    }
+    #wa-card.show { display: block; animation: waIn .3s ease forwards; }
+    #wa-close {
+      all: unset; position: absolute; top: 10px; right: 12px;
+      width: 26px; height: 26px; display: grid; place-items: center;
+      cursor: pointer; font-weight: 700; color: #94a3b8; border-radius: 50%;
+    }
+    #wa-close:hover { background: var(--mist); }
+    .wa-row { display: flex; gap: 12px; align-items: flex-start; }
+    .wa-icon-wrap { width: 38px; height: 38px; flex-shrink: 0; background: #dcfce7; border-radius: 50%; display: grid; place-items: center; }
+    .wa-icon-wrap svg { width: 20px; height: 20px; color: #16a34a; }
+    .wa-title { font-weight: 700; font-size: 15px; color: var(--stone); margin-bottom: 5px; }
+    .wa-cta { font-size: 14px; color: #2563eb; font-weight: 500; }
+    .wa-cta:hover { text-decoration: underline; }
+    @keyframes waBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+    @keyframes waIn { to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 520px) { #wa-card { right: 0; bottom: 70px; width: min(90vw, 320px); } }
+
+    /* ─── Footer ─────────────────────────────────────────────── */
+    footer {
+      background: var(--stone);
+      color: rgba(255,255,255,.7);
+      padding: 56px 20px calc(28px + var(--safe-b));
+    }
+    .footer-container {
+      max-width: 1240px; margin: 0 auto 18px;
+      display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: start;
+    }
+    .footer-links-group { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .footer-column h4 {
+      font-family: var(--font-display); font-size: 13px; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--gold-lt);
+      margin-bottom: 14px; padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+    .footer-column ul { list-style: none; display: grid; gap: 9px; }
+    .footer-column a { font-size: 14px; color: rgba(255,255,255,.62); transition: color .2s; }
+    .footer-column a:hover { color: var(--gold-lt); }
+    .footer-logo-section { text-align: right; display: grid; gap: 14px; justify-items: end; }
+    .footer-logo { opacity: .85; height: auto; }
+    .social-icons { display: flex; gap: 12px; justify-content: flex-end; }
+    .social-icons img { width: 20px; height: 20px; opacity: .55; transition: opacity .2s; }
+    .social-icons img:hover { opacity: .9; }
+    .footer-bottom {
+      max-width: 1240px; margin: 0 auto;
+      padding-top: 22px; border-top: 1px solid rgba(255,255,255,.1);
+      text-align: center; font-size: 13px; color: rgba(255,255,255,.35);
+    }
+    @media (max-width: 700px) {
+      .footer-container { grid-template-columns: 1fr; }
+      .footer-links-group { grid-template-columns: 1fr 1fr; }
+      .footer-logo-section { text-align: left; justify-items: start; }
+      .social-icons { justify-content: flex-start; }
     }
 
-
-    
-
-    .logo-block {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--primary);
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-}
-
-.logo-text {
-  letter-spacing: 0.5px;
-}
-
-.home-message-wrapper {
-  background-color: #f4f0e0; /* Makes the entire width same color */
-  width: 100%;
-}
-
-.home-message {
-  padding: 100px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.home-message-inner {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 60px;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 320px;
-}
-
-.home-message-left {
-  flex: 1 1 300px;
-  font-size: 2.0rem;
-  font-weight: 500;
-  line-height: 1.3;
-  color: var(--primary);
-}
-
-.home-message-right {
-  flex: 1 1 500px;
-  font-size: 1.4rem;
-  font-weight: 400;
-  line-height: 1.8;
-  color: var(--primary);
-}
-
-@media (max-width: 768px) {
-  .home-message-inner {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .home-message-left {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-  }
-
-  .home-message-right {
-    font-size: 1rem;
-  }
-}
-
-/* Outer full-width background wrapper */
-.bliss-brands-fullwrap {
-  background-color: #f4f0e6;
-  width: 100%;
-}
-
-/* Section inside wrapper */
-.bliss-brands-showcase {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 100px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Content wrapper */
-.brands-wrapper {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.brands-left {
-  text-align: center;
-  max-width: 800px;
-  margin-bottom: 40px;
-}
-
-.brands-left h5 {
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-size: 0.8rem;
-  color: var(--accent);
-  margin-bottom: 10px;
-}
-
-.brands-left h2 {
-  font-size: 2.2rem;
-  font-weight: 600;
-  margin-bottom: 20px;
-  line-height: 1.3;
-}
-
-.brands-left p {
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 12px;
-}
-
-/* Cards container */
-.brands-right {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-}
-
-.brand-card {
-  background: #ece8dd;
-  text-align: center;
-  flex: 1 1 250px;
-  max-width: 300px;
-  padding-bottom: 20px;
-  border-radius: 0;
-  box-shadow: none;
-}
-
-.brand-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  display: block;
-}
-
-.brand-card h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin: 15px 15px 5px;
-}
-
-.brand-card p {
-  font-size: 0.95rem;
-  color: #555;
-  margin: 0 15px 10px;
-}
-
-.brand-card a {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--primary);
-  text-decoration: none;
-  margin-bottom: 20px;
-  display: inline-block;
-}
-
-.brand-card a:hover {
-  color: var(--accent);
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .brands-right {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .brand-card {
-    width: 100%;
-    max-width: 100%;
-  }
-}
-/* Click-triggered animation keyframes */
-@keyframes clickBounce {
-  0%   { transform: scale(1); }
-  50%  { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
-/* Class that triggers the animation */
-.animate-on-click {
-  animation: clickBounce 0.3s ease;
-}
-
-.brand-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  display: block;
-}
-
-
-
-
+    /* ─── Mobile polish ──────────────────────────────────────── */
+    @media (max-width: 480px) {
+      .contact-hero { margin-bottom: 20px; }
+      .contact-card { padding: 18px 16px; border-radius: var(--radius-sm); }
+      .loc-options { gap: 6px; }
+      .loc-chip { padding: 8px 10px; font-size: 13px; }
+      .pref-row { gap: 10px; }
+    }
   </style>
 </head>
 
 <body>
 
-
-
-  <!-- ======================= HEADER (updated + mobile) ======================= -->
-<!-- ================ HEADER (desktop unchanged, mobile hamburger) ================ -->
-<header>
+<!-- ═══ HEADER ════════════════════════════════════════════════ -->
+<header id="site-header">
   <div class="header-inner">
-    <div class="logo-block">
-  <a href="index.html" class="logo-text">BLISS LIVING</a>
-    </div>
-
+    <a href="index.html" class="logo">Bliss Living</a>
     <div class="spacer"></div>
-
-    <!-- DESKTOP NAV (hidden on mobile) -->
     <nav class="main-nav" aria-label="Primary">
       <ul>
-        <li class="has-dropdown locations-menu">
+        <li class="has-dropdown">
           <a href="#">Locations <span>▾</span></a>
           <div class="drop-panel">
-            <div class="loc-group">
-              <div class="loc-title">London</div>
-              <ul class="loc-list">
-                <li><a href="property.html">Maida Vale</a></li>
-                <li><a href="property1.html">Paddington</a></li>
-                <li><a href="property2.html">Nine Elms</a></li>
-                <li><a href="property3.html">Kennington</a></li>
-                <li><a href="property4.html">Wimbledon</a></li>
-              </ul>
-            </div>
+            <a href="property.html">Maida Vale</a>
+            <a href="property1.html">Paddington</a>
+            <a href="property2.html">Nine Elms</a>
+            <a href="property3.html">Kennington</a>
+            <a href="property4.html">Wimbledon</a>
           </div>
         </li>
-        <li class="has-dropdown menu-menu">
+        <li class="has-dropdown">
           <a href="#">Menu <span>▾</span></a>
           <div class="drop-panel">
-            <ul class="menu-list">
-              <li><a href="faq.html">FAQs</a></li>
-              <li><a href="terms.html">Terms & Conditions</a></li>
-              <li><a href="privacy.html">Privacy Policy</a></li>
-            </ul>
+            <a href="faq.html">FAQs</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+            <a href="privacy.html">Privacy Policy</a>
           </div>
         </li>
       </ul>
     </nav>
-
-    <div class="book-now">
-      <a href="booknow.html">Book now</a>
-    </div>
-
-    <!-- MOBILE HAMBURGER (only visible on mobile) -->
-    <button id="mnavBtn" class="mnav-btn" aria-label="Open menu" aria-controls="mnav" aria-expanded="false">
+    <a class="btn-book" href="booknow.html">Book now</a>
+    <button id="mnavBtn" class="mnav-btn" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
-<!-- MOBILE SHEET -->
+<!-- Mobile sheet -->
 <aside id="mnav" class="mnav-sheet" aria-hidden="true">
   <div class="mnav-backdrop"></div>
   <div class="mnav-panel" role="dialog" aria-modal="true">
     <div class="mnav-head">
-  <div class="mnav-brand">BLISS LIVING</div>
-      <button id="mnavClose" class="mnav-close" aria-label="Close">×</button>
+      Bliss Living
+      <button id="mnavClose" class="mnav-close" aria-label="Close">&#x2715;</button>
     </div>
-
     <div class="mnav-body">
       <div class="mnav-group">
         <div class="mnav-label">Locations</div>
@@ -348,414 +550,106 @@
         <a class="mnav-item" href="property3.html">Kennington</a>
         <a class="mnav-item" href="property4.html">Wimbledon</a>
       </div>
-
       <div class="mnav-group">
         <div class="mnav-label">Menu</div>
         <a class="mnav-item" href="faq.html">FAQs</a>
-        <a class="mnav-item" href="terms.html">Terms & Conditions</a>
+        <a class="mnav-item" href="terms.html">Terms &amp; Conditions</a>
         <a class="mnav-item" href="privacy.html">Privacy Policy</a>
       </div>
-
       <div class="mnav-cta">
         <a class="mnav-book" href="booknow.html">Book now</a>
       </div>
-</div>      
+    </div>
   </div>
 </aside>
 
-<style>
-/* ——— Desktop keeps your existing look ——— */
-header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:transparent;padding:10px 16px;transition:padding .25s}
-.header-inner{max-width:1200px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:20px;background:#ffffffF5;border:1px solid rgba(0,0,0,.06);border-radius:12px;box-shadow:0 14px 30px rgba(0,0,0,.12),0 4px 10px rgba(0,0,0,.08);backdrop-filter:saturate(140%) blur(6px)}
-header.scrolled{padding-top:6px;padding-bottom:6px}
-header.scrolled .header-inner{background:#fff;border-radius:10px;box-shadow:0 10px 24px rgba(0,0,0,.10),0 3px 8px rgba(0,0,0,.08)}
-.logo-block{font-family:"Times New Roman",Times,serif;font-size:20px;font-weight:700;color:#363633}
-.spacer{flex:1}
-.main-nav ul{display:flex;list-style:none;gap:40px;margin:0;padding:0}
-.main-nav a{font-size:16px;font-weight:500;color:#363633;text-decoration:none;position:relative;padding-bottom:3px}
-.main-nav a:hover{color:#6b6b50}
-.main-nav a:hover::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:#363633}
-.book-now{margin-left:12px}
-.book-now a{background:#4b4b38;color:#fff;font-weight:600;font-size:15px;padding:10px 22px;border-radius:6px;box-shadow:0 2px 6px rgba(0,0,0,.12);transition:transform .2s,box-shadow .2s,background .2s;display:inline-block}
-.book-now a:hover{background:#363626;transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.16)}
-.main-nav .has-dropdown{position:relative}
-.main-nav .has-dropdown>.drop-panel{position:absolute;top:100%;left:0;z-index:1002;display:none;min-width:220px;max-width:260px;padding:14px 16px;background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:12px;box-shadow:0 10px 24px rgba(0,0,0,.10),0 3px 8px rgba(0,0,0,.06)}
-.main-nav .has-dropdown:hover>.drop-panel{display:block}
-.main-nav .locations-menu .loc-title{display:inline-block;font-weight:800;font-size:16px;color:#363633;margin:2px 0 8px;padding-bottom:5px;border-bottom:3px solid #363633}
-.main-nav .locations-menu .loc-list,.menu-menu .menu-list{display:block;list-style:disc;margin:0;padding-left:1.15rem}
-.main-nav .locations-menu .loc-list li,.menu-menu .menu-list li{display:list-item;margin:6px 0}
-.main-nav .locations-menu .loc-list a,.menu-menu .menu-list a{display:inline;white-space:nowrap;color:#363633;font-weight:600}
+<!-- ═══ MAIN ══════════════════════════════════════════════════ -->
+<main class="page-wrapper">
 
-/* ——— Mobile only ——— */
-.mnav-btn,.mnav-sheet{display:none}
-
-@media (max-width:768px){
-  .main-nav,.book-now{display:none!important}
-  .mnav-btn {
-  display:grid;
-  place-items:center;
-  width:44px;
-  height:44px;
-  border:none;              /* remove border */
-  border-radius:0;          /* no rounded box */
-  background:transparent;   /* transparent background */
-  box-shadow:none;          /* no shadow */
-  cursor:pointer;
-}
-.mnav-btn span {
-  display:block;
-  width:22px;
-  height:2px;
-  background:#222; /* your menu lines */
-  margin:4px 0;
-  border-radius:2px;
-}
-  .mnav-btn:active{transform:scale(.98)}
-
-  .mnav-sheet{display:block;pointer-events:none;position:fixed;inset:0;z-index:1500}
-  .mnav-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.45);opacity:0;transition:opacity .25s}
-  .mnav-panel{position:absolute;top:0;right:0;height:100%;width:min(92vw,420px);background:#fff;border-top-left-radius:16px;border-bottom-left-radius:16px;transform:translateX(100%);transition:transform .25s;box-shadow:-10px 0 30px rgba(0,0,0,.25)}
-  .mnav-sheet.open{pointer-events:auto}
-  .mnav-sheet.open .mnav-backdrop{opacity:1}
-  .mnav-sheet.open .mnav-panel{transform:translateX(0)}
-
-  .mnav-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid #eee;position:sticky;top:0;background:#fff;z-index:1}
-  .mnav-brand{font-size:18px;font-weight:800}
-  .mnav-close{all:unset;font-size:30px;line-height:1;cursor:pointer;padding:4px 8px;border-radius:8px}
-  .mnav-close:active{background:#f3f3f3}
-
-  .mnav-body{display:grid;gap:28px;padding:20px}
-  .mnav-group{display:grid;gap:4px}
-  .mnav-label{font-size:12px;font-weight:800;color:#6b6b6b;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
-  .mnav-item{display:block;padding:14px 0;font-size:16px;color:#111;text-decoration:none;border-bottom:1px solid #eee}
-  .mnav-item:active{background:#f7f7f7}
-  .mnav-cta{text-align:center;display:block;background:#4b4b38;color:#fff;font-weight:800;font-size:16px;padding:14px;border-radius:10px;text-decoration:none}
-}
-
-/* --- Enable scrolling inside the mobile sheet --- */
-@media (max-width:768px){
-  /* make the panel a flex column */
-  .mnav-panel{
-    display:flex;
-    flex-direction:column;
-    height:100%;
-    max-height:100%;
-    overflow:hidden;                 /* keep scroll confined to body below */
-  }
-  /* the content area becomes the scroller */
-  .mnav-body{
-    flex:1 1 auto;
-    overflow-y:auto;
-    -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
-    overscroll-behavior: contain;      /* prevent rubber-banding to page */
-  }
-  /* keep header fixed at top of the sheet */
-  .mnav-head{
-    position:sticky;
-    top:0;
-    z-index:1;
-    background:#fff;
-  }
-}
-
-</style>
-<style>
-  /* Make room for the sticky CTA so last list item isn't hidden */
-@media (max-width: 768px){
-  .mnav-body{ padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
-
-  /* Sticky footer area inside the sheet */
-  .mnav-cta{
-    position: sticky;
-    bottom: 0;
-    left: 0; right: 0;
-    z-index: 3;
-    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
-    background: #fff;               /* clean, not dark */
-    border-top: 1px solid rgba(0,0,0,.06);
-    backdrop-filter: blur(4px);
-  }
-
-  /* Force our button styles to win over .book-now a */
-  .mnav-cta .mnav-book{
-    display: block;
-    width: 100%;
-    text-align: center;
-    background: #4b4b38 !important; /* your primary */
-    color: #fff !important;
-    font-weight: 800;
-    font-size: 16px;
-    line-height: 1;
-    padding: 16px 18px;
-    border-radius: 12px;
-    border: 0 !important;
-    box-shadow: 0 10px 24px rgba(0,0,0,.12), 0 2px 6px rgba(0,0,0,.08);
-    text-decoration: none !important;
-    transition: transform .06s ease, box-shadow .2s ease, background .2s ease;
-  }
-  .mnav-cta .mnav-book:hover{ box-shadow: 0 14px 30px rgba(0,0,0,.16); }
-  .mnav-cta .mnav-book:active{ transform: translateY(1px); }
-
-  /* Nuke any inherited “panel” look from other styles */
-  .mnav-cta .mnav-book::before,
-  .mnav-cta .mnav-book::after{ content:none !important; }
-}
-
-/* Hide or move WhatsApp while menu is open (choose ONE) */
-@media (max-width: 768px){
-  /* Option A: hide it */
-  body.menu-open #wa-widget{ display: none !important; }
-
-  /* Option B (if you prefer visible, but out of the way):
-  body.menu-open #wa-widget{
-    transform: translateY(80px);
-    opacity: .5;
-    pointer-events: none;
-  } */
-}
-
-</style>
-
-<script>
-  // when opening the mobile sheet
-document.body.classList.add('menu-open');
-document.documentElement.style.overflow = 'hidden';
-document.body.style.overflow = 'hidden';
-
-// when closing the mobile sheet
-document.body.classList.remove('menu-open');
-document.documentElement.style.overflow = '';
-document.body.style.overflow = '';
-
-</script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const header = document.querySelector('header');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) header.classList.add('scrolled');
-    else header.classList.remove('scrolled');
-  });
-
-  const btn   = document.getElementById('mnavBtn');
-  const sheet = document.getElementById('mnav');
-  const close = document.getElementById('mnavClose');
-
-  function openSheet(){
-    sheet.classList.add('open');
-    sheet.setAttribute('aria-hidden','false');
-    btn.setAttribute('aria-expanded','true');
-    document.body.style.overflow='hidden';
-  }
-  function closeSheet(){
-    sheet.classList.remove('open');
-    sheet.setAttribute('aria-hidden','true');
-    btn.setAttribute('aria-expanded','false');
-    document.body.style.overflow='';
-  }
-
-  if (btn){
-    btn.addEventListener('click', openSheet, {passive:true});
-  }
-  document.getElementById('mnavClose')?.addEventListener('click', closeSheet, {passive:true});
-  sheet.querySelector('.mnav-backdrop')?.addEventListener('click', closeSheet, {passive:true});
-  sheet.querySelectorAll('a').forEach(a => a.addEventListener('click', closeSheet, {passive:true}));
-});
-</script>
-
-<!-- ===================== /HEADER (updated + mobile) ===================== -->
-
-
-<!-- Floating WhatsApp (bottom-left) -->
-<!-- ===== WhatsApp Chat Teaser (final, wide like the reference) ===== -->
-<div id="wa-widget" aria-live="polite">
-  <!-- Floating action button -->
-  <a id="wa-fab"
-     href="https://wa.me/447365208676?text=Hi%20Bliss%20Stays!%20I%20have%20a%20question."
-     target="_blank" rel="noopener"
-     aria-label="Open WhatsApp chat">
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-      <path fill="currentColor"
-        d="M19.11 17.71c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.17-.43-2.23-1.37-.82-.73-1.37-1.63-1.53-1.9-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.02-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.3s.98 2.66 1.12 2.84c.14.18 1.93 2.95 4.68 4.14.65.28 1.15.45 1.54.59.65.21 1.25.18 1.72.11.52-.08 1.6-.65 1.82-1.29.22-.64.22-1.18.16-1.29-.07-.11-.23-.18-.5-.32zM16.02 3.2c-6.99 0-12.66 5.67-12.66 12.66 0 2.23.59 4.32 1.62 6.12L3 29l7.19-1.89c1.72.94 3.69 1.47 5.83 1.47 6.99 0 12.66-5.67 12.66-12.66S23.01 3.2 16.02 3.2zm0 22.88c-1.95 0-3.76-.57-5.29-1.55l-.38-.24-4.28 1.12 1.15-4.17-.25-.43a9.98 9.98 0 0 1-1.49-5.25c0-5.53 4.5-10.02 10.02-10.02s10.02 4.5 10.02 10.02-4.5 10.02-10.02 10.02z"/>
-    </svg>
-  </a>
-
-  <!-- Teaser card -->
-  <div id="wa-card" role="dialog" aria-modal="false" aria-label="WhatsApp quick chat">
-    <button id="wa-close" aria-label="Dismiss">×</button>
-    <div class="wa-row">
-      <div class="wa-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path fill="currentColor"
-          d="M16.2 13.6c-.2-.1-1.1-.6-1.3-.7-.2-.1-.3-.1-.5.1l-.6.7c-.2.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.1-.7-.6-1.1-1.3-1.2-1.5-.1-.2 0-.3.1-.5l.4-.4c.1-.1.1-.3.2-.4s0-.3-.1-.5-.5-1.2-.7-1.7c-.2-.4-.4-.3-.6-.3h-.4c-.1 0-.4.1-.6.3-.2.2-.8.7-.8 1.8s.8 2.1.9 2.2c.1.1 1.5 2.3 3.7 3.3.5.2.9.4 1.2.5.5.2 1 .1 1.3.1.4-.1 1.3-.5 1.5-1 .2-.5.2-.9.1-1 0-.1-.2-.2-.4-.3zM12 2C6.5 2 2 6.3 2 11.6c0 2 .6 3.9 1.6 5.4L2 22l5.1-1.3c1.5.8 3.2 1.2 4.9 1.2 5.5 0 10-4.3 10-9.6S17.5 2 12 2z"/></svg>
-      </div>
-      <div class="wa-text">
-        <div class="wa-title">Have any questions? Let’s chat! <span class="wa-wave">👋</span></div>
-        <a class="wa-cta"
-           href="https://wa.me/447365208676?text=Hi%20Bliss%20Stays%2C%20I%27d%20like%20to%20enquire..."
-           target="_blank" rel="noopener">Click here to start a conversation</a>
-      </div>
+  <!-- Hero -->
+  <div class="contact-hero">
+    <div class="contact-hero__inner">
+      <p class="contact-hero__eyebrow">Bliss Living · London</p>
+      <h1 class="contact-hero__title">Get in Touch</h1>
     </div>
   </div>
-</div>
 
-<style>
-/* Placement */
-#wa-widget{position:fixed;right:18px;bottom:18px;z-index:2147483647;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  <div class="contact-wrap">
 
-/* Floating button */
-#wa-fab{
-  display:grid;place-items:center;width:64px;height:64px;border-radius:999px;
-  background:#22c55e;color:#0b4126;text-decoration:none;
-  box-shadow:0 12px 30px rgba(0,0,0,.25), inset 0 -6px 0 rgba(0,0,0,.08);
-  animation:wa-bounce 1.4s ease infinite;
-}
-#wa-fab svg{width:34px;height:34px}
+    <!-- Channel cards -->
+    <div class="contact-channels">
+      <a class="channel-card" href="tel:+447365208676" aria-label="Call Bliss Living">
+        <div class="ch-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1.1-.23 11.7 11.7 0 0 0 3.7.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 8a1 1 0 0 1 1-1h3.4a1 1 0 0 1 1 1 11.7 11.7 0 0 0 .6 3.7 1 1 0 0 1-.23 1.1Z"/>
+          </svg>
+        </div>
+        <div class="ch-body">
+          <div class="ch-title">Phone</div>
+          <div class="ch-main">+44 73 6520 8676</div>
+          <div class="ch-sub">Mon–Fri, 9am–8pm</div>
+        </div>
+      </a>
 
-/* Card — WIDER & HORIZONTAL like your ref */
-#wa-card{
-  position:absolute;right:88px;bottom:6px;
-  width:360px; min-width:360px; /* keeps it wide */
-  background:#fff;border-radius:20px;
-  box-shadow:0 18px 50px rgba(0,0,0,.25);
-  padding:16px 18px;display:none;opacity:0;transform:translateY(10px)
-}
-#wa-card.show{display:block;animation:wa-in .35s cubic-bezier(.2,.7,.2,1) forwards}
+      <a class="channel-card" href="mailto:operations@blissstays.co.uk" aria-label="Email Bliss Living">
+        <div class="ch-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20 4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 4.2-8 5.3L4 8.2V18h16ZM4 6l8 5.3L20 6Z"/>
+          </svg>
+        </div>
+        <div class="ch-body">
+          <div class="ch-title">Email</div>
+          <div class="ch-main">operations@blissstays.co.uk</div>
+          <div class="ch-sub">Reply within 2 hours</div>
+        </div>
+      </a>
 
-#wa-close{all:unset;position:absolute;top:8px;right:10px;width:26px;height:26px;border-radius:999px;display:grid;place-items:center;cursor:pointer;color:#64748b;font-weight:700}
-#wa-close:hover{background:#f1f5f9;color:#0f172a}
-
-.wa-row{display:flex;gap:12px;align-items:center}
-.wa-icon{width:36px;height:36px;background:#22c55e;color:#0b4126;border-radius:999px;display:grid;place-items:center;flex:0 0 36px}
-.wa-icon svg{width:20px;height:20px}
-
-.wa-text{min-width:0} /* prevent squish */
-.wa-title{font-size:18px;font-weight:800;color:#111827;margin:0 22px 6px 0;line-height:1.25}
-.wa-cta{display:inline-block;color:#2563eb;text-decoration:none;font-size:15px;line-height:1.3}
-.wa-cta:hover{text-decoration:underline}
-.wa-wave{display:inline-block;animation:wa-wave 1.6s ease-in-out infinite;transform-origin:70% 70%}
-
-/* Animations */
-@keyframes wa-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-@keyframes wa-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-@keyframes wa-wave{0%{transform:rotate(0)}10%{transform:rotate(14deg)}20%{transform:rotate(-8deg)}30%{transform:rotate(14deg)}40%{transform:rotate(-4deg)}50%{transform:rotate(10deg)}60%,100%{transform:rotate(0)}}
-
-/* Mobile — use full width but same look */
-@media (max-width:520px){
-  #wa-card{right:0;bottom:76px;width:auto;min-width:0;max-width:min(92vw,380px)}
-}
-</style>
-
-<script>
-(function(){
-  const fab   = document.getElementById('wa-fab');
-  const card  = document.getElementById('wa-card');
-  const close = document.getElementById('wa-close');
-  const KEY   = 'waTeaserDismissedUntil';
-  const now = Date.now();
-  const until = Number(localStorage.getItem(KEY) || 0);
-
-  // Show once (per 24h) like the reference
-  if (now > until) setTimeout(()=> card.classList.add('show'), 600);
-
-  close.addEventListener('click', ()=>{
-    localStorage.setItem(KEY, String(Date.now() + 24*60*60*1000));
-    card.remove();
-  });
-})();
-</script>
-
-
-<!-- ========== Contact / Book-now ========== -->
-<section id="book-contact" class="contact-section" aria-labelledby="contact-title">
-    <!-- Hero banner (title over image) -->
-    <div class="contact-hero" style="--contact-img: url('faq.jpg'); --contact-pos: center 45%;">
-      <div class="contact-hero__inner">
-        <h1 id="contact-title" class="contact-hero__title">Get in Touch with us</h1>
-      </div>
+      <a class="channel-card" href="https://wa.me/447365208676" target="_blank" rel="noopener" aria-label="WhatsApp Bliss Living">
+        <div class="ch-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.52 3.48A11.74 11.74 0 0 0 3.48 20.52L2 22l1.62-.47 2.87-.82a11.72 11.72 0 0 0 5.51 1.4A11.5 11.5 0 0 0 22 11.6c0-3.07-1.2-5.95-3.48-8.12zm-8.52 17a9.8 9.8 0 0 1-5-1.37l-.36-.21-3.04.88.87-2.95-.23-.38A9.8 9.8 0 1 1 21.8 11.6c0 5.39-4.42 8.8-9.8 8.8zm5.58-6.52c-.3-.15-1.77-.89-2.05-.99-.28-.1-.48-.15-.68.15s-.8 1.1-1 1.3c-.18.2-.36.2-.66.1-.3-.1-1.26-.46-2.4-1.46-.88-.78-1.48-1.72-1.66-2.02-.18-.3 0-.46.13-.63.13-.16.3-.4.45-.6.15-.2.2-.35.3-.57.1-.22.05-.41 0-.57-.05-.15-.56-1.35-.76-1.86-.2-.5-.41-.44-.57-.45l-.49-.01c-.16 0-.43.06-.65.3-.22.24-.85.83-.85 2.03 0 1.2.88 2.48 1.01 2.66.13.18 1.72 2.63 4.18 3.69.58.26 1.03.43 1.38.53.58.19 1.09.17 1.51.1.46-.07 1.75-.71 2-1.4.25-.69.25-1.28.17-1.4-.08-.12-.27-.2-.57-.35z"/>
+          </svg>
+        </div>
+        <div class="ch-body">
+          <div class="ch-title">WhatsApp</div>
+          <div class="ch-main">+44 73 6520 8676</div>
+          <div class="ch-sub">Instant, for urgent queries</div>
+        </div>
+      </a>
     </div>
-  
-    <!-- Form card -->
-    <div class="contact-wrap">
 
-      <!-- Top channel cards (Phone / Email / WhatsApp) -->
-      <div class="contact-channels">
-  <a class="channel-card" href="tel:+447365208676" aria-label="Call Bliss Living">
-          <div class="ch-icon">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
-              <path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1.1-.23 11.7 11.7 0 0 0 3.7.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 8a1 1 0 0 1 1-1h3.4a1 1 0 0 1 1 1 11.7 11.7 0 0 0 .6 3.7 1 1 0 0 1-.23 1.1Z"/>
-            </svg>
-          </div>
-          <div class="ch-body">
-            <div class="ch-title">Phone</div>
-            <div class="ch-main">+44 73 6520 8676</div>
-            <div class="ch-sub">Mon–Fri, 9am–8pm</div>
-          </div>
-        </a>
-    
-  <a class="channel-card" href="mailto:operations@blissstays.co.uk" aria-label="Email Bliss Living">
-          <div class="ch-icon">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
-              <path d="M20 4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 4.2-8 5.3L4 8.2V18h16ZM4 6l8 5.3L20 6Z"/>
-            </svg>
-          </div>
-          <div class="ch-body">
-            <div class="ch-title">Email</div>
-            <div class="ch-main">operations@blissstays.co.uk</div>
-            <div class="ch-sub">Reply within 2 hours</div>
-          </div>
-        </a>
-    
-  <a class="channel-card" href="https://wa.me/447365208676" target="_blank" rel="noopener" aria-label="WhatsApp Bliss Living">
-          <div class="ch-icon">
-            <!-- WhatsApp icon -->
-            <span class="wa-icon" aria-hidden="true">
-              <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor">
-                <!-- from Bootstrap Icons: bi-whatsapp -->
-                <path d="M13.601 2.326A7.94 7.94 0 0 0 8.012.002a7.99 7.99 0 0 0-6.343 12.667L1 16l3.41-.894A7.99 7.99 0 0 0 8.012 16a7.99 7.99 0 0 0 5.589-13.674zM8.012 14.999a6.98 6.98 0 0 1-3.56-.978l-.255-.151-2.097.55.56-2.036-.165-.265A6.98 6.98 0 1 1 8.012 14.999z"/>
-                <path d="M11.09 9.874c-.172-.1-1.016-.561-1.174-.626-.157-.066-.272-.1-.387.1-.115.2-.443.626-.543.756-.1.129-.2.145-.372.083-.172-.06-.73-.268-1.39-.854-.513-.46-.86-1.027-.96-1.198-.1-.172-.01-.265.076-.364.078-.09.172-.232.258-.348.086-.115.115-.2.172-.33.057-.129.028-.245-.014-.348-.042-.1-.387-.93-.53-1.27-.14-.336-.287-.289-.393-.295l-.336-.006c-.115 0-.3.043-.457.2-.157.157-.6.56-.6 1.36 0 .8.62 1.577.707 1.687.086.115 1.223 1.874 2.968 2.63.409.176.728.302.995.387.419.133.8.115 1.102.07.333-.05.995-.41 1.132-.807.136-.396.136-.736.093-.808-.043-.07-.158-.115-.33-.2z"/>
-              </svg>
-            </span>
-          </div>
-          <div class="ch-body">
-            <div class="ch-title">WhatsApp</div>
-            <div class="ch-main">+44 73 6520 8676</div>
-            <div class="ch-sub">Instant, for urgent queries</div>
-          </div>
-        </a>
-      </div>
-    
-      <!-- Form card -->
-      <form id="contactForm"
-            class="contact-card form-modern"
-            action="https://formspree.io/f/mvgqjpkv"
-            method="POST">
-    
+    <!-- ─── Form card ─── -->
+    <div class="contact-card">
+      <form id="contactForm" action="https://formspree.io/f/mvgqjpkv" method="POST" novalidate>
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hp">
-  <input type="hidden" name="_subject" value="Bliss Living — New Book Now enquiry">
-    
+        <input type="hidden" name="_subject" value="Bliss Living — New Enquiry">
+
+        <!-- Row 1: Name + Email -->
         <div class="grid grid-2">
           <div class="field">
             <label for="full_name">Full Name<span aria-hidden="true">*</span></label>
-            <input id="full_name" name="full_name" type="text" required>
+            <input id="full_name" name="full_name" type="text" autocomplete="name"
+                   placeholder="Jane Doe" required>
           </div>
-    
           <div class="field">
             <label for="email">Email<span aria-hidden="true">*</span></label>
-            <input id="email" name="email" type="email" autocomplete="email" required>
+            <input id="email" name="email" type="email" autocomplete="email" inputmode="email"
+                   placeholder="jane@email.com" required>
           </div>
         </div>
-    
-        <div class="grid grid-2">
+
+        <!-- Row 2: Phone + Topic -->
+        <div class="grid grid-2" style="margin-top:16px;">
           <div class="field">
             <label for="phone">Phone / WhatsApp</label>
-            <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel">
+            <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel"
+                   placeholder="+44 7XXX XXX XXX">
           </div>
-    
           <div class="field">
             <label for="topic">Topic</label>
             <div class="select-wrap">
               <select id="topic" name="topic">
-                <option selected>Please consider</option>
+                <option value="">Please select…</option>
                 <option>General enquiry</option>
                 <option>Booking request</option>
                 <option>Corporate booking</option>
@@ -766,632 +660,318 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
           </div>
         </div>
-    
+
+        <div class="form-divider" style="margin:20px 0 18px;"></div>
+
+        <!-- Row 3: Locations + Dates -->
         <div class="grid grid-2">
-          <!-- LEFT CELL: Locations (multi + priority) + Unit -->
+          <!-- Locations -->
           <div class="field">
-            <label>Locations (By order of preference)</label>
-        
-            <!-- Quick toggle chips -->
+            <label>Preferred locations <span style="font-weight:400;color:var(--gold);">(select in order)</span></label>
             <div class="loc-options" id="locOptions">
-              <button type="button" class="loc-chip" data-name="Maida Vale">Maida Vale <span class="badge" aria-hidden="true"></span></button>
-              <button type="button" class="loc-chip" data-name="Paddington">Paddington <span class="badge" aria-hidden="true"></span></button>
-              <button type="button" class="loc-chip" data-name="Nine Elms">Nine Elms <span class="badge" aria-hidden="true"></span></button>
-              <button type="button" class="loc-chip" data-name="Kennington">Kennington <span class="badge" aria-hidden="true"></span></button>
-              <button type="button" class="loc-chip" data-name="Wimbledon">Wimbledon <span class="badge" aria-hidden="true"></span></button>
+              <button type="button" class="loc-chip" data-name="Maida Vale">Maida Vale <span class="badge"></span></button>
+              <button type="button" class="loc-chip" data-name="Paddington">Paddington <span class="badge"></span></button>
+              <button type="button" class="loc-chip" data-name="Nine Elms">Nine Elms <span class="badge"></span></button>
+              <button type="button" class="loc-chip" data-name="Kennington">Kennington <span class="badge"></span></button>
+              <button type="button" class="loc-chip" data-name="Wimbledon">Wimbledon <span class="badge"></span></button>
             </div>
-        
-            <!-- Selected / ordered list -->
-            <ol class="loc-selected" id="locSelected" aria-live="polite" aria-label="Selected locations in priority order">
-              <!-- filled by JS -->
-            </ol>
-        
-            <!-- value sent to Formspree -->
+            <ol class="loc-selected" id="locSelected" aria-live="polite"></ol>
             <input type="hidden" id="locationsPriority" name="locations_priority" value="">
-        
-            <label for="unit" class="sub-label">No of Guests (optional)</label>
-            <input id="unit" name="unit" type="text" placeholder="e.g., 1 , 2 , 3 , ...">
-            <span class="inline-icon">↔</span>
+
+            <label class="sub-label" for="unit">Number of guests</label>
+            <input id="unit" name="unit" type="number" inputmode="numeric"
+                   placeholder="e.g. 2" min="1" max="20">
           </div>
-        
-    
+
+          <!-- Dates -->
           <div class="field">
-            <label>Check-In & Check-out (optional)</label>
+            <label>Check-in &amp; Check-out</label>
             <div class="dates-wrap">
-              <input type="date" name="check_in" aria-label="Check-in date">
-              <span class="dates-arrow">↔</span>
-              <input type="date" name="check_out" aria-label="Check-out date">
+              <input type="text" id="check_in" name="check_in" placeholder="Check-in" autocomplete="off" readonly>
+              <span class="dates-arrow">→</span>
+              <input type="text" id="check_out" name="check_out" placeholder="Check-out" autocomplete="off" readonly>
             </div>
           </div>
         </div>
-    
-        <div class="field">
+
+        <!-- Message -->
+        <div class="field" style="margin-top:16px;">
           <label for="message">Message</label>
-          <textarea id="message" name="message" rows="4" placeholder="Question or provide details"></textarea>
+          <textarea id="message" name="message" rows="4"
+                    placeholder="Any specific requirements or questions…"></textarea>
         </div>
-    
-        <div class="pref-row">
-          <span class="pref-label">Preferred contact method</span>
+
+        <!-- Preferred contact -->
+        <div class="pref-row" style="margin-top:16px;">
+          <span class="pref-label">Preferred contact</span>
           <label class="radio"><input type="radio" name="preferred" value="WhatsApp" checked> <span>WhatsApp</span></label>
           <label class="radio"><input type="radio" name="preferred" value="Phone"> <span>Phone</span></label>
           <label class="radio"><input type="radio" name="preferred" value="Email"> <span>Email</span></label>
         </div>
-    
-        <div class="btn-row">
-          <button class="btn btn-primary" type="submit">Send Message</button>
-    
-          <a class="btn btn-ghost" id="waBtn" target="_blank" rel="noopener"
-   href="https://wa.me/447365208676?text=Hi%20Bliss%20Stays%2C%20I%27d%20like%20to%20enquire...">
-  <!-- New, cleaner WhatsApp icon (centered viewBox) -->
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
-    <path d="M20.52 3.48A11.74 11.74 0 0 0 3.48 20.52L2 22l1.62-.47 2.87-.82a11.72 11.72 0 0 0 5.51 1.4h.01A11.5 11.5 0 0 0 22 11.6c0-3.07-1.2-5.95-3.48-8.12zM12 20.4a9.8 9.8 0 0 1-5-1.37l-.36-.21-3.04.88.87-2.95-.23-.38A9.8 9.8 0 1 1 21.8 11.6c0 5.39-4.42 8.8-9.8 8.8zm5.58-6.52c-.3-.15-1.77-.89-2.05-.99-.28-.1-.48-.15-.68.15s-.8 1.1-1 1.3-.36.2-.66.1c-.3-.1-1.26-.46-2.4-1.46-.88-.78-1.48-1.72-1.66-2.02-.18-.3 0-.46.13-.63.13-.16.3-.4.45-.6.15-.2.2-.35.3-.57.1-.22.05-.41 0-.57-.05-.15-.56-1.35-.76-1.86-.2-.5-.41-.44-.57-.45l-.49-.01c-.16 0-.43.06-.65.3-.22.24-.85.83-.85 2.03 0 1.2.88 2.48 1.01 2.66.13.18 1.72 2.63 4.18 3.69.58.26 1.03.43 1.38.53.58.19 1.09.17 1.51.1.46-.07 1.75-.71 2-1.4.25-.69.25-1.28.17-1.4-.08-.12-.27-.2-.57-.35z"/>
-  </svg>
-  <span>Chat on WhatsApp</span>
-</a>
-    
-          <a class="btn btn-ghost" href="tel:+447365208676">
-            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1.1-.23 11.7 11.7 0 0 0 3.7.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 8a1 1 0 0 1 1-1h3.4a1 1 0 0 1 1 1 11.7 11.7 0 0 0 .6 3.7 1 1 0 0 1-.23 1.1Z"/></svg>
-            <span>Call Us</span>
+
+        <!-- Buttons -->
+        <div class="btn-row" style="margin-top:20px;">
+          <button class="btn btn-primary" type="submit">Send Enquiry</button>
+          <a class="btn btn-outline" id="waBtn" href="https://wa.me/447365208676?text=Hi%20Bliss%20Stays%2C%20I%27d%20like%20to%20enquire..." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.74 11.74 0 0 0 3.48 20.52L2 22l1.62-.47 2.87-.82a11.72 11.72 0 0 0 5.51 1.4A11.5 11.5 0 0 0 22 11.6c0-3.07-1.2-5.95-3.48-8.12zm-8.52 17a9.8 9.8 0 0 1-5-1.37l-.36-.21-3.04.88.87-2.95-.23-.38A9.8 9.8 0 1 1 21.8 11.6c0 5.39-4.42 8.8-9.8 8.8zm5.58-6.52c-.3-.15-1.77-.89-2.05-.99-.28-.1-.48-.15-.68.15s-.8 1.1-1 1.3c-.18.2-.36.2-.66.1-.3-.1-1.26-.46-2.4-1.46-.88-.78-1.48-1.72-1.66-2.02-.18-.3 0-.46.13-.63.13-.16.3-.4.45-.6.15-.2.2-.35.3-.57.1-.22.05-.41 0-.57-.05-.15-.56-1.35-.76-1.86-.2-.5-.41-.44-.57-.45l-.49-.01c-.16 0-.43.06-.65.3-.22.24-.85.83-.85 2.03 0 1.2.88 2.48 1.01 2.66.13.18 1.72 2.63 4.18 3.69.58.26 1.03.43 1.38.53.58.19 1.09.17 1.51.1.46-.07 1.75-.71 2-1.4.25-.69.25-1.28.17-1.4-.08-.12-.27-.2-.57-.35z"/></svg>
+            WhatsApp
+          </a>
+          <a class="btn btn-outline" href="tel:+447365208676">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1.1-.23 11.7 11.7 0 0 0 3.7.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 8a1 1 0 0 1 1-1h3.4a1 1 0 0 1 1 1 11.7 11.7 0 0 0 .6 3.7 1 1 0 0 1-.23 1.1Z"/></svg>
+            Call Us
           </a>
         </div>
-    
-        <label class="consent">
+
+        <!-- Consent -->
+        <label class="consent" style="margin-top:16px;">
           <input type="checkbox" id="consent" name="consent" required>
-          <span>I consent to be contacted in line with privacy policy</span>
+          <span>I consent to being contacted in line with the <a href="privacy.html" style="color:var(--warm);text-decoration:underline;">privacy policy</a>.</span>
         </label>
-    
-        <p class="form-msg ok" role="status" hidden>Thanks! We’ve received your message.</p>
-        <p class="form-msg err" role="alert" hidden>Something went wrong. Please try again, or email us.</p>
+
+        <p class="form-msg ok" role="status" hidden>Thanks! We've received your message and will be in touch shortly.</p>
+        <p class="form-msg err" role="alert" hidden>Something went wrong. Please try again or email us directly.</p>
       </form>
-    
     </div>
-    
+
+  </div>
+</main>
+
+<!-- ═══ WHATSAPP ══════════════════════════════════════════════ -->
+<div id="wa-widget" aria-live="polite">
+  <a id="wa-fab" href="https://wa.me/447365208676?text=Hi%20Bliss%20Stays!%20I%20have%20a%20question." target="_blank" rel="noopener" aria-label="WhatsApp chat">
+    <svg viewBox="0 0 32 32"><path fill="currentColor" d="M19.11 17.71c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.17-.43-2.23-1.37-.82-.73-1.37-1.63-1.53-1.9-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.02-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.3s.98 2.66 1.12 2.84c.14.18 1.93 2.95 4.68 4.14.65.28 1.15.45 1.54.59.65.21 1.25.18 1.72.11.52-.08 1.6-.65 1.82-1.29.22-.64.22-1.18.16-1.29-.07-.11-.23-.18-.5-.32zM16.02 3.2c-6.99 0-12.66 5.67-12.66 12.66 0 2.23.59 4.32 1.62 6.12L3 29l7.19-1.89c1.72.94 3.69 1.47 5.83 1.47 6.99 0 12.66-5.67 12.66-12.66S23.01 3.2 16.02 3.2zm0 22.88c-1.95 0-3.76-.57-5.29-1.55l-.38-.24-4.28 1.12 1.15-4.17-.25-.43a9.98 9.98 0 0 1-1.49-5.25c0-5.53 4.5-10.02 10.02-10.02s10.02 4.5 10.02 10.02-4.5 10.02-10.02 10.02z"/></svg>
+  </a>
+  <div id="wa-card" role="dialog" aria-label="WhatsApp quick chat">
+    <button id="wa-close" aria-label="Dismiss">&#215;</button>
+    <div class="wa-row">
+      <div class="wa-icon-wrap">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M16.2 13.6c-.2-.1-1.1-.6-1.3-.7-.2-.1-.3-.1-.5.1l-.6.7c-.2.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.1-.7-.6-1.1-1.3-1.2-1.5-.1-.2 0-.3.1-.5l.4-.4c.1-.1.1-.3.2-.4s0-.3-.1-.5-.5-1.2-.7-1.7c-.2-.4-.4-.3-.6-.3h-.4c-.1 0-.4.1-.6.3-.2.2-.8.7-.8 1.8s.8 2.1.9 2.2c.1.1 1.5 2.3 3.7 3.3.5.2.9.4 1.2.5.5.2 1 .1 1.3.1.4-.1 1.3-.5 1.5-1 .2-.5.2-.9.1-1 0-.1-.2-.2-.4-.3zM12 2C6.5 2 2 6.3 2 11.6c0 2 .6 3.9 1.6 5.4L2 22l5.1-1.3c1.5.8 3.2 1.2 4.9 1.2 5.5 0 10-4.3 10-9.6S17.5 2 12 2z"/></svg>
+      </div>
+      <div>
+        <div class="wa-title">Have a question? &#x1F44B;</div>
+        <a class="wa-cta" href="https://wa.me/447365208676?text=Hi%20Bliss%20Stays%2C%20I%27d%20like%20to%20enquire..." target="_blank" rel="noopener">Start a conversation on WhatsApp</a>
+      </div>
     </div>
-  </section>
-  
-  <style>
-    /* --- Button polish: icon/text alignment & cleaner type --- */
-    .btn-row{ display:flex; gap:16px; flex-wrap:wrap; align-items:center; }
-    .btn{
-      display:inline-flex; align-items:center; gap:10px; padding:12px 20px; min-height:44px; border-radius:12px;
-      font:700 16px/1 "Helvetica Neue", Arial, sans-serif; letter-spacing:.2px; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-      box-shadow:0 6px 14px rgba(0,0,0,.12); transition:transform .15s ease, box-shadow .15s ease, opacity .15s ease;
-    }
-    .btn svg{ width:18px; height:18px; display:block; flex:0 0 18px; }
-    .btn-primary{ background:var(--primary); color:#fff; border:none; }
-    .btn-ghost{ background:var(--primary); color:#fff; border:none; }
-    .btn:hover{ transform:translateY(-1px); box-shadow:0 8px 18px rgba(0,0,0,.16); }
-    .btn:active{ transform:translateY(0); box-shadow:0 4px 10px rgba(0,0,0,.12); }
-    .btn:focus-visible{ outline:2px solid #fff; outline-offset:2px; }
-  
-    /* Multi-location selector */
-    .loc-options{ display:flex; flex-wrap:wrap; gap:8px; margin:6px 0 10px; }
-    .loc-chip{
-      position:relative; border:1px solid #d8d1c1; background:#fff; color:#2f2e26;
-      padding:6px 10px; border-radius:999px; font:inherit; cursor:pointer; transition:all .18s ease;
-    }
-    .loc-chip:hover{ border-color:#bfb79f; box-shadow:0 2px 6px rgba(0,0,0,.06); }
-    .loc-chip.active{ background:#f0ede3; border-color:#6b6b50; color:#2a291f; }
-    .loc-chip .badge{ display:none; margin-left:6px; min-width:18px; height:18px; line-height:18px; border-radius:9px; background:#6b6b50; color:#fff; font-size:12px; text-align:center; padding:0 6px; }
-    .loc-chip.active .badge{ display:inline-block; }
-    .loc-selected{ margin:4px 0 12px; padding-left:1.25rem; color:#2f2e26; }
-    .loc-item{ display:flex; align-items:center; gap:8px; padding:6px 0; }
-    .loc-item .name{ font-weight:600; }
-    .loc-actions{ margin-left:auto; display:inline-flex; gap:4px; }
-    .loc-btn{
-      border:1px solid #ffffff; background:#fff; color:#4b4b38; width:28px; height:28px; border-radius:6px;
-      display:grid; place-items:center; cursor:pointer; transition:all .18s ease;
-    }
-    .loc-btn:hover{ border-color:#bfb79f; box-shadow:0 2px 6px rgba(0,0,0,.06); }
-    @media(max-width:720px){ .loc-options{gap:6px;} .loc-chip{padding:6px 9px;} }
-  
-    /* WhatsApp icon centering */
-    .channel-card .ch-icon{ display:grid; place-items:center; }
-    .channel-card .ch-icon .wa-icon{ display:grid; place-items:center; line-height:0; width:100%; height:100%; }
-    .channel-card .ch-icon .wa-icon svg{ display:block; width:22px; height:22px; }
-  
-    /* Channel cards */
-    .contact-channels{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin:6px 0 16px; }
-    @media(max-width:900px){ .contact-channels{grid-template-columns:1fr 1fr;} }
-    @media(max-width:560px){ .contact-channels{grid-template-columns:1fr;} }
-    .channel-card{
-      display:flex; gap:12px; align-items:flex-start; background:#fff; border:1px solid rgba(0,0,0,.08);
-      border-radius:12px; padding:14px; box-shadow:0 8px 16px rgba(0,0,0,.06); color:#222; text-decoration:none;
-      transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
-    }
-    .channel-card:hover{ transform:translateY(-1px); border-color:rgba(0,0,0,.14); box-shadow:0 12px 24px rgba(0,0,0,.08); }
-    .ch-icon{ flex:0 0 auto; color:var(--primary,#4b4b38); background:rgba(75,75,56,.08); width:38px; height:38px; display:grid; place-items:center; border-radius:10px; }
-    .ch-body{ line-height:1.2; }
-    .ch-title{ font-weight:700; font-size:14px; color:#2c2b25; }
-    .ch-main{ font-size:14px; color:#2c2b25; margin-top:2px; }
-    .ch-sub{ font-size:12px; color:#6b6b50; margin-top:2px; }
-  
-    /* Modern form look + spacing fixes */
-    .form-modern .select-wrap{ position:relative; }
-    .form-modern select{
-      width:100%; appearance:none; -webkit-appearance:none; -moz-appearance:none;
-      border:1px solid #d8d1c1; border-radius:8px; padding:12px 32px 12px 14px;
-      background:#fff; color:#2f2e26; font:inherit; outline:none;
-      transition:box-shadow .2s ease, border-color .2s ease; min-height:44px;
-    }
-    .form-modern .sel-caret{ position:absolute; right:10px; top:50%; transform:translateY(-50%); pointer-events:none; color:#6b6b50; }
-    .form-modern .field .inline-icon{ position:absolute; right:14px; top:50%; transform:translateY(-50%); color:#b4af9d; pointer-events:none; }
-    .form-modern .dates-wrap{ display:grid; grid-template-columns:1fr auto 1fr; gap:8px; align-items:center; }
-    .form-modern .dates-arrow{ color:#b4af9d; }
-  
-    /* Radios row */
-    .pref-row{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-top:4px; }
-    .pref-row .pref-label{ font-size:14px; color:#4b4b38; margin-right:6px; }
-    .radio{ display:inline-flex; align-items:center; gap:8px; }
-    .radio input{ accent-color:var(--primary,#4b4b38); }
-  
-    /* Remove icons from book/contact actions */
-    #book-contact .btn-row .btn svg{ display:none!important; }
-    #book-contact .btn-row .btn{ gap:0; padding:12px 24px; }
-    #book-contact .btn-row .btn span{ margin:0; }
-  
-    /* Consent */
-    .consent{ display:flex; align-items:flex-start; gap:10px; margin-top:8px; font-size:14px; color:#4b4b38; }
-    .consent input{ transform:translateY(2px); }
-  
-    /* Contact section */
-    .contact-card.form-modern{ background:#fff; backdrop-filter:none; border:1px solid rgba(0,0,0,.06); }
-    .contact-section{ background:#fff; padding-top:var(--header-clear,88px); padding-bottom:40px; } /* ← white bg + internal spacing */
-  
-    /* Hero */
-    #book-contact .contact-hero::after{ content:""; position:absolute; inset:0; background:rgba(255,255,255,.14); pointer-events:none; }
-    #book-contact .contact-hero::before{ content:""; position:absolute; inset:0; background:rgba(0,0,0,.20); pointer-events:none; }
-    .contact-hero{
-      --h:min(36vh,340px); height:var(--h); max-width:1400px; width:min(96%,1400px);
-      margin:0 auto 26px auto; position:relative; border-radius:18px; overflow:hidden;
-      box-shadow:0 22px 44px rgba(0,0,0,.14), 0 8px 18px rgba(0,0,0,.10);
-      background-image:linear-gradient(0deg,rgba(0,0,0,.45),rgba(0,0,0,.25)), var(--contact-img);
-      background-size:cover; background-position:var(--contact-pos,center 45%); background-repeat:no-repeat;
-    }
-    .contact-hero__inner{ position:absolute; inset:0; display:grid; place-items:center; text-align:center; color:#fff; padding:0 20px; }
-    .contact-hero__title{ margin:0; font-weight:800; font-size:clamp(28px,4.8vw,54px); line-height:1.1; text-shadow:0 3px 10px rgba(0,0,0,.5); }
-  
-    .contact-wrap{ max-width:1040px; width:min(96%,1040px); margin:0 auto 0 auto; } /* ← no bottom gap */
-  
-    /* Form fields */
-    .contact-card{
-      background:rgba(255,255,255,0.7); backdrop-filter:saturate(140%) blur(2px); border:1px solid rgba(0,0,0,0.06);
-      border-radius:14px; padding:clamp(18px,2.4vw,24px); box-shadow:0 12px 26px rgba(0,0,0,0.08);
-    }
-    .contact-card .hp{ display:none!important; }
-  
-    .grid{ display:grid; gap:14px; }
-    .grid-2{ grid-template-columns:repeat(2,minmax(0,1fr)); }
-    @media(max-width:720px){ .grid-2{ grid-template-columns:1fr; } }
-  
-    .field{ display:flex; flex-direction:column; }
-    .field label{ font-size:14px; color:var(--primary); margin-bottom:6px; }
-  
-    .field input,
-    .field textarea{
-      width:100%; border:1px solid #d8d1c1; background:#fff; color:#2f2e26; border-radius:8px;
-      padding:12px 14px; font:inherit; outline:none; transition:box-shadow .2s ease, border-color .2s ease; min-height:44px;
-    }
-    .field textarea{ resize:vertical; line-height:1.4; min-height:110px; }
-  
-    .field input:focus,
-    .field textarea:focus{ border-color:#6b6b50; box-shadow:0 0 0 3px rgba(107,107,80,.15); }
-  
-    /* Button base */
-    .btn{ margin-top:8px; background:var(--primary); color:#fff; border:0; border-radius:8px; padding:10px 18px; font-weight:700; cursor:pointer;
-      box-shadow:0 4px 10px rgba(0,0,0,.12); transition:transform .15s ease, box-shadow .15s ease, background .15s ease; }
-    .btn:hover{ transform:translateY(-1px); background:#363626; box-shadow:0 6px 14px rgba(0,0,0,.16); }
-  
-    .form-msg{ margin-top:10px; font-size:14px; }
-    .form-msg.ok{ color:#2f6b4b; }
-    .form-msg.err{ color:#a13b2a; }
-  
-    /* Reveal animations */
-    #book-contact .contact-wrap{ opacity:0; transform:translateY(16px) scale(.98); transition:opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1); will-change:opacity,transform; }
-    #book-contact .contact-wrap.in{ opacity:1; transform:translateY(0) scale(1); }
-    #book-contact .contact-card .field,
-    #book-contact .contact-card .grid .field,
-    #book-contact .contact-card .btn{ opacity:0; transform:translateY(8px); transition:opacity .5s ease, transform .5s ease; }
-    #book-contact .contact-wrap.in .contact-card .field,
-    #book-contact .contact-wrap.in .contact-card .grid .field,
-    #book-contact .contact-wrap.in .contact-card .btn{ opacity:1; transform:translateY(0); }
-    #book-contact .contact-card .grid .field:nth-child(1){ transition-delay:.05s; }
-    #book-contact .contact-card .grid .field:nth-child(2){ transition-delay:.10s; }
-    #book-contact .contact-card .field:nth-of-type(3){ transition-delay:.15s; }
-    #book-contact .contact-card .field:nth-of-type(4){ transition-delay:.20s; }
-    #book-contact .contact-card .field:nth-of-type(5){ transition-delay:.25s; }
-    #book-contact .contact-card .btn{ transition-delay:.30s; }
-  
-    /* Field focus interactions */
-    #book-contact .contact-card{ transition:box-shadow .3s ease, transform .3s ease; }
-    #book-contact .contact-card:hover{ transform:translateY(-2px); box-shadow:0 16px 32px rgba(0,0,0,.12); }
-    #book-contact .field{ position:relative; transition:transform .2s ease; }
-    #book-contact .field:focus-within{ transform:translateY(-1px); }
-    #book-contact .field::after{
-      content:""; position:absolute; left:10px; right:10px; bottom:-2px; height:2px;
-      background:linear-gradient(90deg,#ffffff,#ffffff); transform:scaleX(0); transform-origin:left;
-      transition:transform .28s ease; opacity:.85;
-    }
-    #book-contact .field:focus-within::after{ transform:scaleX(1); }
-  
-    #book-contact .field input:focus,
-    #book-contact .field textarea:focus{ border-color:#6b6b50; box-shadow:0 0 0 4px rgba(107,107,80,.15),0 10px 18px rgba(0,0,0,.06); }
-  
-    /* Button shine + ripple */
-    #book-contact .btn{ position:relative; overflow:hidden; isolation:isolate; }
-    #book-contact .btn::after{
-      content:""; position:absolute; inset:-2px;
-      background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);
-      transform:translateX(-130%); transition:transform .6s ease; pointer-events:none; mix-blend-mode:screen;
-    }
-    #book-contact .btn:hover::after{ transform:translateX(130%); }
-    #book-contact .btn .ripple{
-      position:absolute; border-radius:50%; background:rgba(255,255,255,.45);
-      width:16px; height:16px; transform:translate(-50%,-50%) scale(0);
-      animation:ripple .6s ease-out forwards; pointer-events:none;
-    }
-    @keyframes ripple{ to{ transform:translate(-50%,-50%) scale(18); opacity:0; } }
-  </style>
-  
-    
+  </div>
+</div>
 
-  
-  <script>
-    
-(function(){
-  const chipsWrap = document.getElementById('locOptions');
-  const selectedList = document.getElementById('locSelected');
-  const hidden = document.getElementById('locationsPriority');
+<!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-links-group">
+      <div class="footer-column">
+        <h4>Bliss Living</h4>
+        <ul>
+          <li><a href="property.html">Properties</a></li>
+          <li><a href="terms.html">Terms &amp; Conditions</a></li>
+          <li><a href="faq.html">FAQs</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Enquiries</h4>
+        <ul>
+          <li><a href="booknow.html">Corporate Bookings</a></li>
+          <li><a href="booknow.html">Group Bookings</a></li>
+          <li><a href="booknow.html">Apart-hotels</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-logo-section">
+      <img src="Footnote_Logo.png" alt="Bliss Living" class="footer-logo" width="200" loading="lazy">
+      <div class="social-icons">
+        <a href="#" aria-label="Instagram"><img src="icons/insta.png" alt="Instagram" width="22" height="22"></a>
+        <a href="#" aria-label="Facebook"><img src="icons/fb.png" alt="Facebook" width="22" height="22"></a>
+      </div>
+    </div>
+  </div>
+  <p class="footer-bottom">&copy; Bliss Living Ltd. 2025. All rights reserved.</p>
+</footer>
 
-  const selected = []; // keeps names in priority order
+<!-- ═══ SCRIPTS ═══════════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+(function () {
+  'use strict';
 
-  function render(){
-    // Update chip badges and active state
-    [...chipsWrap.querySelectorAll('.loc-chip')].forEach(chip=>{
-      const name = chip.dataset.name;
-      const idx = selected.indexOf(name);
-      chip.classList.toggle('active', idx !== -1);
-      chip.querySelector('.badge').textContent = (idx !== -1 ? idx+1 : '');
-    });
+  // ─── Header compact on scroll
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
 
-    // Update ordered list
-    selectedList.innerHTML = '';
-    selected.forEach((name, i)=>{
-      const li = document.createElement('li');
-      li.className = 'loc-item';
-      li.innerHTML = `
-        <span class="rank">${i+1}.</span>
-        <span class="name">${name}</span>
-        <span class="loc-actions">
-          <button type="button" class="loc-btn up" aria-label="Move up">↑</button>
-          <button type="button" class="loc-btn down" aria-label="Move down">↓</button>
-          <button type="button" class="loc-btn rm" aria-label="Remove">✕</button>
-        </span>
-      `;
-      // actions
-      li.querySelector('.up').onclick = ()=>{ if(i>0){ swap(i,i-1); } };
-      li.querySelector('.down').onclick = ()=>{ if(i<selected.length-1){ swap(i,i+1); } };
-      li.querySelector('.rm').onclick = ()=>{ remove(name); };
-      selectedList.appendChild(li);
-    });
+  // ─── Mobile nav
+  const mnavBtn   = document.getElementById('mnavBtn');
+  const mnav      = document.getElementById('mnav');
+  const mnavClose = document.getElementById('mnavClose');
 
-    // Update hidden field (comma-separated)
-    hidden.value = selected.join(', ');
+  function openSheet() {
+    mnav.classList.add('open');
+    mnav.setAttribute('aria-hidden', 'false');
+    mnavBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
   }
-
-  function swap(a,b){ const t = selected[a]; selected[a]=selected[b]; selected[b]=t; render(); }
-  function remove(name){
-    const idx = selected.indexOf(name);
-    if(idx>-1){ selected.splice(idx,1); render(); }
+  function closeSheet() {
+    mnav.classList.remove('open');
+    mnav.setAttribute('aria-hidden', 'true');
+    mnavBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
   }
+  mnavBtn?.addEventListener('click', openSheet);
+  mnavClose?.addEventListener('click', closeSheet);
+  mnav.querySelector('.mnav-backdrop')?.addEventListener('click', closeSheet);
+  mnav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeSheet));
 
-  // Toggle chips
-  chipsWrap.addEventListener('click', (e)=>{
-    const chip = e.target.closest('.loc-chip');
-    if(!chip) return;
-    const name = chip.dataset.name;
-    const i = selected.indexOf(name);
-    if(i===-1){ selected.push(name); } else { selected.splice(i,1); }
-    render();
+  // Dropdown click support (touch-friendly)
+  document.querySelectorAll('.main-nav .has-dropdown > a').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      if (trigger.getAttribute('href') === '#') e.preventDefault();
+      const panel = trigger.parentElement.querySelector('.drop-panel');
+      const isOpen = panel?.classList.contains('open');
+      document.querySelectorAll('.main-nav .drop-panel.open').forEach(p => {
+        if (p !== panel) p.classList.remove('open');
+      });
+      panel?.classList.toggle('open', !isOpen);
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (!document.querySelector('.main-nav')?.contains(e.target)) {
+      document.querySelectorAll('.main-nav .drop-panel.open').forEach(p => p.classList.remove('open'));
+    }
   });
 
-  render();
-})();
+  // ─── Flatpickr date pickers
+  const fpConfig = {
+    dateFormat: 'd M Y',
+    minDate: 'today',
+    disableMobile: false,
+  };
+  flatpickr('#check_in', {
+    ...fpConfig,
+    onClose(dates) {
+      if (dates[0]) {
+        checkOutFp.set('minDate', dates[0]);
+      }
+    }
+  });
+  const checkOutFp = flatpickr('#check_out', fpConfig);
 
-
-  // Add to your existing IIFE that handles submit + reveal
+  // ─── Location chips priority selector
   (function () {
-    const form = document.getElementById('contactForm');
-    if (!form) return;
+    const chipsWrap    = document.getElementById('locOptions');
+    const selectedList = document.getElementById('locSelected');
+    const hidden       = document.getElementById('locationsPriority');
+    const selected     = [];
 
-    const ok = form.querySelector('.form-msg.ok');
-    const err = form.querySelector('.form-msg.err');
-    const consent = document.getElementById('consent');
-    const waBtn = document.getElementById('waBtn');
-
-    // Prefill WhatsApp link from current form values
-    function buildWaLink(){
-      const name = (document.getElementById('full_name')?.value || '').trim();
-      const topic = (document.getElementById('topic')?.value || '').trim();
-      const msg = (document.getElementById('message')?.value || '').trim();
-      const base = 'https://wa.me/447446123456?text=';
-  const text = `Hi Bliss Living, my name is ${name||'—'}. Topic: ${topic||'—'}. ${msg||''}`.trim();
-      waBtn.href = base + encodeURIComponent(text);
+    function render() {
+      chipsWrap.querySelectorAll('.loc-chip').forEach(chip => {
+        const name = chip.dataset.name;
+        const idx  = selected.indexOf(name);
+        chip.classList.toggle('active', idx !== -1);
+        chip.querySelector('.badge').textContent = idx !== -1 ? idx + 1 : '';
+      });
+      selectedList.innerHTML = '';
+      selected.forEach((name, i) => {
+        const li = document.createElement('li');
+        li.className = 'loc-item';
+        li.innerHTML = `
+          <span class="rank">${i + 1}.</span>
+          <span class="name">${name}</span>
+          <span class="loc-actions">
+            <button type="button" class="loc-btn up" aria-label="Move up">↑</button>
+            <button type="button" class="loc-btn down" aria-label="Move down">↓</button>
+            <button type="button" class="loc-btn rm" aria-label="Remove">✕</button>
+          </span>`;
+        li.querySelector('.up').onclick  = () => { if (i > 0) { swap(i, i - 1); } };
+        li.querySelector('.down').onclick = () => { if (i < selected.length - 1) { swap(i, i + 1); } };
+        li.querySelector('.rm').onclick  = () => { selected.splice(selected.indexOf(name), 1); render(); };
+        selectedList.appendChild(li);
+      });
+      hidden.value = selected.join(', ');
     }
-    ['full_name','topic','message'].forEach(id=>{
-      const el = document.getElementById(id);
-      if(el) el.addEventListener('input', buildWaLink, {passive:true});
-    });
-    buildWaLink();
-
-    // Require consent before submit
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      ok.hidden = true; err.hidden = true;
-
-      if (!consent?.checked){
-        err.hidden = false;
-        err.textContent = 'Please tick the consent box to proceed.';
-        return;
-      }
-
-      try{
-        const res = await fetch(form.action, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: new FormData(form)
-        });
-        if (res.ok){
-          ok.hidden = false;
-          err.hidden = true;
-          form.reset();
-          buildWaLink();
-        } else {
-          err.hidden = false;
-          err.textContent = 'Something went wrong. Please try again, or email us.';
-        }
-      }catch(_){
-        err.hidden = false;
-        err.textContent = 'Network error. Please try again later.';
-      }
-    });
-
-    // Reveal the block (keeps your observer style)
-    const wrap = document.querySelector('#book-contact .contact-wrap');
-    if (wrap) {
-      const io = new IntersectionObserver((entries, obs) => {
-        entries.forEach(e => { if (e.isIntersecting){ wrap.classList.add('in'); obs.disconnect(); } });
-      }, { threshold: .35 });
-      io.observe(wrap);
+    function swap(a, b) {
+      [selected[a], selected[b]] = [selected[b], selected[a]];
+      render();
     }
+    chipsWrap.addEventListener('click', (e) => {
+      const chip = e.target.closest('.loc-chip');
+      if (!chip) return;
+      const name = chip.dataset.name;
+      const idx  = selected.indexOf(name);
+      if (idx === -1) { selected.push(name); } else { selected.splice(idx, 1); }
+      render();
+    });
+    render();
   })();
 
-    // Formspree ajax submit (keeps user on page)
-    (function(){
-      const form = document.getElementById('contactForm');
-      if (!form) return;
-  
-      const ok = form.querySelector('.form-msg.ok');
-      const err = form.querySelector('.form-msg.err');
-  
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        ok.hidden = true; err.hidden = true;
-  
-        try{
-          const res = await fetch(form.action, {
-            method: 'POST',
-            headers: { 'Accept': 'application/json' },
-            body: new FormData(form)
-          });
-          if (res.ok){
-            ok.hidden = false;
-            form.reset();
-          } else {
-            err.hidden = false;
-          }
-        }catch(_){
-          err.hidden = false;
-        }
-      });
-    })();
-
-    
-(function(){
-  // Reveal the form when it enters the viewport
-  const wrap = document.querySelector('#book-contact .contact-wrap');
-  if (wrap) {
-    const io = new IntersectionObserver((entries, obs) => {
-      entries.forEach(e => {
-        if (e.isIntersecting){ wrap.classList.add('in'); obs.disconnect(); }
-      });
-    }, { threshold: .35 });
-    io.observe(wrap);
+  // ─── WhatsApp link – update from form fields
+  function buildWaLink() {
+    const name  = (document.getElementById('full_name')?.value || '').trim();
+    const topic = (document.getElementById('topic')?.value || '').trim();
+    const msg   = (document.getElementById('message')?.value || '').trim();
+    const text  = `Hi Bliss Living, my name is ${name || '—'}. Topic: ${topic || '—'}. ${msg}`.trim();
+    const waBtn = document.getElementById('waBtn');
+    if (waBtn) waBtn.href = 'https://wa.me/447365208676?text=' + encodeURIComponent(text);
   }
+  ['full_name', 'topic', 'message'].forEach(id => {
+    document.getElementById(id)?.addEventListener('input', buildWaLink, { passive: true });
+  });
+  buildWaLink();
 
-  // Ripple on submit button
-  const btn = document.querySelector('#book-contact .btn');
-  if (btn){
-    btn.addEventListener('click', (e) => {
-      const r = document.createElement('span');
-      r.className = 'ripple';
-      const rect = btn.getBoundingClientRect();
-      r.style.left = (e.clientX - rect.left) + 'px';
-      r.style.top  = (e.clientY - rect.top)  + 'px';
-      btn.appendChild(r);
-      setTimeout(() => r.remove(), 650);
+  // ─── Form submission (ajax)
+  const form    = document.getElementById('contactForm');
+  const msgOk   = form?.querySelector('.form-msg.ok');
+  const msgErr  = form?.querySelector('.form-msg.err');
+  const consent = document.getElementById('consent');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    msgOk.hidden = true;
+    msgErr.hidden = true;
+
+    if (!consent?.checked) {
+      msgErr.textContent = 'Please tick the consent box to proceed.';
+      msgErr.hidden = false;
+      consent.focus();
+      return;
+    }
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form),
+      });
+      if (res.ok) {
+        msgOk.hidden = false;
+        form.reset();
+        buildWaLink();
+        msgOk.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        msgErr.textContent = 'Something went wrong. Please try again or email us directly.';
+        msgErr.hidden = false;
+      }
+    } catch (_) {
+      msgErr.textContent = 'Network error. Please check your connection and try again.';
+      msgErr.hidden = false;
+    }
+  });
+
+  // ─── WhatsApp teaser widget
+  (function () {
+    const card  = document.getElementById('wa-card');
+    const close = document.getElementById('wa-close');
+    const KEY   = 'waHiddenUntil';
+    if (Date.now() > Number(localStorage.getItem(KEY) || 0)) {
+      setTimeout(() => card?.classList.add('show'), 1200);
+    }
+    close?.addEventListener('click', () => {
+      localStorage.setItem(KEY, String(Date.now() + 86400000));
+      card?.remove();
     });
-  }
+  })();
 })();
-
-
-  </script>
-  <!-- ====== /Contact section ====== -->
-  
-
-
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-container">
-      
-      <!-- LEFT SIDE: All links grouped -->
-      <div class="footer-links-group">
-        <div class="footer-column">
-          <h4>BLISS LIVING</h4>
-          <ul>
-            <li><a href="property.html">Properties</a></li>
-            <li><a href="terms.html">Terms & Conditions</a></li>
-            <li><a href="faq.html">FAQs</a></li>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            
-            
-          </ul>
-        </div>
-  
-        <div class="footer-column">
-          <h4>ENQUIRIES</h4>
-          <ul>
-            <li><a href="booknow.html">Corporate Bookings</a></li>
-            <li><a href="booknow.html">Group Bookings</a></li>
-            <li><a href="booknow.html">Apart-hotels</a></li>
-          </ul> 
-        </div>
-      </div>
-  
-      <!-- RIGHT SIDE: Logo and socials -->
-      <div class="footer-logo-section">
-  <img src="logo.png" alt="Bliss Living Logo" class="footer-logo" />
-        <div class="social-icons">
-          <a href="#"><img src="icons/insta.png" alt="Instagram" /></a>
-          <a href="#"><img src="icons/fb.png" alt="Facebook" /></a>
-        </div>
-      </div>
-  
-    </div>
-  
-    <div class="footer-bottom">
-  <p>&copy; Bliss Living Ltd. 2025. All rights reserved.</p>
-    </div>
-  </footer>
-  
-  <style>
-  .footer {
-  background-color: #f7f7f9;
-  color: #333;
-  font-family: 'Segoe UI', sans-serif;
-  padding: 60px 20px 20px;
-}
-
-.footer-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  max-width: 1200px;
-  margin: auto;
-  gap: 40px;
-}
-
-.footer-links-group {
-  display: flex;
-  gap: 60px;
-  flex-wrap: wrap;
-}
-
-.footer-column {
-  min-width: 180px;
-}
-
-.footer-column h4 {
-  font-size: 14px;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-  border-bottom: 1px solid #999;
-  padding-bottom: 6px;
-  color: #333;
-}
-
-.footer-column .footer-sub {
-  margin-top: 20px;
-}
-
-.footer-column ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-column li {
-  margin: 10px 0;
-}
-
-.footer-column a {
-  color: #333;
-  font-weight: 500;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-column a:hover {
-  color: #666;
-}
-
-.footer-logo-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-end;
-  text-align: right;
-}
-
-.footer-logo {
-  width: 270px;
-  margin-bottom: 20px;
-}
-
-.footer-logo-section .social-icons a {
-  margin-left: 12px;
-}
-
-.footer-logo-section .social-icons img {
-  width: 22px;
-  filter: none;
-}
-
-.footer-bottom {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 13px;
-  color: #555;
-  border-top: 1px solid #999;
-  padding-top: 12px;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .footer-links-group {
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  .footer-logo-section {
-    align-items: flex-start;
-    text-align: left;
-    margin-top: 30px;
-  }
-
-  .footer-logo {
-    width: 120px;
-  }
-}
-
-  </style> 
+</script>
 
 </body>
 </html>
