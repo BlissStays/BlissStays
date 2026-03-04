@@ -685,18 +685,19 @@
       <h2 id="bd-title" class="bd-title">Modern Duplex Living: Nine Elms, London</h2>
 
       <!-- ================= GALLERY ================= -->
+      <!-- Hero: WEB2.jpg | Top-right: WEB KITCHEN 3.jpg | Mid-right: WEB3.jpg | Bottom-left-small: WEB BATH2.jpg | Bottom-right: IMG_3660.jpg -->
       <div class="bd-gallery" id="bd-gallery">
         <a class="g-item g-hero" href="Property2/Elms5/WEB2.jpg"><img src="Property2/Elms5/WEB2.jpg" alt="Living area"></a>
         <a class="g-item g-2"   href="Property2/Elms5/WEB KITCHEN 3.jpg"><img src="Property2/Elms5/WEB KITCHEN 3.jpg" alt="Kitchen"></a>
         <a class="g-item g-3"   href="Property2/Elms5/WEB3.jpg"><img src="Property2/Elms5/WEB3.jpg" alt="Bedroom"></a>
         <a class="g-item g-4"   href="Property2/Elms5/WEB BATH2.jpg"><img src="Property2/Elms5/WEB BATH2.jpg" alt="Bathroom"></a>
         <a class="g-item g-5"   href="Property2/Elms5/IMG_3660.jpg">
-          <img src="Property2/Elms5/IMG_3660.jpg" alt="Details">
+          <img src="Property2/Elms5/IMG_3660.jpg" alt="Interior detail">
           <button class="view-all" type="button" id="bd-view">View all photos</button>
         </a>
       </div>
 
-      <!-- Lightbox -->
+      <!-- Lightbox – all 16 images -->
       <div class="lb" id="bd-lb" aria-hidden="true">
         <div class="lb-inner">
           <img class="lb-img" id="lb-img" alt="">
@@ -704,6 +705,26 @@
           <button class="lb-prev"  id="lb-prev"  aria-label="Previous">‹</button>
           <button class="lb-next"  id="lb-next"  aria-label="Next">›</button>
         </div>
+      </div>
+
+      <!-- Hidden anchors for all 16 lightbox images (not visible, used by JS) -->
+      <div id="lb-all-images" style="display:none">
+        <a href="Property2/Elms5/WEB2.jpg"></a>
+        <a href="Property2/Elms5/WEB KITCHEN 3.jpg"></a>
+        <a href="Property2/Elms5/WEB3.jpg"></a>
+        <a href="Property2/Elms5/WEB BATH2.jpg"></a>
+        <a href="Property2/Elms5/IMG_3660.jpg"></a>
+        <a href="Property2/Elms5/WEB4.jpg"></a>
+        <a href="Property2/Elms5/WEB6.jpg"></a>
+        <a href="Property2/Elms5/WEB7.jpg"></a>
+        <a href="Property2/Elms5/WEB KITCHEN 2.jpg"></a>
+        <a href="Property2/Elms5/WEB Kitchen1 .jpg"></a>
+        <a href="Property2/Elms5/IMG_3385.jpg"></a>
+        <a href="Property2/Elms5/IMG_3444.jpg"></a>
+        <a href="Property2/Elms5/IMG_3469.jpg"></a>
+        <a href="Property2/Elms5/IMG_3502.jpg"></a>
+        <a href="Property2/Elms5/IMG_3537.jpg"></a>
+        <a href="Property2/Elms5/IMG_3670.jpg"></a>
       </div>
 
       <!-- ================= PROPERTY FACTS ================= -->
@@ -1065,37 +1086,48 @@
     btn.addEventListener('click', () => set(wrap.classList.contains('clamped')));
   })();
 
-  // Gallery lightbox
+  // Gallery lightbox – uses all 16 images from #lb-all-images
   (function(){
-    const gal     = document.getElementById('bd-gallery');
-    const links   = gal ? Array.from(gal.querySelectorAll('a')) : [];
-    const lb      = document.getElementById('bd-lb');
-    const img     = document.getElementById('lb-img');
+    const allImagesContainer = document.getElementById('lb-all-images');
+    const gal      = document.getElementById('bd-gallery');
+    const links    = allImagesContainer ? Array.from(allImagesContainer.querySelectorAll('a')) : [];
+    const galLinks = gal ? Array.from(gal.querySelectorAll('a')) : [];
+    const lb       = document.getElementById('bd-lb');
+    const img      = document.getElementById('lb-img');
     const closeBtn = document.getElementById('lb-close');
     const prevBtn  = document.getElementById('lb-prev');
     const nextBtn  = document.getElementById('lb-next');
 
-    if (!gal || !lb || !img || links.length === 0) return;
+    if (!lb || !img || links.length === 0) return;
 
     let idx = 0;
     function show(i) { idx = (i + links.length) % links.length; img.src = links[idx].href; }
     function openAt(i) { show(i); lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; }
     function closeLb() { lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; }
 
-    gal.addEventListener('click', (e) => {
-      const btn = e.target.closest('#bd-view');
-      if (btn) { e.preventDefault(); openAt(0); return; }
+    // Clicking a gallery thumbnail opens at matching index in full list
+    gal?.addEventListener('click', (e) => {
+      const viewAllBtn = e.target.closest('#bd-view');
+      if (viewAllBtn) { e.preventDefault(); openAt(0); return; }
       const a = e.target.closest('a');
       if (!a) return;
       e.preventDefault();
-      openAt(links.indexOf(a));
+      // Match gallery href to full list
+      const href = a.href;
+      const matchIdx = links.findIndex(l => l.href === href);
+      openAt(matchIdx >= 0 ? matchIdx : 0);
     });
 
     prevBtn?.addEventListener('click', () => show(idx - 1));
     nextBtn?.addEventListener('click', () => show(idx + 1));
     closeBtn?.addEventListener('click', closeLb);
     lb.addEventListener('click', (e) => { if (e.target === lb) closeLb(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLb(); });
+    document.addEventListener('keydown', (e) => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLb();
+      if (e.key === 'ArrowLeft') show(idx - 1);
+      if (e.key === 'ArrowRight') show(idx + 1);
+    });
   })();
 </script>
 
