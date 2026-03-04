@@ -2,16 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Modern Duplex Living – Bliss Living</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-
-  <!-- Flatpickr for date range picker -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
 
   <style>
     /* ───────────────────────── Reset + Theme ───────────────────────── */
@@ -48,855 +45,1059 @@
       font-family: var(--font-body);
       color: var(--ink);
       background: var(--cream);
-      line-height: 1.5;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
 
-    /* ───────────────────────── Header ───────────────────────── */
+    /* ─── Header ─────────────────────────────────────────────── */
     header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--white);
-      border-bottom: 1px solid var(--parch);
-      padding: 0 1.5rem;
-      height: var(--header-h);
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      z-index: 900;
+      padding: 10px 20px;
+      transition: padding .25s;
+    }
+    .header-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 14px 28px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 24px;
+      background: rgba(250,248,244,.92);
+      border: 1px solid rgba(184,164,122,.18);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(10px) saturate(160%);
+    }
+    header.scrolled { padding: 6px 20px; }
+    header.scrolled .header-inner {
+      background: rgba(250,248,244,.97);
       box-shadow: var(--shadow-sm);
     }
-    .header-logo {
+    .logo {
       font-family: var(--font-display);
-      font-size: 1.5rem;
+      font-size: 22px;
       font-weight: 600;
       color: var(--stone);
-      text-decoration: none;
+      letter-spacing: .5px;
+      white-space: nowrap;
     }
-    .header-nav {
+    .spacer { flex: 1; }
+    .main-nav ul {
       display: flex;
-      gap: 2rem;
       list-style: none;
+      gap: 36px;
     }
-    .header-nav a {
-      font-size: 0.9rem;
-      color: var(--ink);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    .header-nav a:hover {
-      color: var(--gold);
-    }
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: var(--ink);
-      padding: 0.5rem;
-    }
-
-    /* Mobile menu */
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: var(--header-h);
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: var(--white);
-      flex-direction: column;
-      gap: 1rem;
-      padding: 1.5rem;
-      padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
-      z-index: 99;
-      overflow-y: auto;
-    }
-    .mobile-menu.active {
-      display: flex;
-    }
-    .mobile-menu a {
-      font-size: 1.1rem;
-      color: var(--ink);
-      text-decoration: none;
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--parch);
-    }
-
-    /* ───────────────────────── Main Layout ───────────────────────── */
-    .page-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 380px;
-      gap: 2rem;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem;
-    }
-    .main-content { flex: 1; }
-    .sidebar {
-      position: sticky;
-      top: calc(var(--header-h) + 2rem);
-      height: fit-content;
-    }
-
-    /* ───────────────────────── Gallery ───────────────────────── */
-    .gallery {
-      display: grid;
-      grid-template-columns: 1.9fr 0.95fr 0.95fr;
-      gap: 0.75rem;
-      margin-bottom: 3rem;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-    }
-    .gallery img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-    .gallery-main {
-      grid-row: 1 / 3;
-      min-height: 400px;
-    }
-    .gallery-small {
-      min-height: 190px;
-    }
-
-    /* ───────────────────────── Property Facts ───────────────────────── */
-    .property-facts {
-      display: flex;
-      gap: 2rem;
-      padding: 2rem;
-      background: var(--mist);
-      border-radius: var(--radius-md);
-      margin-bottom: 3rem;
-      flex-wrap: wrap;
-    }
-    .fact {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .fact-icon {
-      font-size: 1.5rem;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--cream);
-      border-radius: 50%;
-    }
-    .fact-label {
-      font-size: 0.8rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .fact-value {
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--ink);
-    }
-
-    /* ───────────────────────── About Section ───────────────────────── */
-    .about-section {
-      margin-bottom: 3rem;
-    }
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 5vw, 2.4rem);
+    .main-nav a {
+      font-size: 14px;
       font-weight: 500;
-      color: var(--ink);
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.02em;
+      color: var(--stone);
+      letter-spacing: .3px;
+      padding-bottom: 2px;
+      position: relative;
+      transition: color .2s;
     }
-    .about-text {
-      font-size: 1rem;
-      line-height: 1.7;
-      color: var(--warm);
-      margin-bottom: 1.5rem;
-    }
-    .read-more-btn {
+    .main-nav a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 0; height: 1px;
       background: var(--gold);
-      color: var(--white);
-      border: none;
-      padding: 0.75rem 1.5rem;
+      transition: width .25s;
+    }
+    .main-nav a:hover { color: var(--warm); }
+    .main-nav a:hover::after { width: 100%; }
+
+    /* Dropdown */
+    .main-nav .has-dropdown { position: relative; }
+    .main-nav .has-dropdown::after {
+      content: "";
+      position: absolute;
+      left: 0; top: 100%;
+      width: 100%; height: 14px;
+    }
+    .main-nav .has-dropdown > a {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 0;
+    }
+    .main-nav .drop-panel {
+      display: none;
+      position: absolute;
+      top: 100%;
+      margin-top: 12px;
+      left: 0;
+      min-width: 200px;
+      background: var(--white);
+      border: 1px solid rgba(184,164,122,.2);
       border-radius: var(--radius-sm);
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      display: inline-block;
+      box-shadow: var(--shadow-md);
+      padding: 12px 0;
+      z-index: 999;
     }
-    .read-more-btn:hover {
-      background: var(--gold-lt);
+    .main-nav .has-dropdown:hover .drop-panel,
+    .main-nav .has-dropdown:focus-within .drop-panel { display: block; }
+    .main-nav .drop-panel.open { display: block; }
+    .drop-panel a {
+      display: block;
+      padding: 9px 18px;
+      font-size: 13.5px;
+      color: var(--stone);
+      transition: background .15s;
     }
-    .read-more-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
+    .drop-panel a:hover { background: var(--mist); }
+
+    .btn-book {
+      background: var(--stone);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 10px 22px;
+      border-radius: 8px;
+      letter-spacing: .3px;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 2px 10px rgba(58,58,48,.2);
+      white-space: nowrap;
     }
-    .read-more-content.active {
-      max-height: 500px;
+    .btn-book:hover {
+      background: var(--warm);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(58,58,48,.25);
     }
 
-    /* ───────────────────────── Amenities ───────────────────────── */
-    .amenities-grid {
+    /* Mobile hamburger */
+    .mnav-btn { display: none; }
+    @media (max-width: 768px) {
+      .main-nav, .btn-book { display: none !important; }
+      .mnav-btn {
+        display: grid;
+        place-items: center;
+        width: 44px; height: 44px;
+        border: none; background: transparent; cursor: pointer;
+      }
+      .mnav-btn span {
+        display: block;
+        width: 22px; height: 2px;
+        background: var(--stone);
+        margin: 4px 0;
+        border-radius: 2px;
+        transition: transform .2s, opacity .2s;
+      }
+    }
+
+    /* Mobile sheet */
+    .mnav-sheet { display: none; pointer-events: none; position: fixed; inset: 0; z-index: 1500; }
+    @media (max-width: 768px) {
+      .mnav-sheet { display: block; }
+      .mnav-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.45); opacity: 0; transition: opacity .25s; }
+      .mnav-panel {
+        position: absolute; top: 0; right: 0;
+        height: 100%; width: min(90vw, 380px);
+        background: var(--white);
+        border-top-left-radius: 20px; border-bottom-left-radius: 20px;
+        transform: translateX(100%); transition: transform .28s cubic-bezier(.4,0,.2,1);
+        box-shadow: -12px 0 40px rgba(0,0,0,.18);
+        display: flex; flex-direction: column;
+      }
+      .mnav-sheet.open { pointer-events: auto; }
+      .mnav-sheet.open .mnav-backdrop { opacity: 1; }
+      .mnav-sheet.open .mnav-panel { transform: translateX(0); }
+      .mnav-head {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 20px 22px;
+        border-bottom: 1px solid var(--parch);
+        font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--stone);
+      }
+      .mnav-close {
+        all: unset; width: 34px; height: 34px; display: grid; place-items: center;
+        cursor: pointer; font-size: 22px; border-radius: 50%; color: var(--warm);
+      }
+      .mnav-close:hover { background: var(--mist); }
+      .mnav-body { flex: 1; overflow-y: auto; padding: 22px 22px 100px; display: grid; gap: 28px; }
+      .mnav-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--gold); margin-bottom: 8px; }
+      .mnav-group { display: grid; gap: 2px; }
+      .mnav-item {
+        display: block; padding: 13px 0;
+        font-size: 16px; color: var(--stone); font-weight: 500;
+        border-bottom: 1px solid var(--parch);
+      }
+      .mnav-cta {
+        position: sticky; bottom: 0;
+        padding: 14px 22px calc(14px + env(safe-area-inset-bottom));
+        background: var(--white); border-top: 1px solid var(--parch);
+      }
+      .mnav-book {
+        display: block; width: 100%; text-align: center;
+        background: var(--stone); color: var(--white);
+        font-weight: 700; font-size: 16px; padding: 16px;
+        border-radius: 12px; letter-spacing: .3px;
+        box-shadow: var(--shadow-md);
+      }
+    }
+
+    /* ─── Main spacing ───────────────────────────────────────── */
+    main { padding-top: var(--header-clear); }
+
+    /* ─── Property Details Section ───────────────────────────── */
+    #bliss-details {
+      background: var(--cream);
+      color: var(--ink);
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 1rem;
-      margin-bottom: 3rem;
+      place-items: center;
+      padding: 48px 16px 120px;
     }
-    .amenity {
-      padding: 1rem;
-      background: var(--white);
-      border: 1px solid var(--parch);
-      border-radius: var(--radius-md);
+    #bliss-details .bd-wrap { width: min(70vw, 1200px); display: grid; gap: 22px; }
+    .bd-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 3vw, 2.6rem);
+      font-weight: 500;
+      color: var(--dark);
+      margin: 0;
       text-align: center;
-      font-size: 0.85rem;
-      transition: all 0.3s ease;
+      line-height: 1.2;
+      margin-top: 8px;
     }
-    .amenity:hover {
-      border-color: var(--gold);
+
+    /* Gallery */
+    #bliss-details .bd-gallery {
+      width: 90vw;
+      max-width: 1600px;
+      margin-left: calc(50% - 45vw);
+      margin-right: calc(50% - 45vw);
+    }
+    @media (min-width: 1600px) {
+      #bliss-details .bd-gallery {
+        margin-left: calc(50% - 800px);
+        margin-right: calc(50% - 800px);
+      }
+    }
+    .bd-gallery {
+      display: grid; gap: 12px;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-auto-rows: 190px;
+      border-radius: 16px;
+    }
+    .g-item { overflow: hidden; border-radius: 14px; background: var(--parch); position: relative; }
+    .g-item > img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s cubic-bezier(.25,.46,.45,.94); }
+    .g-item:hover > img { transform: scale(1.05); }
+    .g-hero { grid-row: 1 / span 2; grid-column: 1 / span 1; }
+    .g-2 { grid-column: 2; grid-row: 1; }
+    .g-3 { grid-column: 3; grid-row: 1; }
+    .g-4 { grid-column: 2; grid-row: 2; }
+    .g-5 { grid-column: 3; grid-row: 2; }
+
+    .view-all {
+      position: absolute; right: 10px; bottom: 10px;
+      background: rgba(250,248,244,.9); color: var(--stone);
+      border: 1px solid rgba(184,164,122,.3);
+      padding: 9px 14px; border-radius: 999px;
+      font-weight: 600; font-size: .875rem; cursor: pointer;
+      backdrop-filter: blur(6px);
+      box-shadow: var(--shadow-sm);
+      transition: background .2s;
+    }
+    .view-all:hover { background: var(--white); }
+
+    /* Two-column row */
+    .bd-two {
+      display: grid; gap: 24px;
+      grid-template-columns: 1.65fr .95fr;
+      align-items: start;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--white);
+      border: 1px solid rgba(184,164,122,.18);
+      border-radius: var(--radius-md);
       box-shadow: var(--shadow-sm);
     }
+    .pad { padding: 20px 22px; }
+    .h4 { font-family: var(--font-display); font-size: 1.15rem; color: var(--warm); margin: 0 0 12px; letter-spacing: .2px; font-weight: 500; }
 
-    /* ───────────────────────── Policies ───────────────────────── */
-    .policies-section {
-      margin-bottom: 3rem;
-    }
-    .policy-item {
-      padding: 1.5rem;
-      background: var(--white);
-      border-left: 4px solid var(--gold);
-      margin-bottom: 1rem;
-      border-radius: var(--radius-md);
-    }
+    .about-body { color: var(--dark); line-height: 1.75; font-size: 1rem; }
+    .clamp-wrap { position: relative; overflow: hidden; }
+    .clamp-wrap.clamped { max-height: 135px; }
+    .fade { position: absolute; left: 0; right: 0; bottom: 0; height: 44px; background: linear-gradient(to bottom, rgba(255,255,255,0), var(--white)); }
+    .link { background: none; border: 0; padding: 0; color: var(--warm); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; font-size: .9rem; margin-top: 8px; display: inline-block; }
+
+    .amen-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px 28px; padding-top: 2px; }
+    .amen { display: grid; grid-template-columns: 28px 1fr; align-items: center; column-gap: 12px; min-height: 28px; }
+    .amen img { width: 28px; height: 28px; object-fit: contain; display: block; filter: grayscale(100%); opacity: .7; }
+    .amen span { font-size: .9rem; color: var(--dark); }
+
+    .amen-wrap { position: relative; overflow: hidden; }
+    .amen-wrap.clamped { max-height: 240px; }
+    .amen-fade { position: absolute; left: 0; right: 0; bottom: 0; height: 56px; background: linear-gradient(to bottom, rgba(255,255,255,0), var(--white)); pointer-events: none; }
+    .amen-wrap.clamped .amen-extra { display: none; }
+
+    .policy-section { display: grid; gap: 16px; }
+    .policy-card { background: var(--mist); border-radius: var(--radius-sm); padding: 0; border: 1px solid var(--parch); }
     .policy-title {
+      background: var(--mist);
+      padding: 12px 16px;
       font-weight: 600;
-      margin-bottom: 0.5rem;
-      color: var(--ink);
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .95rem;
+      margin: 0;
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
     }
-    .policy-text {
-      font-size: 0.9rem;
-      color: var(--warm);
-      line-height: 1.6;
-    }
-
-    /* ───────────────────────── Location ───────────────────────── */
-    .location-section {
-      margin-bottom: 3rem;
-    }
-    .map-container {
-      width: 100%;
-      height: 400px;
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-      margin-bottom: 1.5rem;
-    }
-    .map-container iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    /* ───────────────────────── Booking Form (Sidebar) ───────────────────────── */
-    .booking-card {
-      background: var(--white);
-      border: 1px solid var(--parch);
-      border-radius: var(--radius-md);
-      padding: 1.5rem;
-      box-shadow: var(--shadow-md);
-    }
-    .booking-card h3 {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      color: var(--ink);
-    }
-    .form-group {
-      margin-bottom: 1rem;
-    }
-    .form-group label {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-      color: var(--ink);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 0.75rem;
-      border: 1px solid var(--parch);
-      border-radius: var(--radius-sm);
-      font-family: var(--font-body);
-      font-size: 16px;
-      color: var(--ink);
-      -webkit-appearance: none;
-      appearance: none;
-    }
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(184, 164, 122, 0.1);
-    }
-    .form-group textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-    .night-count {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-top: 0.25rem;
-    }
-    .btn-primary {
-      width: 100%;
-      padding: 1rem;
-      background: var(--stone);
-      color: var(--white);
-      border: none;
-      border-radius: var(--radius-sm);
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      margin-bottom: 0.75rem;
-    }
-    .btn-primary:hover {
-      background: var(--warm);
-    }
-    .btn-whatsapp {
-      width: 100%;
-      padding: 1rem;
-      background: #25d366;
-      color: var(--white);
-      border: none;
-      border-radius: var(--radius-sm);
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .btn-whatsapp:hover {
-      background: #20ba5a;
-    }
-
-    /* ───────────────────────── Footer ───────────────────────── */
-    footer {
-      background: var(--stone);
-      color: var(--cream);
-      padding: 3rem 1.5rem;
-      padding-bottom: calc(3rem + env(safe-area-inset-bottom));
-      margin-top: 4rem;
-    }
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
+    .policy-title img { width: 20px; height: 20px; filter: grayscale(100%); }
+    .policy-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
+      gap: 14px;
+      padding: 14px 16px 18px;
     }
-    .footer-section h4 {
-      margin-bottom: 1rem;
-      font-weight: 600;
-    }
-    .footer-section a {
-      display: block;
-      margin-bottom: 0.5rem;
-      color: var(--cream);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.3s ease;
-    }
-    .footer-section a:hover {
-      color: var(--gold);
-    }
-
-    /* ───────────────────────── WhatsApp Widget ───────────────────────── */
-    .whatsapp-widget {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 50;
-      animation: waBounce 2s infinite;
-    }
-    .wa-bubble {
-      width: 60px;
-      height: 60px;
-      background: #25d366;
-      border-radius: 50%;
+    .policy-box {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: .9rem;
       display: flex;
       align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: var(--shadow-md);
-      transition: transform 0.3s ease;
+      gap: 8px;
+      border: 1px solid var(--parch);
     }
-    .wa-bubble:hover {
-      transform: scale(1.1);
-    }
-    .wa-bubble svg {
-      width: 32px;
-      height: 32px;
-      fill: white;
-    }
-    @keyframes waBounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
+    .policy-box span { font-size: .82rem; color: var(--muted); }
+    .policy-box img { width: 18px; height: 18px; object-fit: contain; }
 
-    /* ───────────────────────── Lightbox ───────────────────────── */
-    .lightbox-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.9);
-      z-index: 200;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
+    /* Booking sticky card */
+    .book-card { position: sticky; top: calc(var(--header-clear) + 8px); overflow: visible; align-self: start; }
+    .book-head {
+      background: var(--stone);
+      color: var(--white);
+      padding: 16px 20px;
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: .3px;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
     }
-    .lightbox-overlay.active {
+    .book-body { background: var(--white); color: var(--ink); padding: 16px; display: grid; gap: 12px; border-radius: 0 0 var(--radius-md) var(--radius-md); }
+    .f { display: grid; gap: 6px; }
+    .f label { font-size: .83rem; color: var(--warm); font-weight: 500; }
+    .f input, .f textarea, .f select {
+      width: 100%;
+      border-radius: 8px;
+      padding: 10px 12px;
+      border: 1px solid var(--parch);
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 16px;
+      transition: border-color .2s;
+    }
+    .f input:focus, .f textarea:focus, .f select:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: var(--white);
+    }
+    .f input::placeholder, .f textarea::placeholder { color: var(--muted); opacity: 1; }
+    .btn {
+      border: 0; border-radius: 10px; padding: 12px 14px;
+      font-weight: 600; font-family: var(--font-body);
+      font-size: 15px; cursor: pointer;
+      transition: background .2s, transform .15s, box-shadow .2s;
+    }
+    .btn.primary {
+      background: var(--stone);
+      color: var(--white);
+      box-shadow: 0 4px 16px rgba(58,58,48,.2);
+    }
+    .btn.primary:hover {
+      background: var(--warm);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(58,58,48,.25);
+    }
+    .note { font-size: .82rem; color: var(--muted); }
+
+    /* Facts row */
+    .bd-facts {
       display: flex;
+      justify-content: flex-start;
+      gap: 40px;
+      align-items: center;
+      margin-top: 6px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--parch);
+      padding-bottom: 10px;
+      flex-wrap: wrap;
     }
-    .lightbox-img {
-      max-width: 90%;
-      max-height: 90vh;
-      object-fit: contain;
-    }
-    .lightbox-close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 2rem;
-      cursor: pointer;
-      color: white;
+    .bd-facts .fact { display: flex; align-items: center; gap: 8px; font-size: .95rem; color: var(--dark); }
+    .bd-facts img { width: 60px; height: 40px; object-fit: contain; filter: grayscale(100%); opacity: .7; }
+    .bd-facts strong { font-weight: 700; }
+
+    /* Map card */
+    .map-card {
+      width: 100%; height: 420px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid var(--parch);
+      background: var(--mist);
     }
 
-    /* ───────────────────────── Scroll Reveal ───────────────────────── */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    /* Lightbox */
+    .lb { position: fixed; inset: 0; background: rgba(10,10,8,.85); display: none; z-index: 9999; backdrop-filter: blur(4px); }
+    .lb.open { display: grid; place-items: center; }
+    .lb-inner {
+      width: min(92vw, 1100px); height: min(88vh, 900px);
+      position: relative; overflow: hidden;
+      background: #000; border-radius: var(--radius-md);
+      box-shadow: 0 32px 80px rgba(0,0,0,.6);
     }
-    .scroll-reveal {
-      animation: fadeInUp 0.6s ease forwards;
-      opacity: 0;
+    .lb-img { width: 100%; height: 100%; object-fit: contain; background: #000; user-select: none; -webkit-user-drag: none; }
+    .lb-close {
+      position: absolute; top: 14px; right: 14px;
+      width: 46px; height: 46px; border-radius: 50%;
+      background: rgba(255,255,255,.12); color: #fff; font-size: 18px;
+      border: 1px solid rgba(255,255,255,.2);
+      display: grid; place-items: center; cursor: pointer;
+      transition: background .2s;
     }
+    .lb-close:hover { background: rgba(255,255,255,.22); }
+    .lb-prev, .lb-next {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 46px; height: 46px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.2);
+      background: rgba(255,255,255,.12); color: #fff;
+      font-size: 22px; font-weight: 400;
+      display: grid; place-items: center; cursor: pointer;
+      transition: background .2s;
+    }
+    .lb-prev:hover, .lb-next:hover { background: rgba(255,255,255,.22); }
+    .lb-prev { left: 16px; }
+    .lb-next { right: 16px; }
 
-    /* ───────────────────────── Responsive ───────────────────────── */
+    /* Responsive */
+    @media (max-width: 980px) {
+      .bd-gallery { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; }
+      .g-hero { grid-row: auto / span 2; grid-column: 1; }
+      .g-2, .g-3, .g-4, .g-5 { grid-column: 2; }
+      .bd-two { grid-template-columns: 1fr; }
+      .book-card { position: static; }
+      .amen-grid { grid-template-columns: repeat(2, 1fr); }
+      #bliss-details .bd-wrap { width: 100%; }
+    }
     @media (max-width: 768px) {
-      .header-nav { display: none; }
-      .mobile-menu-btn { display: block; }
-      .page-wrapper {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        padding: 1.5rem 1rem;
-      }
-      .sidebar {
-        position: static;
-        top: auto;
-      }
-      .gallery {
-        grid-template-columns: 1fr 1fr;
-        gap: 0.5rem;
-      }
-      .gallery-main {
-        grid-row: auto;
-        grid-column: 1 / 3;
-        min-height: 250px;
-      }
-      .gallery-small {
-        min-height: auto;
-      }
-      .property-facts {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      .map-container {
-        height: 300px;
-      }
-      .whatsapp-widget {
-        bottom: 1rem;
-        right: 1rem;
-      }
-      .wa-bubble {
-        width: 50px;
-        height: 50px;
-      }
-      .wa-bubble svg {
-        width: 28px;
-        height: 28px;
-      }
+      #bliss-details { padding: 24px 12px 80px; }
+      #bliss-details .bd-gallery { width: 100%; margin-left: 0; margin-right: 0; }
+      .policy-grid { grid-template-columns: 1fr; }
+      .map-card { height: 360px; }
+      .lb-inner { width: 100vw; height: 100vh; border-radius: 0; }
+    }
+    @media (max-width: 600px) {
+      .bd-gallery { grid-template-columns: 1fr; grid-auto-rows: 180px; }
     }
 
-    /* Flatpickr custom styling */
-    .flatpickr-calendar {
-      box-shadow: var(--shadow-md) !important;
-      background: var(--white) !important;
-      border-radius: var(--radius-md) !important;
+    /* ─── WhatsApp Widget ────────────────────────────────────── */
+    #wa-widget { position: fixed; right: 20px; bottom: 20px; z-index: 800; font-family: var(--font-body); }
+    #wa-fab {
+      display: grid; place-items: center;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: #22c55e; color: #0b4126;
+      box-shadow: 0 8px 24px rgba(34,197,94,.35);
+      animation: waBounce 2s ease infinite;
+      text-decoration: none;
     }
-    .flatpickr-day.selected {
-      background: var(--gold) !important;
-      border-color: var(--gold) !important;
+    #wa-fab svg { width: 32px; height: 32px; }
+    #wa-card {
+      position: absolute; right: 74px; bottom: 4px;
+      width: 340px;
+      background: var(--white);
+      border: 1px solid var(--parch);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      padding: 18px;
+      display: none; opacity: 0; transform: translateY(8px);
     }
-    .flatpickr-day:hover {
-      background: var(--mist) !important;
+    #wa-card.show { display: block; animation: waIn .3s ease forwards; }
+    #wa-close {
+      all: unset; position: absolute; top: 10px; right: 12px;
+      width: 26px; height: 26px; display: grid; place-items: center;
+      cursor: pointer; font-weight: 700; color: #94a3b8; border-radius: 50%;
+    }
+    #wa-close:hover { background: var(--mist); color: var(--stone); }
+    .wa-row { display: flex; gap: 12px; align-items: flex-start; }
+    .wa-icon {
+      width: 38px; height: 38px; flex-shrink: 0;
+      background: #dcfce7; border-radius: 50%;
+      display: grid; place-items: center;
+    }
+    .wa-icon svg { width: 20px; height: 20px; color: #16a34a; }
+    .wa-title { font-weight: 700; font-size: 15px; color: var(--stone); margin-bottom: 5px; }
+    .wa-cta { font-size: 14px; color: #2563eb; font-weight: 500; }
+    .wa-cta:hover { text-decoration: underline; }
+    @keyframes waBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+    @keyframes waIn { to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 520px) { #wa-card { right: 0; bottom: 72px; width: min(90vw, 340px); } }
+
+    /* ─── Footer ─────────────────────────────────────────────── */
+    footer {
+      background: var(--stone);
+      color: rgba(255,255,255,.7);
+      padding: 56px 20px 28px;
+    }
+    .footer-container {
+      max-width: 1240px;
+      margin: 0 auto 18px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: start;
+    }
+    .footer-links-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .footer-column h4 {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+    .footer-column ul { list-style: none; display: grid; gap: 9px; }
+    .footer-column a {
+      font-size: 14px;
+      color: rgba(255,255,255,.62);
+      transition: color .2s;
+    }
+    .footer-column a:hover { color: var(--gold-lt); }
+    .footer-logo-section {
+      text-align: right;
+      display: grid;
+      gap: 14px;
+      justify-items: end;
+    }
+    .footer-logo { opacity: .85; height: auto; }
+    .social-icons {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+    }
+    .social-icons img {
+      width: 20px; height: 20px;
+      opacity: .55;
+      transition: opacity .2s;
+    }
+    .social-icons img:hover { opacity: .9; }
+    .footer-bottom {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255,255,255,.35);
+    }
+    @media (max-width: 700px) {
+      .footer-container { grid-template-columns: 1fr; }
+      .footer-links-group { grid-template-columns: 1fr 1fr; }
+      .footer-logo-section { text-align: left; justify-items: start; }
+      .social-icons { justify-content: flex-start; }
     }
   </style>
 </head>
+
 <body>
-  <!-- Header -->
-  <header>
-    <a href="property2.html" class="header-logo">Bliss Living</a>
-    <nav class="header-nav">
-      <a href="property2.html">Properties</a>
-      <a href="booknow.html">Book Now</a>
-      <a href="#contact">Contact</a>
+
+<!-- ═══ HEADER ════════════════════════════════════════════════ -->
+<header id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Bliss Living</a>
+    <div class="spacer"></div>
+    <nav class="main-nav">
+      <ul>
+        <li class="has-dropdown">
+          <a href="#">Locations <span>▾</span></a>
+          <div class="drop-panel">
+            <a href="property.html">Maida Vale</a>
+            <a href="property1.html">Paddington</a>
+            <a href="property2.html">Nine Elms</a>
+            <a href="property3.html">Kennington</a>
+            <a href="property4.html">Wimbledon</a>
+          </div>
+        </li>
+        <li class="has-dropdown">
+          <a href="#">Menu <span>▾</span></a>
+          <div class="drop-panel">
+            <a href="faq.html">FAQs</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+            <a href="privacy.html">Privacy Policy</a>
+          </div>
+        </li>
+      </ul>
     </nav>
-    <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
-  </header>
+    <a class="btn-book" href="booknow.html">Book now</a>
+    <button id="mnavBtn" class="mnav-btn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-  <!-- Mobile Menu -->
-  <nav class="mobile-menu" id="mobileMenu">
-    <a href="property2.html">Properties</a>
-    <a href="booknow.html">Book Now</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <!-- Main Content -->
-  <div class="page-wrapper">
-    <div class="main-content">
-      <!-- Gallery -->
-      <div class="gallery" id="gallery">
-        <img src="Property2/Elms5/WEB KITCHEN 3.jpg" alt="Modern kitchen" class="gallery-main" />
-        <img src="Property2/Elms5/WEB3.jpg" alt="Living area" />
-        <img src="Property2/Elms5/WEB6.jpg" alt="Bedroom" />
-        <img src="Property2/Elms5/IMG_3660.jpg" alt="Details" />
+<!-- Mobile sheet -->
+<aside id="mnav" class="mnav-sheet" aria-hidden="true">
+  <div class="mnav-backdrop"></div>
+  <div class="mnav-panel" role="dialog" aria-modal="true">
+    <div class="mnav-head">
+      Bliss Living
+      <button id="mnavClose" class="mnav-close" aria-label="Close">✕</button>
+    </div>
+    <div class="mnav-body">
+      <div class="mnav-group">
+        <div class="mnav-label">Locations</div>
+        <a class="mnav-item" href="property.html">Maida Vale</a>
+        <a class="mnav-item" href="property1.html">Paddington</a>
+        <a class="mnav-item" href="property2.html">Nine Elms</a>
+        <a class="mnav-item" href="property3.html">Kennington</a>
+        <a class="mnav-item" href="property4.html">Wimbledon</a>
       </div>
-
-      <!-- Property Facts -->
-      <div class="property-facts">
-        <div class="fact">
-          <div class="fact-icon">🛏️</div>
-          <div>
-            <div class="fact-label">Bedrooms</div>
-            <div class="fact-value">2</div>
-          </div>
-        </div>
-        <div class="fact">
-          <div class="fact-icon">🚿</div>
-          <div>
-            <div class="fact-label">Bathrooms</div>
-            <div class="fact-value">2</div>
-          </div>
-        </div>
-        <div class="fact">
-          <div class="fact-icon">🛌</div>
-          <div>
-            <div class="fact-label">Total Beds</div>
-            <div class="fact-value">5</div>
-          </div>
-        </div>
-        <div class="fact">
-          <div class="fact-icon">👥</div>
-          <div>
-            <div class="fact-label">Sleeps</div>
-            <div class="fact-value">8</div>
-          </div>
-        </div>
+      <div class="mnav-group">
+        <div class="mnav-label">Menu</div>
+        <a class="mnav-item" href="faq.html">FAQs</a>
+        <a class="mnav-item" href="terms.html">Terms &amp; Conditions</a>
+        <a class="mnav-item" href="privacy.html">Privacy Policy</a>
       </div>
-
-      <!-- About Section -->
-      <div class="about-section">
-        <h2 class="section-title">About This Property</h2>
-        <p class="about-text">Step into this beautifully designed duplex apartment, perfectly positioned in the heart of Nine Elms. Blending sleek contemporary style with homely comfort, this spacious two-bedroom property offers the ideal base for families, business travellers, contractors, and groups visiting London. From the moment you arrive, you're welcomed by a bright open-plan layout, elegant décor, and generous natural light flowing across two thoughtfully arranged levels — offering privacy, comfort, and ample space for everyone to relax and unwind.</p>
-
-        <button class="read-more-btn" id="readMoreBtn">Read More</button>
-
-        <div class="read-more-content" id="readMoreContent">
-          <p class="about-text">The spacious living area is designed with comfort and functionality in mind, making it easy to socialise, work remotely, or simply wind down after a day in the city. Two full bathrooms add everyday convenience and privacy, particularly appreciated by larger groups and business travellers.</p>
-
-          <p class="about-text">Exceptionally well connected, Nine Elms Underground Station is just 2–3 minutes' walk away, Vauxhall Station around 5–10 minutes on foot, and local bus stops within metres of the door — putting the whole of London within easy reach. Whether you're staying for a few nights or several months, this stylish duplex delivers space, comfort, and unbeatable connectivity in one of London's most exciting neighbourhoods.</p>
-        </div>
-      </div>
-
-      <!-- Amenities Section -->
-      <div class="about-section">
-        <h2 class="section-title">Amenities & Features</h2>
-        <div class="amenities-grid" id="amenitiesGrid">
-          <div class="amenity">🏠 Fully Furnished</div>
-          <div class="amenity">📶 High-Speed WiFi</div>
-          <div class="amenity">🔑 Keyless Entry</div>
-          <div class="amenity">🌡️ Central Heating</div>
-          <div class="amenity">❄️ Air Conditioning</div>
-          <div class="amenity">📺 Smart TV</div>
-          <div class="amenity">🍽️ Full Kitchen</div>
-          <div class="amenity">🧺 Washing Machine</div>
-          <div class="amenity">🍳 Dishwasher</div>
-          <div class="amenity">☕ Coffee Maker</div>
-          <div class="amenity">🛏️ Quality Linens</div>
-          <div class="amenity">🧴 Premium Toiletries</div>
-          <div class="amenity">🔒 Secure Entry</div>
-          <div class="amenity">💼 Work Desk</div>
-          <div class="amenity">📦 Luggage Storage</div>
-          <div class="amenity">🌞 Natural Light</div>
-          <div class="amenity">🧹 Daily Housekeeping</div>
-          <div class="amenity">📞 24/7 Support</div>
-        </div>
-        <button class="read-more-btn" id="amenitiesBtn" style="margin-top: 1rem;">View All Amenities</button>
-      </div>
-
-      <!-- Policies Section -->
-      <div class="policies-section">
-        <h2 class="section-title">Stay Policies</h2>
-
-        <div class="policy-item">
-          <div class="policy-title">🔑 Check-In & Check-Out</div>
-          <div class="policy-text">Check-in from 3:00 PM, check-out by 11:00 AM. Early check-in and late check-out subject to availability. Please contact us at least 24 hours in advance to arrange.</div>
-        </div>
-
-        <div class="policy-item">
-          <div class="policy-title">👥 House Rules</div>
-          <div class="policy-text">Please respect quiet hours between 10:00 PM and 8:00 AM. No smoking inside the property. Pets are welcome with prior notification. Parties and large gatherings require prior approval.</div>
-        </div>
-
-        <div class="policy-item">
-          <div class="policy-title">💳 Cancellation Policy</div>
-          <div class="policy-text">Free cancellation up to 7 days before arrival. 50% refund for cancellations between 3-7 days before arrival. No refund for cancellations within 3 days of arrival.</div>
-        </div>
-
-        <div class="policy-item">
-          <div class="policy-title">🚫 Damage Policy</div>
-          <div class="policy-text">Guests are responsible for any damage to the property during their stay. A full security deposit may be charged for significant damage. Normal wear and tear is expected.</div>
-        </div>
-      </div>
-
-      <!-- Location Section -->
-      <div class="location-section">
-        <h2 class="section-title">Location</h2>
-        <p class="about-text">Located in the vibrant Nine Elms neighbourhood with excellent transport links and local amenities. Walking distance to restaurants, shops, and parks.</p>
-        <div class="map-container">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.7968054034404!2d-0.12659!3d51.48388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cad3b8b8b8b%3A0x4b8b8b8b8b8b8b8b!2sNine%20Elms%2C%20London!5e0!3m2!1sen!2suk!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
-        </div>
+      <div class="mnav-cta">
+        <a class="mnav-book" href="booknow.html">Book now</a>
       </div>
     </div>
+  </div>
+</aside>
 
-    <!-- Sidebar: Booking Form -->
-    <aside class="sidebar">
-      <div class="booking-card">
-        <h3>Check Availability</h3>
-        <form id="bookingForm">
-          <div class="form-group">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" required />
-          </div>
+<!-- ═══ MAIN ══════════════════════════════════════════════════ -->
+<main>
+  <section id="bliss-details" aria-labelledby="bd-title">
+    <div class="bd-wrap">
+      <h2 id="bd-title" class="bd-title">Modern Duplex Living: Nine Elms, London</h2>
 
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-
-          <div class="form-group">
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" inputmode="tel" />
-          </div>
-
-          <div class="form-group">
-            <label for="dates">Check-in & Check-out</label>
-            <input type="text" id="dates" name="dates" placeholder="Select dates" required />
-            <div class="night-count" id="nightCount"></div>
-          </div>
-
-          <div class="form-group">
-            <label for="guests">Number of Guests</label>
-            <select id="guests" name="guests" style="padding: 0.75rem; border: 1px solid var(--parch); border-radius: var(--radius-sm); font-size: 16px; -webkit-appearance: none;">
-              <option value="">Select guests</option>
-              <option value="1">1 Guest</option>
-              <option value="2">2 Guests</option>
-              <option value="3">3 Guests</option>
-              <option value="4">4 Guests</option>
-              <option value="5">5 Guests</option>
-              <option value="6">6 Guests</option>
-              <option value="7">7 Guests</option>
-              <option value="8">8 Guests</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Special requests or questions..."></textarea>
-          </div>
-
-          <button type="submit" class="btn-primary">Check Availability</button>
-          <a href="https://wa.me/447700900200?text=Hi%20Bliss%20Living,%20I%20am%20interested%20in%20the%20Modern%20Duplex%20Living%20in%20Nine%20Elms" target="_blank" class="btn-whatsapp">WhatsApp Us</a>
-        </form>
+      <!-- ================= GALLERY ================= -->
+      <div class="bd-gallery" id="bd-gallery">
+        <a class="g-item g-hero" href="Property2/WEB 1.jpg"><img src="Property2/WEB 1.jpg" alt="Living area"></a>
+        <a class="g-item g-2"   href="Property2/WEB 3.jpg"><img src="Property2/WEB 3.jpg" alt="Kitchen"></a>
+        <a class="g-item g-3"   href="Property2/WEB 5.jpg"><img src="Property2/WEB 5.jpg" alt="Bedroom"></a>
+        <a class="g-item g-4"   href="Property2/WEB 7.jpg"><img src="Property2/WEB 7.jpg" alt="Bathroom"></a>
+        <a class="g-item g-5"   href="Property2/WEB 9.jpg">
+          <img src="Property2/WEB 9.jpg" alt="Details">
+          <button class="view-all" type="button" id="bd-view">View all photos</button>
+        </a>
       </div>
-    </aside>
-  </div>
 
-  <!-- Lightbox -->
-  <div class="lightbox-overlay" id="lightboxOverlay">
-    <span class="lightbox-close" id="lightboxClose">&times;</span>
-    <img class="lightbox-img" id="lightboxImg" />
-  </div>
-
-  <!-- WhatsApp Widget -->
-  <div class="whatsapp-widget">
-    <a href="https://wa.me/447700900200?text=Hi%20Bliss%20Living,%20I%20am%20interested%20in%20the%20Modern%20Duplex%20Living%20in%20Nine%20Elms" target="_blank" style="text-decoration: none;">
-      <div class="wa-bubble">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.272-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004c-1.762 0-3.415.686-4.659 1.921-1.244 1.235-1.929 2.889-1.929 4.651 0 1.763.685 3.432 1.931 4.667 1.231 1.22 2.88 1.894 4.657 1.894h.006c1.763 0 3.432-.686 4.667-1.931 1.235-1.244 1.922-2.888 1.922-4.651 0-1.762-.686-3.416-1.922-4.659C10.341 8.664 8.704 7.979 7.051 7.979"/>
-        </svg>
+      <!-- Lightbox -->
+      <div class="lb" id="bd-lb" aria-hidden="true">
+        <div class="lb-inner">
+          <img class="lb-img" id="lb-img" alt="">
+          <button class="lb-close" id="lb-close" aria-label="Close">✕</button>
+          <button class="lb-prev"  id="lb-prev"  aria-label="Previous">‹</button>
+          <button class="lb-next"  id="lb-next"  aria-label="Next">›</button>
+        </div>
       </div>
-    </a>
+
+      <!-- ================= PROPERTY FACTS ================= -->
+      <div class="bd-facts">
+        <div class="fact"><img src="icons/bed.png" alt="Bedrooms"><span><strong>2</strong> Bedrooms</span></div>
+        <div class="fact"><img src="icons/bath.png" alt="Bathrooms"><span><strong>2</strong> Bathrooms</span></div>
+        <div class="fact"><img src="icons/sofa.png" alt="Beds"><span><strong>5</strong> Beds</span></div>
+        <div class="fact"><img src="icons/peep.png" alt="Sleeps"><span>Sleeps <strong>8</strong></span></div>
+      </div>
+
+      <!-- ================= TWO COLUMN ================= -->
+      <div class="bd-two">
+
+        <!-- LEFT -->
+        <div class="bd-left" style="display:grid; gap:18px;">
+
+          <!-- About -->
+          <article class="card pad" aria-labelledby="about-head">
+            <h3 id="about-head" class="h4">About this property</h3>
+            <div class="clamp-wrap clamped" id="about-wrap">
+              <div class="about-body">
+                Step into this beautifully designed duplex apartment, perfectly positioned in the heart of Nine Elms. Blending sleek contemporary style with homely comfort, this spacious two-bedroom property offers the ideal base for families, business travellers, contractors, and groups visiting London.
+                <br><br>
+                From the moment you arrive, you're welcomed by a bright open-plan layout, elegant décor, and generous natural light flowing across two thoughtfully arranged levels — offering privacy, comfort, and ample space for everyone to relax and unwind.
+                <br><br>
+                The spacious living area is designed with comfort and functionality in mind, making it easy to socialise, work remotely, or simply wind down after a day in the city. Two full bathrooms add everyday convenience and privacy, particularly appreciated by larger groups and business travellers.
+                <br><br>
+                Exceptionally well connected, Nine Elms Underground Station is just 2–3 minutes' walk away, Vauxhall Station around 5–10 minutes on foot, and local bus stops within metres of the door — putting the whole of London within easy reach. Whether you're staying for a few nights or several months, this stylish duplex delivers space, comfort, and unbeatable connectivity in one of London's most exciting neighbourhoods.
+                <br><br>
+                <strong>A contemporary two-bedroom duplex offering space, style, and seamless connectivity in the heart of Nine Elms.</strong>
+              </div>
+              <div class="fade" aria-hidden="true"></div>
+            </div>
+            <button class="link" id="about-toggle" type="button" aria-controls="about-wrap" aria-expanded="false">Read more</button>
+          </article>
+
+          <!-- Amenities -->
+          <section class="card pad" aria-labelledby="amen-head">
+            <h3 id="amen-head" class="h4">Amenities</h3>
+            <div class="amen-wrap clamped" id="amen-wrap">
+              <div class="amen-grid">
+                <div class="amen"><img src="prop icon/1.png" alt=""><span>Garden View</span></div>
+                <div class="amen"><img src="prop icon/2.png" alt=""><span>Bath</span></div>
+                <div class="amen"><img src="prop icon/3.png" alt=""><span>Hair Dryer</span></div>
+                <div class="amen"><img src="prop icon/4.png" alt=""><span>Cleaning Products</span></div>
+                <div class="amen"><img src="prop icon/5.png" alt=""><span>Shampoo</span></div>
+                <div class="amen"><img src="prop icon/6.png" alt=""><span>Body Soap</span></div>
+                <div class="amen"><img src="prop icon/7.png" alt=""><span>Hot Water</span></div>
+                <div class="amen"><img src="prop icon/8.png" alt=""><span>Shower Gel</span></div>
+                <div class="amen"><img src="prop icon/9.png" alt=""><span>Washing Machine</span></div>
+                <div class="amen amen-extra"><img src="prop icon/10.png" alt=""><span>Dryer</span></div>
+                <div class="amen amen-extra"><img src="prop icon/11.png" alt=""><span>Essentials</span></div>
+                <div class="amen amen-extra"><img src="prop icon/12.png" alt=""><span>Hangers</span></div>
+                <div class="amen amen-extra"><img src="prop icon/13.png" alt=""><span>Bed Linen</span></div>
+                <div class="amen amen-extra"><img src="prop icon/14.png" alt=""><span>Room-darkening blinds</span></div>
+                <div class="amen amen-extra"><img src="prop icon/15.png" alt=""><span>Iron</span></div>
+                <div class="amen amen-extra"><img src="prop icon/16.png" alt=""><span>Clothes drying rack</span></div>
+                <div class="amen amen-extra"><img src="prop icon/17.png" alt=""><span>TV</span></div>
+                <div class="amen amen-extra"><img src="prop icon/18.png" alt=""><span>Books and reading material</span></div>
+                <div class="amen amen-extra"><img src="prop icon/19.png" alt=""><span>Heating</span></div>
+                <div class="amen amen-extra"><img src="prop icon/20.png" alt=""><span>Smoke alarm</span></div>
+                <div class="amen amen-extra"><img src="prop icon/21.png" alt=""><span>Carbon monoxide alarm</span></div>
+                <div class="amen amen-extra"><img src="prop icon/22.png" alt=""><span>First aid kit</span></div>
+                <div class="amen amen-extra"><img src="prop icon/23.png" alt=""><span>Wifi</span></div>
+                <div class="amen amen-extra"><img src="prop icon/24.png" alt=""><span>Dedicated workspace</span></div>
+                <div class="amen amen-extra"><img src="prop icon/25.png" alt=""><span>Kitchen</span></div>
+                <div class="amen amen-extra"><img src="prop icon/26.png" alt=""><span>Fridge</span></div>
+                <div class="amen amen-extra"><img src="prop icon/27.png" alt=""><span>Microwave</span></div>
+                <div class="amen amen-extra"><img src="prop icon/28.png" alt=""><span>Cooking basics</span></div>
+                <div class="amen amen-extra"><img src="prop icon/29.png" alt=""><span>Dishes and cutlery</span></div>
+                <div class="amen amen-extra"><img src="prop icon/30.png" alt=""><span>Freezer</span></div>
+                <div class="amen amen-extra"><img src="prop icon/31.png" alt=""><span>Dishwasher</span></div>
+                <div class="amen amen-extra"><img src="prop icon/32.png" alt=""><span>Cooker</span></div>
+                <div class="amen amen-extra"><img src="prop icon/33.png" alt=""><span>Oven</span></div>
+                <div class="amen amen-extra"><img src="prop icon/34.png" alt=""><span>Kettle</span></div>
+                <div class="amen amen-extra"><img src="prop icon/35.png" alt=""><span>Wine glasses</span></div>
+                <div class="amen amen-extra"><img src="prop icon/36.png" alt=""><span>Toaster</span></div>
+                <div class="amen amen-extra"><img src="prop icon/37.png" alt=""><span>Dining table</span></div>
+                <div class="amen amen-extra"><img src="prop icon/38.png" alt=""><span>Private entrance</span></div>
+                <div class="amen amen-extra"><img src="prop icon/39.png" alt=""><span>Launderette nearby</span></div>
+                <div class="amen amen-extra"><img src="prop icon/40.png" alt=""><span>Private back garden</span></div>
+                <div class="amen amen-extra"><img src="prop icon/41.png" alt=""><span>Outdoor furniture</span></div>
+                <div class="amen amen-extra"><img src="prop icon/42.png" alt=""><span>Free parking on premises</span></div>
+                <div class="amen amen-extra"><img src="prop icon/43.png" alt=""><span>Paid street parking off premises</span></div>
+                <div class="amen amen-extra"><img src="prop icon/44.png" alt=""><span>Single level home</span></div>
+                <div class="amen amen-extra"><img src="prop icon/45.png" alt=""><span>Pets allowed</span></div>
+                <div class="amen amen-extra"><img src="prop icon/46.png" alt=""><span>Luggage drop-off allowed</span></div>
+                <div class="amen amen-extra"><img src="prop icon/47.png" alt=""><span>Long-term stays allowed</span></div>
+                <div class="amen amen-extra"><img src="prop icon/48.png" alt=""><span>Cleaning available during stay</span></div>
+              </div>
+              <div class="amen-fade" aria-hidden="true"></div>
+            </div>
+            <button class="link" id="amen-toggle" type="button" aria-controls="amen-wrap" aria-expanded="false">View all</button>
+          </section>
+
+          <!-- Policies -->
+          <section class="card pad" aria-labelledby="pol-head">
+            <h3 id="pol-head" class="h4">Stay Policies</h3>
+            <div class="policy-section">
+              <div class="policy-card">
+                <div class="policy-title"><img src="prop icon/ch_ch.png" alt=""><span>Check-in &amp; Check-out</span></div>
+                <div class="policy-grid">
+                  <div class="policy-box"><span>Check-in time</span>3:00 PM</div>
+                  <div class="policy-box"><span>Check-out time</span>10:00 AM</div>
+                </div>
+              </div>
+              <div class="policy-card">
+                <div class="policy-title"><img src="prop icon/rules.png" alt=""><span>House Rules</span></div>
+                <div class="policy-grid">
+                  <div class="policy-box"><img src="prop icon/smoke.png" alt=""> No smoking</div>
+                  <div class="policy-box"><img src="prop icon/pet.png" alt=""> No pets</div>
+                  <div class="policy-box"><img src="prop icon/party.png" alt=""> No parties or events</div>
+                  <div class="policy-box"><img src="prop icon/deposit.png" alt=""> Security deposit required</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Location -->
+          <section class="card pad" aria-labelledby="loc-head">
+            <h3 id="loc-head" class="h4">Location</h3>
+            <div class="map-holder">
+              <iframe class="map-card" loading="lazy" allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=Nine+Elms+London+SW8&output=embed"></iframe>
+            </div>
+            <p style="margin-top:10px; font-size:.85rem; color:var(--muted);">Exact address is shared after booking.</p>
+          </section>
+
+        </div>
+
+        <!-- RIGHT: Booking card -->
+        <aside class="book-card card" role="complementary" aria-label="Book your stay">
+          <div class="book-head">Book your stay</div>
+          <form class="book-body" action="https://formspree.io/f/mvgqjpkv" method="POST">
+            <div class="f">
+              <label for="q-name">Full name</label>
+              <input id="q-name" name="name" type="text" placeholder="Jane Doe" required>
+            </div>
+            <div class="f">
+              <label for="q-email">Email</label>
+              <input id="q-email" name="email" type="email" placeholder="jane@email.com" required>
+            </div>
+            <div class="f">
+              <label for="q-phone">Phone (optional)</label>
+              <input id="q-phone" name="phone" type="tel" placeholder="+44 7XXX XXX XXX">
+            </div>
+            <div class="f">
+              <label for="q-dates">Select dates</label>
+              <input id="q-dates" name="dates" type="text" placeholder="e.g., 14–17 Oct (3 nights)">
+            </div>
+            <div class="f">
+              <label for="q-guests">Guests</label>
+              <select id="q-guests" name="guests">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option selected>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+              </select>
+            </div>
+            <div class="f">
+              <label for="q-msg">Message</label>
+              <textarea id="q-msg" name="message" rows="3" placeholder="Tell us anything helpful…"></textarea>
+            </div>
+            <input type="hidden" name="_subject" value="Bliss Living – Nine Elms Duplex enquiry">
+            <button class="btn primary" type="submit">Check availability</button>
+            <div class="note">Instant confirmation for eligible bookings.</div>
+          </form>
+
+          <!-- Flatpickr -->
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+          <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+          <script>
+            flatpickr("#q-dates", {
+              mode: "range",
+              dateFormat: "d M Y",
+              ariaDateFormat: "F j, Y",
+              minDate: "today",
+              showMonths: 2,
+              disableMobile: true,
+              onClose: function(selectedDates, dateStr, instance) {
+                if (selectedDates.length === 2) {
+                  const oneDay = 24 * 60 * 60 * 1000;
+                  const nights = Math.round((selectedDates[1] - selectedDates[0]) / oneDay);
+                  instance.input.value =
+                    `${instance.formatDate(selectedDates[0], "d M")} – ${instance.formatDate(selectedDates[1], "d M")} (${nights} night${nights > 1 ? 's' : ''})`;
+                }
+              }
+            });
+          </script>
+          <style>
+            .flatpickr-calendar { border-radius: 12px; box-shadow: 0 18px 32px rgba(0,0,0,.12); font-family: inherit; }
+            .flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange { background: var(--stone); border-color: var(--stone); color: #fff; }
+            .flatpickr-day.inRange { background: rgba(58,58,48,.1); }
+          </style>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ═══ WHATSAPP ══════════════════════════════════════════════ -->
+<div id="wa-widget" aria-live="polite">
+  <a id="wa-fab" href="https://wa.me/447365208676?text=Hi%20Bliss%20Stays!%20I%20have%20a%20question." target="_blank" rel="noopener" aria-label="WhatsApp chat">
+    <svg viewBox="0 0 32 32"><path fill="currentColor" d="M19.11 17.71c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.17-.43-2.23-1.37-.82-.73-1.37-1.63-1.53-1.9-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.02-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.3s.98 2.66 1.12 2.84c.14.18 1.93 2.95 4.68 4.14.65.28 1.15.45 1.54.59.65.21 1.25.18 1.72.11.52-.08 1.6-.65 1.82-1.29.22-.64.22-1.18.16-1.29-.07-.11-.23-.18-.5-.32zM16.02 3.2c-6.99 0-12.66 5.67-12.66 12.66 0 2.23.59 4.32 1.62 6.12L3 29l7.19-1.89c1.72.94 3.69 1.47 5.83 1.47 6.99 0 12.66-5.67 12.66-12.66S23.01 3.2 16.02 3.2zm0 22.88c-1.95 0-3.76-.57-5.29-1.55l-.38-.24-4.28 1.12 1.15-4.17-.25-.43a9.98 9.98 0 0 1-1.49-5.25c0-5.53 4.5-10.02 10.02-10.02s10.02 4.5 10.02 10.02-4.5 10.02-10.02 10.02z"/></svg>
+  </a>
+  <div id="wa-card" role="dialog" aria-label="WhatsApp quick chat">
+    <button id="wa-close" aria-label="Dismiss">×</button>
+    <div class="wa-row">
+      <div class="wa-icon">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M16.2 13.6c-.2-.1-1.1-.6-1.3-.7-.2-.1-.3-.1-.5.1l-.6.7c-.2.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.1-.7-.6-1.1-1.3-1.2-1.5-.1-.2 0-.3.1-.5l.4-.4c.1-.1.1-.3.2-.4s0-.3-.1-.5-.5-1.2-.7-1.7c-.2-.4-.4-.3-.6-.3h-.4c-.1 0-.4.1-.6.3-.2.2-.8.7-.8 1.8s.8 2.1.9 2.2c.1.1 1.5 2.3 3.7 3.3.5.2.9.4 1.2.5.5.2 1 .1 1.3.1.4-.1 1.3-.5 1.5-1 .2-.5.2-.9.1-1 0-.1-.2-.2-.4-.3zM12 2C6.5 2 2 6.3 2 11.6c0 2 .6 3.9 1.6 5.4L2 22l5.1-1.3c1.5.8 3.2 1.2 4.9 1.2 5.5 0 10-4.3 10-9.6S17.5 2 12 2z"/></svg>
+      </div>
+      <div class="wa-text">
+        <div class="wa-title">Have a question? 👋</div>
+        <a class="wa-cta" href="https://wa.me/447365208676?text=Hi%20Bliss%20Stays%2C%20I%27d%20like%20to%20enquire..." target="_blank" rel="noopener">Start a conversation on WhatsApp</a>
+      </div>
+    </div>
   </div>
+</div>
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script>
-    // Mobile Menu Toggle
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
+<!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-links-group">
+      <div class="footer-column">
+        <h4>Bliss Living</h4>
+        <ul>
+          <li><a href="property.html">Properties</a></li>
+          <li><a href="terms.html">Terms &amp; Conditions</a></li>
+          <li><a href="faq.html">FAQs</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Enquiries</h4>
+        <ul>
+          <li><a href="booknow.html">Corporate Bookings</a></li>
+          <li><a href="booknow.html">Group Bookings</a></li>
+          <li><a href="booknow.html">Apart-hotels</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-logo-section">
+      <img src="Footnote_Logo.png" alt="Bliss Living" class="footer-logo" width="200" loading="lazy">
+      <div class="social-icons">
+        <a href="#" aria-label="Instagram"><img src="icons/insta.png" alt="Instagram" width="22" height="22"></a>
+        <a href="#" aria-label="Facebook"><img src="icons/fb.png" alt="Facebook" width="22" height="22"></a>
+      </div>
+    </div>
+  </div>
+  <p class="footer-bottom">&copy; Bliss Living Ltd. 2025. All rights reserved.</p>
+</footer>
 
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('active');
-    });
+<!-- ═══ SCRIPTS ═══════════════════════════════════════════════ -->
+<script>
+  // Header compact on scroll
+  (function(){
+    const header = document.getElementById('site-header');
+    if (!header) return;
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+  })();
 
-    document.querySelectorAll('.mobile-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
+  // Mobile nav open/close
+  (function(){
+    const btn      = document.getElementById('mnavBtn');
+    const sheet    = document.getElementById('mnav');
+    const close    = document.getElementById('mnavClose');
+    const backdrop = sheet?.querySelector('.mnav-backdrop');
+
+    function openSheet() {
+      sheet.classList.add('open');
+      sheet.setAttribute('aria-hidden', 'false');
+      btn?.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeSheet() {
+      sheet.classList.remove('open');
+      sheet.setAttribute('aria-hidden', 'true');
+      btn?.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    btn?.addEventListener('click', openSheet);
+    close?.addEventListener('click', closeSheet);
+    backdrop?.addEventListener('click', closeSheet);
+    sheet?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeSheet));
+  })();
+
+  // Dropdown click support (touch-friendly)
+  document.querySelectorAll('.main-nav .has-dropdown > a').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      if (trigger.getAttribute('href') === '#') e.preventDefault();
+      const parent = trigger.parentElement;
+      const panel  = parent.querySelector('.drop-panel');
+      const isOpen = panel?.classList.contains('open');
+      document.querySelectorAll('.main-nav .drop-panel.open').forEach(p => {
+        if (p !== panel) p.classList.remove('open');
       });
+      panel?.classList.toggle('open', !isOpen);
     });
+  });
+  document.addEventListener('click', (e) => {
+    const nav = document.querySelector('.main-nav');
+    if (!nav) return;
+    if (!nav.contains(e.target)) {
+      document.querySelectorAll('.main-nav .drop-panel.open').forEach(p => p.classList.remove('open'));
+    }
+  });
 
-    // Read More Toggle
-    const readMoreBtn = document.getElementById('readMoreBtn');
-    const readMoreContent = document.getElementById('readMoreContent');
-
-    readMoreBtn.addEventListener('click', () => {
-      readMoreContent.classList.toggle('active');
-      readMoreBtn.textContent = readMoreContent.classList.contains('active') ? 'Read Less' : 'Read More';
+  // WhatsApp teaser (once per 24h)
+  (function(){
+    const card  = document.getElementById('wa-card');
+    const close = document.getElementById('wa-close');
+    const KEY   = 'waTeaserDismissedUntil';
+    if (card && Date.now() > Number(localStorage.getItem(KEY) || 0)) {
+      setTimeout(() => card.classList.add('show'), 800);
+    }
+    close?.addEventListener('click', () => {
+      localStorage.setItem(KEY, String(Date.now() + 86400000));
+      card?.remove();
     });
+  })();
 
-    // Amenities Toggle
-    const amenitiesBtn = document.getElementById('amenitiesBtn');
-    const amenitiesGrid = document.getElementById('amenitiesGrid');
+  // About read more/less
+  (function(){
+    const wrap = document.getElementById('about-wrap');
+    const btn  = document.getElementById('about-toggle');
+    if (!wrap || !btn) return;
+    const fade = wrap.querySelector('.fade');
+    function set(expanded) {
+      wrap.classList.toggle('clamped', !expanded);
+      if (fade) fade.style.display = expanded ? 'none' : '';
+      btn.textContent = expanded ? 'Read less' : 'Read more';
+      btn.setAttribute('aria-expanded', String(expanded));
+    }
+    set(false);
+    btn.addEventListener('click', () => set(wrap.classList.contains('clamped')));
+  })();
 
-    amenitiesBtn.addEventListener('click', () => {
-      amenitiesGrid.style.display = amenitiesGrid.style.display === 'none' ? 'grid' : 'none';
-      amenitiesBtn.textContent = amenitiesGrid.style.display === 'none' ? 'View All Amenities' : 'Hide Amenities';
-    });
+  // Amenities view all/less
+  (function(){
+    const wrap = document.getElementById('amen-wrap');
+    const btn  = document.getElementById('amen-toggle');
+    if (!wrap || !btn) return;
+    const fade = wrap.querySelector('.amen-fade');
+    function set(expanded) {
+      wrap.classList.toggle('clamped', !expanded);
+      if (fade) fade.style.display = expanded ? 'none' : '';
+      btn.textContent = expanded ? 'View less' : 'View all';
+      btn.setAttribute('aria-expanded', String(expanded));
+    }
+    set(false);
+    btn.addEventListener('click', () => set(wrap.classList.contains('clamped')));
+  })();
 
-    // Lightbox Gallery
-    const gallery = document.getElementById('gallery');
-    const lightboxOverlay = document.getElementById('lightboxOverlay');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const lightboxClose = document.getElementById('lightboxClose');
+  // Gallery lightbox
+  (function(){
+    const gal     = document.getElementById('bd-gallery');
+    const links   = gal ? Array.from(gal.querySelectorAll('a')) : [];
+    const lb      = document.getElementById('bd-lb');
+    const img     = document.getElementById('lb-img');
+    const closeBtn = document.getElementById('lb-close');
+    const prevBtn  = document.getElementById('lb-prev');
+    const nextBtn  = document.getElementById('lb-next');
 
-    gallery.querySelectorAll('img').forEach(img => {
-      img.addEventListener('click', () => {
-        lightboxImg.src = img.src;
-        lightboxOverlay.classList.add('active');
-      });
-    });
+    if (!gal || !lb || !img || links.length === 0) return;
 
-    lightboxClose.addEventListener('click', () => {
-      lightboxOverlay.classList.remove('active');
-    });
+    let idx = 0;
+    function show(i) { idx = (i + links.length) % links.length; img.src = links[idx].href; }
+    function openAt(i) { show(i); lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; }
+    function closeLb() { lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; }
 
-    lightboxOverlay.addEventListener('click', (e) => {
-      if (e.target === lightboxOverlay) {
-        lightboxOverlay.classList.remove('active');
-      }
-    });
-
-    // Keyboard navigation for lightbox
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        lightboxOverlay.classList.remove('active');
-      }
-    });
-
-    // Flatpickr Date Range Picker
-    flatpickr('#dates', {
-      mode: 'range',
-      minDate: 'today',
-      dateFormat: 'M d, Y',
-      onChange: function(selectedDates) {
-        if (selectedDates.length === 2) {
-          const startDate = selectedDates[0];
-          const endDate = selectedDates[1];
-          const nights = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
-          document.getElementById('nightCount').textContent = nights > 0 ? `${nights} night${nights !== 1 ? 's' : ''}` : '';
-        }
-      },
-      nextArrow: '<span>→</span>',
-      prevArrow: '<span>←</span>'
-    });
-
-    // Scroll Reveal Animation
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.remove('scroll-reveal');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.about-section, .policies-section, .location-section').forEach(el => {
-      el.classList.add('scroll-reveal');
-      observer.observe(el);
-    });
-
-    // Form Submission
-    const bookingForm = document.getElementById('bookingForm');
-    bookingForm.addEventListener('submit', async (e) => {
+    gal.addEventListener('click', (e) => {
+      const btn = e.target.closest('#bd-view');
+      if (btn) { e.preventDefault(); openAt(0); return; }
+      const a = e.target.closest('a');
+      if (!a) return;
       e.preventDefault();
-
-      const formData = new FormData(bookingForm);
-
-      try {
-        const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-          alert('Thank you! Your enquiry has been sent. We will contact you soon.');
-          bookingForm.reset();
-        } else {
-          alert('There was an error sending your message. Please try again.');
-        }
-      } catch (error) {
-        alert('Error submitting form. Please try again.');
-      }
+      openAt(links.indexOf(a));
     });
-  </script>
+
+    prevBtn?.addEventListener('click', () => show(idx - 1));
+    nextBtn?.addEventListener('click', () => show(idx + 1));
+    closeBtn?.addEventListener('click', closeLb);
+    lb.addEventListener('click', (e) => { if (e.target === lb) closeLb(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLb(); });
+  })();
+</script>
+
 </body>
 </html>
