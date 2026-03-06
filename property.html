@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#faf8f4" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Maida Vale – Bliss Living</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -596,6 +597,54 @@
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* ═══ LISTING PAGE MOBILE POLISH ════════════════════════════ */
+    *, *::before, *::after { -webkit-tap-highlight-color: transparent; }
+    button, a { touch-action: manipulation; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    input, select, textarea { font-size: max(16px, 1em); }
+    footer { padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px)); }
+    #wa-widget { bottom: calc(20px + env(safe-area-inset-bottom, 0px)); }
+
+    @media (max-width: 768px) {
+      header { padding: 8px 12px; }
+      .header-inner { padding: 11px 16px; border-radius: 14px; gap: 10px; }
+      .logo { font-size: 19px; }
+
+      /* Gallery height on mobile */
+      .gallery { height: clamp(280px, 78vw, 420px); gap: 7px; }
+      .gallery__tile { border-radius: 10px !important; }
+      .gallery__main { border-radius: 12px !important; }
+
+      /* Prop card: full-width stacked */
+      .prop-card { padding: 20px 18px; }
+      .prop-card__name { font-size: clamp(18px, 5vw, 22px); }
+
+      /* Buttons: big tap targets */
+      .btn-enquire, .btn-details { min-height: 50px; font-size: 14px; }
+
+      /* Page band */
+      .page-band { padding: 36px 16px 0; }
+      .page-band__title { font-size: clamp(28px, 8vw, 44px); }
+      .page-band__sub { font-size: 14px; }
+
+      /* Prop section */
+      .prop-section { padding: 40px 16px 60px; }
+      .prop-sep { margin-bottom: 48px; }
+
+      /* WA */
+      #wa-fab { width: 52px; height: 52px; }
+      #wa-fab svg { width: 26px; height: 26px; }
+      #wa-card { right: 0; bottom: 68px; width: min(92vw, 320px); }
+
+      footer { padding-top: 40px; padding-left: 16px; padding-right: 16px; }
+    }
+
+    @media (max-width: 390px) {
+      .page-band__title { font-size: 26px; }
+      .gallery { height: clamp(240px, 75vw, 340px); }
+      .prop-section { padding: 32px 12px 52px; }
     }
   </style>
 </head>
