@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#faf8f4" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Bliss Living</title>
   <style>
     /* Reset */
@@ -269,6 +270,112 @@
 
 
 
+
+    /* ═══ APPLE-QUALITY MOBILE POLISH ══════════════════════════
+       Covers: safe areas, iOS zoom, tap targets, gallery carousel,
+       lightbox, facts row, footer, WA widget — iPhone-first
+    ════════════════════════════════════════════════════════════ */
+
+    /* Global tap & overflow */
+    *, *::before, *::after { -webkit-tap-highlight-color: transparent; }
+    button, a, summary { touch-action: manipulation; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+
+    /* iOS keyboard zoom prevention — inputs must be ≥16 px */
+    input, select, textarea { font-size: max(16px, 1em); }
+
+    /* Safe-area for fixed/absolute bottom elements */
+    footer { padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px)); }
+    #wa-widget { bottom: calc(20px + env(safe-area-inset-bottom, 0px)); }
+
+    /* ── Phone (≤768 px) ─────────────────────────────────────── */
+    @media (max-width: 768px) {
+
+      /* Header: compact pill */
+      header { padding: 8px 12px; }
+      .header-inner { padding: 11px 16px; border-radius: 14px; gap: 10px; }
+      .logo { font-size: 19px; }
+
+      /* Details section: generous side breathing room */
+      #bliss-details { padding: 20px 16px 80px; }
+      .bd-title { font-size: clamp(1.45rem, 5.5vw, 1.9rem); }
+
+      /* Gallery → swipe carousel */
+      .bd-gallery {
+        display: flex !important;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 10px;
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 0 16px 8px;
+        border-radius: 0;
+      }
+      .bd-gallery::-webkit-scrollbar { display: none; }
+      .bd-gallery .g-item {
+        flex: 0 0 76vw;
+        max-width: 300px;
+        height: 200px;
+        scroll-snap-align: start;
+        border-radius: 14px !important;
+        grid-column: unset !important;
+        grid-row: unset !important;
+      }
+      .bd-gallery .g-hero {
+        flex: 0 0 82vw;
+        max-width: 340px;
+        height: 230px;
+      }
+      .view-all { display: none; }
+
+      /* Facts row: comfortable wrap */
+      .bd-facts { gap: 14px; padding-bottom: 12px; }
+      .bd-facts .fact { font-size: .85rem; }
+      .bd-facts img { width: 42px; height: 28px; }
+
+      /* Two-column already stacks; just tighten gap */
+      .bd-two { gap: 16px; }
+
+      /* Booking card: full-width inputs, 16px to kill iOS zoom */
+      .book-card .f input,
+      .book-card .f select,
+      .book-card .f textarea { font-size: 16px; padding: 12px 14px; }
+      .btn.primary { min-height: 50px; font-size: 15px; }
+
+      /* Amenity grid: 2 columns on phone */
+      .amen-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px; }
+
+      /* Map: shorter on phone */
+      .map-card { height: 280px; }
+
+      /* Lightbox: true fullscreen with safe-area */
+      .lb-inner,
+      .lb-inner { width: 100vw !important; height: 100svh !important; border-radius: 0 !important; }
+      .lb-close { top: max(14px, env(safe-area-inset-top, 14px)); width: 48px; height: 48px; }
+      .lb-prev  { left:  max(14px, env(safe-area-inset-left,  14px)); width: 48px; height: 48px; }
+      .lb-next  { right: max(14px, env(safe-area-inset-right, 14px)); width: 48px; height: 48px; }
+
+      /* WA: smaller fab, card repositioned */
+      #wa-fab { width: 52px; height: 52px; }
+      #wa-fab svg { width: 26px; height: 26px; }
+      #wa-card { right: 0 !important; bottom: 68px !important; width: min(92vw, 320px) !important; }
+
+      /* Footer */
+      footer { padding-top: 40px; padding-left: 16px; padding-right: 16px; }
+      .footer-container { gap: 28px; }
+    }
+
+    /* ── iPhone SE / mini (≤390 px) ──────────────────────────── */
+    @media (max-width: 390px) {
+      .bd-title { font-size: 1.35rem; }
+      .bd-gallery .g-item { flex: 0 0 82vw; height: 190px; }
+      .bd-gallery .g-hero { flex: 0 0 88vw; height: 210px; }
+      .amen-grid { grid-template-columns: 1fr 1fr !important; }
+      #bliss-details { padding: 16px 12px 60px; }
+    }
   </style>
 </head>
 <body>

@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#faf8f4" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Privacy Policy – Bliss Living</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
@@ -281,6 +282,53 @@
       .footer-links-group { grid-template-columns: 1fr 1fr; }
       .footer-logo-section { text-align: left; justify-items: start; }
       .social-icons { justify-content: flex-start; }
+    }
+
+    /* ═══ CONTENT PAGE MOBILE POLISH ════════════════════════════ */
+    *, *::before, *::after { -webkit-tap-highlight-color: transparent; }
+    button, a, summary { touch-action: manipulation; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    input, select, textarea { font-size: max(16px, 1em); }
+    footer { padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px)); }
+    #wa-widget { bottom: calc(20px + env(safe-area-inset-bottom, 0px)); }
+
+    @media (max-width: 768px) {
+      header { padding: 8px 12px; }
+      .header-inner { padding: 11px 16px; border-radius: 14px; gap: 10px; }
+      .logo { font-size: 19px; }
+
+      /* FAQ accordion */
+      details.faq-item summary { font-size: 1.05rem; padding: 16px 18px; }
+      .faq-answer p { font-size: 14px; }
+      .faq-wrap { padding: 48px 16px 72px; }
+
+      /* Content cards */
+      .tc-block { padding: 18px 16px; border-radius: 14px; }
+      .tc-block h3 { font-size: 1.15rem; }
+      .tc-block p, .tc-block li { font-size: 14px; }
+      .content-section { padding: 48px 16px 72px; }
+
+      /* Contact form */
+      .contact-section { padding: 44px 16px; }
+      .cm-grid { grid-template-columns: 1fr; }
+      .cm-btn { width: 100%; padding: 15px; }
+
+      /* Hero */
+      .page-hero { padding: 52px 20px 44px; }
+      .page-hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
+
+      /* WA */
+      #wa-fab { width: 52px; height: 52px; }
+      #wa-fab svg { width: 26px; height: 26px; }
+      #wa-card { right: 0; bottom: 68px; width: min(92vw, 320px); }
+
+      footer { padding-top: 40px; padding-left: 16px; padding-right: 16px; }
+    }
+
+    @media (max-width: 390px) {
+      .page-hero h1 { font-size: 1.9rem; }
+      .faq-wrap { padding: 36px 12px 60px; }
+      details.faq-item summary { font-size: 1rem; padding: 14px 16px; }
     }
   </style>
 </head>
