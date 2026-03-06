@@ -7,9 +7,6 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
   <title>Bliss Living – Serviced Apartments in London</title>
 
-  <!-- Preload LCP hero image -->
-  <link rel="preload" as="image" href="assets/hero-poster.webp" type="image/webp" />
-
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -823,22 +820,16 @@
      HERO — static image + logo (no video, instant load)
 ════════════════════════════════════════════════════════════ -->
 <div class="hero">
-  <picture>
-    <source srcset="assets/hero-poster.webp" type="image/webp">
-    <img
-      class="hero-bg"
-      src="assets/hero-poster.jpg"
-      alt="Bliss Living London"
-      width="1920" height="1080"
-      fetchpriority="high"
-    >
-  </picture>
+  <img
+    class="hero-bg"
+    src="assets/hero-poster.jpg"
+    alt="Bliss Living London"
+    width="1920" height="1080"
+    fetchpriority="high"
+  >
   <div class="hero-overlay"></div>
   <div class="hero-logo">
-    <picture>
-      <source srcset="Bliss_Living.webp" type="image/webp">
-      <img src="Bliss_Living.png" alt="Bliss Living" width="320" height="120" fetchpriority="high">
-    </picture>
+    <img src="Bliss_Living.png" alt="Bliss Living" width="320" height="120" fetchpriority="high">
   </div>
 </div>
 
@@ -922,11 +913,11 @@
       <div class="ps-viewport">
         <div class="ps-shift" id="psShift">
           <div class="ps-track" id="psTrack">
-            <div class="slide"><a href="property.html"><picture><source srcset="Property/1.webp" type="image/webp"><img src="Property/1.jpg" alt="Maida Vale" loading="lazy" width="270" height="280"></picture><div class="caption"><img src="icons/pinn.png" alt="" class="pin-icon" width="18" height="18"><span class="name">Maida Vale</span><span class="dot">·</span><span class="walk">London</span></div></a></div>
-            <div class="slide"><a href="property1.html"><picture><source srcset="Property1/F1/WEB 1.webp" type="image/webp"><img src="Property1/F1/WEB 1.jpg" alt="Paddington" loading="lazy" width="270" height="280"></picture><div class="caption"><img src="icons/pinn.png" alt="" class="pin-icon" width="18" height="18"><span class="name">Paddington</span><span class="dot">·</span><span class="walk">London</span></div></a></div>
-            <div class="slide"><a href="property2.html"><picture><source srcset="Property2/WEB 1.webp" type="image/webp"><img src="Property2/WEB 1.jpg" alt="Nine Elms" loading="lazy" width="270" height="280"></picture><div class="caption"><img src="icons/pinn.png" alt="" class="pin-icon" width="18" height="18"><span class="name">Nine Elms</span><span class="dot">·</span><span class="walk">London</span></div></a></div>
-            <div class="slide"><a href="property3.html"><picture><source srcset="Property3/WEB 1.webp" type="image/webp"><img src="Property3/WEB 1.jpg" alt="Kennington" loading="lazy" width="270" height="280"></picture><div class="caption"><img src="icons/pinn.png" alt="" class="pin-icon" width="18" height="18"><span class="name">Kennington</span><span class="dot">·</span><span class="walk">London</span></div></a></div>
-            <div class="slide"><a href="property4.html"><picture><source srcset="property4/266/WEB 1.webp" type="image/webp"><img src="property4/266/WEB 1.jpg" alt="Wimbledon" loading="lazy" width="270" height="280"></picture><div class="caption"><img src="icons/pinn.png" alt="" class="pin-icon" width="18" height="18"><span class="name">Wimbledon</span><span class="dot">·</span><span class="walk">London</span></div></a></div>
+            <div class="slide"><a href="property.html"><img src="Property/1.jpg" alt="Maida Vale" loading="lazy" width="270" height="280"><div class="caption"><img src="icons/pinn.png" alt="" class="pin-icon" width="18" height="18"><span class="name">Maida Vale</span><span class="dot">·</span><span class="walk">London</span></div></a></div>
+            <div class="slide"><a href="property1.html"><img src="Property1/F1/WEB 1.jpg" alt="Paddington" loading="lazy" width="270" height="280"><div class="caption"><img src="icons/pinn.png" alt="" class="pin-icon" width="18" height="18"><span class="name">Paddington</span><span class="dot">·</span><span class="walk">London</span></div></a></div>
+            <div class="slide"><a href="property2.html"><img src="Property2/WEB 1.jpg" alt="Nine Elms" loading="lazy" width="270" height="280"><div class="caption"><img src="icons/pinn.png" alt="" class="pin-icon" width="18" height="18"><span class="name">Nine Elms</span><span class="dot">·</span><span class="walk">London</span></div></a></div>
+            <div class="slide"><a href="property3.html"><img src="Property3/WEB 1.jpg" alt="Kennington" loading="lazy" width="270" height="280"><div class="caption"><img src="icons/pinn.png" alt="" class="pin-icon" width="18" height="18"><span class="name">Kennington</span><span class="dot">·</span><span class="walk">London</span></div></a></div>
+            <div class="slide"><a href="property4.html"><img src="property4/266/WEB 1.jpg" alt="Wimbledon" loading="lazy" width="270" height="280"><div class="caption"><img src="icons/pinn.png" alt="" class="pin-icon" width="18" height="18"><span class="name">Wimbledon</span><span class="dot">·</span><span class="walk">London</span></div></a></div>
           </div>
         </div>
       </div>
@@ -1150,10 +1141,7 @@
       </div>
     </div>
     <div class="footer-logo-section">
-      <picture>
-        <source srcset="Footnote_Logo.webp" type="image/webp">
-        <img src="Footnote_Logo.png" alt="Bliss Living" class="footer-logo" width="200" loading="lazy">
-      </picture>
+      <img src="Footnote_Logo.png" alt="Bliss Living" class="footer-logo" width="200" loading="lazy">
       <div class="social-icons">
         <a href="#" aria-label="Instagram"><img src="icons/insta.png" alt="Instagram" width="22" height="22"></a>
         <a href="#" aria-label="Facebook"><img src="icons/fb.png" alt="Facebook" width="22" height="22"></a>
