@@ -5,43 +5,21 @@
   <meta name="theme-color" content="#faf8f4" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
+  <title>Bliss Living – Serviced Apartments in London</title>
 
-  <!-- ═══ SEO ═══ -->
-  <title>Bliss Living | Serviced Apartments in London — Paddington, Fulham &amp; Ealing</title>
-  <meta name="description" content="Fully furnished serviced apartments in London. All-inclusive, no long leases, flexible stays from one week. Available in Paddington, Fulham and Ealing." />
-  <link rel="canonical" href="https://blissliving.uk/" />
-
-  <!-- Open Graph -->
-  <meta property="og:type"        content="website" />
-  <meta property="og:url"         content="https://blissliving.uk/" />
-  <meta property="og:site_name"   content="Bliss Living" />
-  <meta property="og:title"       content="Bliss Living | Serviced Apartments in London — Paddington, Fulham &amp; Ealing" />
-  <meta property="og:description" content="Fully furnished serviced apartments in London. All-inclusive, no long leases, flexible stays from one week. Available in Paddington, Fulham and Ealing." />
-  <meta property="og:image"       content="https://blissliving.uk/assets/hero-poster.jpg" />
-  <meta property="og:image:width"  content="1920" />
-  <meta property="og:image:height" content="1080" />
-  <meta name="twitter:card"        content="summary_large_image" />
-  <meta name="twitter:title"       content="Bliss Living | Serviced Apartments in London" />
-  <meta name="twitter:description" content="Fully furnished serviced apartments in London. All-inclusive, no long leases, flexible stays from one week. Available in Paddington, Fulham and Ealing." />
-  <meta name="twitter:image"       content="https://blissliving.uk/assets/hero-poster.jpg" />
-
-  <!-- Google Fonts — non-blocking -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
-    onload="this.rel='stylesheet'" />
-  <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
-  </noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
 
   <style>
-    /* ═══════════════════════════════════════════════════════════
+    /* =====================================================================
        GLOBAL RESET & TOKENS
-    ═══════════════════════════════════════════════════════════ */
+    ===================================================================== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
+      /* ── Unified palette (matches property1.html) ── */
       --ink:       #1e1e1b;
       --stone:     #3a3a30;
       --warm:      #5c5843;
@@ -51,6 +29,8 @@
       --gold:      #b8a47a;
       --gold-lt:   #d4c5a0;
       --white:     #ffffff;
+
+      /* Legacy aliases kept for existing section styles */
       --primary:   #3a3a30;
       --accent:    #5c5843;
       --sand:      #ede8dc;
@@ -77,9 +57,9 @@
     a { text-decoration: none; color: inherit; }
     img { display: block; max-width: 100%; height: auto; }
 
-    /* ═══════════════════════════════════════════════════════════
+    /* =====================================================================
        SCROLL REVEAL
-    ═══════════════════════════════════════════════════════════ */
+    ===================================================================== */
     .reveal {
       opacity: 0;
       transform: translateY(18px) scale(.98);
@@ -90,9 +70,9 @@
       .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
     }
 
-    /* ═══════════════════════════════════════════════════════════
-       HEADER — glassmorphic pill, becomes solid on scroll
-    ═══════════════════════════════════════════════════════════ */
+    /* =====================================================================
+       HEADER — glassmorphic pill (matches property1.html exactly)
+    ===================================================================== */
     header {
       position: fixed;
       top: 0; left: 0; width: 100%;
@@ -112,16 +92,15 @@
       border-radius: 18px;
       box-shadow: 0 8px 32px rgba(30,30,27,.12);
       backdrop-filter: blur(10px) saturate(160%);
-      transition: box-shadow .25s, background .25s, backdrop-filter .25s;
+      transition: box-shadow .25s;
     }
-    /* Fully solid when scrolled past hero — no blur */
     header.scrolled { padding: 6px 20px; }
     header.scrolled .header-inner {
-      background: rgba(250,248,244,1);
-      backdrop-filter: none;
-      box-shadow: 0 2px 12px rgba(30,30,27,.10);
+      background: rgba(250,248,244,.97);
+      box-shadow: 0 2px 12px rgba(30,30,27,.08);
     }
 
+    /* Logo */
     .logo {
       font-family: var(--font-display);
       font-size: 22px;
@@ -154,8 +133,44 @@
     .main-nav a:hover { color: var(--warm); }
     .main-nav a:hover::after { width: 100%; }
 
-    /* Enquire Now button */
-    .btn-enquire {
+    /* Dropdown */
+    .main-nav .has-dropdown { position: relative; }
+    /* hover-bridge: prevents gap between link and panel from closing it */
+    .main-nav .has-dropdown::after {
+      content: "";
+      position: absolute;
+      left: 0; top: 100%;
+      width: 100%; height: 14px;
+    }
+    .main-nav .has-dropdown > a { display: inline-flex; align-items: center; padding: 10px 0; }
+    .main-nav .drop-panel {
+      display: none;
+      position: absolute;
+      top: 100%;
+      margin-top: 12px;
+      left: 0;
+      min-width: 200px;
+      background: var(--white);
+      border: 1px solid rgba(184,164,122,.2);
+      border-radius: 10px;
+      box-shadow: 0 8px 32px rgba(30,30,27,.12);
+      padding: 12px 0;
+      z-index: 999;
+    }
+    .main-nav .has-dropdown:hover .drop-panel,
+    .main-nav .has-dropdown:focus-within .drop-panel { display: block; }
+    .main-nav .drop-panel.open { display: block; }
+    .drop-panel a {
+      display: block;
+      padding: 9px 18px;
+      font-size: 13.5px;
+      color: var(--stone);
+      transition: background .15s;
+    }
+    .drop-panel a:hover { background: var(--mist); }
+
+    /* Book now button */
+    .btn-book {
       background: var(--stone);
       color: var(--white);
       font-family: var(--font-body);
@@ -164,13 +179,11 @@
       padding: 10px 22px;
       border-radius: 8px;
       letter-spacing: .3px;
-      border: none;
-      cursor: pointer;
       transition: background .2s, transform .15s, box-shadow .2s;
       box-shadow: 0 2px 10px rgba(58,58,48,.2);
       white-space: nowrap;
     }
-    .btn-enquire:hover {
+    .btn-book:hover {
       background: var(--warm);
       transform: translateY(-1px);
       box-shadow: 0 4px 16px rgba(58,58,48,.25);
@@ -179,7 +192,7 @@
     /* Mobile hamburger */
     .mnav-btn { display: none; }
     @media (max-width: 768px) {
-      .main-nav, .btn-enquire { display: none !important; }
+      .main-nav, .btn-book { display: none !important; }
       .mnav-btn {
         display: grid;
         place-items: center;
@@ -247,22 +260,21 @@
         padding: 14px 22px calc(14px + env(safe-area-inset-bottom));
         background: var(--white); border-top: 1px solid var(--parch);
       }
-      .mnav-enquire {
+      .mnav-book {
         display: block; width: 100%; text-align: center;
         background: var(--stone); color: var(--white);
         font-weight: 700; font-size: 16px; padding: 16px;
         border-radius: 12px; letter-spacing: .3px;
         box-shadow: 0 8px 32px rgba(30,30,27,.12);
-        border: none; cursor: pointer;
       }
     }
     @media (max-width: 768px) {
       body.menu-open #wa-widget { display: none !important; }
     }
 
-    /* ═══════════════════════════════════════════════════════════
-       WHATSAPP WIDGET
-    ═══════════════════════════════════════════════════════════ */
+    /* =====================================================================
+       WHATSAPP WIDGET (unchanged)
+    ===================================================================== */
     #wa-widget { position: fixed; right: 18px; bottom: 18px; z-index: 9000; font-family: var(--font-body); }
     #wa-fab {
       display: grid; place-items: center;
@@ -286,7 +298,6 @@
       width: 26px; height: 26px; border-radius: 999px;
       display: grid; place-items: center; cursor: pointer; color: #64748b; font-weight: 700;
     }
-    #wa-close:hover { background: #f1f5f9; }
     .wa-row { display: flex; gap: 12px; align-items: center; }
     .wa-icon { width: 36px; height: 36px; background: #22c55e; color: #0b4126; border-radius: 999px; display: grid; place-items: center; flex: 0 0 36px; }
     .wa-icon svg { width: 20px; height: 20px; }
@@ -299,17 +310,14 @@
     @keyframes wa-wave { 0%{transform:rotate(0)} 10%{transform:rotate(14deg)} 20%{transform:rotate(-8deg)} 30%{transform:rotate(14deg)} 40%{transform:rotate(-4deg)} 50%{transform:rotate(10deg)} 60%,100%{transform:rotate(0)} }
     @media (max-width: 520px) { #wa-card { right: 0; bottom: 76px; width: min(92vw, 360px); } }
 
-    /* ═══════════════════════════════════════════════════════════
-       HERO — full-screen with text overlay
-    ═══════════════════════════════════════════════════════════ */
+    /* =====================================================================
+       HERO — static image, logo always visible (no video)
+    ===================================================================== */
     .hero {
       position: relative;
       width: 100%; height: 100vh;
-      min-height: 580px;
+      min-height: 520px;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
     .hero-bg {
       position: absolute; inset: 0;
@@ -319,414 +327,138 @@
     }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,.15) 0%,
-        rgba(0,0,0,.38) 50%,
-        rgba(0,0,0,.55) 100%
-      );
+      background: rgba(0,0,0,.28);
       z-index: 1;
     }
-    .hero-content {
+    .hero-logo {
       position: relative; z-index: 2;
-      text-align: center;
-      padding: 0 20px;
-      max-width: 860px;
+      height: 100%;
+      display: grid; place-items: center;
     }
-    .hero-eyebrow {
-      display: inline-block;
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 2px; text-transform: uppercase;
-      color: var(--gold-lt);
-      margin-bottom: 20px;
-      padding: 6px 16px;
-      border: 1px solid rgba(212,197,160,.4);
-      border-radius: 999px;
-    }
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(38px, 6vw, 72px);
-      font-weight: 500;
-      color: var(--white);
-      line-height: 1.12;
-      letter-spacing: -.5px;
-      margin-bottom: 20px;
-    }
-    .hero-subtitle {
-      font-size: clamp(15px, 2vw, 18px);
-      color: rgba(255,255,255,.82);
-      max-width: 540px;
-      margin: 0 auto 36px;
-      line-height: 1.6;
-    }
-    .hero-ctas {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      justify-content: center;
-      align-items: center;
-    }
-    .btn-hero-primary {
-      background: var(--gold);
-      color: var(--dark);
-      font-family: var(--font-body);
-      font-weight: 700;
-      font-size: 15px;
-      padding: 15px 32px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      transition: background .2s, transform .15s, box-shadow .2s;
-      box-shadow: 0 4px 20px rgba(184,164,122,.4);
-      letter-spacing: .3px;
-    }
-    .btn-hero-primary:hover {
-      background: var(--gold-lt);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(184,164,122,.5);
-    }
-    .btn-hero-phone {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: rgba(255,255,255,.9);
-      font-size: 15px;
-      font-weight: 500;
-      padding: 14px 24px;
-      border: 1.5px solid rgba(255,255,255,.35);
-      border-radius: 10px;
-      background: rgba(255,255,255,.08);
-      transition: background .2s, border-color .2s;
-    }
-    .btn-hero-phone:hover {
-      background: rgba(255,255,255,.15);
-      border-color: rgba(255,255,255,.6);
-    }
-    .btn-hero-phone svg { width: 18px; height: 18px; fill: currentColor; }
-
-    /* ═══════════════════════════════════════════════════════════
-       TRUST BAR — below hero
-    ═══════════════════════════════════════════════════════════ */
-    .trust-bar {
-      background: var(--stone);
-      padding: 18px 20px;
-    }
-    .trust-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px 40px;
-      justify-content: center;
-      align-items: center;
-    }
-    .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      color: rgba(255,255,255,.8);
-      font-size: 13.5px;
-      font-weight: 500;
-    }
-    .trust-item svg {
-      width: 18px; height: 18px;
-      stroke: var(--gold);
-      fill: none; stroke-width: 2.2;
-      stroke-linecap: round; stroke-linejoin: round;
-      flex: 0 0 18px;
+    .hero-logo img {
+      width: clamp(180px, 28vw, 320px);
+      height: auto;
+      filter: drop-shadow(0 2px 10px rgba(0,0,0,.3));
     }
 
-    /* ═══════════════════════════════════════════════════════════
-       PROPERTIES SECTION (#properties)
-    ═══════════════════════════════════════════════════════════ */
-    #properties {
-      padding: clamp(64px, 8vw, 108px) 20px;
-      background: var(--white);
-    }
-    .section-head {
-      max-width: 1200px;
-      margin: 0 auto 60px;
-      text-align: center;
-    }
-    .section-eyebrow {
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 1.8px; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 12px;
-    }
-    .section-title {
+    /* =====================================================================
+       HOME MESSAGE (unchanged)
+    ===================================================================== */
+    .home-message-wrapper { background: var(--sand); width: 100%; }
+    .home-message { max-width: 1200px; margin: 0 auto; padding: clamp(36px, 5vw, 64px) 20px; }
+    .home-message-inner { display: flex; flex-wrap: wrap; gap: 48px; align-items: center; }
+    .home-message-left { flex: 1 1 300px; }
+    .home-message-left h2 {
       font-family: var(--font-display);
-      font-size: clamp(32px, 4.5vw, 54px);
-      font-weight: 500;
-      color: var(--dark);
-      line-height: 1.15;
-      margin-bottom: 16px;
+      font-size: clamp(28px, 3.8vw, 44px);
+      font-weight: 500; line-height: 1.2; color: var(--dark);
     }
-    .section-lead {
-      font-size: 15px;
-      color: var(--muted);
-      max-width: 560px;
-      margin: 0 auto;
-      line-height: 1.7;
-    }
-    .properties-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-    @media (max-width: 900px) { .properties-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 600px) { .properties-grid { grid-template-columns: 1fr; } }
-
-    .prop-card {
-      border-radius: 16px;
-      overflow: hidden;
-      background: var(--white);
-      border: 1px solid rgba(0,0,0,.08);
-      box-shadow: 0 4px 20px rgba(0,0,0,.07);
-      transition: transform .3s ease, box-shadow .3s ease;
-      display: flex; flex-direction: column;
-    }
-    .prop-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 16px 40px rgba(0,0,0,.13);
-    }
-    .prop-img-wrap {
-      position: relative;
-      overflow: hidden;
-      height: 240px;
-    }
-    .prop-img-wrap img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform .5s ease;
-    }
-    .prop-card:hover .prop-img-wrap img { transform: scale(1.04); }
-    .prop-badge {
-      position: absolute;
-      top: 14px; left: 14px;
-      background: var(--stone);
-      color: var(--gold-lt);
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 1px; text-transform: uppercase;
-      padding: 5px 12px; border-radius: 999px;
-    }
-    .prop-body {
-      padding: 24px;
-      flex: 1;
-      display: flex; flex-direction: column;
-    }
-    .prop-location {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 12px;
-      color: var(--muted);
-      font-weight: 500;
-      letter-spacing: .3px;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-    .prop-location svg {
-      width: 13px; height: 13px;
-      fill: var(--gold);
-      flex: 0 0 13px;
-    }
-    .prop-name {
-      font-family: var(--font-display);
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--dark);
-      line-height: 1.2;
-      margin-bottom: 10px;
-    }
-    .prop-desc {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.65;
-      margin-bottom: 18px;
-      flex: 1;
-    }
-    .prop-features {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 22px;
-    }
-    .prop-feat {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 12px;
-      color: var(--stone);
-      background: var(--mist);
-      padding: 5px 10px;
-      border-radius: 6px;
-      font-weight: 500;
-    }
-    .prop-feat svg {
-      width: 12px; height: 12px;
-      stroke: var(--accent);
-      fill: none; stroke-width: 2.5;
-      stroke-linecap: round; stroke-linejoin: round;
-    }
-    .prop-actions {
-      display: flex;
-      gap: 10px;
-    }
-    .btn-view {
-      flex: 1;
-      text-align: center;
-      padding: 11px 16px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      background: var(--stone);
-      color: var(--white);
-      border: none;
-      cursor: pointer;
-      transition: background .2s, transform .15s;
-    }
-    .btn-view:hover { background: var(--warm); transform: translateY(-1px); }
-    .btn-view-outline {
-      flex: 1;
-      text-align: center;
-      padding: 11px 16px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      background: transparent;
-      color: var(--stone);
-      border: 1.5px solid var(--stone);
-      cursor: pointer;
-      transition: background .2s, color .2s;
-    }
-    .btn-view-outline:hover { background: var(--stone); color: var(--white); }
-
-    /* ═══════════════════════════════════════════════════════════
-       HOW IT WORKS (#how)
-    ═══════════════════════════════════════════════════════════ */
-    #how {
-      background: var(--charcoal);
-      padding: clamp(64px, 8vw, 108px) 20px;
-    }
-    .how-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    #how .section-title { color: var(--white); text-align: center; margin-bottom: 12px; }
-    #how .section-eyebrow { text-align: center; color: var(--gold); display: block; margin-bottom: 12px; }
-    #how .section-lead { text-align: center; color: rgba(255,255,255,.6); margin-bottom: 64px; }
-    .how-steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px 48px;
-      position: relative;
-    }
-    @media (max-width: 720px) { .how-steps { grid-template-columns: 1fr; gap: 40px; } }
-    .how-step {
-      text-align: center;
-      position: relative;
-    }
-    /* Connector line between steps (desktop) */
-    .how-step:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      top: 36px; right: -24px;
-      width: 48px; height: 1px;
-      background: linear-gradient(to right, rgba(184,164,122,.5), rgba(184,164,122,.1));
-    }
-    @media (max-width: 720px) { .how-step::after { display: none; } }
-    .how-num {
-      width: 72px; height: 72px;
-      border-radius: 50%;
-      border: 1.5px solid rgba(184,164,122,.4);
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 20px;
-      background: rgba(184,164,122,.08);
-    }
-    .how-num span {
-      font-family: var(--font-display);
-      font-size: 28px;
-      font-weight: 600;
-      color: var(--gold);
-    }
-    .how-step h3 {
-      font-family: var(--font-display);
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 10px;
-    }
-    .how-step p {
-      font-size: 14px;
-      color: rgba(255,255,255,.58);
-      line-height: 1.7;
-      max-width: 240px;
-      margin: 0 auto;
+    .type::after { content: "▌"; margin-left: 4px; animation: blink 1s steps(1) infinite; color: var(--primary); }
+    .type.done::after { animation: none; opacity: 0; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .home-message-right { flex: 1 1 440px; }
+    .home-message-right p { font-size: 15px; line-height: 1.75; color: var(--dark); margin-bottom: 14px; }
+    .home-message-right p:last-child { margin-bottom: 0; }
+    @media (max-width: 768px) {
+      .home-message-inner { flex-direction: column; gap: 16px; align-items: flex-start; }
+      .home-message-left { flex: 0 0 auto; width: 100%; min-width: 0; }
+      .home-message-right { flex: 0 0 auto; width: 100%; min-width: 0; }
+      .home-message-left h2 { font-size: clamp(26px, 7vw, 34px); }
     }
 
-    /* ═══════════════════════════════════════════════════════════
-       ABOUT (#about)
-    ═══════════════════════════════════════════════════════════ */
-    #about {
-      background: var(--sand);
-      padding: clamp(64px, 8vw, 108px) 20px;
+    /* =====================================================================
+       ABOUT US (unchanged)
+    ===================================================================== */
+    .about-us-section { background: var(--white); padding: clamp(56px, 7vw, 96px) 20px; }
+    .about-us-wrap { max-width: 1200px; margin: 0 auto; text-align: center; }
+    .section-title { font-family: var(--font-display); font-size: clamp(32px, 4.2vw, 52px); font-weight: 500; color: var(--dark); margin-bottom: 16px; }
+    .about-lead { font-size: 15px; line-height: 1.75; color: var(--accent); max-width: 860px; margin: 0 auto 40px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 900px; margin: 0 auto 16px; }
+    @media (max-width: 640px) { .stats-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+    .stat-card { display: flex; align-items: center; gap: 16px; padding: 24px; border: 1.5px solid rgba(107,107,80,.4); border-radius: 16px; box-shadow: 0 0 0 3px rgba(107,107,80,.07), 0 12px 28px rgba(107,107,80,.12); background: transparent; text-align: left; }
+    .stat-icon { color: var(--primary); background: rgba(75,75,56,.08); border-radius: 12px; width: 52px; height: 52px; display: grid; place-items: center; flex: 0 0 52px; }
+    .stat-number { font-family: var(--font-display); font-size: clamp(28px, 4vw, 40px); font-weight: 600; color: var(--dark); line-height: 1.1; }
+    .stat-label { font-size: 14px; color: var(--accent); margin-top: 4px; }
+    .as-of-text { font-size: 13px; font-style: italic; color: var(--muted); margin-top: 12px; }
+
+    /* =====================================================================
+       PROPERTIES SLIDER (unchanged)
+    ===================================================================== */
+    #properties-section { background: var(--white); padding: clamp(56px, 7vw, 96px) 0; }
+    #properties-section .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .props-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; margin-bottom: 48px; }
+    .props-header-left { flex: 1 1 320px; }
+    .props-header-right { flex: 1 1 480px; max-width: 580px; }
+    .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .props-header-left .section-title { text-align: left; margin-bottom: 4px; }
+    .lead { font-size: 14px; line-height: 1.75; color: var(--muted); margin-bottom: 10px; }
+    .ps-wrap { position: relative; }
+    .ps-viewport { overflow: hidden; width: 100%; }
+    @media (max-width: 768px) {
+      .ps-viewport { overflow: visible; } /* let the track handle its own scroll */
+      .ps-wrap { overflow: hidden; }      /* clip at the wrap level instead */
     }
-    .about-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 60px;
-      align-items: center;
-    }
-    .about-text { flex: 1 1 380px; }
-    .about-text .section-eyebrow { margin-bottom: 14px; }
-    .about-text .section-title { text-align: left; margin-bottom: 20px; }
-    .about-text p {
-      font-size: 15px;
-      color: var(--dark);
-      line-height: 1.8;
-      margin-bottom: 14px;
-    }
-    .about-text p:last-of-type { margin-bottom: 0; }
-    .about-stats { flex: 1 1 320px; }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    @media (max-width: 480px) { .stats-grid { grid-template-columns: 1fr; } }
-    .stat-card {
-      background: var(--white);
-      border-radius: 14px;
-      padding: 24px;
-      box-shadow: 0 4px 20px rgba(0,0,0,.07);
-    }
-    .stat-number {
-      font-family: var(--font-display);
-      font-size: clamp(30px, 4vw, 42px);
-      font-weight: 600;
-      color: var(--dark);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-    .stat-label {
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 500;
-    }
-    .as-of-text {
-      font-size: 12px;
-      font-style: italic;
-      color: var(--muted);
-      margin-top: 14px;
+    .ps-shift { transform: translateX(var(--shift, 0px)); transition: transform .35s ease; }
+    .ps-track { display: flex; align-items: stretch; gap: 24px; width: max-content; animation: ps-scroll 36s linear infinite; will-change: transform; }
+    .ps-track:hover { animation-play-state: paused; }
+    @keyframes ps-scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .slide { flex: 0 0 270px; }
+    .slide a { text-decoration: none; color: inherit; display: block; }
+    .slide img { width: 100%; height: 280px; object-fit: cover; border-radius: 8px; display: block; transition: transform .4s ease; }
+    .slide a:hover img { transform: scale(1.02); }
+    .caption { display: flex; align-items: center; gap: 6px; font-size: 14px; margin-top: 8px; }
+    .caption .pin-icon { width: 18px; height: 18px; object-fit: contain; }
+    .caption .name { font-weight: 600; color: var(--dark); }
+    .caption .dot { color: var(--muted); }
+    .caption .walk { color: var(--muted); }
+    .ps-arrows { position: relative; height: 0; }
+    .ps-nav { position: absolute; top: calc(-50% - 24px); transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid #ddd; background: var(--white); color: var(--dark); display: grid; place-items: center; box-shadow: 0 2px 10px rgba(0,0,0,.10); cursor: pointer; font-size: 20px; line-height: 1; transition: border-color .2s, box-shadow .2s, transform .2s; z-index: 3; }
+    .ps-nav:hover { border-color: var(--dark); box-shadow: 0 4px 14px rgba(0,0,0,.15); transform: translateY(calc(-50% - 1px)); }
+    .ps-prev { left: -12px; }
+    .ps-next { right: -12px; }
+
+    /* Mobile: kill the auto-marquee animation, use native scroll-snap instead */
+    @media (max-width: 768px) {
+      .ps-shift { transform: none !important; transition: none; }
+      .ps-track {
+        animation: none !important;
+        width: 100%;
+        display: flex;
+        gap: 14px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;          /* Firefox */
+        padding: 4px 16px 12px;
+      }
+      .ps-track::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+      /* Only show real slides, not JS-cloned duplicates */
+      .ps-track .slide:nth-child(n+6) { display: none; }
+      .slide {
+        flex: 0 0 72vw;
+        max-width: 260px;
+        scroll-snap-align: start;
+      }
+      .slide img { height: 200px; border-radius: 10px; }
+      .caption { font-size: 13px; }
     }
 
-    /* ═══════════════════════════════════════════════════════════
-       REVIEWS
-    ═══════════════════════════════════════════════════════════ */
+    /* =====================================================================
+       THE BLISS WAY (unchanged)
+    ===================================================================== */
+    #bliss-way { background: var(--charcoal); padding: clamp(56px, 7vw, 96px) 20px; text-align: center; }
+    #bliss-way h2 { font-family: var(--font-display); font-size: clamp(30px, 4vw, 48px); font-weight: 500; color: var(--white); margin-bottom: 12px; }
+    .bliss-subtext { font-size: 15px; color: rgba(255,255,255,.65); max-width: 560px; margin: 0 auto 52px; }
+    .bliss-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 40px; max-width: 1100px; margin: 0 auto; }
+    .feature-box { text-align: center; }
+    .feature-box img { width: 60px; height: 60px; margin: 0 auto 14px; filter: brightness(1000%); }
+    .feature-box h4 { font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+    .feature-box p { font-size: 14px; color: rgba(255,255,255,.6); line-height: 1.55; }
+
+    /* =====================================================================
+       REVIEWS (unchanged)
+    ===================================================================== */
     #reviews-banner { background: var(--white); padding: clamp(56px, 7vw, 88px) 0; overflow: hidden; }
     .reviews-wrap { max-width: 1200px; margin: 0 auto; padding: 0 16px; position: relative; }
     .reviews-title { font-family: var(--font-display); font-size: clamp(28px, 3.6vw, 42px); font-weight: 500; text-align: center; margin-bottom: 8px; color: var(--dark); }
@@ -758,9 +490,9 @@
       .rb-card { padding: 10px 20px; }
     }
 
-    /* ═══════════════════════════════════════════════════════════
-       FAQ
-    ═══════════════════════════════════════════════════════════ */
+    /* =====================================================================
+       FAQ (unchanged)
+    ===================================================================== */
     #faq { background: #f3f3f4; padding: clamp(56px, 7vw, 96px) 20px; }
     .faq-inner { max-width: 860px; margin: 0 auto; }
     .faq-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--accent); text-align: center; margin-bottom: 8px; }
@@ -784,9 +516,9 @@
     .faq-help { text-align: center; margin-top: 24px; color: var(--muted); font-size: 14px; }
     .faq-help a { color: var(--dark); font-weight: 700; border-bottom: 1px dashed rgba(0,0,0,.3); }
 
-    /* ═══════════════════════════════════════════════════════════
-       NEWSLETTER
-    ═══════════════════════════════════════════════════════════ */
+    /* =====================================================================
+       NEWSLETTER (unchanged)
+    ===================================================================== */
     .newsletter-section { background: var(--white); padding: clamp(56px, 7vw, 96px) 20px; }
     .newsletter-content { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: clamp(24px, 4vw, 56px); align-items: flex-start; }
     .newsletter-text { flex: 1; min-width: 240px; }
@@ -807,10 +539,21 @@
     .nl-status { font-size: 13px; min-height: 1.2em; }
     .nl-status.ok { color: #1f6d3b; }
     .nl-status.err { color: #8b2e2e; }
+    @media (max-width: 768px) {
+      .newsletter-section { padding: 44px 20px; }
+      .newsletter-content { flex-direction: column; gap: 20px; }
+      .newsletter-text { flex: 0 0 auto; width: 100%; min-width: 0; }
+      .newsletter-text h2 { font-size: clamp(24px, 6vw, 30px); margin-bottom: 6px; }
+      .newsletter-form { flex: 0 0 auto; width: 100%; min-width: 0; gap: 12px; }
+      .newsletter-form .input-group { flex-direction: column; gap: 12px; }
+      .newsletter-form .input-group input { flex: none; width: 100%; }
+      .newsletter-form input[type="text"], .newsletter-form input[type="email"] { padding: 10px 4px 8px; }
+      .nl-btn { width: 100%; text-align: center; padding: 14px; align-self: stretch; }
+    }
 
-    /* ═══════════════════════════════════════════════════════════
-       FOOTER
-    ═══════════════════════════════════════════════════════════ */
+    /* =====================================================================
+       FOOTER — dark stone, matches property1.html exactly
+    ===================================================================== */
     footer {
       background: var(--stone);
       color: rgba(255,255,255,.7);
@@ -857,200 +600,124 @@
       .social-icons { justify-content: flex-start; }
     }
 
-    /* ═══════════════════════════════════════════════════════════
-       ENQUIRY MODAL
-    ═══════════════════════════════════════════════════════════ */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 8000;
-      background: rgba(0,0,0,.6);
-      backdrop-filter: blur(4px);
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-    .modal-overlay.open { display: flex; }
-    .modal-box {
-      background: var(--white);
-      border-radius: 20px;
-      width: 100%;
-      max-width: 580px;
-      max-height: 90vh;
-      overflow-y: auto;
-      box-shadow: 0 32px 80px rgba(0,0,0,.28);
-      position: relative;
-    }
-    .modal-header {
-      padding: 28px 28px 0;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    .modal-header h2 {
-      font-family: var(--font-display);
-      font-size: 28px;
-      font-weight: 600;
-      color: var(--dark);
-      line-height: 1.2;
-    }
-    .modal-header p {
-      font-size: 14px;
-      color: var(--muted);
-      margin-top: 6px;
-    }
-    .modal-close {
-      all: unset;
-      width: 36px; height: 36px;
-      display: grid; place-items: center;
-      border-radius: 50%;
-      cursor: pointer;
-      color: var(--muted);
-      font-size: 20px;
-      flex: 0 0 36px;
-      margin-top: 2px;
-    }
-    .modal-close:hover { background: var(--mist); color: var(--dark); }
-    .modal-body {
-      padding: 24px 28px 28px;
-    }
-    .form-grid {
-      display: grid;
-      gap: 18px;
-    }
-    .form-row-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    @media (max-width: 480px) { .form-row-2 { grid-template-columns: 1fr; } }
-    .field-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .field-group label {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--stone);
-      letter-spacing: .2px;
-    }
-    .field-group label span { color: var(--muted); font-weight: 400; }
-    .field-group input,
-    .field-group select,
-    .field-group textarea {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1.5px solid rgba(0,0,0,.14);
-      border-radius: 10px;
-      font-family: var(--font-body);
-      font-size: 15px;
-      color: var(--ink);
-      background: var(--white);
-      transition: border-color .2s, box-shadow .2s;
-      outline: none;
-      appearance: none;
-      -webkit-appearance: none;
-    }
-    .field-group input:focus,
-    .field-group select:focus,
-    .field-group textarea:focus {
-      border-color: var(--stone);
-      box-shadow: 0 0 0 3px rgba(58,58,48,.1);
-    }
-    .field-group textarea { resize: vertical; min-height: 90px; }
-    .field-group select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 12px center;
-      background-size: 16px;
-      padding-right: 40px;
-      cursor: pointer;
-    }
-    .btn-submit {
-      width: 100%;
-      padding: 15px;
-      border-radius: 10px;
-      border: none;
-      background: var(--stone);
-      color: var(--white);
-      font-family: var(--font-body);
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background .2s, transform .15s;
-      margin-top: 4px;
-    }
-    .btn-submit:hover { background: var(--warm); transform: translateY(-1px); }
-    .btn-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
-    .form-status {
-      font-size: 14px;
-      text-align: center;
-      min-height: 1.2em;
-      margin-top: 10px;
-    }
-    .form-status.ok { color: #1f6d3b; font-weight: 600; }
-    .form-status.err { color: #8b2e2e; }
-    .modal-success {
-      display: none;
-      text-align: center;
-      padding: 40px 28px;
-    }
-    .modal-success.show { display: block; }
-    .modal-success svg {
-      width: 56px; height: 56px;
-      stroke: #1f6d3b;
-      fill: none; stroke-width: 2;
-      margin: 0 auto 16px;
-    }
-    .modal-success h3 {
-      font-family: var(--font-display);
-      font-size: 26px;
-      font-weight: 600;
-      color: var(--dark);
-      margin-bottom: 10px;
-    }
-    .modal-success p { font-size: 15px; color: var(--muted); }
+    /* =====================================================================
+       MOBILE OPTIMISATION — iPhone (≤430px) + general phone (≤768px)
+       Covers: safe areas, tap targets, type scale, spacing, all sections
+    ===================================================================== */
 
-    /* ═══════════════════════════════════════════════════════════
-       GLOBAL MOBILE
-    ═══════════════════════════════════════════════════════════ */
+    /* ── Safe area + body ── */
     @supports (padding-bottom: env(safe-area-inset-bottom)) {
       body { padding-bottom: env(safe-area-inset-bottom); }
     }
+
     @media (max-width: 768px) {
-      html, body { max-width: 100%; overflow-x: hidden; }
-      * { -webkit-tap-highlight-color: transparent; }
+
+      /* ── Header: tighter pill on phone ── */
       header { padding: 8px 12px; }
       .header-inner { padding: 11px 16px; border-radius: 14px; gap: 12px; }
       .logo { font-size: 19px; }
-      .hero { height: 88vh; min-height: 520px; }
-      .hero-title { font-size: clamp(32px, 9vw, 44px); }
-      .btn-hero-primary, .btn-hero-phone { width: 100%; justify-content: center; }
+
+      /* ── Hero: shorter on phone, logo visible ── */
+      .hero { height: 80vh; min-height: 420px; }
+      .hero-overlay { background: rgba(0,0,0,.35); }
+      .hero-logo img { width: clamp(150px, 55vw, 240px); }
+
+      /* ── Home message: stack cleanly ── */
+      .home-message { padding: 44px 20px; }
+      .home-message-inner { gap: 16px; }
+      .home-message-left h2 { font-size: clamp(26px, 7vw, 34px); }
+      .home-message-right p { font-size: 14px; }
+
+      /* ── About section ── */
+      .about-us-section { padding: 52px 20px; }
+      .about-lead { font-size: 14px; margin-bottom: 28px; }
+
+      /* ── Stat cards: full width single column on phones ── */
+      .stats-grid { grid-template-columns: 1fr !important; gap: 14px; }
+      .stat-card { padding: 18px 20px; border-radius: 14px; }
+      .stat-icon { width: 44px; height: 44px; flex: 0 0 44px; border-radius: 10px; }
+      .stat-number { font-size: clamp(26px, 6vw, 34px); }
+
+      /* ── Properties section header: stack ── */
+      #properties-section { padding: 48px 0; }
+      #properties-section .container { padding: 0 16px; }
+      .props-header { gap: 16px; margin-bottom: 28px; }
+      .props-header-left .section-title { font-size: clamp(26px, 6.5vw, 36px); }
+      .lead { font-size: 14px; }
+
+      /* ── Property slider cards — handled by main CSS scroll-snap block ── */
+
+      /* ── Arrow nav: hidden on mobile ── */
+      .ps-arrows { display: none; }
+
+      /* ── Bliss Way: 2-col grid on phone ── */
+      #bliss-way { padding: 52px 20px; }
+      #bliss-way h2 { font-size: clamp(26px, 6.5vw, 36px); margin-bottom: 8px; }
+      .bliss-subtext { font-size: 14px; margin-bottom: 36px; }
+      .bliss-features {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px 20px;
+      }
+      .feature-box img { width: 44px; height: 44px; margin-bottom: 10px; }
+      .feature-box h4 { font-size: 13px; }
+      .feature-box p { font-size: 12px; line-height: 1.5; }
+
+      /* ── Reviews: tighter card ── */
       #reviews-banner { padding: 48px 0; }
+      .reviews-title { font-size: clamp(24px, 6vw, 32px); }
       .rb-card { padding: 8px 12px; }
-      .rb-grid { padding: 20px 18px; border-radius: 14px; gap: 14px; }
-      .rb-quote { font-size: 15px; }
+      .rb-grid {
+        padding: 20px 18px;
+        border-radius: 14px;
+        gap: 14px;
+      }
+      .rb-quote { font-size: 15px; line-height: 1.55; }
+      .rb-name { font-size: 15px; }
+      /* hide flag on small phones — saves space */
       .rb-flag { display: none; }
+      /* keep arrow buttons large enough to tap */
       .arrow { width: 44px; height: 44px; }
-      .newsletter-section { padding: 44px 20px; }
-      .newsletter-content { flex-direction: column; gap: 20px; }
-      .nl-btn { width: 100%; text-align: center; padding: 14px; align-self: stretch; }
+      .arrow.left { left: 0; }
+      .arrow.right { right: 0; }
+
+      /* ── FAQ: larger tap targets ── */
+      #faq { padding: 48px 16px; }
+      .faq-q { padding: 16px 14px; gap: 10px; }
+      .faq-question { font-size: 14px; }
+      .faq-icon { width: 30px; height: 30px; flex: 0 0 30px; }
+      .faq-a { padding: 0 14px 16px 52px; font-size: 13.5px; }
+
+      /* ── Footer ── */
       footer { padding: 44px 20px 32px; }
-      .modal-header { padding: 20px 20px 0; }
-      .modal-body { padding: 20px; }
-      .modal-header h2 { font-size: 24px; }
+      .footer-column h4 { font-size: 12px; }
+      .footer-column a { font-size: 14px; padding: 4px 0; display: inline-block; }
+      .footer-logo { width: 160px; }
+      .social-icons img { width: 22px; height: 22px; opacity: .7; }
+      .footer-bottom { font-size: 12px; margin-top: 28px; }
+
+      /* ── WhatsApp: smaller on phone, stays out of the way ── */
       #wa-widget { right: 14px; bottom: 14px; }
       #wa-fab { width: 52px; height: 52px; }
       #wa-fab svg { width: 26px; height: 26px; }
-      .trust-inner { gap: 14px 24px; }
     }
+
+    /* ── iPhone-specific: very small screens (≤390px SE/mini) ── */
     @media (max-width: 390px) {
-      .hero-title { font-size: 30px; }
-      .hero-eyebrow { font-size: 10px; }
+      .home-message { padding: 36px 16px; }
+      .home-message-left h2 { font-size: 24px; }
+      .bliss-features { grid-template-columns: 1fr 1fr; gap: 20px 14px; }
+      .feature-box p { display: none; } /* text too tight; icon+title enough */
+      .stat-card { flex-direction: column; text-align: center; gap: 10px; }
+      .stat-icon { margin: 0 auto; }
     }
+
+    /* ── Ensure no horizontal overflow on any phone ── */
+    @media (max-width: 768px) {
+      html, body { max-width: 100%; overflow-x: hidden; }
+      * { -webkit-tap-highlight-color: transparent; } /* remove grey flash on tap */
+    }
+
+    /* ═══ INDEX MOBILE POLISH (supplement) ══════════════════════ */
     *, *::before, *::after { -webkit-tap-highlight-color: transparent; }
     button, a { touch-action: manipulation; }
     input, select, textarea { font-size: max(16px, 1em); }
@@ -1061,7 +728,7 @@
 <body>
 
 <!-- ═══════════════════════════════════════════════════════════
-     HEADER
+     HEADER — glassmorphic pill (matches property1.html)
 ════════════════════════════════════════════════════════════ -->
 <header id="site-header">
   <div class="header-inner">
@@ -1069,12 +736,27 @@
     <div class="spacer"></div>
     <nav class="main-nav" aria-label="Primary">
       <ul>
-        <li><a href="#properties">Properties</a></li>
-        <li><a href="#how">How It Works</a></li>
-        <li><a href="#about">About</a></li>
+        <li class="has-dropdown">
+          <a href="#">Locations <span>▾</span></a>
+          <div class="drop-panel">
+            <a href="property.html">Maida Vale</a>
+            <a href="property1.html">Paddington</a>
+            <a href="property2.html">Nine Elms</a>
+            <a href="property3.html">Kennington</a>
+            <a href="property4.html">Wimbledon</a>
+          </div>
+        </li>
+        <li class="has-dropdown">
+          <a href="#">Menu <span>▾</span></a>
+          <div class="drop-panel">
+            <a href="faq.html">FAQs</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+            <a href="privacy.html">Privacy Policy</a>
+          </div>
+        </li>
       </ul>
     </nav>
-    <button class="btn-enquire" id="navEnquireBtn" aria-haspopup="dialog">Enquire Now</button>
+    <a class="btn-book" href="booknow.html">Book now</a>
     <button id="mnavBtn" class="mnav-btn" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -1087,459 +769,338 @@
   <div class="mnav-panel" role="dialog" aria-modal="true">
     <div class="mnav-head">
       Bliss Living
-      <button id="mnavClose" class="mnav-close" aria-label="Close">&#x2715;</button>
+      <button id="mnavClose" class="mnav-close" aria-label="Close">✕</button>
     </div>
     <div class="mnav-body">
       <div class="mnav-group">
-        <div class="mnav-label">Explore</div>
-        <a class="mnav-item" href="#properties">Properties</a>
-        <a class="mnav-item" href="#how">How It Works</a>
-        <a class="mnav-item" href="#about">About</a>
+        <div class="mnav-label">Locations</div>
+        <a class="mnav-item" href="property.html">Maida Vale</a>
+        <a class="mnav-item" href="property1.html">Paddington</a>
+        <a class="mnav-item" href="property2.html">Nine Elms</a>
+        <a class="mnav-item" href="property3.html">Kennington</a>
+        <a class="mnav-item" href="property4.html">Wimbledon</a>
       </div>
       <div class="mnav-group">
-        <div class="mnav-label">Help</div>
+        <div class="mnav-label">Menu</div>
         <a class="mnav-item" href="faq.html">FAQs</a>
         <a class="mnav-item" href="terms.html">Terms &amp; Conditions</a>
         <a class="mnav-item" href="privacy.html">Privacy Policy</a>
       </div>
-    </div>
-    <div class="mnav-cta">
-      <button class="mnav-enquire" id="mnavEnquireBtn">Enquire Now</button>
+      <div class="mnav-cta">
+        <a class="mnav-book" href="booknow.html">Book now</a>
+      </div>
     </div>
   </div>
 </aside>
 
 <!-- ═══════════════════════════════════════════════════════════
-     WHATSAPP WIDGET
+     WHATSAPP (unchanged)
 ════════════════════════════════════════════════════════════ -->
 <div id="wa-widget" aria-live="polite">
-  <a id="wa-fab" href="https://wa.me/447365208676?text=Hi%20Bliss%20Living!%20I%27d%20like%20to%20enquire%20about%20availability." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <a id="wa-fab" href="https://wa.me/447365208676?text=Hi%20Bliss%20Stays!%20I%20have%20a%20question." target="_blank" rel="noopener" aria-label="Open WhatsApp chat">
     <svg viewBox="0 0 32 32" aria-hidden="true">
       <path fill="currentColor" d="M19.11 17.71c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.17-.43-2.23-1.37-.82-.73-1.37-1.63-1.53-1.9-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.02-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.3s.98 2.66 1.12 2.84c.14.18 1.93 2.95 4.68 4.14.65.28 1.15.45 1.54.59.65.21 1.25.18 1.72.11.52-.08 1.6-.65 1.82-1.29.22-.64.22-1.18.16-1.29-.07-.11-.23-.18-.5-.32zM16.02 3.2c-6.99 0-12.66 5.67-12.66 12.66 0 2.23.59 4.32 1.62 6.12L3 29l7.19-1.89c1.72.94 3.69 1.47 5.83 1.47 6.99 0 12.66-5.67 12.66-12.66S23.01 3.2 16.02 3.2zm0 22.88c-1.95 0-3.76-.57-5.29-1.55l-.38-.24-4.28 1.12 1.15-4.17-.25-.43a9.98 9.98 0 0 1-1.49-5.25c0-5.53 4.5-10.02 10.02-10.02s10.02 4.5 10.02 10.02-4.5 10.02-10.02 10.02z"/>
     </svg>
   </a>
   <div id="wa-card" role="dialog" aria-label="WhatsApp quick chat">
-    <button id="wa-close" aria-label="Dismiss">&times;</button>
+    <button id="wa-close" aria-label="Dismiss">×</button>
     <div class="wa-row">
       <div class="wa-icon" aria-hidden="true">
         <svg viewBox="0 0 24 24"><path fill="currentColor" d="M16.2 13.6c-.2-.1-1.1-.6-1.3-.7-.2-.1-.3-.1-.5.1l-.6.7c-.2.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.1-.7-.6-1.1-1.3-1.2-1.5-.1-.2 0-.3.1-.5l.4-.4c.1-.1.1-.3.2-.4s0-.3-.1-.5-.5-1.2-.7-1.7c-.2-.4-.4-.3-.6-.3h-.4c-.1 0-.4.1-.6.3-.2.2-.8.7-.8 1.8s.8 2.1.9 2.2c.1.1 1.5 2.3 3.7 3.3.5.2.9.4 1.2.5.5.2 1 .1 1.3.1.4-.1 1.3-.5 1.5-1 .2-.5.2-.9.1-1 0-.1-.2-.2-.4-.3zM12 2C6.5 2 2 6.3 2 11.6c0 2 .6 3.9 1.6 5.4L2 22l5.1-1.3c1.5.8 3.2 1.2 4.9 1.2 5.5 0 10-4.3 10-9.6S17.5 2 12 2z"/></svg>
       </div>
       <div class="wa-text">
-        <div class="wa-title">Have a question? Let&rsquo;s chat! <span class="wa-wave">&#x1F44B;</span></div>
-        <a class="wa-cta" href="https://wa.me/447365208676?text=Hi%20Bliss%20Living!%20I%27d%20like%20to%20enquire%20about%20availability." target="_blank" rel="noopener">Click here to start a conversation</a>
+        <div class="wa-title">Have any questions? Let's chat! <span class="wa-wave">👋</span></div>
+        <a class="wa-cta" href="https://wa.me/447365208676?text=Hi%20Bliss%20Stays%2C%20I%27d%20like%20to%20enquire..." target="_blank" rel="noopener">Click here to start a conversation</a>
       </div>
     </div>
   </div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════
-     HERO
+     HERO — static image + logo (no video, instant load)
 ════════════════════════════════════════════════════════════ -->
-<section class="hero" aria-label="Hero">
+<div class="hero">
   <img
     class="hero-bg"
     src="assets/hero-poster.jpg"
-    alt="Bliss Living serviced apartment interior, London"
+    alt="Bliss Living London"
     width="1920" height="1080"
     fetchpriority="high"
   >
-  <div class="hero-overlay" aria-hidden="true"></div>
-  <div class="hero-content">
-    <span class="hero-eyebrow">London&rsquo;s Premier Serviced Apartments</span>
-    <h1 class="hero-title">A Home Away<br>From Home in London</h1>
-    <p class="hero-subtitle">Fully furnished, all-inclusive serviced apartments. No long leases. Flexible stays from one week. Available in Paddington, Fulham &amp; Ealing.</p>
-    <div class="hero-ctas">
-      <button class="btn-hero-primary" id="heroEnquireBtn" aria-haspopup="dialog">
-        Enquire About Availability
-      </button>
-      <!-- NEEDS: replace +44 with actual Bliss Living phone number -->
-      <a class="btn-hero-phone" href="tel:+44">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-        Call Us
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- Trust bar -->
-<div class="trust-bar" aria-label="Key features">
-  <div class="trust-inner">
-    <div class="trust-item">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-      All bills included
-    </div>
-    <div class="trust-item">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      Fully furnished
-    </div>
-    <div class="trust-item">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      Flexible stays from 1 week
-    </div>
-    <div class="trust-item">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      Prime London locations
-    </div>
-    <div class="trust-item">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-      3,379+ guests hosted
-    </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-logo">
+    <img src="Bliss_Living.png" alt="Bliss Living" width="320" height="120" fetchpriority="high">
   </div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════
-     PROPERTIES SECTION (#properties)
+     HOME MESSAGE (unchanged)
 ════════════════════════════════════════════════════════════ -->
-<section id="properties" aria-labelledby="properties-title">
-  <div class="section-head reveal">
-    <p class="section-eyebrow">Our Properties</p>
-    <h2 id="properties-title" class="section-title">Choose Your London Home</h2>
-    <p class="section-lead">Three exceptional serviced apartments, each thoughtfully furnished and ready for your arrival.</p>
-  </div>
-
-  <div class="properties-grid">
-
-    <!-- Card 1: Spring Street Paddington — has dedicated page -->
-    <article class="prop-card reveal">
-      <div class="prop-img-wrap">
-        <img
-          src="Property1/F1/WEB 1.jpg"
-          alt="Spring Street Paddington apartment living area"
-          width="800" height="540"
-          loading="eager"
-        >
-        <span class="prop-badge">Paddington</span>
+<div class="home-message-wrapper">
+  <section class="home-message">
+    <div class="home-message-inner">
+      <div class="home-message-left reveal">
+        <h2><span id="hm-type" class="type" data-text="A Home Away From Home"></span></h2>
       </div>
-      <div class="prop-body">
-        <p class="prop-location">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Spring Street, London W2
-        </p>
-        <h3 class="prop-name">Spring Street Paddington</h3>
-        <p class="prop-desc">A beautifully appointed apartment steps from Paddington station and Hyde Park. Perfect for business stays or London exploration, with everything you need from day one.</p>
-        <ul class="prop-features" aria-label="Features">
-          <li class="prop-feat">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-            Full kitchen
-          </li>
-          <li class="prop-feat">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
-            Fast Wi-Fi
-          </li>
-          <li class="prop-feat">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            Flexible checkout
-          </li>
-        </ul>
-        <div class="prop-actions">
-          <a class="btn-view" href="property1.html">View Property</a>
-          <button class="btn-view-outline" data-property="Spring Street Paddington" onclick="openEnquiry(this.dataset.property)">Enquire</button>
-        </div>
-      </div>
-    </article>
-
-    <!-- Card 2: Fulham Apartment — no dedicated page, opens modal -->
-    <article class="prop-card reveal" style="--rv-delay:80ms">
-      <div class="prop-img-wrap">
-        <img
-          src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80"
-          alt="Fulham apartment interior"
-          width="800" height="540"
-          loading="lazy"
-        >
-        <span class="prop-badge">Fulham</span>
-      </div>
-      <div class="prop-body">
-        <p class="prop-location">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Fulham, London SW6
-        </p>
-        <h3 class="prop-name">Fulham Apartment</h3>
-        <p class="prop-desc">A stylish retreat in one of London&rsquo;s most desirable neighbourhoods. Minutes from the Thames, Fulham Broadway, and a wealth of shops and restaurants.</p>
-        <ul class="prop-features" aria-label="Features">
-          <li class="prop-feat">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-            Full kitchen
-          </li>
-          <li class="prop-feat">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
-            Fast Wi-Fi
-          </li>
-          <li class="prop-feat">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            Bills included
-          </li>
-        </ul>
-        <div class="prop-actions">
-          <button class="btn-view" data-property="Fulham Apartment" onclick="openEnquiry(this.dataset.property)">Enquire Now</button>
-          <button class="btn-view-outline" data-property="Fulham Apartment" onclick="openEnquiry(this.dataset.property)">Check Dates</button>
-        </div>
-      </div>
-    </article>
-
-    <!-- Card 3: Broadway Studio Ealing — no dedicated page, opens modal -->
-    <article class="prop-card reveal" style="--rv-delay:160ms">
-      <div class="prop-img-wrap">
-        <img
-          src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80"
-          alt="Broadway Studio Ealing interior"
-          width="800" height="540"
-          loading="lazy"
-        >
-        <span class="prop-badge">Ealing</span>
-      </div>
-      <div class="prop-body">
-        <p class="prop-location">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Broadway, Ealing W5
-        </p>
-        <h3 class="prop-name">Broadway Studio Ealing</h3>
-        <p class="prop-desc">A smart, compact studio in the heart of Ealing &mdash; one of West London&rsquo;s most vibrant areas. Excellent transport links, great local dining, and a welcoming community feel.</p>
-        <ul class="prop-features" aria-label="Features">
-          <li class="prop-feat">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-            Kitchenette
-          </li>
-          <li class="prop-feat">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
-            Fast Wi-Fi
-          </li>
-          <li class="prop-feat">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            Great transport
-          </li>
-        </ul>
-        <div class="prop-actions">
-          <button class="btn-view" data-property="Broadway Studio Ealing" onclick="openEnquiry(this.dataset.property)">Enquire Now</button>
-          <button class="btn-view-outline" data-property="Broadway Studio Ealing" onclick="openEnquiry(this.dataset.property)">Check Dates</button>
-        </div>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════
-     HOW IT WORKS (#how)
-════════════════════════════════════════════════════════════ -->
-<section id="how" aria-labelledby="how-title">
-  <div class="how-inner">
-    <span class="section-eyebrow">Simple &amp; Transparent</span>
-    <h2 id="how-title" class="section-title">How It Works</h2>
-    <p class="section-lead">We make moving in easy. From your first enquiry to your keys in hand, we handle everything.</p>
-
-    <div class="how-steps">
-      <div class="how-step reveal">
-        <div class="how-num"><span>1</span></div>
-        <h3>Enquire</h3>
-        <p>Tell us your dates, preferred property, and any requirements. We&rsquo;ll get back to you within a few hours.</p>
-      </div>
-      <div class="how-step reveal" style="--rv-delay:100ms">
-        <div class="how-num"><span>2</span></div>
-        <h3>We Confirm</h3>
-        <p>We confirm availability, agree the terms, and take care of all the paperwork &mdash; fast and hassle-free.</p>
-      </div>
-      <div class="how-step reveal" style="--rv-delay:200ms">
-        <div class="how-num"><span>3</span></div>
-        <h3>Move In</h3>
-        <p>Arrive to a fully furnished, clean apartment ready for you. Bills paid, Wi-Fi connected &mdash; just unpack and relax.</p>
+      <div class="home-message-right reveal" style="--rv-delay:80ms">
+        <p>Enjoy the comfort, serenity, and convenience of fully furnished apartments with hotel-style amenities in prime central London.</p>
+        <p>Whether you're here for business or leisure, we're committed to delivering a seamless and memorable stay that truly feels like home.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
 <!-- ═══════════════════════════════════════════════════════════
-     ABOUT (#about)
+     ABOUT US (unchanged)
 ════════════════════════════════════════════════════════════ -->
-<section id="about" aria-labelledby="about-title">
-  <div class="about-inner">
-    <div class="about-text">
-      <p class="section-eyebrow">About Bliss Living</p>
-      <h2 id="about-title" class="section-title">London Apartments, Done Properly</h2>
-      <p>At Bliss Living, we are dedicated to providing exceptional short-term accommodation in the heart of London. With a focus on comfort, quality, and convenience, we offer thoughtfully curated properties to suit any traveller &mdash; whether on business or leisure.</p>
-      <p>Every apartment is fully furnished with high-quality linen, a stocked kitchen, fast Wi-Fi, and all utilities included. We believe a great stay starts with a great home, and that&rsquo;s what we deliver &mdash; every time.</p>
-      <p>No hidden fees. No lengthy leases. Just a comfortable, beautiful space that&rsquo;s ready when you are.</p>
-    </div>
-    <div class="about-stats reveal">
-      <div class="stats-grid">
-        <div class="stat-card">
+<section id="about-us" class="about-us-section" aria-labelledby="about-title">
+  <div class="about-us-wrap">
+    <h2 id="about-title" class="section-title reveal">About Us</h2>
+    <p class="about-lead reveal">
+      At Bliss Living, we are dedicated to providing exceptional, short-term accommodations in the heart of London. With a focus on comfort, quality, and convenience, we offer a range of thoughtfully curated properties to suit any traveller, whether on business or leisure.
+    </p>
+    <div class="stats-grid">
+      <article class="stat-card reveal">
+        <div class="stat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm-8.5 8a8.5 8.5 0 0 1 17 0 1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1Z"/></svg>
+        </div>
+        <div class="stat-content">
           <div class="stat-number"><span class="count" data-target="3379">0</span>+</div>
           <div class="stat-label">Guests hosted</div>
         </div>
-        <div class="stat-card">
+      </article>
+      <article class="stat-card reveal" style="transition-delay:.08s">
+        <div class="stat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M7 2a1 1 0 0 1 1 1v1h8V3a1 1 0 0 1 2 0v1h1a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h1V3a1 1 0 0 1 1-1Zm13 8H4v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1Z"/></svg>
+        </div>
+        <div class="stat-content">
           <div class="stat-number"><span class="count" data-target="3740">0</span>+</div>
           <div class="stat-label">Nights hosted</div>
         </div>
-        <div class="stat-card">
+      </article>
+      <article class="stat-card reveal" style="transition-delay:.16s">
+        <div class="stat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 14.93V17a1 1 0 0 1-2 0v-.07A8 8 0 0 1 4.07 9H5a1 1 0 0 1 0 2A6 6 0 0 0 13 16.93ZM12 8a2 2 0 1 1 2-2 2 2 0 0 1-2 2Z"/></svg>
+        </div>
+        <div class="stat-content">
           <div class="stat-number"><span class="count" data-target="3">0</span>+</div>
           <div class="stat-label">Years hosting</div>
         </div>
-        <div class="stat-card">
-          <div class="stat-number"><span class="count" data-target="98">0</span>%</div>
-          <div class="stat-label">Guest satisfaction</div>
-        </div>
-      </div>
-      <p class="as-of-text">As of February 2026</p>
+      </article>
     </div>
+    <p class="as-of-text">As of February 2026</p>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     REVIEWS
+     PROPERTIES (unchanged)
 ════════════════════════════════════════════════════════════ -->
-<section id="reviews-banner" aria-labelledby="reviews-title">
-  <div class="reviews-wrap">
-    <h2 class="reviews-title reveal" id="reviews-title">What Our Guests Say</h2>
-    <p class="reviews-sub reveal">Real reviews from real stays</p>
-    <div class="slider" role="region" aria-label="Guest reviews">
-      <button class="arrow left" data-dir="-1" aria-label="Previous review">
-        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-      <div id="rb-slides" class="slides">
-
-        <div class="rb-card">
-          <div class="rb-grid">
-            <p class="rb-quote">&ldquo;Absolutely loved our stay. The apartment was immaculate, beautifully furnished, and the location was perfect. Communication with Bliss Living was excellent throughout. Would book again in a heartbeat.&rdquo;</p>
-            <div class="rb-center">
-              <div class="rb-name">Sarah M.</div>
-              <div class="rb-date">January 2026</div>
-              <div class="rb-stars" aria-label="5 out of 5 stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div>
-            </div>
-            <div class="rb-flag">
-              <img src="flags/gb.png" alt="United Kingdom" width="120" loading="lazy">
-            </div>
-          </div>
-        </div>
-
-        <div class="rb-card">
-          <div class="rb-grid">
-            <p class="rb-quote">&ldquo;We used Bliss Living for a corporate relocation and couldn&rsquo;t be happier. The apartment felt like a proper home from day one. Everything was included &mdash; Wi-Fi, utilities, even quality coffee. An exceptional service.&rdquo;</p>
-            <div class="rb-center">
-              <div class="rb-name">James T.</div>
-              <div class="rb-date">November 2025</div>
-              <div class="rb-stars" aria-label="5 out of 5 stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div>
-            </div>
-            <div class="rb-flag">
-              <img src="flags/us.png" alt="United States" width="120" loading="lazy">
-            </div>
-          </div>
-        </div>
-
-        <div class="rb-card">
-          <div class="rb-grid">
-            <p class="rb-quote">&ldquo;Stayed for six weeks for a project in London. Bliss Living made the whole experience seamless. Responsive, professional, and the apartment itself was beautiful. Highly recommend to anyone needing a London base.&rdquo;</p>
-            <div class="rb-center">
-              <div class="rb-name">Marie-Claire D.</div>
-              <div class="rb-date">October 2025</div>
-              <div class="rb-stars" aria-label="5 out of 5 stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div>
-            </div>
-            <div class="rb-flag">
-              <img src="flags/fr.png" alt="France" width="120" loading="lazy">
-            </div>
-          </div>
-        </div>
-
+<section id="properties-section">
+  <div class="container">
+    <div class="props-header">
+      <div class="props-header-left reveal">
+        <p class="eyebrow">Explore your next stay</p>
+        <h2 class="section-title" style="text-align:left">Our Properties</h2>
       </div>
-      <button class="arrow right" data-dir="1" aria-label="Next review">
-        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
+      <div class="props-header-right reveal" style="transition-delay:.1s">
+        <p class="eyebrow">Where We Are</p>
+        <p class="lead">Bliss Living properties place you right where the city comes alive — within walking distance of iconic attractions, vibrant dining, and cultural landmarks.</p>
+        <p class="lead">Perfectly positioned and thoughtfully designed, each stay offers the comfort of a peaceful escape, with the best of London just moments away.</p>
+        <p class="lead" style="margin:0">Your perfect London stay starts with us.</p>
+      </div>
     </div>
-    <div class="rb-dots" id="rbDots" role="tablist" aria-label="Review navigation"></div>
+    <div class="ps-wrap">
+      <div class="ps-viewport">
+        <div class="ps-shift" id="psShift">
+          <div class="ps-track" id="psTrack">
+            <div class="slide"><a href="property.html"><img src="Property/1.jpg" alt="Maida Vale" loading="lazy" width="270" height="280"><div class="caption"><img src="icons/pinn.png" alt="" class="pin-icon" width="18" height="18"><span class="name">Maida Vale</span><span class="dot">·</span><span class="walk">London</span></div></a></div>
+            <div class="slide"><a href="property1.html"><img src="Property1/F1/WEB 1.jpg" alt="Paddington" loading="lazy" width="270" height="280"><div class="caption"><img src="icons/pinn.png" alt="" class="pin-icon" width="18" height="18"><span class="name">Paddington</span><span class="dot">·</span><span class="walk">London</span></div></a></div>
+            <div class="slide"><a href="property2.html"><img src="Property2/WEB 1.jpg" alt="Nine Elms" loading="lazy" width="270" height="280"><div class="caption"><img src="icons/pinn.png" alt="" class="pin-icon" width="18" height="18"><span class="name">Nine Elms</span><span class="dot">·</span><span class="walk">London</span></div></a></div>
+            <div class="slide"><a href="property3.html"><img src="Property3/WEB 1.jpg" alt="Kennington" loading="lazy" width="270" height="280"><div class="caption"><img src="icons/pinn.png" alt="" class="pin-icon" width="18" height="18"><span class="name">Kennington</span><span class="dot">·</span><span class="walk">London</span></div></a></div>
+            <div class="slide"><a href="property4.html"><img src="property4/266/WEB 1.jpg" alt="Wimbledon" loading="lazy" width="270" height="280"><div class="caption"><img src="icons/pinn.png" alt="" class="pin-icon" width="18" height="18"><span class="name">Wimbledon</span><span class="dot">·</span><span class="walk">London</span></div></a></div>
+          </div>
+        </div>
+      </div>
+      <div class="ps-arrows" aria-hidden="true">
+        <button class="ps-nav ps-prev" type="button" aria-label="Previous">&#8249;</button>
+        <button class="ps-nav ps-next" type="button" aria-label="Next">&#8250;</button>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     FAQ
+     THE BLISS WAY (unchanged)
+════════════════════════════════════════════════════════════ -->
+<section id="bliss-way" aria-label="Amenities">
+  <h2 class="reveal">The Bliss Way</h2>
+  <p class="bliss-subtext reveal" style="transition-delay:.08s">A collection of thoughtful touches that make every stay feel like home.</p>
+  <div class="bliss-features">
+    <div class="feature-box reveal"><img src="icons/apt.png" alt="" width="60" height="60" loading="lazy"><h4>Fully Furnished Apartments</h4><p>Comfortable beds, stylish living spaces, and everything you need to unwind.</p></div>
+    <div class="feature-box reveal" style="transition-delay:.05s"><img src="icons/linens.png" alt="" width="60" height="60" loading="lazy"><h4>Fresh Linens &amp; Towels</h4><p>Hotel quality bedding and towels, always freshly prepared for your stay.</p></div>
+    <div class="feature-box reveal" style="transition-delay:.10s"><img src="icons/toilet.png" alt="" width="60" height="60" loading="lazy"><h4>Toiletries Provided</h4><p>Shampoo, soap, and more — all ready for your arrival so you can travel lighter.</p></div>
+    <div class="feature-box reveal" style="transition-delay:.15s"><img src="icons/temp.png" alt="" width="60" height="60" loading="lazy"><h4>Comfort Control</h4><p>Adjust the space to your preference — cool, calm, and perfectly cosy.</p></div>
+    <div class="feature-box reveal" style="transition-delay:.20s"><img src="icons/wifi.png" alt="" width="60" height="60" loading="lazy"><h4>Fast Wi-Fi</h4><p>Unlimited high-speed internet for work, streaming, and everything in between.</p></div>
+    <div class="feature-box reveal" style="transition-delay:.25s"><img src="icons/checking.png" alt="" width="60" height="60" loading="lazy"><h4>Self Check-In</h4><p>Flexible arrival with keypad access or smart locks — arrive on your own time.</p></div>
+    <div class="feature-box reveal" style="transition-delay:.05s"><img src="icons/support.png" alt="" width="60" height="60" loading="lazy"><h4>24/7 Guest Support</h4><p>Always-on help and guidance — your comfort is our priority.</p></div>
+    <div class="feature-box reveal" style="transition-delay:.10s"><img src="icons/key.png" alt="" width="60" height="60" loading="lazy"><h4>Prime Central Locations</h4><p>Stay close to top attractions, restaurants, and transport links.</p></div>
+    <div class="feature-box reveal" style="transition-delay:.15s"><img src="icons/laundry.png" alt="" width="60" height="60" loading="lazy"><h4>Laundry Facilities</h4><p>In-unit washer/dryer for longer, more comfortable stays.</p></div>
+    <div class="feature-box reveal" style="transition-delay:.20s"><img src="icons/pin.png" alt="" width="60" height="60" loading="lazy"><h4>Heart of the City</h4><p>Be in the centre of it all with everything within walking distance.</p></div>
+    <div class="feature-box reveal" style="transition-delay:.25s"><img src="icons/cleaning.png" alt="" width="60" height="60" loading="lazy"><h4>Professional Cleaning</h4><p>Hotel-grade cleaning standards between every single stay.</p></div>
+    <div class="feature-box reveal" style="transition-delay:.30s"><img src="icons/kitchen.png" alt="" width="60" height="60" loading="lazy"><h4>Fully Equipped Kitchen</h4><p>Cook up your favourites anytime with our modern kitchen essentials.</p></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     REVIEWS (unchanged)
+════════════════════════════════════════════════════════════ -->
+<section id="reviews-banner" aria-label="Guest reviews">
+  <div class="reviews-wrap">
+    <h2 class="reviews-title reveal">Hear From Our Previous Guests</h2>
+    <p class="reviews-sub reveal" style="transition-delay:.06s">Real feedback from recent stays.</p>
+    <div class="slider">
+      <button class="arrow left" aria-label="Previous review" data-dir="-1">
+        <svg viewBox="0 0 24 24"><path d="M15 19L8 12L15 5"/></svg>
+      </button>
+      <div class="slides" id="rb-slides">
+        <article class="rb-card">
+          <div class="rb-grid">
+            <p class="rb-quote">"I had a wonderful experience staying here. The host was very friendly and incredibly responsive. The apartment itself was spotless — clean, well-maintained, and exactly as described. I'd happily stay again and definitely recommend it!"</p>
+            <div class="rb-center"><div class="rb-name">Luke</div><div class="rb-date">May 2025</div></div>
+            <div class="rb-flag"><img src="flags/1.png" alt="UK" loading="lazy" width="120" height="80"></div>
+          </div>
+          <div class="rb-src"><img src="logos/booking.png" alt="Booking.com" loading="lazy" width="100" height="30"></div>
+        </article>
+        <article class="rb-card">
+          <div class="rb-grid">
+            <p class="rb-quote">"This apartment is a real gem! We had a wonderful time here and will definitely come back. The location is simply great — close to everything, an ideal base for sightseeing. The apartment offers all the amenities you could need."</p>
+            <div class="rb-center"><div class="rb-name">Kalina</div><div class="rb-date">May 2025</div></div>
+            <div class="rb-flag"><img src="flags/2.png" alt="Poland" loading="lazy" width="120" height="80"></div>
+          </div>
+          <div class="rb-src"><img src="logos/booking.png" alt="Booking.com" loading="lazy" width="100" height="30"></div>
+        </article>
+        <article class="rb-card">
+          <div class="rb-grid">
+            <p class="rb-quote">"Spent one night at Nine Elms — booked last minute but everything was perfect. The apartment was very clean and comfortable, the location ideal, and the host quick to respond. Good price and great location, would recommend."</p>
+            <div class="rb-center"><div class="rb-name">Yiyin</div><div class="rb-date">Feb 2025</div></div>
+            <div class="rb-flag"><img src="flags/3.png" alt="Guest" loading="lazy" width="120" height="80"></div>
+          </div>
+          <div class="rb-src"><img src="logos/booking.png" alt="Booking.com" loading="lazy" width="100" height="30"></div>
+        </article>
+        <article class="rb-card">
+          <div class="rb-grid">
+            <p class="rb-quote">"Beautiful apartment with everything you need. The host was very proactive. All parts of the city are easily accessible by metro, bus, taxi, or ferry. There are excellent restaurants and supermarkets nearby. Highly recommended."</p>
+            <div class="rb-center"><div class="rb-name">David</div><div class="rb-date">Jan 2025</div></div>
+            <div class="rb-flag"><img src="flags/4.png" alt="Spain" loading="lazy" width="120" height="80"></div>
+          </div>
+          <div class="rb-src"><img src="logos/booking.png" alt="Booking.com" loading="lazy" width="100" height="30"></div>
+        </article>
+        <article class="rb-card">
+          <div class="rb-grid">
+            <p class="rb-quote">"Stayed here for a couple of nights and it was perfect. The space was tidy and had everything I needed. The hosts were really helpful and responsive — we loved the hospitality. Great stay overall!"</p>
+            <div class="rb-center"><div class="rb-name">Rozita</div><div class="rb-date">Apr 2025</div></div>
+            <div class="rb-flag"><img src="flags/5.png" alt="Malaysia" loading="lazy" width="120" height="80"></div>
+          </div>
+          <div class="rb-src"><img src="logos/booking.png" alt="Booking.com" loading="lazy" width="100" height="30"></div>
+        </article>
+        <article class="rb-card">
+          <div class="rb-grid">
+            <p class="rb-quote">"Very good place, perfect for staying a few days or longer. The internet is great and all facilities were working fine. The support staff is extremely helpful and always answer very fast. I recommend this place very much!"</p>
+            <div class="rb-center"><div class="rb-name">Eduardo</div><div class="rb-date">Jun 2025</div></div>
+            <div class="rb-flag"><img src="logos/airbnb.png" alt="Airbnb" loading="lazy" width="120" height="50"></div>
+          </div>
+        </article>
+        <article class="rb-card">
+          <div class="rb-grid">
+            <p class="rb-quote">"The flat was really warm and cosy. The rooms and furniture were spotless. Bed was very comfortable. The host responded quickly to my check-in queries and was very welcoming. An ideal place to stay when visiting the area."</p>
+            <div class="rb-center"><div class="rb-name">Craig</div><div class="rb-date">Jul 2025</div></div>
+            <div class="rb-flag"><img src="logos/airbnb.png" alt="Airbnb" loading="lazy" width="120" height="50"></div>
+          </div>
+        </article>
+      </div>
+      <button class="arrow right" aria-label="Next review" data-dir="1">
+        <svg viewBox="0 0 24 24"><path d="M9 5L16 12L9 19"/></svg>
+      </button>
+    </div>
+    <div class="rb-dots" id="rbDots" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FAQ (unchanged)
 ════════════════════════════════════════════════════════════ -->
 <section id="faq" aria-labelledby="faq-title">
   <div class="faq-inner">
-    <p class="faq-eyebrow">Got Questions?</p>
-    <h2 id="faq-title" class="reveal">Frequently Asked Questions</h2>
-    <p class="faq-sub reveal">Everything you need to know about staying with Bliss Living.</p>
-    <div class="faq-list" role="list">
-
-      <details class="faq-item" role="listitem">
+    <p class="faq-eyebrow">Good to know</p>
+    <h2 id="faq-title">Frequently Asked Questions</h2>
+    <p class="faq-sub">Quick answers to common questions about arriving, access, and flexibility at Bliss Living.</p>
+    <div class="faq-list">
+      <details class="faq-item reveal">
         <summary class="faq-q">
           <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
-          <span class="faq-question">What is included in the price?</span>
+          <span class="faq-question">What are your check-in and check-out times?</span>
         </summary>
         <div class="faq-content"><div>
           <div class="faq-divider"></div>
-          <div class="faq-a"><p>All our apartments are fully inclusive. Your rate covers rent, electricity, gas, water, council tax, and superfast broadband. No surprise bills &mdash; ever.</p></div>
+          <div class="faq-a"><p>Check-in is from <strong>15:00</strong>, and check-out is by <strong>11:00</strong>.</p><p>Early check-in or late check-out is available for <strong>£15 per hour</strong> (subject to availability). Please contact us in advance to arrange.</p></div>
         </div></div>
       </details>
-
-      <details class="faq-item" role="listitem">
+      <details class="faq-item reveal" style="transition-delay:.06s">
         <summary class="faq-q">
           <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
-          <span class="faq-question">What is the minimum stay?</span>
+          <span class="faq-question">How does check-in work?</span>
         </summary>
         <div class="faq-content"><div>
           <div class="faq-divider"></div>
-          <div class="faq-a"><p>Our minimum stay is one week. We also offer longer-term monthly rates, which are available on request and offer better value for extended stays.</p></div>
+          <div class="faq-a"><p>Most stays use <strong>self-service check-in</strong> via a lockbox or smart lock. Access details are sent to you via <strong>WhatsApp</strong> before arrival.</p></div>
         </div></div>
       </details>
-
-      <details class="faq-item" role="listitem">
+      <details class="faq-item reveal" style="transition-delay:.12s">
         <summary class="faq-q">
           <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
-          <span class="faq-question">Are the apartments suitable for corporate stays?</span>
+          <span class="faq-question">Can I cancel or change my booking?</span>
         </summary>
         <div class="faq-content"><div>
           <div class="faq-divider"></div>
-          <div class="faq-a"><p>Absolutely. Many of our guests are professionals on long-term projects or corporate relocations. We can provide invoices, arrange flexible terms, and accommodate group bookings across multiple apartments.</p></div>
+          <div class="faq-a"><p>Yes — policies depend on your booking type. Please check your confirmation email or contact us and we'll be happy to help.</p></div>
         </div></div>
       </details>
-
-      <details class="faq-item" role="listitem">
+      <details class="faq-item reveal" style="transition-delay:.18s">
         <summary class="faq-q">
           <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
-          <span class="faq-question">How do I book or enquire?</span>
+          <span class="faq-question">Do I need to provide ID at check-in?</span>
         </summary>
         <div class="faq-content"><div>
           <div class="faq-divider"></div>
-          <div class="faq-a"><p>Simply fill in our enquiry form and we&rsquo;ll get back to you within a few hours. You can also reach us via WhatsApp or phone. We&rsquo;re a small, dedicated team &mdash; you&rsquo;ll always speak to a real person.</p></div>
+          <div class="faq-a"><p>Yes, a valid ID with <strong>proof of address</strong> is required. You may also be asked to show your booking confirmation.</p></div>
         </div></div>
       </details>
-
-      <details class="faq-item" role="listitem">
+      <details class="faq-item reveal" style="transition-delay:.24s">
         <summary class="faq-q">
           <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
-          <span class="faq-question">Is linen and housekeeping provided?</span>
+          <span class="faq-question">Can I store luggage before check-in or after check-out?</span>
         </summary>
         <div class="faq-content"><div>
           <div class="faq-divider"></div>
-          <div class="faq-a"><p>Yes. All apartments are made up with fresh, high-quality linen before your arrival. We can also arrange regular housekeeping during your stay on request.</p></div>
+          <div class="faq-a"><p>Yes, luggage drop-off is available for <strong>£25</strong> between <strong>11:00–15:00</strong> (subject to availability). Please contact us in advance to arrange.</p></div>
         </div></div>
       </details>
-
-      <details class="faq-item" role="listitem">
-        <summary class="faq-q">
-          <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
-          <span class="faq-question">Can I extend my stay once I&rsquo;ve moved in?</span>
-        </summary>
-        <div class="faq-content"><div>
-          <div class="faq-divider"></div>
-          <div class="faq-a"><p>In most cases, yes. We try to accommodate extensions wherever possible. Just let us know as soon as you can and we&rsquo;ll do our best to make it work.</p></div>
-        </div></div>
-      </details>
-
     </div>
-    <p class="faq-help reveal">Still have questions? <a href="#" onclick="openEnquiry(); return false;">Drop us an enquiry</a> or chat with us on WhatsApp.</p>
+    <p class="faq-help">Still need help? <a href="https://wa.me/447365208676" target="_blank" rel="noopener">Chat with us on WhatsApp</a>.</p>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     NEWSLETTER
+     NEWSLETTER (unchanged)
 ════════════════════════════════════════════════════════════ -->
-<section class="newsletter-section" aria-labelledby="nl-title">
+<section class="newsletter-section">
   <div class="newsletter-content">
     <div class="newsletter-text reveal">
-      <p class="label">Stay in the Loop</p>
-      <h2 id="nl-title">Newsletter</h2>
+      <p class="label">Stay Updated</p>
+      <h2>Newsletter</h2>
       <p>Subscribe for exclusive deals and local tips from Bliss Living.</p>
     </div>
-    <form class="newsletter-form reveal" style="--rv-delay:.1s" id="newsletterForm"
+    <form class="newsletter-form reveal" style="transition-delay:.1s" id="newsletterForm"
           action="https://formspree.io/f/mvgqjpkv" method="POST" novalidate>
       <div class="input-group">
         <input type="text" id="firstName" name="firstName" placeholder="First Name" required />
@@ -1556,7 +1117,7 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     FOOTER
+     FOOTER — dark stone panel, matches property1.html exactly
 ════════════════════════════════════════════════════════════ -->
 <footer>
   <div class="footer-container">
@@ -1564,143 +1125,47 @@
       <div class="footer-column">
         <h4>Bliss Living</h4>
         <ul>
-          <li><a href="#properties">Properties</a></li>
-          <li><a href="#how">How It Works</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="faq.html">FAQs</a></li>
+          <li><a href="property.html">Properties</a></li>
           <li><a href="terms.html">Terms &amp; Conditions</a></li>
+          <li><a href="faq.html">FAQs</a></li>
           <li><a href="privacy.html">Privacy Policy</a></li>
         </ul>
       </div>
       <div class="footer-column">
         <h4>Enquiries</h4>
         <ul>
-          <li><a href="#" onclick="openEnquiry('Spring Street Paddington'); return false;">Spring Street Paddington</a></li>
-          <li><a href="#" onclick="openEnquiry('Fulham Apartment'); return false;">Fulham Apartment</a></li>
-          <li><a href="#" onclick="openEnquiry('Broadway Studio Ealing'); return false;">Broadway Studio Ealing</a></li>
-          <li><a href="https://wa.me/447365208676" target="_blank" rel="noopener">WhatsApp Us</a></li>
+          <li><a href="booknow.html">Corporate Bookings</a></li>
+          <li><a href="booknow.html">Group Bookings</a></li>
+          <li><a href="booknow.html">Apart-hotels</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-logo-section">
       <img src="Footnote_Logo.png" alt="Bliss Living" class="footer-logo" width="200" loading="lazy">
       <div class="social-icons">
-        <a href="#" aria-label="Instagram"><img src="icons/insta.png" alt="Instagram" width="22" height="22" loading="lazy"></a>
-        <a href="#" aria-label="Facebook"><img src="icons/fb.png" alt="Facebook" width="22" height="22" loading="lazy"></a>
+        <a href="#" aria-label="Instagram"><img src="icons/insta.png" alt="Instagram" width="22" height="22"></a>
+        <a href="#" aria-label="Facebook"><img src="icons/fb.png" alt="Facebook" width="22" height="22"></a>
       </div>
     </div>
   </div>
-  <p class="footer-bottom">&copy; Bliss Living Ltd. 2026. All rights reserved.</p>
+  <p class="footer-bottom">&copy; Bliss Living Ltd. 2025. All rights reserved.</p>
 </footer>
 
 <!-- ═══════════════════════════════════════════════════════════
-     ENQUIRY MODAL
-════════════════════════════════════════════════════════════ -->
-<div id="enquiryModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
-  <div class="modal-box">
-    <div id="enquiryFormWrap">
-      <div class="modal-header">
-        <div>
-          <h2 id="modal-heading">Enquire About Availability</h2>
-          <p>We&rsquo;ll be in touch within a few hours.</p>
-        </div>
-        <button class="modal-close" id="modalClose" aria-label="Close enquiry form">&times;</button>
-      </div>
-      <div class="modal-body">
-        <!-- NEEDS: Create a Formspree form at formspree.io and replace ENQUIRY_FORM_ID below -->
-        <form id="enquiryForm" action="https://formspree.io/f/ENQUIRY_FORM_ID" method="POST" novalidate>
-          <input type="hidden" name="_subject" value="New Availability Enquiry – Bliss Living" />
-          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-
-          <div class="form-grid">
-            <div class="form-row-2">
-              <div class="field-group">
-                <label for="eq-name">Full Name</label>
-                <input type="text" id="eq-name" name="name" placeholder="Jane Smith" required autocomplete="name" />
-              </div>
-              <div class="field-group">
-                <label for="eq-email">Email Address</label>
-                <input type="email" id="eq-email" name="email" placeholder="jane@example.com" required autocomplete="email" />
-              </div>
-            </div>
-
-            <div class="form-row-2">
-              <div class="field-group">
-                <label for="eq-phone">Phone <span>(optional)</span></label>
-                <input type="tel" id="eq-phone" name="phone" placeholder="+44 7700 000000" autocomplete="tel" />
-              </div>
-              <div class="field-group">
-                <label for="eq-property">Preferred Property</label>
-                <select id="eq-property" name="property" required>
-                  <option value="" disabled selected>Select a property…</option>
-                  <option value="Spring Street Paddington">Spring Street Paddington</option>
-                  <option value="Fulham Apartment">Fulham Apartment</option>
-                  <option value="Broadway Studio Ealing">Broadway Studio Ealing</option>
-                  <option value="Not sure yet">Not sure yet</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-row-2">
-              <div class="field-group">
-                <label for="eq-checkin">Check-in Date</label>
-                <input type="date" id="eq-checkin" name="checkin" required />
-              </div>
-              <div class="field-group">
-                <label for="eq-length">Length of Stay</label>
-                <select id="eq-length" name="length_of_stay" required>
-                  <option value="" disabled selected>Select…</option>
-                  <option value="1 week">1 week</option>
-                  <option value="2 weeks">2 weeks</option>
-                  <option value="3 weeks">3 weeks</option>
-                  <option value="1 month">1 month</option>
-                  <option value="2 months">2 months</option>
-                  <option value="3 months">3 months</option>
-                  <option value="3+ months">3+ months</option>
-                  <option value="Flexible / TBC">Flexible / TBC</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="field-group">
-              <label for="eq-message">Message <span>(optional)</span></label>
-              <textarea id="eq-message" name="message" placeholder="Tell us anything else that would help us assist you…"></textarea>
-            </div>
-
-            <button type="submit" class="btn-submit" id="enquirySubmitBtn">Send Enquiry</button>
-            <p class="form-status" id="enquiryStatus" aria-live="polite"></p>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <!-- Success state -->
-    <div class="modal-success" id="enquirySuccess">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <circle cx="12" cy="12" r="10"/>
-        <path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <h3>Enquiry Sent!</h3>
-      <p>Thanks for getting in touch. We&rsquo;ll be in contact within a few hours to discuss your stay.</p>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════
-     SCRIPTS
+     SCRIPTS (unchanged — video init removed, everything else kept)
 ════════════════════════════════════════════════════════════ -->
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
-  // ── Header: solid on scroll past hero ──────────────────────
+  // ---- Header scroll ----
   const header = document.getElementById('site-header');
   window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 80);
+    header.classList.toggle('scrolled', window.scrollY > 40);
   }, { passive: true });
 
-  // ── Mobile sheet ────────────────────────────────────────────
-  const mnavBtn   = document.getElementById('mnavBtn');
-  const sheet     = document.getElementById('mnav');
+  // ---- Mobile sheet ----
+  const btn   = document.getElementById('mnavBtn');
+  const sheet = document.getElementById('mnav');
   let scrollY = 0;
   function openSheet() {
     scrollY = window.scrollY;
@@ -1709,150 +1174,76 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.style.width = '100%';
     sheet.classList.add('open');
     sheet.setAttribute('aria-hidden', 'false');
-    mnavBtn.setAttribute('aria-expanded', 'true');
+    btn.setAttribute('aria-expanded', 'true');
     document.body.classList.add('menu-open');
   }
   function closeSheet() {
     sheet.classList.remove('open');
     sheet.setAttribute('aria-hidden', 'true');
-    mnavBtn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('menu-open');
     document.body.style.position = '';
     document.body.style.top = '';
     document.body.style.width = '';
     window.scrollTo(0, scrollY);
   }
-  mnavBtn?.addEventListener('click', openSheet);
-  document.getElementById('mnavClose')?.addEventListener('click', closeSheet);
-  sheet?.querySelector('.mnav-backdrop')?.addEventListener('click', closeSheet);
-  sheet?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeSheet));
+  btn?.addEventListener('click', openSheet, { passive: true });
+  document.getElementById('mnavClose')?.addEventListener('click', closeSheet, { passive: true });
+  sheet?.querySelector('.mnav-backdrop')?.addEventListener('click', closeSheet, { passive: true });
+  sheet?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeSheet, { passive: true }));
 
-  // ── Smooth scroll for nav anchor links ──────────────────────
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const id = a.getAttribute('href').slice(1);
-      if (!id) return;
-      const target = document.getElementById(id);
-      if (!target) return;
-      e.preventDefault();
-      closeSheet();
-      setTimeout(() => {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 50);
+  // ---- Dropdown click support (touch) ----
+  document.querySelectorAll('.main-nav .has-dropdown > a').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      if (trigger.getAttribute('href') === '#') e.preventDefault();
+      const panel = trigger.parentElement.querySelector('.drop-panel');
+      const isOpen = panel?.classList.contains('open');
+      document.querySelectorAll('.main-nav .drop-panel.open').forEach(p => { if (p !== panel) p.classList.remove('open'); });
+      panel?.classList.toggle('open', !isOpen);
     });
   });
+  document.addEventListener('click', (e) => {
+    const nav = document.querySelector('.main-nav');
+    if (!nav || nav.contains(e.target)) return;
+    document.querySelectorAll('.main-nav .drop-panel.open').forEach(p => p.classList.remove('open'));
+  });
 
-  // ── Enquiry modal ────────────────────────────────────────────
-  const modal = document.getElementById('enquiryModal');
-
-  window.openEnquiry = function(propertyName) {
-    // Pre-fill property if provided
-    const sel = document.getElementById('eq-property');
-    if (sel && propertyName) {
-      const opts = Array.from(sel.options);
-      const match = opts.find(o => o.value === propertyName);
-      if (match) sel.value = propertyName;
-    }
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    // Focus first field
-    setTimeout(() => {
-      const first = modal.querySelector('input:not([type="hidden"])');
-      first?.focus();
-    }, 60);
-  };
-
-  function closeModal() {
-    modal.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  document.getElementById('navEnquireBtn')?.addEventListener('click', () => openEnquiry());
-  document.getElementById('heroEnquireBtn')?.addEventListener('click', () => openEnquiry());
-  document.getElementById('mnavEnquireBtn')?.addEventListener('click', () => { closeSheet(); setTimeout(() => openEnquiry(), 80); });
-  document.getElementById('modalClose')?.addEventListener('click', closeModal);
-  modal?.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
-
-  // ── Enquiry form submission (Formspree) ─────────────────────
-  const enquiryForm   = document.getElementById('enquiryForm');
-  const enquiryStatus = document.getElementById('enquiryStatus');
-  const enquiryBtn    = document.getElementById('enquirySubmitBtn');
-  const enquirySuccess = document.getElementById('enquirySuccess');
-  const formWrap      = document.getElementById('enquiryFormWrap');
-
-  if (enquiryForm) {
-    enquiryForm.addEventListener('submit', async e => {
-      e.preventDefault();
-
-      // Client-side validation
-      const name  = document.getElementById('eq-name').value.trim();
-      const email = document.getElementById('eq-email').value.trim();
-      const prop  = document.getElementById('eq-property').value;
-      const checkin = document.getElementById('eq-checkin').value;
-      const length  = document.getElementById('eq-length').value;
-
-      if (!name || !email || !prop || !checkin || !length) {
-        enquiryStatus.textContent = 'Please fill in all required fields.';
-        enquiryStatus.className = 'form-status err';
-        return;
-      }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        enquiryStatus.textContent = 'Please enter a valid email address.';
-        enquiryStatus.className = 'form-status err';
-        return;
-      }
-
-      enquiryBtn.disabled = true;
-      enquiryBtn.textContent = 'Sending…';
-      enquiryStatus.textContent = '';
-      enquiryStatus.className = 'form-status';
-
-      try {
-        const res = await fetch(enquiryForm.action, {
-          method: 'POST',
-          body: new FormData(enquiryForm),
-          headers: { Accept: 'application/json' }
-        });
-        if (res.ok) {
-          // Show success state
-          formWrap.style.display = 'none';
-          enquirySuccess.classList.add('show');
-        } else {
-          throw new Error('Server error');
-        }
-      } catch {
-        enquiryStatus.textContent = 'Something went wrong. Please try again or contact us via WhatsApp.';
-        enquiryStatus.className = 'form-status err';
-        enquiryBtn.disabled = false;
-        enquiryBtn.textContent = 'Send Enquiry';
-      }
-    });
-  }
-
-  // ── Scroll reveal ────────────────────────────────────────────
-  const revealEls = document.querySelectorAll('.reveal');
+  // ---- Scroll reveal ----
+  const reveals = document.querySelectorAll('.reveal');
   const revealObs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        const delay = e.target.style.getPropertyValue('--rv-delay') || '0ms';
-        setTimeout(() => e.target.classList.add('in'), parseFloat(delay) || 0);
-        revealObs.unobserve(e.target);
-      }
+      if (e.isIntersecting) { e.target.classList.add('in'); revealObs.unobserve(e.target); }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -4% 0px' });
-  revealEls.forEach(el => revealObs.observe(el));
+  }, { threshold: 0.15, rootMargin: '0px 0px -4% 0px' });
+  reveals.forEach(el => revealObs.observe(el));
 
-  // ── Counter animation ────────────────────────────────────────
+  // ---- Typewriter ----
+  const tyEl = document.getElementById('hm-type');
+  if (tyEl) {
+    const text = tyEl.dataset.text || '';
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) { tyEl.textContent = text; tyEl.classList.add('done'); }
+    else {
+      let i = 0;
+      function step() {
+        if (i >= text.length) { tyEl.classList.add('done'); return; }
+        tyEl.textContent += text[i++];
+        setTimeout(step, 46);
+      }
+      step();
+    }
+  }
+
+  // ---- Counter animation ----
   const counters = document.querySelectorAll('.count');
   const countObs = new IntersectionObserver((entries, obs) => {
     entries.forEach(e => {
       if (!e.isIntersecting) return;
-      const el     = e.target;
+      const el = e.target;
       const target = +el.dataset.target;
-      const dur    = 1400;
-      const start  = performance.now();
-      const fmt    = new Intl.NumberFormat();
+      const dur = 1400;
+      const start = performance.now();
+      const fmt = new Intl.NumberFormat();
       function tick(now) {
         const p = Math.min(1, (now - start) / dur);
         const eased = 1 - Math.pow(1 - p, 3);
@@ -1865,7 +1256,42 @@ document.addEventListener('DOMContentLoaded', function () {
   }, { threshold: 0.5 });
   counters.forEach(el => countObs.observe(el));
 
-  // ── Reviews slider ───────────────────────────────────────────
+  // ---- Properties slider ----
+  const track   = document.getElementById('psTrack');
+  const shifter = document.getElementById('psShift');
+  if (track) {
+    const isMobile = () => window.innerWidth <= 768;
+
+    if (!isMobile()) {
+      // Desktop: auto-scroll marquee with cloned nodes
+      Array.from(track.children).forEach(n => track.appendChild(n.cloneNode(true)));
+      let gap = 24, cardW = null, shift = 0;
+      function measure() {
+        const card = track.querySelector('.slide');
+        if (!card) return;
+        gap = parseFloat(getComputedStyle(track).gap) || 24;
+        cardW = card.getBoundingClientRect().width;
+      }
+      function nudge(dir) {
+        track.style.animationPlayState = 'paused';
+        if (!cardW) measure();
+        shift += dir * -(cardW + gap);
+        const setWidth = (cardW + gap) * (track.children.length / 2);
+        if (shift <= -setWidth) shift += setWidth;
+        if (shift >= setWidth) shift -= setWidth;
+        shifter.style.setProperty('--shift', shift + 'px');
+        clearTimeout(nudge._t);
+        nudge._t = setTimeout(() => { track.style.animationPlayState = 'running'; }, 280);
+      }
+      document.querySelector('.ps-prev')?.addEventListener('click', () => nudge(-1));
+      document.querySelector('.ps-next')?.addEventListener('click', () => nudge(1));
+      window.addEventListener('resize', () => { cardW = null; }, { passive: true });
+      measure();
+    }
+    // Mobile: scroll-snap handled entirely by CSS, no JS needed
+  }
+
+  // ---- Reviews slider + dots ----
   const slides   = document.getElementById('rb-slides');
   const dotsWrap = document.getElementById('rbDots');
   if (slides && dotsWrap) {
@@ -1875,15 +1301,13 @@ document.addEventListener('DOMContentLoaded', function () {
       const d = document.createElement('button');
       d.className = 'rb-dot' + (i === 0 ? ' active' : '');
       d.setAttribute('aria-label', `Review ${i + 1}`);
-      d.setAttribute('role', 'tab');
       d.addEventListener('click', () => goTo(i));
       dotsWrap.appendChild(d);
     }
     function goTo(i) {
       current = (i + total) % total;
       slides.style.transform = `translateX(-${current * 100}%)`;
-      dotsWrap.querySelectorAll('.rb-dot').forEach((d, idx) =>
-        d.classList.toggle('active', idx === current));
+      dotsWrap.querySelectorAll('.rb-dot').forEach((d, idx) => d.classList.toggle('active', idx === current));
     }
     document.querySelectorAll('#reviews-banner .arrow').forEach(btn => {
       btn.addEventListener('click', () => goTo(current + +btn.dataset.dir));
@@ -1894,18 +1318,9 @@ document.addEventListener('DOMContentLoaded', function () {
       clearInterval(autoTimer);
       autoTimer = setInterval(() => goTo(current + 1), 6000);
     });
-    // Touch swipe
-    let tx0 = null;
-    slides.addEventListener('touchstart', e => { tx0 = e.touches[0].clientX; }, { passive: true });
-    slides.addEventListener('touchend', e => {
-      if (tx0 === null) return;
-      const dx = e.changedTouches[0].clientX - tx0; tx0 = null;
-      if (Math.abs(dx) < 40) return;
-      goTo(current + (dx > 0 ? -1 : 1));
-    }, { passive: true });
   }
 
-  // ── FAQ accordion ─────────────────────────────────────────────
+  // ---- FAQ accordion ----
   document.querySelectorAll('.faq-item').forEach(det => {
     det.addEventListener('toggle', () => {
       if (det.open) {
@@ -1916,7 +1331,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // ── WhatsApp teaser ───────────────────────────────────────────
+  // ---- WhatsApp teaser ----
   const waCard  = document.getElementById('wa-card');
   const waClose = document.getElementById('wa-close');
   const WA_KEY  = 'waTeaserUntil';
@@ -1928,54 +1343,64 @@ document.addEventListener('DOMContentLoaded', function () {
     waCard.remove();
   });
 
-  // ── Newsletter ────────────────────────────────────────────────
-  const nlForm   = document.getElementById('newsletterForm');
-  const nlStatus = document.getElementById('nlStatus');
-  if (nlForm) {
-    nlForm.addEventListener('submit', async e => {
+  // ---- Newsletter ----
+  const form   = document.getElementById('newsletterForm');
+  const status = document.getElementById('nlStatus');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const first = document.getElementById('firstName').value.trim();
       const sur   = document.getElementById('surname').value.trim();
       const mail  = document.getElementById('email').value.trim();
-      if (!first || !sur || !mail) {
-        nlStatus.textContent = 'Please fill in all fields.';
-        nlStatus.className = 'nl-status err'; return;
-      }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
-        nlStatus.textContent = 'Please enter a valid email address.';
-        nlStatus.className = 'nl-status err'; return;
-      }
-      nlStatus.textContent = 'Signing you up…'; nlStatus.className = 'nl-status';
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail);
+      if (!first || !sur || !mail) { status.textContent = 'Please fill in all fields.'; status.className = 'nl-status err'; return; }
+      if (!emailOk) { status.textContent = 'Please enter a valid email address.'; status.className = 'nl-status err'; return; }
+      status.textContent = 'Signing you up…'; status.className = 'nl-status';
       try {
-        const res = await fetch(nlForm.action, {
-          method: 'POST', body: new FormData(nlForm), headers: { Accept: 'application/json' }
-        });
-        if (res.ok) {
-          nlForm.reset();
-          nlStatus.textContent = "Thanks! You're on the list.";
-          nlStatus.className = 'nl-status ok';
-        } else {
-          nlStatus.textContent = 'Something went wrong. Please try again.';
-          nlStatus.className = 'nl-status err';
-        }
-      } catch {
-        nlStatus.textContent = 'Network error. Please try again.';
-        nlStatus.className = 'nl-status err';
-      }
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+        if (res.ok) { form.reset(); status.textContent = "Thanks! You're on the list."; status.className = 'nl-status ok'; }
+        else { status.textContent = 'Something went wrong. Please try again.'; status.className = 'nl-status err'; }
+      } catch { status.textContent = 'Network error. Please try again.'; status.className = 'nl-status err'; }
     });
   }
 
-  // ── iOS touch events ──────────────────────────────────────────
+  // iOS touch events (enable :active states)
   document.addEventListener('touchstart', () => {}, { passive: true });
 
-  // ── Set today as min date for check-in ───────────────────────
-  const checkinField = document.getElementById('eq-checkin');
-  if (checkinField) {
-    checkinField.min = new Date().toISOString().split('T')[0];
-  }
+  // ---- Properties slider: finger swipe ----
+  (function(){
+    const viewport = document.querySelector('.ps-viewport');
+    if (!viewport) return;
+    let x0 = null;
+    viewport.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+    viewport.addEventListener('touchend', e => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      x0 = null;
+      if (Math.abs(dx) < 30) return;
+      document.querySelector(dx > 0 ? '.ps-prev' : '.ps-next')?.click();
+    }, { passive: true });
+  })();
+
+  // ---- Reviews slider: finger swipe ----
+  (function(){
+    const sl = document.getElementById('rb-slides');
+    if (!sl) return;
+    let x0 = null;
+    sl.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+    sl.addEventListener('touchend', e => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      x0 = null;
+      if (Math.abs(dx) < 40) return;
+      const btns = document.querySelectorAll('#reviews-banner .arrow');
+      (dx > 0 ? btns[0] : btns[1])?.click();
+    }, { passive: true });
+  })();
 
 });
 </script>
 
 </body>
 </html>
+
